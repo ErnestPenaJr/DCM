@@ -1,0 +1,34 @@
+body {
+    position: relative;
+    background: url('../images/landingBG_Teal.png') no-repeat fixed;
+    background-size: cover;
+    display: grid;
+    height: 100vh;
+    margin: 0;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: black;
+    animation: fadeIn 0.9s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0;
+    }
+}
+
+.frostedGlass{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.218),rgba(255, 255, 255, 0.205));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 10px;
+    border: 1.5px solid rgb(0, 0, 0);
+    padding: 25px 25px 25px 25px;
+}

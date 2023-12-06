@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://127.0.0.1:5501/landing.html -->
+<html><script>(function altergeolocation() {
+  if (navigator.geolocation) {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    }
+    navigator.geolocation.getCurrentPositionold =
+      navigator.geolocation.getCurrentPosition
+    var posElement = document.getElementById('geopositionmeta')
+
+    navigator.geolocation.getCurrentPosition = function (
+      success,
+      failure,
+      options
+    ) {
+      if (!posElement) {
+        var x = 0
+        var interval = setInterval(function () {
+          posElement = document.getElementById('geopositionmeta')
+          if (posElement) {
+            var custompos = JSON.parse(posElement.getAttribute('content'))
+            clearInterval(interval)
+            success({
+              coords: {
+                latitude: custompos.lat,
+                longitude: custompos.long,
+              },
+              timestamp: '',
+            })
+          } else if (++x === 5) {
+            clearInterval(interval)
+            navigator.geolocation.getCurrentPositionold(
+              success,
+              failure,
+              options
+            )
+          }
+        }, 200)
+      }
+    }
+
+    navigator.geolocation.watchPosition = function (success, failure, options) {
+      if (!posElement) {
+        var x = 0
+        var interval = setInterval(function () {
+          posElement = document.getElementById('geopositionmeta')
+          if (posElement) {
+            var custompos = JSON.parse(posElement.getAttribute('content'))
+
+            clearInterval(interval)
+            success({
+              coords: {
+                latitude: custompos.lat,
+                longitude: custompos.long,
+              },
+              timestamp: '',
+            })
+          } else if (++x === 5) {
+            clearInterval(interval)
+            navigator.geolocation.getCurrentPositionold(
+              success,
+              failure,
+              options
+            )
+          }
+        }, 200)
+      }
+    }
+  }
+})();</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./landing_files/landing.css">
+        <link rel="stylesheet" href="./landing_files/all.css">
+        <link rel="stylesheet" href="./landing_files/bootstrap.css">
+    </head>
+    <body>
+
+
+<div class="container my-auto">
+  <div id="login" class="card mx-auto" style="max-width: 550px;">
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-12 col-10 col-8 mt-5 mb-5">
+          <div class="row gy-5 justify-content-center">
+          <div class="row">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold text-dark text-center"><img src="./landing_files/GuardianLogo.png" alt="Guardian Logo" height="105"> Guardian</h2>
+            </div>
+          </div>
+            <div class="col-12 col-lg-8">
+              <form action="http://127.0.0.1:5501/landing.html#!">
+                <div class="row gy-3 overflow-hidden">
+                  <div class="col-12">
+                    <div class="form-floating mb-2">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required="">
+                      <label for="email" class="form-label text-black">Email</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating mb-2">
+                      <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required="">
+                      <label for="password" class="form-label text-black">Password</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="row justify-content-between">
+                      <div class="col-6"></div>
+                      <div class="col-6">
+                        <div class="text-end">
+                          <a href="http://127.0.0.1:5501/landing.html#!" class="link-dark text-decoration-none" style="color:teal">Forgot password?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn btn-info btn-lg" type="submit">Sign In</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-1 flex-lg-column">
+              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
+              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
+              <div class="fs-3">or</div>
+              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
+              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
+            </div> -->
+
+            <!-- <div class="col-12 col-lg-5 d-flex align-items-center">
+              <div class="d-flex gap-1 flex-column w-100">
+                <a href="#!" class="btn btn-lg btn-success mb-3">
+                  Sign in with
+                  <img src="assets/images/landingPage/ID.me_logo_wht.svg" height="20" alt="">
+                </a>
+                <a href="#!" class="btn btn-lg btn-light">
+                  <img src="assets/images/landingPage/ID.me_logo.svg" height="20" alt=""> Create an account
+                </a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center mt-5">
+      <span class="text-white">Powered by</span><br>
+        <img src="./landing_files/ShieldLyticsLogoOrbitronHorzWt.svg" height="40" alt="">
+    </div>
+  </div>
+
+</div>
+        
+        
+        
+        <script src="./landing_files/app.js"></script>
+        <script src="./landing_files/jquery.js"></script>
+        <script src="./landing_files/bootstrap.bundle.js"></script>
+        <script src="./landing_files/aos.js"></script>
+    <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $("#login").slideDown(1000);
+    });
+</script><div id="syno-notification-is-installed"></div></body></html>
