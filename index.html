@@ -26,72 +26,125 @@ https://cdnjs.com/libraries/font-awesome
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     </head>
-        <style>
-        .red-bar {
-            width:100%; 
-            background-color: #e32525;
-            height: 4px; 
-            margin-top:75px;
-            position: absolute;
-        }
-        </style>
         
-    <nav id="navScroll" class="navbar navbar-expand-lg bg-white fixed-top px-vw-5">
+    <nav id="navScroll" class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info ">
         <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggler">
                     <a class="navbar-brand" href="#"><img src="assets/images/logo.png" height="50"></a>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                   
             </div>
         </div>
-        <div class="red-bar"></div>
     </nav>
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
         
     <main>
         <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade">
-        <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
-        <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-            <div class="row d-flex align-items-center justify-content-center py-vh-5">
-                <div class="col-12 col-xl-10">
-                    <span class="h4 text-secondary fw-lighter">Animated on Scrolling</span>
-                    <h1 class="display-huge mt-3 mb-3 lh-1">HTML5 NPM Boilerplate</h1>
-                </div>
-                <div class="col-12 col-xl-8">
-                <p class="lead text-secondary">This can be a long description of the website </p>
+            <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
+                <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+                    <div class="row d-flex align-items-center justify-content-center py-vh-5">
+                        <div class="col-md-6">
+                            <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">my daily tasks</h1>
+                            <div class="card">
+                                <div class="card-body">
+                                    <form id="taskForm">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-floating mb-1">
+                                                    <input type="date" class="form-control form-control-sm" id="date" placeholder="Date">
+                                                    <label for="date">Current Date</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-floating mb-1">
+                                                    <input type="text" class="form-control form-control-sm" id="Department" placeholder="Department">
+                                                    <label for="totalTime">Department</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-floating mb-1">
+                                                    <input type="text" class="form-control form-control-sm" id="Project" placeholder="Project">
+                                                    <label for="Project">Project Name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <form id="taskForm">
+                                                <div id="leftColumn" class="col-sm-6"></div>
+                                                <div id="rightColumn" class="col-sm-6"></div>
+                                            </form>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="float-sm-start" id="totalTime"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" id="saveTask" class="btn btn-outline-secondary text-uppercase mt-1 float-end">Close out the day</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">current week-<span id="current_week"></span></h1>
+                            <div class="card" style="height: 665px">
+                                <div class="card-body">
+                                      <div class="list-group">
+                                        <a id="mon" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start">Monday</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                        <a id="tue" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start">Tuesday</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                        <a id="wed" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start">Wednesday</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                        <a id="thu" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start">Thursday</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                        <a id="fri" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start">Friday</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
-        </div>
-        </div>
-        <div class="w-100 min-vh-100 position-relative bg-white text-black bg-cover d-flex align-items-center">
-        <div class="position-absolute w-100 h-100 bg-white opacity-75 top-0 start-0"></div>
-        <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-            <div class="row d-flex align-items-center justify-content-center py-vh-5">
-                <div class="col-12 col-xl-10">
-                    <span class="h4 text-secondary fw-lighter">Animated on Scrolling</span>
-                    <h1 class="display-huge mt-3 mb-3 lh-1">HTML5 NPM Boilerplate</h1>
-                </div>
-                <div class="col-12 col-xl-8">
-                <p class="lead text-secondary">This can be a long description of the website </p>
-                </div>
-            </div>
-        </div>
         </div>
     </main>
         
@@ -99,26 +152,186 @@ https://cdnjs.com/libraries/font-awesome
         <script src="assets/js/app.js"></script>
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="node_modules/aos/dist/aos.js"></script>
+        <script src="node_modules/moment/moment.js"></script>
+
     </body>
 </html>
 <script>
-    AOS.init({
-        duration: 800, // values from 0 to 3000, with step 50ms
-    });
-</script>
-<script>
+   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
     $(document).ready(function(){
+        
+        // get current week number
+        var currentWeekNumber = moment().week();
+        console.log(currentWeekNumber)
+        $('#current_week').html(currentWeekNumber);
+
+
+        var tasks = [
+            { name: "Checking Emails", maxTime: 30 ,id: "checkingEmails",description: "10-30 min.: Briefly checking and responding to important emails and messages."},
+            { name: "Stand-up Meetings", maxTime: 30, id: "standUpMeetings",description: "15-30 min.: Short stand-up meetings are common in Agile environments." },
+            { name: "Design", maxTime: 360, id: "design",description: "180-360 min.: Storyboard or user workflow" },
+            { name: "Code Development", maxTime: 360, id: "codeDevelopment",description: "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
+            { name: "Code Review", maxTime: 60, id: "codeReview",description: "30-60 min.: Reviewing peers' code and collaborative discussions." },
+            { name: "Testing and Debugging", maxTime: 120, id: "testingAndDebugging",description: "60-120 min.: Depending on the complexity of the feature or the bug." },
+            { name: "Learning and Research", maxTime: 60, id: "research",description: "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
+            { name: "Meetings", maxTime: 90, id: "meetings",description: "15-90 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
+            { name: "Optimization", maxTime: 60, id: "Optimization",description: "30-60 min.: Monitoring and optimizing, depending on the project phase." },
+            { name: "Collaboration", maxTime: 60, id: "checkingMessages",description: "10-60 min.: Chat communication with development team, Manager or clients." },
+            { name: "Database Mgt.", maxTime: 120, id: "database",description: "60-120 min.: For those who handle database tasks, time can vary greatly based on the complexity of the work." },
+            { name: "Documentation", maxTime: 60, id: "documentation",description: "30-60 min.: Important but often done in conjunction with other development tasks." },
+            { name: "WrapUp", maxTime: 20, id: "WrapUp",description: "10-20 min.: Reviewing and planning for the next day." },
+            { name: "Administration", maxTime: 30, id: "Administration",description: "15-30 min.: Updating task statuses and documenting progress." },
+            { name: "Quickbase", maxTime: 180, id: "quickbase",description: "30-180 min.: assisting users with Quickbase." },
+            { name: "Breaks", maxTime: 30, id: "breaks",description: "10-30 min.: Briefly checking and responding to important emails and messages." }
+            // ... add other tasks here
+        ];
+        // Dynamically add tasks to the form in two columns
+        var half = Math.ceil(tasks.length / 2);
+        var leftColumn = tasks.slice(0, half);
+        var rightColumn = tasks.slice(half, tasks.length);
+        var leftColumnHtml = '';
+        var rightColumnHtml = '';
+
+        for (var i = 0; i < leftColumn.length; i++) {
+            leftColumnHtml += '<div class="form-floating mb-2">'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id +'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'">'+
+                '<label for="' + leftColumn[i].id + '">' + leftColumn[i].name + ': '+leftColumn[i].description.split(":")[0] + '</label>'+
+                '</div>';
+        }
+        for (var i = 0; i < rightColumn.length; i++) {
+            rightColumnHtml += '<div class="form-floating mb-2">'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id + '" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'">'+
+                '<label for="' + rightColumn[i].id + '">' + rightColumn[i].name + ': '+rightColumn[i].description.split(":")[0] + '</label>'+
+                '</div>';
+        }
+        $('#leftColumn').html(leftColumnHtml);
+        $('#rightColumn').html(rightColumnHtml);
+        //if input is not empty change the background color to green
+        $('.taskTime').on('change', function() {
+            if ($(this).val() != '') {
+                $(this).addClass('border border-3 border-warning');
+            } else {
+                $(this).removeClass('border border-3 border-warning');
+            }
+        });
+        //total time spent set warning if over 8 hours
+        $('.taskTime').on('change', function() {
+            var totalTime = 0;
+            $('.taskTime').each(function() {
+                var time = parseInt($(this).val()) || 0;
+                totalTime += time;
+            });
+            if (totalTime > 360) {
+                $('#totalTime').html('Total time exceeds 6 hours!');
+            } else {
+                $('#totalTime').html('Total Capacity: <span class="badge text-bg-warning">' + totalTime + '</span> minutes');
+            }
+        });
+        // make sure each input only take numbers and does not pass maxTime
+        $('.taskTime').on('keyup', function() {
+            var maxTime = parseInt($(this).attr('max'));
+            var time = parseInt($(this).val()) || 0;
+            if (time > maxTime) {
+                $(this).val(maxTime);
+            }
+        });
+
+        // on change event for all task time inputs total time
+        $('#leftColumn, #rightColumn').on('change', '.taskTime', function() {
+            var totalTime = 0;
+            $('.taskTime').each(function() {
+                var time = parseInt($(this).val()) || 0;
+                totalTime += time;
+            });
+            if (totalTime > 480) {
+                $('#totalTime').html('<b>Total Capacity:</b> <span class="fst-italic">' + totalTime + ' minutes </span> <br><small class="text-danger" style="font-size:10px;">Total time exceeds 460 minutes!</small>');
+            } else {
+                $('#totalTime').html('<b>Total Capacity:</b> <span class="fst-italic">' + totalTime + ' minutes </span>');
+            }
+            
+        });
+        // Handle form submission and calculate total time spent
+        $('#taskForm').on('submit', function(e) {
+            e.preventDefault();
+
+            var totalTime = 0;
+            $('.taskTime').each(function() {
+                var time = parseInt($(this).val()) || 0;
+                totalTime += time;
+            });
+
+            if (totalTime > 480) {
+                $('#totalTime').html('Total Capacity: ' + totalTime + ' minutes <br><small class="text-danger" style="font-size:10px;">Total time exceeds 460 minutes!</small>');
+            } else {
+                $('#totalTime').html('Total Capacity: ' + totalTime + ' minutes');
+            }
+        });
+        //loop through all inputs that has a value when clicked on save
+        $('#saveTask').on('click', function(e) {
+            e.preventDefault();
+            var date = $('#date').val();
+            var department = $('#Department').val();
+            var project = $('#Project').val();
+            var totalTime = 0;
+            var taskName = '';
+            var taskTime = '';
+            var taskDescription = '';
+            var taskID = '';
+            var taskArray = [];
+            $('.taskTime').each(function() {
+                var time = parseInt($(this).val()) || 0;
+                var name = $(this).attr('id');
+                var description = $(this).attr('data-bs-content');
+                var id = $(this).attr('id');
+                if (time > 0) {
+                    taskArray.push({name: name, time: time, description: description, id: id});
+                }
+                totalTime += time;
+            });
+            
+            if (totalTime > 480) {
+                $('#totalTime').html('Total Capacity: ' + totalTime + ' minutes <br><small class="text-danger" style="font-size:10px;">Total time exceeds 460 minutes!</small>');
+            } else {
+                $('#totalTime').html('Total Capacity: ' + totalTime + ' minutes');
+            }
+            console.log(taskArray);
+            //saveTask();
+        });
 
     });
-    let scrollpos = window.scrollY
-    const header = document.querySelector(".navbar")
-    const header_height = header.offsetHeight
-    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
-    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
-    window.addEventListener('scroll', function () {
-        scrollpos = window.scrollY;
-        if (scrollpos >= header_height) { add_class_on_scroll() }
-        else { remove_class_on_scroll() }
-        console.log(scrollpos)
-    })
+    function getMonday(d) {
+        d = new Date(d);
+        var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+        return new Date(d.setDate(diff));
+    }
+    function saveTask(){
+        var TASK_NAME = '';
+        var TASK_DESCRIPTION = '';
+        var TASK_TIME = '';
+        var PROJECT = '';
+        var DEPTID = '';
+        var ALLOCATED_TiME = '';
+        var DATE = '';
+        
+        $.ajax({
+            type: "POST",
+            url: "assets/CFCs/functions.cfc",
+            type: "json",
+            data: {method: "saveTask", TASK_NAME: TASK_NAME, TASK_DESCRIPTION: TASK_DESCRIPTION, TASK_TIME: TASK_TIME, PROJECT: PROJECT, DEPTID: DEPTID, ALLOCATED_TiME: ALLOCATED_TiME, DATE:DATE},
+            success: function(data){
+                //add successful save message to #saveTask button then fade back to normal
+                $('#saveTask').html('Saved Successfully!');
+                setTimeout(function(){
+                    $('#saveTask').html('Close out the day');
+                }, 3000);
+            },
+            error: function(data){
+                console.log(data); 
+            }
+        });
+    }
 </script>
