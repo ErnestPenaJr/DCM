@@ -1,15 +1,4 @@
 
-<!---(remove after completion)
-install npm packages in the VS-Code terminal with the following commands:
-npm i jquery
-npm i bootstrap
-npm i aos
-npm i @fortawesome/fontawesome-free
-if Fontawesome cannot be installed from npmjs then must be installed manually, get from https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers
-if you cannot get the fontawesome package to install, then you can use the CDN link in the head of the html file
-https://cdnjs.com/libraries/font-awesome
---->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,6 +14,8 @@ https://cdnjs.com/libraries/font-awesome
         <title></title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
+        <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
     </head>
         
     <nav id="navScroll" class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info ">
@@ -41,16 +32,16 @@ https://cdnjs.com/libraries/font-awesome
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
         
     <main>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade">
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center mt-3" data-aos="fade">
             <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
                 <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
                     <div class="row d-flex align-items-center justify-content-center py-vh-5">
                         <div class="col-md-6">
                             <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">my daily tasks</h1>
                             <div class="card">
-                                <div class="card-body">
-                                    <form id="taskForm">
-                                        <div class="row">
+                                <div class="card-body ">
+                                    <form id="taskForm" class="searchDeptBox">
+                                        <div class="row ">
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-1">
                                                     <input type="date" class="form-control form-control-sm" id="date" placeholder="Date">
@@ -61,12 +52,13 @@ https://cdnjs.com/libraries/font-awesome
                                                 <div class="form-floating mb-1">
                                                     <input type="text" class="form-control form-control-sm" id="Department" placeholder="Department">
                                                     <label for="totalTime">Department</label>
+                                                    <div id="deptResults" class="searchDeptResults" style="color:#000;margin-top:5px;max-height: 350px; "></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-1">
-                                                    <input type="text" class="form-control form-control-sm" id="Project" placeholder="Project">
-                                                    <label for="Project">Project Name</label>
+                                                    <select class="form-select form-select-sm" id="Project" aria-label="Floating label select a Project"></select>
+                                                      <label for="Project">Projects</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -77,63 +69,79 @@ https://cdnjs.com/libraries/font-awesome
                                                 <div id="rightColumn" class="col-sm-6"></div>
                                             </form>
                                         </div>
-                                        <hr>
+                                        <hr class="border border-1 border-dark">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <span class="float-sm-start" id="totalTime"></span>
                                             </div>
                                             <div class="col-md-6">
                                                 <button type="submit" id="saveTask" class="btn btn-outline-secondary text-uppercase mt-1 float-end">Close out the day</button>
+                                                <input type="hidden" id="WEEK_NUM">
                                             </div>
                                         </div>
-                                        
                                     </form>
-                                    
+                                   
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">current week-<span id="current_week"></span></h1>
-                            <div class="card" style="height: 665px">
-                                <div class="card-body">
-                                      <div class="list-group">
+                            <div class="card" style="height: 670px">
+                                <div class="card-body" style="overflow-y: scroll;">
+                                      <div class="list-group theWeekOf">
                                         <a id="mon" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start">Monday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Monday</div>
                                             </div>
-                                            <div class="row">
+                                            <div id="mondayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
                                             </div>
                                         </a>
                                         <a id="tue" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start">Tuesday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Tuesday</div>
                                             </div>
-                                            <div class="row">
+                                            <div id="tuesdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
                                             </div>
                                         </a>
                                         <a id="wed" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start">Wednesday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Wednesday</div>
                                             </div>
-                                            <div class="row">
+                                            <div id="wednesdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
                                             </div>
                                         </a>
                                         <a id="thu" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start">Thursday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Thursday</div>
                                             </div>
-                                            <div class="row">
+                                            <div id="thursdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
                                             </div>
                                         </a>
                                         <a id="fri" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start">Friday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Friday</div>
                                             </div>
+                                            <div id="fridayInfo" class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                        <a id="sat" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Saturday</div>
+                                            </div>
+                                            <div id="saturdayInfo" class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
+                                        <a id="sun" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Sunday</div>
+                                            </div>
+                                            <div id="sundayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
                                             </div>
                                         </a>
@@ -142,18 +150,61 @@ https://cdnjs.com/libraries/font-awesome
                             </div>
                         </div>
                     </div>
-                   
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center mt-5" data-aos="fade">
+            <div class="position-absolute w-100 h-100 bg-black opacity-0 top-0 start-0"></div>
+                <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+                    <div class="row py-vh-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">my tasks</h1>
+                            </div>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <table id="tasks" class="table table-striped table-hover table-bordered table-sm table-responsive text-start">
+                                    <thead>
+                                        <tr class="table-dark">
+                                            <th>WEEK</th>
+                                            <th>DAY</th>
+                                            <th>DATE</th>
+                                            <th>TASK NAME</th>
+                                            <th>TASK TIME</th>
+                                            <th>PROJECT NAME</th>
+                                            <th>DEPTID</th>
+                                            <th>TASK DESCRIPTION</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-        
-        
+
         <script src="assets/js/app.js"></script>
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="node_modules/aos/dist/aos.js"></script>
         <script src="node_modules/moment/moment.js"></script>
+        <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
+        <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js"></script>
+        <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+        <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.js"></script>
+        <script src="node_modules/datatables.net-buttons/js/buttons.html5.js"></script>
+        <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
+        <script src="node_modules/pdfmake/build/pdfmake.js"></script>
+        <script src="node_modules/pdfmake/build/vfs_fonts.js"></script>
+        <script src="node_modules/jszip/dist/jszip.js"></script>
 
     </body>
 </html>
@@ -162,19 +213,29 @@ https://cdnjs.com/libraries/font-awesome
    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
     $(document).ready(function(){
-        
+        $('#Department').on('keyup', function() {
+            $('.returnMessage').removeClass('alert alert-danger').empty() 
+            var x = $(this).val();
+            if (x != '') {
+                departmentSearch(x)
+            } else {
+                $(this).attr('DEPTID','');
+                $('#deptResults').hide();
+            }
+        }); 
         // get current week number
         var currentWeekNumber = moment().week();
-        console.log(currentWeekNumber)
         $('#current_week').html(currentWeekNumber);
-
-
+        $('#WEEK_NUM').val(currentWeekNumber);
+        getCurrentWeekTasks(currentWeekNumber)
+        getProjects();
+        highlightCurrentDay();
+        loadMyTasks();
         var tasks = [
             { name: "Checking Emails", maxTime: 30 ,id: "checkingEmails",description: "10-30 min.: Briefly checking and responding to important emails and messages."},
-            { name: "Stand-up Meetings", maxTime: 30, id: "standUpMeetings",description: "15-30 min.: Short stand-up meetings are common in Agile environments." },
-            { name: "Design", maxTime: 360, id: "design",description: "180-360 min.: Storyboard or user workflow" },
+            { name: "Code Publishing", maxTime: 60, id: "publishing",description: "10-30 min.: Short stand-up meetings are common in Agile environments." },
+            { name: "UI/UX-Mockup/Design", maxTime: 460, id: "design",description: "180-460 min.: User Interface/User Experience, Storyboarding and or user workflow" },
             { name: "Code Development", maxTime: 360, id: "codeDevelopment",description: "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
-            { name: "Code Review", maxTime: 60, id: "codeReview",description: "30-60 min.: Reviewing peers' code and collaborative discussions." },
             { name: "Testing and Debugging", maxTime: 120, id: "testingAndDebugging",description: "60-120 min.: Depending on the complexity of the feature or the bug." },
             { name: "Learning and Research", maxTime: 60, id: "research",description: "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
             { name: "Meetings", maxTime: 90, id: "meetings",description: "15-90 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
@@ -182,10 +243,9 @@ https://cdnjs.com/libraries/font-awesome
             { name: "Collaboration", maxTime: 60, id: "checkingMessages",description: "10-60 min.: Chat communication with development team, Manager or clients." },
             { name: "Database Mgt.", maxTime: 120, id: "database",description: "60-120 min.: For those who handle database tasks, time can vary greatly based on the complexity of the work." },
             { name: "Documentation", maxTime: 60, id: "documentation",description: "30-60 min.: Important but often done in conjunction with other development tasks." },
-            { name: "WrapUp", maxTime: 20, id: "WrapUp",description: "10-20 min.: Reviewing and planning for the next day." },
             { name: "Administration", maxTime: 30, id: "Administration",description: "15-30 min.: Updating task statuses and documenting progress." },
-            { name: "Quickbase", maxTime: 180, id: "quickbase",description: "30-180 min.: assisting users with Quickbase." },
-            { name: "Breaks", maxTime: 30, id: "breaks",description: "10-30 min.: Briefly checking and responding to important emails and messages." }
+            { name: "Quickbase", maxTime: 180, id: "quickbase",description: "30-180 min.: assisting users with QuickBase." },
+            { name: "Breaks", maxTime: 30, id: "breaks",description: "10-30 min.: Breaks, Lunch and personal time away from desk" }
             // ... add other tasks here
         ];
         // Dynamically add tasks to the form in two columns
@@ -197,13 +257,13 @@ https://cdnjs.com/libraries/font-awesome
 
         for (var i = 0; i < leftColumn.length; i++) {
             leftColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id +'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'">'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id +'" description="'+leftColumn[i].description+'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'">'+
                 '<label for="' + leftColumn[i].id + '">' + leftColumn[i].name + ': '+leftColumn[i].description.split(":")[0] + '</label>'+
                 '</div>';
         }
         for (var i = 0; i < rightColumn.length; i++) {
             rightColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id + '" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'">'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id + '" description="'+rightColumn[i].description+'" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'">'+
                 '<label for="' + rightColumn[i].id + '">' + rightColumn[i].name + ': '+rightColumn[i].description.split(":")[0] + '</label>'+
                 '</div>';
         }
@@ -251,7 +311,6 @@ https://cdnjs.com/libraries/font-awesome
             } else {
                 $('#totalTime').html('<b>Total Capacity:</b> <span class="fst-italic">' + totalTime + ' minutes </span>');
             }
-            
         });
         // Handle form submission and calculate total time spent
         $('#taskForm').on('submit', function(e) {
@@ -272,66 +331,307 @@ https://cdnjs.com/libraries/font-awesome
         //loop through all inputs that has a value when clicked on save
         $('#saveTask').on('click', function(e) {
             e.preventDefault();
-            var date = $('#date').val();
-            var department = $('#Department').val();
-            var project = $('#Project').val();
-            var totalTime = 0;
-            var taskName = '';
-            var taskTime = '';
-            var taskDescription = '';
-            var taskID = '';
-            var taskArray = [];
+            //loop through all inputs that has a value when clicked on save
             $('.taskTime').each(function() {
-                var time = parseInt($(this).val()) || 0;
-                var name = $(this).attr('id');
-                var description = $(this).attr('data-bs-content');
-                var id = $(this).attr('id');
-                if (time > 0) {
-                    taskArray.push({name: name, time: time, description: description, id: id});
+                if ($(this).val() != '') {
+                    var taskName = $(this).attr('id');
+                    var taskTime = $(this).val();
+                    var taskDescription = $(this).attr('description');
+                    var taskDate = $('#date').val();
+                    var taskWeek = $('#WEEK_NUM').val();
+                    var taskDept = $('#Department').attr('deptID');
+                    var taskProject = $('#Project').val();
+                    var taskAllocatedTime = $(this).attr('max');
+                    var dayOfWeek = $(this).closest('.col-sm-6').attr('id');
+                    var WEEK_NUM = $('#WEEK_NUM').val();
+                    var deptID = $('#Department').attr('deptID');
+                    var projectID = $('#Project').val();
+                    var d = new Date(taskDate);
+                    var n = d.getDay()+1;
+                    var day = n;
+                    //console.log(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, day);
+                    saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, day);
                 }
-                totalTime += time;
             });
-            
-            if (totalTime > 480) {
-                $('#totalTime').html('Total Capacity: ' + totalTime + ' minutes <br><small class="text-danger" style="font-size:10px;">Total time exceeds 460 minutes!</small>');
-            } else {
-                $('#totalTime').html('Total Capacity: ' + totalTime + ' minutes');
-            }
-            console.log(taskArray);
-            //saveTask();
         });
 
     });
+    //function to highlight the current day of the week in the list group .theWeekOf
+    function highlightCurrentDay(){
+        var d = new Date();
+        var n = d.getDay();
+        console.log(n)
+        var day = '';
+        switch (n) {
+            case 0:
+                day = 'sun';
+                break;
+            case 1:
+                day = 'mon';
+                break;
+            case 2:
+                day = 'tue';
+                break;
+            case 3:
+                day = 'wed';
+                break;
+            case 4:
+                day = 'thu';
+                break;
+            case 5:
+                day = 'fri';
+                break;
+            case 6:
+                day = 'sat';
+                break;
+        }
+        $('#'+day).addClass('active');
+    }
+    //function to get the monday of the current week
     function getMonday(d) {
         d = new Date(d);
         var day = d.getDay(),
         diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
         return new Date(d.setDate(diff));
     }
-    function saveTask(){
-        var TASK_NAME = '';
-        var TASK_DESCRIPTION = '';
-        var TASK_TIME = '';
-        var PROJECT = '';
-        var DEPTID = '';
-        var ALLOCATED_TiME = '';
-        var DATE = '';
-        
+
+    function saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, day){
         $.ajax({
             type: "POST",
             url: "assets/CFCs/functions.cfc",
-            type: "json",
-            data: {method: "saveTask", TASK_NAME: TASK_NAME, TASK_DESCRIPTION: TASK_DESCRIPTION, TASK_TIME: TASK_TIME, PROJECT: PROJECT, DEPTID: DEPTID, ALLOCATED_TiME: ALLOCATED_TiME, DATE:DATE},
+            data: {method: "saveTask", 
+                TASK_NAME: taskName, 
+                TASK_DESCRIPTION: taskDescription.split(":")[1], 
+                TASK_TIME: taskTime, 
+                PROJECT: taskProject, 
+                DEPTID: taskDept, 
+                ALLOCATED_TiME: taskAllocatedTime, 
+                DATE:taskDate, 
+                WEEK_NUM:taskWeek,
+                DAY:day
+            },
             success: function(data){
                 //add successful save message to #saveTask button then fade back to normal
                 $('#saveTask').html('Saved Successfully!');
                 setTimeout(function(){
                     $('#saveTask').html('Close out the day');
+                    getCurrentWeekTasks(currentWeekNumber)
                 }, 3000);
+                getCurrentWeekTasks(currentWeekNumber)
             },
             error: function(data){
                 console.log(data); 
             }
         });
     }
+    //Department search function
+    function departmentSearch(x) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "assets/CFCs/functions.cfc",
+            data: {
+                method: "searchDepartments",
+                searchStr: x
+            },
+            success: function(response) {
+                var x = response.items;
+                var str = '<div class="list-group bg-white">';
+                for (var i = 0; i < x.length; i++) {
+                    str += '<a href="#" class="list-group-item list-group-item-action" deptID="' + x[i].orgcode + '">' + x[i].orgname + '</a>';
+                }
+                str += '</div>';
+                $('#deptResults').css({'z-index':'100000','overflow-y':'scroll'}).html(str).show();
+                $('.list-group-item').on('click', function() {
+                    var deptID = $(this).attr('deptID');
+                    var deptName = $(this).html();
+                    $('#Department').val(deptID).attr('deptID', deptID);
+                    $('#deptResults').html('').hide();
+                });
+            }
+        });
+    }
+    function getProjects(){
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "assets/CFCs/functions.cfc",
+            data: {
+                method: "getProjects"
+            },
+            success: function(response) {
+                var x = response.items;
+                var options = '<option selected>My Projects</option>';
+                for (var i = 0; i < x.length; i++) {
+                    options += '<option value="'+x[i].PID+'">'+x[i].PROJECT_NAME+'</option>';
+                }
+                $('#Project').append(options);
+            }
+        });
+    }
+    function getCurrentWeekTasks(currentWeekNumber){
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "assets/CFCs/functions.cfc",
+            data: {
+                method: "getTaskByWeek",
+                WEEK_NUM: currentWeekNumber
+            },
+            success: function(response) {
+                var x = response.items;
+                //console.log(x);
+                var str = '';
+                for (var j = 0; j < x.length; j++) {
+                    if(x[j].DAY_NUM == 1){
+                        var jj = j+1;
+                        str += '<div class="col-sm-12 text-start text-capitalize">'+ jj +': '+x[j].TASK_NAME+' - '+x[j].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#mondayInfo').html(str);
+
+                var str1 = '';
+                for (var k = 0; k < x.length; k++) {
+                    if(x[k].DAY_NUM == 2){
+                        var kk = k+1;
+                        str1 += '<div class="col-sm-12 text-start text-capitalize">'+ kk +': '+x[k].TASK_NAME+' - '+x[k].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#tuesdayInfo').html(str1);
+
+                var str2 = '';
+                for (var l = 0; l < x.length; l++) {
+                    if(x[l].DAY_NUM == 3){
+                        var ll = l+1;
+                        str2 += '<div class="col-sm-12 text-start text-capitalize">'+ ll +': '+x[l].TASK_NAME+' - '+x[l].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#wednesdayInfo').html(str2);
+
+                var str3 = '';
+                for (var m = 0; m < x.length; m++) {
+                    if(x[m].DAY_NUM == 4){
+                        var mm = m+1;
+                        str3 += '<div class="col-sm-12 text-start text-capitalize">'+ mm +': '+x[m].TASK_NAME+' - '+x[m].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#thursdayInfo').html(str3);
+
+                var str4 = '';
+                for (var n = 0; n < x.length; n++) {
+                    if(x[n].DAY_NUM == 5){
+                        var nn = n+1;
+                        str4 += '<div class="col-sm-12 text-start text-capitalize">'+ nn +': '+x[n].TASK_NAME+' - '+x[n].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#fridayInfo').html(str4);
+
+                var str5 = '';
+                for (var o = 0; o < x.length; o++) {
+                    if(x[o].DAY_NUM == 6){
+                        var oo = o+1;
+                        str5 += '<div class="col-sm-12 text-start text-capitalize">'+ oo +': '+x[o].TASK_NAME+' - '+x[o].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#saturdayInfo').html(str5);
+
+                var str6 = '';
+                for (var p = 0; p < x.length; p++) {
+                    if(x[p].DAY_NUM == 7){
+                        var pp = p+1;
+                        str6 += '<div class="col-sm-12 text-start text-capitalize">'+ pp +': '+x[p].TASK_NAME+' - '+x[p].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#sundayInfo').html(str6);
+            }
+        });
+
+    }
+    function loadMyTasks(){
+        var task = $("#tasks").DataTable({
+            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks",
+            "columns": [
+                {"data": "WEEK_NUMBER"},
+                {"data": "WEEK_DAY"},
+                {"data": "DATE"},
+                {"data": "TASK_NAME"},
+                {"data": "TASK_TIME"},
+                {"data": "PROJECT_NAME"},
+                {"data": "DEPTID"},
+                {"data": "TASK_DESCRIPTION"}
+            ],
+            "order": [[0, "asc"]],
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            //"scrollY": "550px",
+            "scrollCollapse": true,
+            "paging": true,
+        pageLength: 10,
+        lengthMenu: [10, 25, 50, 75, 100],
+        dom: "<'row' <'col-sm-1'l><'col-md-11 text-end align-content-bottom'B> >"
+            +"<'row'<'col-sm-12'tr> >"
+            +"<'row'<'col-sm-6'i> <'col-sm-6 text-end'p> >",
+        select: true,
+        buttons: [
+            { 
+                className: 'mb-2',
+                text: 'Download Excel',
+                action: function(e, dt, node, config) {
+                    var originalData = dt.rows().data().toArray();
+                    if (originalData.length === 0) return;
+                    var excludeKeys = ['CREATEDBYDATE', 'ENTEREDBYID', 'UPDATEDDATE', 'UPDATEDBYID', 'PRIMARY_BALANCE'];
+                    var data = originalData.map(function(obj) {
+                        var newObj = Object.assign({}, obj);
+                        excludeKeys.forEach(function(key) {
+                            delete newObj[key];
+                        });
+                        return newObj;
+                    });
+                    var headers = ['WEEK_NUMBER','WEEK_DAY','DATE','TASK_NAME','TASK_TIME','PROJECT_NAME','DEPTID','TASK_DESCRIPTION'];
+                    var wb = XLSX.utils.book_new();
+                    var ws = XLSX.utils.json_to_sheet(data, { header: headers });
+                    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+                    XLSX.writeFile(wb, 'ErnestWeeklyTasks.xlsx');
+                }
+            },{
+                    extend: 'pdfHtml5',
+                    text: 'Save PDF',
+                    className: 'mb-2',
+                    orientation: 'landscape', // Optional: landscape or portrait
+                    pageSize: 'LEGAL', // Optional: 'A3', 'A5', 'A4', 'LEGAL', 'LETTER' etc.
+                    title: 'Ernest Weekly Progress', // Optional: Title for the PDF
+                    filename: 'Ledger', // Default: ''DateCSVSales'' - String or function() { } to declare the file name
+                    customize: function(doc) {
+                        doc.styles.tableHeader.fontSize = 8;
+                        doc.defaultStyle.fontSize = 6;
+                        doc.defaultStyle.alignment = 'center';
+                        doc.styles.tableHeader.alignment = 'center';
+                        doc.cont
+                    },
+                    exportOptions: {
+                        columns: [0,1,2,3,4,5,6,7] // Specify the columns you want to export
+                    }
+                }
+            ]
+        });
+        $('#tasks thead th').each( function () {
+            var title = $(this).text();
+            $(this).html( title+'<input type="text" class="form-control form-control-sm mt-1" />' );
+            $(this).addClass('bg-secondary text-white text-center ');
+            $(this).addClass('text-nowrap');
+        });
+    // Apply the search
+    task.columns().every( function () {
+        var that = this;
+        $( 'input', this.header() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that.search( this.value ).draw();
+            }
+        });
+    } );
+
+    }   
+
 </script>

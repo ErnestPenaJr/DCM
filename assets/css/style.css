@@ -1,0 +1,21 @@
+.searchBox {
+    position: relative;
+    z-index: 2;
+}
+.searchDeptBox, .searchAccountBox {
+    position: relative;
+    z-index: 1;
+}
+  .searchDeptResults, .searchAccountResults {
+    position: absolute; /* or fixed, depending on your needs */
+    z-index: 100000;
+    top: 100%; /* position it right below the input */
+    left: 0;
+    width: 350px; /* or whatever width you prefer */
+  }
+  .searchResults {
+    position: absolute; /* or fixed, depending on your needs */
+    z-index: 100005;
+    top: 100%; /* position it right below the input */
+    width: 350px; /* or whatever width you prefer */
+  }
