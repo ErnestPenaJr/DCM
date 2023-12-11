@@ -98,7 +98,7 @@
                                       <div class="list-group theWeekOf">
                                         <a id="sun" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Sunday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Sunday <span id="sunInfo"></span></div>
                                             </div>
                                             <div id="sundayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -106,7 +106,7 @@
                                         </a>
                                         <a id="mon" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Monday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Monday <span id="monInfo"></span></div>
                                             </div>
                                             <div id="mondayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -114,7 +114,7 @@
                                         </a>
                                         <a id="tue" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Tuesday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Tuesday <span id="tueInfo"></span></div>
                                             </div>
                                             <div id="tuesdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -122,7 +122,7 @@
                                         </a>
                                         <a id="wed" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Wednesday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Wednesday <span id="wedInfo"></span></div>
                                             </div>
                                             <div id="wednesdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -130,7 +130,7 @@
                                         </a>
                                         <a id="thu" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Thursday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Thursday <span id="thuInfo"></span></div>
                                             </div>
                                             <div id="thursdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -138,7 +138,7 @@
                                         </a>
                                         <a id="fri" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Friday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Friday <span id="friInfo"></span></div>
                                             </div>
                                             <div id="fridayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -146,7 +146,7 @@
                                         </a>
                                         <a id="sat" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Saturday</div>
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Saturday <span id="satInfo"></span></div>
                                             </div>
                                             <div id="saturdayInfo" class="row">
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
@@ -400,7 +400,7 @@
             type: "POST",
             url: "assets/CFCs/functions.cfc",
             data: {method: "saveTask", 
-                TASK_NAME: taskName, 
+                TASK_NAME: taskName.replace(/_/g, " "), 
                 TASK_DESCRIPTION: taskDescription.split(":")[1], 
                 TASK_TIME: taskTime,
                 PROJECT: taskProject,
@@ -482,22 +482,25 @@
             },
             success: function(response) {
                 var x = response.items;
-                //console.log(x);
+                console.log(x);
                 var str6 = '';
                 for (var p = 0; p < x.length; p++) {
                     if(x[p].DAY_NUM == 7){
+                        $('#sunInfo').html('app-' +x[0].PROJECT_NAME);
                         var pp = p+1;
-                        str6 += '<div class="col-sm-12 text-start text-capitalize">'+ pp +': '+x[p].TASK_NAME+' - '+x[p].TASK_TIME+' minutes</div>';
+                        str6 += '<div class="col-sm-12 text-start text-capitalize">'+ pp +': '+x[p].TASK_NAME.replace(/_/g, " ")+' - '+x[p].TASK_TIME+' minutes</div>';
                     }
                 }
+                
                 $('#sundayInfo').html(str6);
 
 
                 var str = '';
                 for (var j = 0; j < x.length; j++) {
                     if(x[j].DAY_NUM == 1){
+                        $('#monInfo').html('<span class="text-warning">app-' +x[j].PROJECT_NAME+'</span>');
                         var jj = j+1;
-                        str += '<div class="col-sm-12 text-start text-capitalize">'+ jj +': '+x[j].TASK_NAME+' - '+x[j].TASK_TIME+' minutes</div>';
+                        str += '<div class="col-sm-12 text-start text-capitalize">'+ jj +': '+x[j].TASK_NAME.replace(/_/g, " ")+' - '+x[j].TASK_TIME+' minutes</div>';
                     }
                 }
                 $('#mondayInfo').html(str);
@@ -506,7 +509,7 @@
                 for (var k = 0; k < x.length; k++) {
                     if(x[k].DAY_NUM == 2){
                         var kk = k+1;
-                        str1 += '<div class="col-sm-12 text-start text-capitalize">'+ kk +': '+x[k].TASK_NAME+' - '+x[k].TASK_TIME+' minutes</div>';
+                        str1 += '<div class="col-sm-12 text-start text-capitalize">'+ kk +': '+x[k].TASK_NAME.replace(/_/g, " ")+' - '+x[k].TASK_TIME+' minutes</div>';
                     }
                 }
                 $('#tuesdayInfo').html(str1);
@@ -515,7 +518,7 @@
                 for (var l = 0; l < x.length; l++) {
                     if(x[l].DAY_NUM == 3){
                         var ll = l+1;
-                        str2 += '<div class="col-sm-12 text-start text-capitalize">'+ ll +': '+x[l].TASK_NAME+' - '+x[l].TASK_TIME+' minutes</div>';
+                        str2 += '<div class="col-sm-12 text-start text-capitalize">'+ ll +': '+x[l].TASK_NAME.replace(/_/g, " ")+' - '+x[l].TASK_TIME+' minutes</div>';
                     }
                 }
                 $('#wednesdayInfo').html(str2);
@@ -524,7 +527,7 @@
                 for (var m = 0; m < x.length; m++) {
                     if(x[m].DAY_NUM == 4){
                         var mm = m+1;
-                        str3 += '<div class="col-sm-12 text-start text-capitalize">'+ mm +': '+x[m].TASK_NAME+' - '+x[m].TASK_TIME+' minutes</div>';
+                        str3 += '<div class="col-sm-12 text-start text-capitalize">'+ mm +': '+x[m].TASK_NAME.replace(/_/g, " ")+' - '+x[m].TASK_TIME+' minutes</div>';
                     }
                 }
                 $('#thursdayInfo').html(str3);
@@ -533,7 +536,7 @@
                 for (var n = 0; n < x.length; n++) {
                     if(x[n].DAY_NUM == 5){
                         var nn = n+1;
-                        str4 += '<div class="col-sm-12 text-start text-capitalize">'+ nn +': '+x[n].TASK_NAME+' - '+x[n].TASK_TIME+' minutes</div>';
+                        str4 += '<div class="col-sm-12 text-start text-capitalize">'+ nn +': '+x[n].TASK_NAME.replace(/_/g, " ")+' - '+x[n].TASK_TIME+' minutes</div>';
                     }
                 }
                 $('#fridayInfo').html(str4);
@@ -542,7 +545,7 @@
                 for (var o = 0; o < x.length; o++) {
                     if(x[o].DAY_NUM == 6){
                         var oo = o+1;
-                        str5 += '<div class="col-sm-12 text-start text-capitalize">'+ oo +': '+x[o].TASK_NAME+' - '+x[o].TASK_TIME+' minutes</div>';
+                        str5 += '<div class="col-sm-12 text-start text-capitalize">'+ oo +': '+x[o].TASK_NAME.replace(/_/g, " ")+' - '+x[o].TASK_TIME+' minutes</div>';
                     }
                 }
                 $('#saturdayInfo').html(str5);

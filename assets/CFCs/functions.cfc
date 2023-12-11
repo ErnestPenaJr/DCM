@@ -179,10 +179,11 @@
     <cfargument name="WEEK_NUM" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT TASKID,TASK_NAME,TASK_DESCRIPTION,TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUMBER,DATE,DAY_NUM,WEEKLY_NOTE 
-        FROM MY_CAPACITY.DAILY_TASKS
-        WHERE WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
-        ORDER BY WEEK_NUMBER ASC, DAY_NUM ASC
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME
+        FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
+        WHERE t.PROJECT = p.PROJECT_ID
+        AND t.WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
+        ORDER BY WEEK_NUMBER DESC, DAY_NUM ASC
     </cfquery>
 
     <cfloop query="results">
@@ -198,6 +199,7 @@
         <cfset temp["PROJECT"] = PROJECT />
         <cfset temp["DAY_NUM"] = DAY_NUM />
         <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
+        <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
         <cfset ArrayAppend(retval, temp)>
     </cfloop>
 
@@ -213,7 +215,7 @@
         SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
-        ORDER BY t.WEEK_NUMBER ASC, t.DAY_NUM ASC
+        ORDER BY t.WEEK_NUMBER DESC, t.DAY_NUM ASC
     </cfquery>
 
     <cfloop query="results">
