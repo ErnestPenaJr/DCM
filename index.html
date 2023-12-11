@@ -345,15 +345,12 @@
                     var taskDept = $('#Department').attr('deptID');
                     var taskProject = $('#Project').val();
                     var taskAllocatedTime = $(this).attr('max');
-                    var dayOfWeek = $(this).closest('.col-sm-6').attr('id');
-                    var WEEK_NUM = $('#WEEK_NUM').val();
+                    var dayOfWeek = moment(taskDate).format('d');
                     var deptID = $('#Department').attr('deptID');
                     var projectID = $('#Project').val();
-                    var d = new Date(taskDate);
-                    var n = d.getDay()+1;
-                    var day = n;
-                    //console.log(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, day);
-                    saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, day);
+                    var weekly_note = $('#WEEKLY_NOTE').val();
+                    console.log('Task Name:'+taskName, 'Task Time:'+taskTime, 'Task Description:'+taskDescription, 'Task Date:'+taskDate, 'Task Week:'+taskWeek, 'Task Dept:'+taskDept, 'Task Project:'+taskProject, 'Task Allocated Time:'+taskAllocatedTime, 'Day of Week:'+dayOfWeek, 'Dept ID:'+deptID, 'Project ID:'+projectID, 'Weekly Note:'+weekly_note);
+                    saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note);
                 }
             });
         });
@@ -398,20 +395,21 @@
         return new Date(d.setDate(diff));
     }
 
-    function saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, day){
+    function saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note){
         $.ajax({
             type: "POST",
             url: "assets/CFCs/functions.cfc",
             data: {method: "saveTask", 
                 TASK_NAME: taskName, 
                 TASK_DESCRIPTION: taskDescription.split(":")[1], 
-                TASK_TIME: taskTime, 
-                PROJECT: taskProject, 
-                DEPTID: taskDept, 
-                ALLOCATED_TiME: taskAllocatedTime, 
-                DATE:taskDate, 
-                WEEK_NUM:taskWeek,
-                DAY:day
+                TASK_TIME: taskTime,
+                PROJECT: taskProject,
+                DEPTID: taskDept,
+                ALLOCATED_TIME: taskAllocatedTime,
+                WEEK_NUM: taskWeek,
+                DATE: taskDate,
+                DAY_NUM: dayOfWeek,
+                WEEKLY_NOTE: weekly_note
             },
             success: function(data){
                 //add successful save message to #saveTask button then fade back to normal
@@ -421,6 +419,7 @@
                     getCurrentWeekTasks(currentWeekNumber)
                 }, 3000);
                 getCurrentWeekTasks(currentWeekNumber)
+                loadMyTasks();
             },
             error: function(data){
                 console.log(data); 

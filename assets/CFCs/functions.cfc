@@ -110,6 +110,7 @@
             <cfset temp["ACCOUNT_TYPE"] = ACCOUNT_TYPE />
             <cfset temp["SETID"] = SETID />
             <cfset temp["STATUS"] = STATUS />
+
 			 <cfset ArrayAppend(retval, temp)>
 		</cfloop>
 
@@ -127,11 +128,13 @@
     <cfargument name="ALLOCATED_TiME" type="string" required="false" default="" />
     <cfargument name="WEEK_NUM" type="string" required="false" default="" />
     <cfargument name="DATE" type="string" required="false" default="" />
-    <cfargument name="DAY" type="string" required="false" default="" />
+    <cfargument name="DAY_NUM" type="string" required="false" default="" />
+    <cfargument name="WEEKLY_NOTE" type="string" required="false" default="" />
 
+    
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="insert">
-        INSERT INTO MY_CAPACITY.DAILY_TASKS (TASK_NAME,TASK_DESCRIPTION,TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUM,DATE,DAY_NUM)
+        INSERT INTO MY_CAPACITY.DAILY_TASKS (TASK_NAME,TASK_DESCRIPTION,TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUMBER,DATE,WEEKLY_NOTE, DAY_NUM)
         VALUES (<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.TASK_NAME#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.TASK_DESCRIPTION#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.TASK_TIME#" />,
@@ -140,11 +143,12 @@
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.ALLOCATED_TiME#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DATE#" />,
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DAY#" />)
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEKLY_NOTE#" />,
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DAY_NUM#" />)
     </cfquery>
 
      <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID,t.ALLOCATED_TiME,t.WEEK_NUMBER,t.DATE,t.DAY_NUM
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID,t.ALLOCATED_TiME,t.WEEK_NUMBER,t.DATE,t.DAY_NUM,t.WEEKLY_NOTE
         FROM MY_CAPACITY.DAILY_TASKS t
         WHERE t.TASKID = (SELECT MAX(t.TASKID) AS MaxID FROM MY_CAPACITY.DAILY_TASKS)
         ORDER BY t.WEEK_NUMBER ASC
@@ -162,6 +166,7 @@
             <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
             <cfset temp["DATE"] = DATE />
             <cfset temp["DAY_NUM"] = DAY_NUM />
+            <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
             <cfset ArrayAppend(retval, temp)>
     </cfloop>
 
@@ -174,7 +179,7 @@
     <cfargument name="WEEK_NUM" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT TASKID,TASK_NAME,TASK_DESCRIPTION,TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUMBER,DATE,DAY_NUM 
+        SELECT TASKID,TASK_NAME,TASK_DESCRIPTION,TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUMBER,DATE,DAY_NUM,WEEKLY_NOTE 
         FROM MY_CAPACITY.DAILY_TASKS
         WHERE WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
         ORDER BY WEEK_NUMBER ASC, DAY_NUM ASC
@@ -192,6 +197,7 @@
         <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
         <cfset temp["PROJECT"] = PROJECT />
         <cfset temp["DAY_NUM"] = DAY_NUM />
+        <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
         <cfset ArrayAppend(retval, temp)>
     </cfloop>
 
