@@ -30,9 +30,8 @@
         </div>
     </nav>
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
-        
     <main>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center mt-3" data-aos="fade">
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade">
             <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
                 <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
                     <div class="row d-flex align-items-center justify-content-center py-vh-5">
@@ -51,7 +50,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-1">
                                                     <input type="text" class="form-control form-control-sm" id="Department" placeholder="Department">
-                                                    <label for="totalTime">Department</label>
+                                                    <label for="deptResults">Department</label>
                                                     <div id="deptResults" class="searchDeptResults" style="color:#000;margin-top:5px;max-height: 350px; "></div>
                                                 </div>
                                             </div>
@@ -80,7 +79,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                   
                                 </div>
                             </div>
                         </div>
@@ -89,6 +87,14 @@
                             <div class="card" style="height: 670px">
                                 <div class="card-body" style="overflow-y: scroll;">
                                       <div class="list-group theWeekOf">
+                                        <a id="sun" href="#" class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Sunday</div>
+                                            </div>
+                                            <div id="sundayInfo" class="row">
+                                                <div class="col-sm-12 text-uppercase text-start"></div>
+                                            </div>
+                                        </a>
                                         <a id="mon" href="#" class="list-group-item list-group-item-action">
                                             <div class="row">
                                                 <div class="col-sm-12 text-uppercase text-start fw-bold">Monday</div>
@@ -137,14 +143,7 @@
                                                 <div class="col-sm-12 text-uppercase text-start"></div>
                                             </div>
                                         </a>
-                                        <a id="sun" href="#" class="list-group-item list-group-item-action">
-                                            <div class="row">
-                                                <div class="col-sm-12 text-uppercase text-start fw-bold">Sunday</div>
-                                            </div>
-                                            <div id="sundayInfo" class="row">
-                                                <div class="col-sm-12 text-uppercase text-start"></div>
-                                            </div>
-                                        </a>
+                                        
                                       </div>
                                 </div>
                             </div>
@@ -158,16 +157,11 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center mt-5" data-aos="fade">
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center mt-5" data-aos="fade" style=" background: url('assets/images/redtape3.webp') no-repeat; background-attachment: fixed;background-size: cover;">
             <div class="position-absolute w-100 h-100 bg-black opacity-0 top-0 start-0"></div>
                 <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
                     <div class="row py-vh-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">my tasks</h1>
-                            </div>
-                        </div>
-                        <div class="card mt-3">
+                        <div class="card opacity-75">
                             <div class="card-body">
                                 <table id="tasks" class="table table-striped table-hover table-bordered table-sm table-responsive text-start">
                                     <thead>
@@ -232,20 +226,20 @@
         highlightCurrentDay();
         loadMyTasks();
         var tasks = [
-            { name: "Checking Emails", maxTime: 30 ,id: "checkingEmails",description: "10-30 min.: Briefly checking and responding to important emails and messages."},
-            { name: "Code Publishing", maxTime: 60, id: "publishing",description: "10-30 min.: Short stand-up meetings are common in Agile environments." },
-            { name: "UI/UX-Mockup/Design", maxTime: 460, id: "design",description: "180-460 min.: User Interface/User Experience, Storyboarding and or user workflow" },
-            { name: "Code Development", maxTime: 360, id: "codeDevelopment",description: "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
-            { name: "Testing and Debugging", maxTime: 120, id: "testingAndDebugging",description: "60-120 min.: Depending on the complexity of the feature or the bug." },
-            { name: "Learning and Research", maxTime: 60, id: "research",description: "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
-            { name: "Meetings", maxTime: 90, id: "meetings",description: "15-90 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
+            { name: "Checking Emails", maxTime: 30 ,id: "Checking Emails",description: "10-30 min.: Briefly checking and responding to important emails and messages."},
+            { name: "Code Publishing", maxTime: 60, id: "Publishing",description: "10-30 min.: Short stand-up meetings are common in Agile environments." },
+            { name: "UI/UX-Mockup/Design", maxTime: 460, id: "Design",description: "180-460 min.: User Interface/User Experience, story boarding and or user workflow" },
+            { name: "Code Development", maxTime: 360, id: "Code Development",description: "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
+            { name: "Testing and Debugging", maxTime: 120, id: "Testing and Debugging",description: "60-120 min.: Depending on the complexity of the feature or the bug." },
+            { name: "Learning and Research", maxTime: 60, id: "Research",description: "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
+            { name: "Meetings", maxTime: 90, id: "Meetings",description: "15-90 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
             { name: "Optimization", maxTime: 60, id: "Optimization",description: "30-60 min.: Monitoring and optimizing, depending on the project phase." },
-            { name: "Collaboration", maxTime: 60, id: "checkingMessages",description: "10-60 min.: Chat communication with development team, Manager or clients." },
-            { name: "Database Mgt.", maxTime: 120, id: "database",description: "60-120 min.: For those who handle database tasks, time can vary greatly based on the complexity of the work." },
-            { name: "Documentation", maxTime: 60, id: "documentation",description: "30-60 min.: Important but often done in conjunction with other development tasks." },
+            { name: "Collaboration", maxTime: 60, id: "Checking Messages",description: "10-60 min.: Chat communication with development team, Manager or clients." },
+            { name: "Database Mgt.", maxTime: 120, id: "Database Mtg.",description: "60-120 min.: For those who handle database tasks, time can vary greatly based on the complexity of the work." },
+            { name: "Documentation", maxTime: 60, id: "Documentation",description: "30-60 min.: Important but often done in conjunction with other development tasks." },
             { name: "Administration", maxTime: 30, id: "Administration",description: "15-30 min.: Updating task statuses and documenting progress." },
-            { name: "Quickbase", maxTime: 180, id: "quickbase",description: "30-180 min.: assisting users with QuickBase." },
-            { name: "Breaks", maxTime: 30, id: "breaks",description: "10-30 min.: Breaks, Lunch and personal time away from desk" }
+            { name: "Quickbase", maxTime: 180, id: "QuickBase",description: "30-180 min.: assisting users with QuickBase." },
+            { name: "Breaks", maxTime: 30, id: "Breaks",description: "10-30 min.: Breaks, Lunch and personal time away from desk" }
             // ... add other tasks here
         ];
         // Dynamically add tasks to the form in two columns
@@ -257,14 +251,14 @@
 
         for (var i = 0; i < leftColumn.length; i++) {
             leftColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id +'" description="'+leftColumn[i].description+'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'">'+
-                '<label for="' + leftColumn[i].id + '">' + leftColumn[i].name + ': '+leftColumn[i].description.split(":")[0] + '</label>'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id.replace(/ /g, "_") +'" description="'+leftColumn[i].description+'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'">'+
+                '<label for="' + leftColumn[i].id.replace(/ /g, "_") + '">' + leftColumn[i].name + ': '+leftColumn[i].description.split(":")[0] + '</label>'+
                 '</div>';
         }
         for (var i = 0; i < rightColumn.length; i++) {
             rightColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id + '" description="'+rightColumn[i].description+'" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'">'+
-                '<label for="' + rightColumn[i].id + '">' + rightColumn[i].name + ': '+rightColumn[i].description.split(":")[0] + '</label>'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="'+rightColumn[i].description+'" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'">'+
+                '<label for="' + rightColumn[i].id.replace(/ /g, "_") + '">' + rightColumn[i].name + ': '+rightColumn[i].description.split(":")[0] + '</label>'+
                 '</div>';
         }
         $('#leftColumn').html(leftColumnHtml);
@@ -431,7 +425,7 @@
             dataType: 'json',
             url: "assets/CFCs/functions.cfc",
             data: {
-                method: "searchDepartments",
+                method: "searchDepartments2",
                 searchStr: x
             },
             success: function(response) {
@@ -481,6 +475,16 @@
             success: function(response) {
                 var x = response.items;
                 //console.log(x);
+                var str6 = '';
+                for (var p = 0; p < x.length; p++) {
+                    if(x[p].DAY_NUM == 7){
+                        var pp = p+1;
+                        str6 += '<div class="col-sm-12 text-start text-capitalize">'+ pp +': '+x[p].TASK_NAME+' - '+x[p].TASK_TIME+' minutes</div>';
+                    }
+                }
+                $('#sundayInfo').html(str6);
+
+
                 var str = '';
                 for (var j = 0; j < x.length; j++) {
                     if(x[j].DAY_NUM == 1){
@@ -535,14 +539,7 @@
                 }
                 $('#saturdayInfo').html(str5);
 
-                var str6 = '';
-                for (var p = 0; p < x.length; p++) {
-                    if(x[p].DAY_NUM == 7){
-                        var pp = p+1;
-                        str6 += '<div class="col-sm-12 text-start text-capitalize">'+ pp +': '+x[p].TASK_NAME+' - '+x[p].TASK_TIME+' minutes</div>';
-                    }
-                }
-                $('#sundayInfo').html(str6);
+                
             }
         });
 
@@ -581,7 +578,7 @@
                 action: function(e, dt, node, config) {
                     var originalData = dt.rows().data().toArray();
                     if (originalData.length === 0) return;
-                    var excludeKeys = ['CREATEDBYDATE', 'ENTEREDBYID', 'UPDATEDDATE', 'UPDATEDBYID', 'PRIMARY_BALANCE'];
+                    var excludeKeys = ['TASKID', 'PROJECT'];
                     var data = originalData.map(function(obj) {
                         var newObj = Object.assign({}, obj);
                         excludeKeys.forEach(function(key) {
@@ -602,11 +599,11 @@
                     orientation: 'landscape', // Optional: landscape or portrait
                     pageSize: 'LEGAL', // Optional: 'A3', 'A5', 'A4', 'LEGAL', 'LETTER' etc.
                     title: 'Ernest Weekly Progress', // Optional: Title for the PDF
-                    filename: 'Ledger', // Default: ''DateCSVSales'' - String or function() { } to declare the file name
+                    filename: 'ErnestWeeklyTasks', // Default: ''DateCSVSales'' - String or function() { } to declare the file name
                     customize: function(doc) {
-                        doc.styles.tableHeader.fontSize = 8;
-                        doc.defaultStyle.fontSize = 6;
-                        doc.defaultStyle.alignment = 'center';
+                        doc.styles.tableHeader.fontSize = 12;
+                        doc.defaultStyle.fontSize = 11;
+                        doc.defaultStyle.alignment = 'left';
                         doc.styles.tableHeader.alignment = 'center';
                         doc.cont
                     },

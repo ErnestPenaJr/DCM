@@ -52,13 +52,56 @@
 		<cfreturn result />
 	</cffunction>
 
+    <cffunction name="searchDepartments2" access="remote" returntype="any" returnformat="JSON">
+        <cfargument name="searchStr" type="string" required="true">
+        <cfargument name="maxrows" type="numeric" default="25">
+        <cfset var retVal = ArrayNew(1)>
+
+        <!--- Simulating the loading of JSON data --->
+        <cfset var jsonData = deserializeJson(toString(getFileContent("../json/Departments.json")))>
+
+        <!--- Iterate over the JSON data instead of querying the database --->
+        <cfloop array="#jsonData#" index="department">
+            <cfset var matchFound = false>
+
+            <!--- Check if the department matches the search criteria --->
+            <cfloop list="#lcase(arguments.searchStr)#" delimiters=" ," index="i">
+                <cfif isNumeric(i) and department.DEPTID contains val(i) & "%">
+                    <cfset matchFound = true>
+                <cfelseif findNoCase(i, department.DEPARTMENTNAME)>
+                    <cfset matchFound = true>
+                </cfif>
+            </cfloop>
+
+            <!--- Add department to result if it matches --->
+            <cfif matchFound>
+                <cfset temp = {} />
+                <cfset temp["divcode"] = department.DIV_ID />
+                <cfset temp["divname"] = department.DIV_NAME />
+                <cfset temp["orgcode"] = department.DEPTID />
+                <cfset temp["orgname"] = department.DEPARTMENTNAME />
+                <cfset ArrayAppend(retval, temp)>
+
+                <!--- Break the loop if maxrows limit is reached --->
+                <cfif ArrayLen(retval) >= arguments.maxrows>
+                    <cfbreak>
+                </cfif>
+            </cfif>
+        </cfloop>
+
+        <cfset result = {} />
+        <cfset result['items'] = retVal />
+        <cfreturn result />
+    </cffunction>
+
+
     <cffunction name="searchDepartments" access="remote" returntype="any" returnformat="JSON">
         <cfargument name="searchStr" type="string" required="true" >
 		<cfargument name="maxrows" type="numeric" default="25">
 		<cfset var retVal = ArrayNew(1)>
 		
 		<cfquery username="WEBSCHEDULE_USER" password="1DOCMAU4WEBSCHEDULE2" datasource="inside2_docmp" name="results">
-			SELECT DISTINCT PS.DEPARTMENTNAME,PS.DEPTID,PS.LEV4_DEPT_NAME,PS.LEV4_DEPTID_DIVISIONLEVEL 
+			SELECT DISTINCT PS.DEPARTMENTNAME,PS.DEPTID,PS.LEV4_DEPT_NAME as DIV_NAME,PS.LEV4_DEPTID_DIVISIONLEVEL AS DIV_ID
 			FROM WEBSCHEDULE.ACTIVE_PEOPLESOFT PS
 			WHERE 1=1
 			<cfloop list="#lcase(arguments.searchStr)#" delimiters=" ," index="i">
@@ -74,8 +117,8 @@
 
 		<cfloop query="results">
 			<cfset temp = {} />
-			<cfset temp["divcode"] = LEV4_DEPTID_DIVISIONLEVEL />
-			<cfset temp["divname"] = LEV4_DEPT_NAME />
+			<cfset temp["divcode"] = DIV_ID />
+			<cfset temp["divname"] = DIV_NAME />
 			<cfset temp["orgcode"] = DEPTID />
 			<cfset temp["orgname"] = DEPARTMENTNAME />
 			 <cfset ArrayAppend(retval, temp)>

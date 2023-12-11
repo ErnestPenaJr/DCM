@@ -1,0 +1,4815 @@
+{
+"items": [
+	{
+		"DEPARTMENTNAME" : "Vascular Access & Procedures",
+		"DEPTID" : "600154",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "General Oncology",
+		"DEPTID" : "600838",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Main OR Nursing",
+		"DEPTID" : "500400",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing ICU",
+		"DEPTID" : "500300",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G17",
+		"DEPTID" : "600116",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Genitourinary Medical Oncology",
+		"DEPTID" : "232100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Behavioral Science",
+		"DEPTID" : "172100",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Neurosurgery",
+		"DEPTID" : "161100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Inst Cancer Care Innovation",
+		"DEPTID" : "600696",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Onc & Reproductive Med",
+		"DEPTID" : "119100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Oral Oncology",
+		"DEPTID" : "600766",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EBSM Bldg Systems",
+		"DEPTID" : "600123",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Dean-GSBS Sciences",
+		"DEPTID" : "710482",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Biostatistics",
+		"DEPTID" : "600567",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Dermatology - Research",
+		"DEPTID" : "600699",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Physics Outreach",
+		"DEPTID" : "600507",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Ancillary App Tech Solutions",
+		"DEPTID" : "711262",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuroradiology Department",
+		"DEPTID" : "600799",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Access Services Admin",
+		"DEPTID" : "600718",
+		"DIV_NAME" : "Patient Access Services",
+		"DIV_ID" : "710380"
+	},
+	{
+		"DEPARTMENTNAME" : "Institutional Compliance",
+		"DEPTID" : "208600",
+		"DIV_NAME" : "Institutional Compliance",
+		"DIV_ID" : "208600"
+	},
+	{
+		"DEPARTMENTNAME" : "Ent Data Engineering&Analytics",
+		"DEPTID" : "711047",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G21",
+		"DEPTID" : "600790",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Urology Surg-West Houston",
+		"DEPTID" : "710744",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Endoscopy Center",
+		"DEPTID" : "600890",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Nrsg Post Anesthesia Care Unit",
+		"DEPTID" : "600160",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing 9P",
+		"DEPTID" : "502500",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "IPCT",
+		"DEPTID" : "600880",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Invest. Cancer Therapeutics",
+		"DEPTID" : "600723",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Legal Services",
+		"DEPTID" : "208400",
+		"DIV_NAME" : "Legal Services",
+		"DIV_ID" : "208400"
+	},
+	{
+		"DEPARTMENTNAME" : "Clin Ctr for Targeted Therapy",
+		"DEPTID" : "600757",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Site Operations",
+		"DEPTID" : "600122",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Interventional Radiology",
+		"DEPTID" : "600801",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Positron Emission Tomography",
+		"DEPTID" : "600632",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Oncology - Clinical",
+		"DEPTID" : "115100",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Revenue Operations and Coding",
+		"DEPTID" : "600691",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Transportation",
+		"DEPTID" : "114400",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Dining Services Administration",
+		"DEPTID" : "157300",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Pediatrics Administration",
+		"DEPTID" : "710461",
+		"DIV_NAME" : "Pediatrics Division",
+		"DIV_ID" : "900096"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiography-Fluoroscopy",
+		"DEPTID" : "114200",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Cancer Genetics",
+		"DEPTID" : "600805",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Continuing Ed Program",
+		"DEPTID" : "710567",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Advocacy",
+		"DEPTID" : "107600",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "GMP Laboratory",
+		"DEPTID" : "600697",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Community Alliances",
+		"DEPTID" : "156500",
+		"DIV_NAME" : "External Affairs",
+		"DIV_ID" : "711088"
+	},
+	{
+		"DEPARTMENTNAME" : "Integrative Medicine Rsch",
+		"DEPTID" : "710177",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "IS Shared Services",
+		"DEPTID" : "710726",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Cytogenetics",
+		"DEPTID" : "224600",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Sarcoma Center",
+		"DEPTID" : "600447",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Ethics",
+		"DEPTID" : "600553",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Accounts Payable & Travel",
+		"DEPTID" : "103700",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "VP, Hospital Operations",
+		"DEPTID" : "710805",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "BMO Department",
+		"DEPTID" : "138100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Procedural Ops Admin",
+		"DEPTID" : "711160",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Anes, CC & Pain - Rsch Support",
+		"DEPTID" : "600776",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "PACU - NWH Sur&Sp Care",
+		"DEPTID" : "711187",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Med Onc - Sugar Land",
+		"DEPTID" : "710872",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Main Pulm Proc",
+		"DEPTID" : "710615",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Enterprise Data Platforms",
+		"DEPTID" : "711126",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Research Administration Office",
+		"DEPTID" : "600756",
+		"DIV_NAME" : "Research Administration Office",
+		"DIV_ID" : "600756"
+	},
+	{
+		"DEPARTMENTNAME" : "Infection Control",
+		"DEPTID" : "710842",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Immunotherapy Platform",
+		"DEPTID" : "711146",
+		"DIV_NAME" : "James P. Allison Institute",
+		"DIV_ID" : "711142"
+	},
+	{
+		"DEPARTMENTNAME" : "Ombuds Office - MD Anderson",
+		"DEPTID" : "600639",
+		"DIV_NAME" : "Ombuds Office - MD Anderson",
+		"DIV_ID" : "600639"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Smithville",
+		"DEPTID" : "600857",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Perioperative Materials Mgt",
+		"DEPTID" : "600821",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Palliative Care&Rehab Med Rsch",
+		"DEPTID" : "600660",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Technology Commercialization",
+		"DEPTID" : "196100",
+		"DIV_NAME" : "Technology Commercialization",
+		"DIV_ID" : "196100"
+	},
+	{
+		"DEPARTMENTNAME" : "Grants & Contracts Admin",
+		"DEPTID" : "103600",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing 7P",
+		"DEPTID" : "502200",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc - Sugar Land",
+		"DEPTID" : "710283",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc - West Houston",
+		"DEPTID" : "710653",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Department of",
+		"DEPTID" : "600877",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Ophthalmic Plastic Surgery",
+		"DEPTID" : "710510",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Path Lab Med Quality Assurance",
+		"DEPTID" : "600876",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G9",
+		"DEPTID" : "501600",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Ambulatory Float Pool",
+		"DEPTID" : "711230",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "CTDO Project Management",
+		"DEPTID" : "711117",
+		"DIV_NAME" : "CTDO Project Management",
+		"DIV_ID" : "711117"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Unit P04B",
+		"DEPTID" : "600836",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC - League City",
+		"DEPTID" : "710646",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EHS Fire & Life Safety",
+		"DEPTID" : "710455",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "VP Clinical Research",
+		"DEPTID" : "710467",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy ATC R2",
+		"DEPTID" : "710353",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Mat Mgmt Svcs-NWH Sur&Sp Care",
+		"DEPTID" : "711189",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Radiology-Bellaire",
+		"DEPTID" : "600682",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-USRENAL",
+		"DEPTID" : "850027",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "General Internal Med-Research",
+		"DEPTID" : "600701",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Innovation",
+		"DEPTID" : "122100",
+		"DIV_NAME" : "Innovation",
+		"DIV_ID" : "122100"
+	},
+	{
+		"DEPARTMENTNAME" : "Pulmonology-Woodlands",
+		"DEPTID" : "710697",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "ACT Platform",
+		"DEPTID" : "711009",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "DI RCC-League City",
+		"DEPTID" : "710800",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Medicine Division",
+		"DEPTID" : "900014",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "MDA-UTMB RCC",
+		"DEPTID" : "710841",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Colon & Rectal Surgery - Rsch",
+		"DEPTID" : "711046",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "IR-West Houston",
+		"DEPTID" : "710689",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Sleep Laboratory",
+		"DEPTID" : "600811",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Surg - West Houston",
+		"DEPTID" : "710742",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cath Laboratory",
+		"DEPTID" : "600863",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Pharmacology Research",
+		"DEPTID" : "600419",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "General Med Onc - Woodlands",
+		"DEPTID" : "710880",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Anes, CC & Pain Admin",
+		"DEPTID" : "710008",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Section of Geriatrics",
+		"DEPTID" : "711138",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Medicine - Research",
+		"DEPTID" : "900080",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-Maxim",
+		"DEPTID" : "711150",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Development Communication (IA)",
+		"DEPTID" : "711090",
+		"DIV_NAME" : "External Affairs",
+		"DIV_ID" : "711088"
+	},
+	{
+		"DEPARTMENTNAME" : "Faculty Devlopmnt&Connections",
+		"DEPTID" : "600826",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Edu Development & Innovation",
+		"DEPTID" : "176600",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "QIAC",
+		"DEPTID" : "710568",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Gynecologic Oncology",
+		"DEPTID" : "710062",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Mays RO Desk Ops",
+		"DEPTID" : "711086",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuro Oncology",
+		"DEPTID" : "408000",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Anes & Periop Department",
+		"DEPTID" : "710421",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "***Inactive Departments***",
+		"DEPTID" : "999999",
+		"DIV_NAME" : "***Inactive Departments***",
+		"DIV_ID" : "999999"
+	},
+	{
+		"DEPARTMENTNAME" : "Pathology-Lab Medicine Div",
+		"DEPTID" : "900027",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "COO Division",
+		"DEPTID" : "710384",
+		"DIV_NAME" : "Ofc of Chief Operating Officer",
+		"DIV_ID" : "210300"
+	},
+	{
+		"DEPARTMENTNAME" : "Discharge Center",
+		"DEPTID" : "710605",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Imaging Rsch",
+		"DEPTID" : "710153",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Med Onc-West Houston",
+		"DEPTID" : "710652",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Experimental Therapeutics",
+		"DEPTID" : "404400",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Pathology, Anatomical",
+		"DEPTID" : "111100",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Laboratory Medicine Admin",
+		"DEPTID" : "600432",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "PLM Division Office Admin",
+		"DEPTID" : "711063",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Urology",
+		"DEPTID" : "123100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Melanoma Medical Oncology",
+		"DEPTID" : "600630",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Head & Neck Surgery - Research",
+		"DEPTID" : "600382",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Physics - Pt Care",
+		"DEPTID" : "600509",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic Physics",
+		"DEPTID" : "128200",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuro-Oncology",
+		"DEPTID" : "408200",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc Clinic - West Houston",
+		"DEPTID" : "711119",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Sterile Processing Ops",
+		"DEPTID" : "600161",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "IT Cancer Network",
+		"DEPTID" : "710610",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Epidemiology",
+		"DEPTID" : "106100",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Enterprise Risk Management",
+		"DEPTID" : "710938",
+		"DIV_NAME" : "Enterprise Risk Management",
+		"DIV_ID" : "710938"
+	},
+	{
+		"DEPARTMENTNAME" : "Chemistry Lab",
+		"DEPTID" : "112600",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Imaging Department",
+		"DEPTID" : "600797",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "RCC Woodlands",
+		"DEPTID" : "710701",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Neurodegeneration Consort-NDC",
+		"DEPTID" : "710630",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G18",
+		"DEPTID" : "502900",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Admin Fac Mgt",
+		"DEPTID" : "410600",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Relations",
+		"DEPTID" : "133100",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Access Operations",
+		"DEPTID" : "710606",
+		"DIV_NAME" : "Patient Access Services",
+		"DIV_ID" : "710380"
+	},
+	{
+		"DEPARTMENTNAME" : "Interventional Rad Clin Ops",
+		"DEPTID" : "600444",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic FCC",
+		"DEPTID" : "711053",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "RCC - League City",
+		"DEPTID" : "710645",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Cancer Prevtn - Rsch",
+		"DEPTID" : "600709",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Genitourinary Cancer Center",
+		"DEPTID" : "600500",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Gastrointestinal Center",
+		"DEPTID" : "600451",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "IT Engineering",
+		"DEPTID" : "710488",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Nephrology",
+		"DEPTID" : "600644",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Research Services",
+		"DEPTID" : "710839",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesthesiology&PeriOp Med-Res",
+		"DEPTID" : "600658",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Moon Shots Operations",
+		"DEPTID" : "710506",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuropsychology",
+		"DEPTID" : "600146",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "CTRC Lab",
+		"DEPTID" : "147901",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesthesia Services",
+		"DEPTID" : "118300",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Informatics",
+		"DEPTID" : "710888",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Imaging - Education",
+		"DEPTID" : "710947",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Ophthalmology",
+		"DEPTID" : "600765",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Engineering",
+		"DEPTID" : "600038",
+		"DIV_NAME" : "Clinical Engineering",
+		"DIV_ID" : "600038"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Patient Resources",
+		"DEPTID" : "600848",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Philanthropic Engagement",
+		"DEPTID" : "711268",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "HR Strategic Partners",
+		"DEPTID" : "104600",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Procedural &Therapeutics Admin",
+		"DEPTID" : "710996",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy ATC ACB",
+		"DEPTID" : "710355",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "CAO Office",
+		"DEPTID" : "710386",
+		"DIV_NAME" : "Academic Operations",
+		"DIV_ID" : "710418"
+	},
+	{
+		"DEPARTMENTNAME" : "Supply Chain Management",
+		"DEPTID" : "146400",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EBSM Engineering",
+		"DEPTID" : "711108",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Bastrop",
+		"DEPTID" : "600858",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Institutional Affairs Admin",
+		"DEPTID" : "710490",
+		"DIV_NAME" : "Institutional Affairs Admin",
+		"DIV_ID" : "710490"
+	},
+	{
+		"DEPARTMENTNAME" : "Treasury Services & Ops",
+		"DEPTID" : "103800",
+		"DIV_NAME" : "Finance & Analytics",
+		"DIV_ID" : "711259"
+	},
+	{
+		"DEPARTMENTNAME" : "PA Office",
+		"DEPTID" : "600862",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Faculty Senate",
+		"DEPTID" : "600568",
+		"DIV_NAME" : "Academic Operations",
+		"DIV_ID" : "710418"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Clinic R10",
+		"DEPTID" : "710357",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Leukemia Center",
+		"DEPTID" : "148500",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Gastroenterology Research",
+		"DEPTID" : "600700",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "DI Academic Services",
+		"DEPTID" : "710017",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G22East",
+		"DEPTID" : "710835",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "CCSG & Extramural Rsch Dev",
+		"DEPTID" : "711166",
+		"DIV_NAME" : "CCSG & Extramural Rsch Dev",
+		"DIV_ID" : "711166"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC - Sugar Land",
+		"DEPTID" : "710440",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Food Court - ACB",
+		"DEPTID" : "600733",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing 12P",
+		"DEPTID" : "502700",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Admin Support",
+		"DEPTID" : "710053",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "DI - Image Library",
+		"DEPTID" : "114600",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Pheresis Clinic",
+		"DEPTID" : "148600",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Research Trainee Programs",
+		"DEPTID" : "140200",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Nutrition",
+		"DEPTID" : "124200",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Comm - Admin",
+		"DEPTID" : "156300",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "PACU-Woodlands",
+		"DEPTID" : "710812",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "EHR Clinical Ancillaries",
+		"DEPTID" : "710557",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Workforce Health & Wellness",
+		"DEPTID" : "710241",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Vol Svc & Merch - Gift Shops",
+		"DEPTID" : "163200",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Med Onc-Woodlands",
+		"DEPTID" : "710704",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Imaging Physics Operations",
+		"DEPTID" : "600442",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "General Med Onc - League City",
+		"DEPTID" : "710857",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EBSM Energy",
+		"DEPTID" : "711109",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Visa & Immigration Serv Admin",
+		"DEPTID" : "140500",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Gastro-Endo - West Houston",
+		"DEPTID" : "710691",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Emergency Readiness",
+		"DEPTID" : "711008",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Pedi Acute Care Cancer Center",
+		"DEPTID" : "711002",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Data Impact & Governance",
+		"DEPTID" : "711071",
+		"DIV_NAME" : "Data Impact & Governance",
+		"DIV_ID" : "711071"
+	},
+	{
+		"DEPARTMENTNAME" : "Dermatology-Sugar Land",
+		"DEPTID" : "710780",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Surg - Sugar Land",
+		"DEPTID" : "710771",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "CT-Woodlands",
+		"DEPTID" : "710709",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Plastic Surg-Woodlands",
+		"DEPTID" : "710793",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-Aya",
+		"DEPTID" : "711152",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-AMNHlth",
+		"DEPTID" : "850006",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Med Onc - Woodlands",
+		"DEPTID" : "710879",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Residency PGY1",
+		"DEPTID" : "710055",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Business Admin Informatics",
+		"DEPTID" : "700060",
+		"DIV_NAME" : "Information Technology Project",
+		"DIV_ID" : "700010"
+	},
+	{
+		"DEPARTMENTNAME" : "H & N OPHTHALMOLOGY",
+		"DEPTID" : "710370",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Speech Pathology -League City",
+		"DEPTID" : "710723",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesthesia Clinic-West Houston",
+		"DEPTID" : "711123",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Faculty&Academic Partnerships",
+		"DEPTID" : "711140",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Network - Phys Ntwk",
+		"DEPTID" : "600705",
+		"DIV_NAME" : "Cancer Network - Phys Ntwk",
+		"DIV_ID" : "600705"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt PCPF Environ Svcs",
+		"DEPTID" : "411200",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Genomic Medicine",
+		"DEPTID" : "600138",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgical Oncology - Research",
+		"DEPTID" : "600377",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Nuclear Medicine",
+		"DEPTID" : "190100",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Leukemia",
+		"DEPTID" : "405400",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Rewards,Technology & Analytics",
+		"DEPTID" : "710242",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Palliative Care Med",
+		"DEPTID" : "600564",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Office of Patient Experience",
+		"DEPTID" : "710594",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "GI Medical Oncology",
+		"DEPTID" : "231100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G16",
+		"DEPTID" : "502400",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "PBS Customer Service",
+		"DEPTID" : "710483",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Ambulatory Business Services",
+		"DEPTID" : "207100",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Philanthropy",
+		"DEPTID" : "109100",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC - Bed & Chair Unit",
+		"DEPTID" : "148200",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Ofc of Health Policy",
+		"DEPTID" : "102500",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Infectious Dis&Inftn Ctrl-Rsch",
+		"DEPTID" : "600702",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Chief Quality Office",
+		"DEPTID" : "710834",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Faculty Academic Affairs",
+		"DEPTID" : "710487",
+		"DIV_NAME" : "Academic Operations",
+		"DIV_ID" : "710418"
+	},
+	{
+		"DEPARTMENTNAME" : "Hematopathology - Rsch",
+		"DEPTID" : "600652",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Bioinformatics & Comp Biology",
+		"DEPTID" : "600815",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Immunology",
+		"DEPTID" : "206100",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Laboratory Services",
+		"DEPTID" : "112200",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "MDA-UTMB Rad Onc",
+		"DEPTID" : "710718",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Network - Svcs Corp",
+		"DEPTID" : "600104",
+		"DIV_NAME" : "Cancer Network - Svcs Corp",
+		"DIV_ID" : "600104"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical & Access Applications",
+		"DEPTID" : "710558",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "School of Health Professions",
+		"DEPTID" : "140400",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Research Medical Library",
+		"DEPTID" : "145100",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Emergency Medicine",
+		"DEPTID" : "600120",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Police Department-PASS",
+		"DEPTID" : "710449",
+		"DIV_NAME" : "Police Department",
+		"DIV_ID" : "710409"
+	},
+	{
+		"DEPARTMENTNAME" : "HIM Administration",
+		"DEPTID" : "159100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Ofc of Chief Medical Executive",
+		"DEPTID" : "107100",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Med - Fellowship Prog",
+		"DEPTID" : "600641",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc Clinical Research",
+		"DEPTID" : "710593",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehabilitation Medicine",
+		"DEPTID" : "600565",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Precision Onc Decision Support",
+		"DEPTID" : "711130",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Oncology Care & Research IS",
+		"DEPTID" : "710628",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Research Imaging",
+		"DEPTID" : "711073",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "DI - League City",
+		"DEPTID" : "710651",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Network",
+		"DEPTID" : "600852",
+		"DIV_NAME" : "Cancer Network",
+		"DIV_ID" : "600852"
+	},
+	{
+		"DEPARTMENTNAME" : "Therapeutics Discovery",
+		"DEPTID" : "710621",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Onc&Reproductive Med-Rsch",
+		"DEPTID" : "600389",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Ultrasound",
+		"DEPTID" : "114500",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Dept of Radiation Physics",
+		"DEPTID" : "128100",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Continuing Professional Educ",
+		"DEPTID" : "176700",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Language Assistance",
+		"DEPTID" : "212100",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Education",
+		"DEPTID" : "500200",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Nuclear Med - Clin Nuclear Med",
+		"DEPTID" : "600802",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Controller's Office",
+		"DEPTID" : "202100",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Research",
+		"DEPTID" : "201300",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Perioperative Admin Office",
+		"DEPTID" : "600822",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Can Med Administration",
+		"DEPTID" : "710009",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Extramural Programs",
+		"DEPTID" : "600830",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Payroll",
+		"DEPTID" : "103500",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Oncology Rsch BIT - ORBIT",
+		"DEPTID" : "710631",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Orthopaedic Oncology",
+		"DEPTID" : "600747",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Infrastructure Admin",
+		"DEPTID" : "711093",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Affairs",
+		"DEPTID" : "600609",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Purchasing Services",
+		"DEPTID" : "600772",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "VP, Academic Affairs",
+		"DEPTID" : "711007",
+		"DIV_NAME" : "VP, Academic Affairs",
+		"DIV_ID" : "711007"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt-VP Office",
+		"DEPTID" : "410100",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy - Sugar Land",
+		"DEPTID" : "710475",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesthesia PeriOp Services",
+		"DEPTID" : "710466",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Integrative Medicine Program",
+		"DEPTID" : "600694",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Public Relations",
+		"DEPTID" : "600784",
+		"DIV_NAME" : "External Affairs",
+		"DIV_ID" : "711088"
+	},
+	{
+		"DEPARTMENTNAME" : "Histocompatibility Laboratory",
+		"DEPTID" : "112800",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Proton Therapy Support",
+		"DEPTID" : "600875",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Accred & Regulatory Readiness",
+		"DEPTID" : "710994",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Pedi-Adolescent & Young Adult",
+		"DEPTID" : "710675",
+		"DIV_NAME" : "Pediatrics Division",
+		"DIV_ID" : "900096"
+	},
+	{
+		"DEPARTMENTNAME" : "Cybersecurity",
+		"DEPTID" : "600604",
+		"DIV_NAME" : "Cybersecurity",
+		"DIV_ID" : "600604"
+	},
+	{
+		"DEPARTMENTNAME" : "Food & Nutrition Services",
+		"DEPTID" : "710381",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Employee Health & Well-being",
+		"DEPTID" : "174100",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Emergency Medicine-Research",
+		"DEPTID" : "600121",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Benefits & Recognition",
+		"DEPTID" : "711096",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Internal Medicine ACB Center",
+		"DEPTID" : "600741",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy - West Houston",
+		"DEPTID" : "710657",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "SVP, Cancer NW Clin & Acad Dev",
+		"DEPTID" : "710809",
+		"DIV_NAME" : "SVP, Cancer NW Clin & Acad Dev",
+		"DIV_ID" : "710809"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc Clinic - Woodlands",
+		"DEPTID" : "711120",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgical Pathology Svcs",
+		"DEPTID" : "111500",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Nephrology Research",
+		"DEPTID" : "710673",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Inf Dis Inf Ctrl and Emp Hlth",
+		"DEPTID" : "600674",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Acad Analytics & Tech",
+		"DEPTID" : "710599",
+		"DIV_NAME" : "Academic Operations",
+		"DIV_ID" : "710418"
+	},
+	{
+		"DEPARTMENTNAME" : "Office of VP&Chief AcctOfficer",
+		"DEPTID" : "710986",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "General Med Onc - Sugar Land",
+		"DEPTID" : "710873",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt-PC&PF-Admin Office",
+		"DEPTID" : "600731",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Surg-Woodlands",
+		"DEPTID" : "710789",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Research Finance",
+		"DEPTID" : "600820",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Operations",
+		"DEPTID" : "162900",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Behavioral Res Treatment Ctr",
+		"DEPTID" : "600748",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Psychiatry Oncology Center",
+		"DEPTID" : "600134",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Internal Medicine Center",
+		"DEPTID" : "148900",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic Radiation Oncology",
+		"DEPTID" : "711183",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Mock Code Operations",
+		"DEPTID" : "711229",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EBSM BIM\/FIM",
+		"DEPTID" : "710894",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "CABI - Standard of Care",
+		"DEPTID" : "710569",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "LSP Lab Medicine",
+		"DEPTID" : "711136",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Surg - League City",
+		"DEPTID" : "710727",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Thor-H&N Med Onc - SugarLand",
+		"DEPTID" : "710874",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Main RO Clinic",
+		"DEPTID" : "711074",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehab - League City",
+		"DEPTID" : "710650",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Bldg Support-NWH Sur&Sp Care",
+		"DEPTID" : "711139",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Development Office",
+		"DEPTID" : "109100",
+		"DIV_NAME" : "Development Office",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "External Affairs Admin",
+		"DEPTID" : "711089",
+		"DIV_NAME" : "External Affairs",
+		"DIV_ID" : "711088"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Fellowship",
+		"DEPTID" : "600778",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Main RO Desk Ops",
+		"DEPTID" : "711085",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Residency PGY2",
+		"DEPTID" : "710340",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Sterile Proc-NWH Sur&Sp Care",
+		"DEPTID" : "711188",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing PSNE",
+		"DEPTID" : "509100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Surg-League City",
+		"DEPTID" : "710730",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Faculty Academic Affairs",
+		"DEPTID" : "710655",
+		"DIV_NAME" : "Academic Operations",
+		"DIV_ID" : "710418"
+	},
+	{
+		"DEPARTMENTNAME" : "PTC RO Desk Ops",
+		"DEPTID" : "711087",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-Health Carousel",
+		"DEPTID" : "711154",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy  Administration",
+		"DEPTID" : "710052",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Proton Therapy Center",
+		"DEPTID" : "790000",
+		"DIV_NAME" : " ",
+		"DIV_ID" : " "
+	},
+	{
+		"DEPARTMENTNAME" : "Case Management",
+		"DEPTID" : "107400",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Health Services Research",
+		"DEPTID" : "600119",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Acute Cancer Care Center",
+		"DEPTID" : "600458",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Medical Oncology",
+		"DEPTID" : "402100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Finance & Analytics",
+		"DEPTID" : "711259",
+		"DIV_NAME" : "Finance & Analytics",
+		"DIV_ID" : "711259"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehab Physical Therapy",
+		"DEPTID" : "116200",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt Fac Plan Design&Constr",
+		"DEPTID" : "410200",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Epigenet & Mol Carcinogenesis",
+		"DEPTID" : "185800",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Industry Ventures",
+		"DEPTID" : "710468",
+		"DIV_NAME" : "Strategic Industry Ventures",
+		"DIV_ID" : "710468"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Inpatient",
+		"DEPTID" : "710348",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Room Service",
+		"DEPTID" : "124100",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Genitourinary Med Onc - Rsch",
+		"DEPTID" : "600655",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Specimen Processing",
+		"DEPTID" : "600572",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Medical Staff & Cred Svcs",
+		"DEPTID" : "600540",
+		"DIV_NAME" : "Academic Operations",
+		"DIV_ID" : "710418"
+	},
+	{
+		"DEPARTMENTNAME" : "DI-Patient Reception Services",
+		"DEPTID" : "600441",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "McCombs Inst Early Detect Cncr",
+		"DEPTID" : "710469",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing 3P Non-OR Recovery",
+		"DEPTID" : "710503",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Workforce Development",
+		"DEPTID" : "600774",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Lymphoma - Myeloma",
+		"DEPTID" : "900193",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G20",
+		"DEPTID" : "503100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Veterinary Medicine & Surgery",
+		"DEPTID" : "131100",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Police Department-Houston",
+		"DEPTID" : "179100",
+		"DIV_NAME" : "Police Department",
+		"DIV_ID" : "710409"
+	},
+	{
+		"DEPARTMENTNAME" : "Leadership Institute",
+		"DEPTID" : "710721",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing P04A",
+		"DEPTID" : "710613",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Health Disparities Research",
+		"DEPTID" : "106500",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Hematopoietic Biology&Malignan",
+		"DEPTID" : "710597",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Medical Oncology-Rsch",
+		"DEPTID" : "600143",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Decision Science & Analytics",
+		"DEPTID" : "711263",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "ECLIPSE",
+		"DEPTID" : "710927",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Translational Rsch Trng Prog",
+		"DEPTID" : "600636",
+		"DIV_NAME" : "Translational Rsch Trng Prog",
+		"DIV_ID" : "600636"
+	},
+	{
+		"DEPARTMENTNAME" : "Technology & Innovation",
+		"DEPTID" : "711070",
+		"DIV_NAME" : "Technology & Innovation",
+		"DIV_ID" : "711070"
+	},
+	{
+		"DEPARTMENTNAME" : "Ctr for Reconstructive Surgery",
+		"DEPTID" : "600153",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Imaging Physics - Research",
+		"DEPTID" : "600651",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "James P. Allison Institute",
+		"DEPTID" : "711142",
+		"DIV_NAME" : "James P. Allison Institute",
+		"DIV_ID" : "711142"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Safety",
+		"DEPTID" : "600147",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "GI Radiation Oncology Dept",
+		"DEPTID" : "711050",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Sourcing & Contract Mgmt",
+		"DEPTID" : "600773",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "Quantitative Rsch Computing",
+		"DEPTID" : "600814",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "DoIM Education Program",
+		"DEPTID" : "711128",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EHS Radiation Safety",
+		"DEPTID" : "710453",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "GU Radiation Oncology Dept",
+		"DEPTID" : "711168",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Investigational Drugs",
+		"DEPTID" : "600842",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Ofc Performance Improvement",
+		"DEPTID" : "600148",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Inst for Data Sci in Oncology",
+		"DEPTID" : "711116",
+		"DIV_NAME" : "Inst for Data Sci in Oncology",
+		"DIV_ID" : "711116"
+	},
+	{
+		"DEPARTMENTNAME" : "Laboratory Medicine Admin - DO",
+		"DEPTID" : "711057",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Quality-Regulatory",
+		"DEPTID" : "710980",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "EEO & HR Regulations",
+		"DEPTID" : "600810",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Survivorship",
+		"DEPTID" : "600853",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G19West",
+		"DEPTID" : "600889",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "SVP Strategy & Bus Development",
+		"DEPTID" : "710590",
+		"DIV_NAME" : "SVP Strategy & Bus Development",
+		"DIV_ID" : "710590"
+	},
+	{
+		"DEPARTMENTNAME" : "Urology - Research",
+		"DEPTID" : "600136",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "PRS Billing & Collections",
+		"DEPTID" : "600687",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Network Research",
+		"DEPTID" : "710578",
+		"DIV_NAME" : "SVP, Cancer NW Clin & Acad Dev",
+		"DIV_ID" : "710809"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy ATC R10",
+		"DEPTID" : "710354",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Pain Medicine",
+		"DEPTID" : "600670",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "People,Cultr & Infr SVP Office",
+		"DEPTID" : "711147",
+		"DIV_NAME" : "People,Cultr & Infr SVP Office",
+		"DIV_ID" : "711147"
+	},
+	{
+		"DEPARTMENTNAME" : "Program Center - Brain",
+		"DEPTID" : "600608",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "ASC Post Anesthesia Care Unit",
+		"DEPTID" : "600761",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Bone Marrow Aspiration Clinic",
+		"DEPTID" : "600611",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "TIPS Education Center",
+		"DEPTID" : "710462",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt Engr Bldg Syst Mgmt",
+		"DEPTID" : "710204",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Office of the SVP & CFO",
+		"DEPTID" : "600549",
+		"DIV_NAME" : "Office of the SVP & CFO",
+		"DIV_ID" : "600549"
+	},
+	{
+		"DEPARTMENTNAME" : "Cardiopulmonary Center",
+		"DEPTID" : "148100",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "VP, Research Office",
+		"DEPTID" : "711164",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Alumni Relations",
+		"DEPTID" : "710890",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G12E Palliative",
+		"DEPTID" : "502100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Hematopathology",
+		"DEPTID" : "710415",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery - Sugar Land",
+		"DEPTID" : "710479",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Acute Care Procedure Team",
+		"DEPTID" : "710417",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Wrkfrc Communities&Connections",
+		"DEPTID" : "600544",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Human Subjects Protection",
+		"DEPTID" : "710837",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Spiritual Care and Education",
+		"DEPTID" : "186100",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Rheumatology",
+		"DEPTID" : "710612",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Palliative,Rehab&IntegratveMed",
+		"DEPTID" : "710505",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF CS AV Engineer Ops",
+		"DEPTID" : "176800",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Transfusion Med Tissue Transpl",
+		"DEPTID" : "710041",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "HUB & Fed Small Business Prog",
+		"DEPTID" : "600650",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "Scrb III",
+		"DEPTID" : "600109",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Behavioral Science",
+		"DEPTID" : "405300",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Mays RO Clinic",
+		"DEPTID" : "711075",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "IR-PROF-West Houston",
+		"DEPTID" : "710918",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Chief Patient Experience Offcr",
+		"DEPTID" : "710843",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Comm - Integ Media",
+		"DEPTID" : "600133",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic PTC Ops",
+		"DEPTID" : "710833",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "SurgOnc - Woodlands-Endocrine",
+		"DEPTID" : "710794",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cardiology-Research",
+		"DEPTID" : "600704",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Lab-Woodlands",
+		"DEPTID" : "710703",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Musculoskeletal Imag Rsch",
+		"DEPTID" : "710155",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Mtls Mgmt Svcs - Inst",
+		"DEPTID" : "151600",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "H&N Surg - Woodlands",
+		"DEPTID" : "710787",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "PTC RO Physics Support",
+		"DEPTID" : "711079",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Admin Fellowship Program",
+		"DEPTID" : "710676",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehabilitation Services",
+		"DEPTID" : "116400",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuro Imaging Rsch",
+		"DEPTID" : "710156",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "SVP & Chief Financial Officer",
+		"DEPTID" : "710398",
+		"DIV_NAME" : "SVP & Chief Financial Officer",
+		"DIV_ID" : "710398"
+	},
+	{
+		"DEPARTMENTNAME" : "IT Services",
+		"DEPTID" : "600895",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Speech Pathology-Katy",
+		"DEPTID" : "710725",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Point of Care-OR Lab",
+		"DEPTID" : "710992",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Leave & Accommodations",
+		"DEPTID" : "710607",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Comparative Medicine",
+		"DEPTID" : "183200",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Ofc of Chief Operating Officer",
+		"DEPTID" : "210300",
+		"DIV_NAME" : "Ofc of Chief Operating Officer",
+		"DIV_ID" : "210300"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Systems Imaging",
+		"DEPTID" : "710509",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Colon & Rectal Surgery",
+		"DEPTID" : "710338",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgical Oncology",
+		"DEPTID" : "117600",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic-Head & Neck Med Onc",
+		"DEPTID" : "409100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Express Wall 5th Floor Surgery",
+		"DEPTID" : "600851",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Leukemia - Research",
+		"DEPTID" : "600411",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic & Cardio Surgery-Rsch",
+		"DEPTID" : "600386",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Imaging Physics",
+		"DEPTID" : "600668",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "General Internal Med",
+		"DEPTID" : "406400",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Comm - Creative Comm",
+		"DEPTID" : "600132",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Molecular Diagnostic",
+		"DEPTID" : "112300",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Psychiatry",
+		"DEPTID" : "408400",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Pulmonary Medicine - Research",
+		"DEPTID" : "600469",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Graduate Medical Education",
+		"DEPTID" : "710532",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Education & Training",
+		"DEPTID" : "600637",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Financial Clearance Center",
+		"DEPTID" : "710586",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Materials Mgmt Services Ops",
+		"DEPTID" : "710531",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Clinical Programs",
+		"DEPTID" : "162400",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Melanoma Med Onco - Rsch",
+		"DEPTID" : "600300",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt-PC&PF-Bld Care & Ops",
+		"DEPTID" : "410400",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Endocrine Neoplasia & HD-Rsch",
+		"DEPTID" : "600703",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Systems Biology",
+		"DEPTID" : "412100",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC LSP",
+		"DEPTID" : "711066",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Resource Pool",
+		"DEPTID" : "600535",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Enterprise Business Systems",
+		"DEPTID" : "175101",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EHS Administration",
+		"DEPTID" : "600781",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Hematology Lab",
+		"DEPTID" : "711111",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Med Onc - League City",
+		"DEPTID" : "710642",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Stem Cell Transplantation Lab",
+		"DEPTID" : "600461",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC - West Houston",
+		"DEPTID" : "710656",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Payment Posting & Credits",
+		"DEPTID" : "600688",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Stem Cell Transplantation Ctr",
+		"DEPTID" : "148400",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Endoscopy LSP",
+		"DEPTID" : "711065",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Hospital Billing & Collections",
+		"DEPTID" : "600819",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Melanoma & Skin Center",
+		"DEPTID" : "600448",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Bone Marrow Lab",
+		"DEPTID" : "224500",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF CS Event Ops",
+		"DEPTID" : "176500",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "OR - NWH Sur&Sp Care",
+		"DEPTID" : "711186",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Sarcoma Med Onco - Rsch",
+		"DEPTID" : "600708",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Genomic Medicine - Clinical",
+		"DEPTID" : "710616",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-Host",
+		"DEPTID" : "711156",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Vol Svc & Merch - Vol Svcs",
+		"DEPTID" : "163100",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy-Woodlands",
+		"DEPTID" : "710702",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cytopathology",
+		"DEPTID" : "111700",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Education Office",
+		"DEPTID" : "192100",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "FNS Procurement",
+		"DEPTID" : "157100",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Prevention Center",
+		"DEPTID" : "504200",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Internal Audit",
+		"DEPTID" : "136100",
+		"DIV_NAME" : "Internal Audit",
+		"DIV_ID" : "136100"
+	},
+	{
+		"DEPARTMENTNAME" : "Dining Services Production",
+		"DEPTID" : "157400",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC - Woodlands",
+		"DEPTID" : "710699",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesth CC & Pain Med -Clinical",
+		"DEPTID" : "600529",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Office of the CPO",
+		"DEPTID" : "711267",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "Catering at Anderson",
+		"DEPTID" : "157700",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Imaging Admin",
+		"DEPTID" : "710015",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Specialty Clinic-Woodlands",
+		"DEPTID" : "710705",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing 8P",
+		"DEPTID" : "502600",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Health Svcs Research-Clinical",
+		"DEPTID" : "710497",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "FDA Submissions",
+		"DEPTID" : "600892",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Financial Controls",
+		"DEPTID" : "600825",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Pedi - Child & Adolescent Ctr",
+		"DEPTID" : "113200",
+		"DIV_NAME" : "Pediatrics Division",
+		"DIV_ID" : "900096"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Comm - Internal",
+		"DEPTID" : "600785",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "GU Med Onc- West Houston",
+		"DEPTID" : "710862",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "PBS Operations",
+		"DEPTID" : "600686",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Research Programs",
+		"DEPTID" : "710669",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Virtual Care",
+		"DEPTID" : "711225",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Behavioral Science - Clinical",
+		"DEPTID" : "710587",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Interventional Rad Rsch",
+		"DEPTID" : "710154",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Action Finding Vigil Unit",
+		"DEPTID" : "711198",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "Pain Mgmt Center",
+		"DEPTID" : "600607",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G9NW Pedi Intensive",
+		"DEPTID" : "600777",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Pathology-Lab Medicine",
+		"DEPTID" : "224800",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Regulatory Affairs Admin Ofc",
+		"DEPTID" : "710929",
+		"DIV_NAME" : "Regulatory Affairs Admin Ofc",
+		"DIV_ID" : "710929"
+	},
+	{
+		"DEPARTMENTNAME" : "LBJ Admin Operations",
+		"DEPTID" : "710620",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Foundations & Corporations",
+		"DEPTID" : "711265",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "Fine Needle",
+		"DEPTID" : "710043",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy ATC Life Sciences",
+		"DEPTID" : "711069",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehab - Sugar Land",
+		"DEPTID" : "710478",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Plastic Surg-Sugar Land",
+		"DEPTID" : "710778",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "RCC - Woman's",
+		"DEPTID" : "710853",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Pickens Coffee Bar",
+		"DEPTID" : "600111",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Histology-NWH Sur&Sp Care",
+		"DEPTID" : "711203",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery Admin-NWH Sur&Sp Care",
+		"DEPTID" : "711241",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Chief Operating Officer",
+		"DEPTID" : "710377",
+		"DIV_NAME" : "Chief Operating Officer",
+		"DIV_ID" : "710377"
+	},
+	{
+		"DEPARTMENTNAME" : "Pulmonology-West Houston",
+		"DEPTID" : "710692",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "General Acctg - Asset Control",
+		"DEPTID" : "146500",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Oncology Department",
+		"DEPTID" : "115200",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Musculoskeletal Imaging Dept",
+		"DEPTID" : "600798",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Hematopathology Adm",
+		"DEPTID" : "600613",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Traction",
+		"DEPTID" : "710632",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Computed Tomography",
+		"DEPTID" : "114300",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Nuclear Medicine",
+		"DEPTID" : "190200",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Sarcoma Medical Oncology",
+		"DEPTID" : "407100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Surgical Oncology",
+		"DEPTID" : "710330",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Molecular & Cellular Oncology",
+		"DEPTID" : "127800",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic Therapy",
+		"DEPTID" : "600425",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Surg-Woman's",
+		"DEPTID" : "710829",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Revenue Cycle Systems\/Support",
+		"DEPTID" : "710555",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-CrossCo",
+		"DEPTID" : "850016",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Symptom Research CAO",
+		"DEPTID" : "600659",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt-PC&PF-Property Mgt",
+		"DEPTID" : "411400",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Critical Care Medicine",
+		"DEPTID" : "203100",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Hemovigilance Office",
+		"DEPTID" : "710919",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Biology",
+		"DEPTID" : "188100",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Applied Cancer Science Inst",
+		"DEPTID" : "600140",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "RCC Sugarland",
+		"DEPTID" : "710445",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Lymphoma-Myeloma Center",
+		"DEPTID" : "600313",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Internal Medicine - Clinical",
+		"DEPTID" : "600642",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery - Clinical",
+		"DEPTID" : "195100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Police Department-Special Ops",
+		"DEPTID" : "710450",
+		"DIV_NAME" : "Police Department",
+		"DIV_ID" : "710409"
+	},
+	{
+		"DEPARTMENTNAME" : "Social Work",
+		"DEPTID" : "160100",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "CTRC",
+		"DEPTID" : "147900",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt Finance",
+		"DEPTID" : "600794",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Admissions",
+		"DEPTID" : "204100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Special Chemistry",
+		"DEPTID" : "112700",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Pathology & Lab Tech Solutions",
+		"DEPTID" : "711261",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Anatomic Pathology - Research",
+		"DEPTID" : "600663",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuro-Oncology - Research",
+		"DEPTID" : "408500",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Physics - Research",
+		"DEPTID" : "600662",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Cardiology",
+		"DEPTID" : "406100",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Exec Office",
+		"DEPTID" : "600112",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Stem Cell Transplantation MUD",
+		"DEPTID" : "600629",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "PRS Administrative Services",
+		"DEPTID" : "184100",
+		"DIV_NAME" : "PRS Administrative Services",
+		"DIV_ID" : "184100"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Imaging - Clinical",
+		"DEPTID" : "114900",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Cause Alliances",
+		"DEPTID" : "711091",
+		"DIV_NAME" : "External Affairs",
+		"DIV_ID" : "711088"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Main Campus",
+		"DEPTID" : "600859",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Strategic Comm - Video Svcs",
+		"DEPTID" : "710618",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Unit G11",
+		"DEPTID" : "710501",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Nutrition-Inpatient",
+		"DEPTID" : "711227",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "askMDAnderson",
+		"DEPTID" : "600678",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Resource Center",
+		"DEPTID" : "600751",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Prev Training Program",
+		"DEPTID" : "600887",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "TRO Radiation Oncology Dept",
+		"DEPTID" : "711169",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic Imaging Department",
+		"DEPTID" : "600800",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "MDA Cafe'",
+		"DEPTID" : "157200",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Med Mgt & Informatics",
+		"DEPTID" : "710494",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "West Houston Imaging Center",
+		"DEPTID" : "710512",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Nocturnal Program",
+		"DEPTID" : "710106",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Laboratory Medicine - Research",
+		"DEPTID" : "112400",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery - League City",
+		"DEPTID" : "710644",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Brain & Spine Center",
+		"DEPTID" : "600449",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "CPC Provider Income & Activity",
+		"DEPTID" : "710485",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Acute Pain Medicine",
+		"DEPTID" : "600878",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Cardiology Laboratory",
+		"DEPTID" : "600453",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Finance & Gift Operations",
+		"DEPTID" : "711264",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "Expresso - Alkek",
+		"DEPTID" : "600736",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Gynecologic Oncology Center",
+		"DEPTID" : "600445",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Executive Recruitment",
+		"DEPTID" : "600573",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Lab - League City",
+		"DEPTID" : "710648",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Police Department Admin Office",
+		"DEPTID" : "710411",
+		"DIV_NAME" : "Police Department",
+		"DIV_ID" : "710409"
+	},
+	{
+		"DEPARTMENTNAME" : "Lab - NWH Sur&Sp Care",
+		"DEPTID" : "711202",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuro Interventional Radiology",
+		"DEPTID" : "600791",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "EM Clinical Decision Unit",
+		"DEPTID" : "710836",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Nrsg Clinical Decision Unit",
+		"DEPTID" : "710572",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "UTS Collaborative Bus. Svcs.",
+		"DEPTID" : "600861",
+		"DIV_NAME" : "UT System OCBS",
+		"DIV_ID" : "710624"
+	},
+	{
+		"DEPARTMENTNAME" : "Wellness",
+		"DEPTID" : "711095",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehab-Woodlands",
+		"DEPTID" : "710700",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Med Onc - West Houston",
+		"DEPTID" : "710863",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "General Med Onc - West Houston",
+		"DEPTID" : "710864",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Anes Non-OR",
+		"DEPTID" : "710423",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Med Onc - League City",
+		"DEPTID" : "710856",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "HLD & Sterile Processing Qual",
+		"DEPTID" : "406600",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Theraptc Scheduling",
+		"DEPTID" : "711054",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Ops Project Mgmt Ofc",
+		"DEPTID" : "710830",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "H&N Surg-West Houston",
+		"DEPTID" : "710743",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Operations Admin",
+		"DEPTID" : "710998",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "H&N Surg-League City",
+		"DEPTID" : "710728",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Neuro Surg-West Houston",
+		"DEPTID" : "710748",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic  Surg-Sugar Land",
+		"DEPTID" : "710776",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery Brain Suite",
+		"DEPTID" : "600806",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Cool Beans Cafe - ACB",
+		"DEPTID" : "600740",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Urology Surg-Sugar Land",
+		"DEPTID" : "710773",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Chief Quality & Value Officer",
+		"DEPTID" : "711197",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Protocol Review & Reporting",
+		"DEPTID" : "710838",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Dialysis",
+		"DEPTID" : "710571",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Main RO Therapy",
+		"DEPTID" : "711080",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Pathology-LabMedicine-Clinical",
+		"DEPTID" : "710412",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "X-Ray - NWH Sur&Sp Care",
+		"DEPTID" : "711200",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Hematopoietic Bio & Malig Clin",
+		"DEPTID" : "710916",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Biologics Development",
+		"DEPTID" : "710928",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Head & Neck Center",
+		"DEPTID" : "600499",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Histology",
+		"DEPTID" : "111200",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Research Finance",
+		"DEPTID" : "600812",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Endocrine Neoplasia and HD",
+		"DEPTID" : "406200",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesthesiology - CRNA",
+		"DEPTID" : "600562",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "GI Med Oncology - Research",
+		"DEPTID" : "600656",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Abdominal Imaging Department",
+		"DEPTID" : "600796",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Pediatrics - Research",
+		"DEPTID" : "130100",
+		"DIV_NAME" : "Pediatrics Division",
+		"DIV_ID" : "900096"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic H&N Med Onc - Rsch",
+		"DEPTID" : "600657",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Radiation Oncology Dept",
+		"DEPTID" : "711165",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Pulmonary Medicine",
+		"DEPTID" : "406900",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "OVP Cancer Prev & Pop Science",
+		"DEPTID" : "201100",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "H&N Surg-Sugar Land",
+		"DEPTID" : "710772",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc Clinic - League City",
+		"DEPTID" : "711121",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Pediatrics - Patient Care",
+		"DEPTID" : "113100",
+		"DIV_NAME" : "Pediatrics Division",
+		"DIV_ID" : "900096"
+	},
+	{
+		"DEPARTMENTNAME" : "Magnetic Resonance Imaging",
+		"DEPTID" : "114800",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Network - Clinical Ops",
+		"DEPTID" : "710511",
+		"DIV_NAME" : "SVP, Cancer NW Clin & Acad Dev",
+		"DIV_ID" : "710809"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Oncology - Research",
+		"DEPTID" : "600661",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Surgical Onc - Research",
+		"DEPTID" : "710585",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy-NWH Sur&Sp Care",
+		"DEPTID" : "711204",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Gastroenterology Hepat & Nutr",
+		"DEPTID" : "600643",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Microbiology",
+		"DEPTID" : "112100",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G10 West",
+		"DEPTID" : "600614",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Dermatology",
+		"DEPTID" : "406300",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF Campus Svcs",
+		"DEPTID" : "600730",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Neurosurgery - Research",
+		"DEPTID" : "600378",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EHS EPP Lab SB",
+		"DEPTID" : "710454",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic Admin",
+		"DEPTID" : "711055",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Managed Care",
+		"DEPTID" : "164200",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Lymphoma-Myeloma - Research",
+		"DEPTID" : "600664",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Administration",
+		"DEPTID" : "500100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Office of the VP & CIO",
+		"DEPTID" : "191100",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "PACU-West Houston",
+		"DEPTID" : "710811",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Supportive Care Center",
+		"DEPTID" : "600710",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "IT Operations",
+		"DEPTID" : "199100",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EHS Occu Health&Safety",
+		"DEPTID" : "710456",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Transfusion Medicine",
+		"DEPTID" : "112500",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G15",
+		"DEPTID" : "502800",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Donor Operations",
+		"DEPTID" : "224200",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Operations Admin",
+		"DEPTID" : "710058",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "General Accounting",
+		"DEPTID" : "103200",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt EHS Joint Com-EmerPlan",
+		"DEPTID" : "710457",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G10 East",
+		"DEPTID" : "501100",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Financial Services",
+		"DEPTID" : "162600",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Main RO FCC",
+		"DEPTID" : "711083",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Plastic Surgery - Research",
+		"DEPTID" : "600467",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic Center",
+		"DEPTID" : "600439",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cord Blood Bank Program",
+		"DEPTID" : "600727",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic Nursing",
+		"DEPTID" : "504100",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "MDA-UTMB Med Onc",
+		"DEPTID" : "710717",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "HR Administration",
+		"DEPTID" : "104100",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Amb Charge Capture Services",
+		"DEPTID" : "711062",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "DPLM Clinical Trial Operations",
+		"DEPTID" : "711013",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Cancer Prevention",
+		"DEPTID" : "201200",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Research Strategy & Operations",
+		"DEPTID" : "900050",
+		"DIV_NAME" : "Research Strategy & Operations",
+		"DIV_ID" : "900050"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Directors",
+		"DEPTID" : "710345",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc-Woodlands",
+		"DEPTID" : "710698",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Financial Reporting & Acctg",
+		"DEPTID" : "103400",
+		"DIV_NAME" : "Office of VP&Chief AcctOfficer",
+		"DIV_ID" : "710986"
+	},
+	{
+		"DEPARTMENTNAME" : "Invest Cancer Therapeutics-Res",
+		"DEPTID" : "600850",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc Clinic - Sugar Land",
+		"DEPTID" : "711122",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Monitor Techs",
+		"DEPTID" : "600775",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Orthopaedic Oncology Research",
+		"DEPTID" : "600764",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "SHP Students",
+		"DEPTID" : "711191",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "MultiCenter",
+		"DEPTID" : "710666",
+		"DIV_NAME" : "VP Clinical Research",
+		"DIV_ID" : "710467"
+	},
+	{
+		"DEPARTMENTNAME" : "Amb Logistics & Infrastructure",
+		"DEPTID" : "711067",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Mohs Surgery",
+		"DEPTID" : "600715",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery Scheduling",
+		"DEPTID" : "600158",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Sponsored Programs",
+		"DEPTID" : "600860",
+		"DIV_NAME" : "Research Administration Office",
+		"DIV_ID" : "600756"
+	},
+	{
+		"DEPARTMENTNAME" : "DI Translational & Clin Resch",
+		"DEPTID" : "600804",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "Pain Medicine - Res",
+		"DEPTID" : "600879",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery-Woodlands",
+		"DEPTID" : "710706",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Prev & Control Platform",
+		"DEPTID" : "710574",
+		"DIV_NAME" : "Strategic Research Programs",
+		"DIV_ID" : "710669"
+	},
+	{
+		"DEPARTMENTNAME" : "Specialty Clinic-West Houston",
+		"DEPTID" : "710659",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Benign Hematology Rsch",
+		"DEPTID" : "711208",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Clinic Specialty",
+		"DEPTID" : "710889",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "SVP, CSO Office",
+		"DEPTID" : "710803",
+		"DIV_NAME" : "SVP, CSO Office",
+		"DIV_ID" : "710803"
+	},
+	{
+		"DEPARTMENTNAME" : "Lab - West Houston",
+		"DEPTID" : "710658",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Integrative Health Svcs - CPC",
+		"DEPTID" : "710489",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Periop Eval & Mgmt Ctr",
+		"DEPTID" : "600627",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "GU Med Onc - Sugar Land",
+		"DEPTID" : "710871",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Zayed Cafe",
+		"DEPTID" : "710566",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt Tech & Training",
+		"DEPTID" : "710892",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "SurgOnc-League City-Endocrine",
+		"DEPTID" : "710735",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Corporate Alliances (IA)",
+		"DEPTID" : "710987",
+		"DIV_NAME" : "External Affairs",
+		"DIV_ID" : "711088"
+	},
+	{
+		"DEPARTMENTNAME" : "Thor-H&N Med Onc-West Houston",
+		"DEPTID" : "710865",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Anes, CC & Pain Division Offc",
+		"DEPTID" : "710007",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-Aequor",
+		"DEPTID" : "711153",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "ATC Float Pool",
+		"DEPTID" : "710946",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Talent Acquisition",
+		"DEPTID" : "710244",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Surg-West Houston",
+		"DEPTID" : "710745",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nuclear Med-Woodlands",
+		"DEPTID" : "710713",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Critical Care - Research",
+		"DEPTID" : "600673",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Head & Neck Surgery",
+		"DEPTID" : "710065",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-FHStaff",
+		"DEPTID" : "850026",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Internal Medicine - Research",
+		"DEPTID" : "900021",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "NSG AG-AHStaff",
+		"DEPTID" : "850024",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Genetics",
+		"DEPTID" : "144300",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "Hospital Medicine",
+		"DEPTID" : "710611",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Anesthesiology & PeriOper Med",
+		"DEPTID" : "118100",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Translational Molecular Path",
+		"DEPTID" : "149100",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "Patient Resource Admin",
+		"DEPTID" : "600787",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Experimental Radiation Onc",
+		"DEPTID" : "198100",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Head & Neck Surgery",
+		"DEPTID" : "137100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Plastic Surgery",
+		"DEPTID" : "165100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "DI - Nursing",
+		"DEPTID" : "600631",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Stem Cell Transplantation",
+		"DEPTID" : "405100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Lymphoma-Myeloma",
+		"DEPTID" : "405300",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Employee Health Svcs - Pt Care",
+		"DEPTID" : "406800",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Stem Cell Transplantation Rsch",
+		"DEPTID" : "600379",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Unit 10P",
+		"DEPTID" : "502300",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Vol Svc & Merch - Chld Art Prj",
+		"DEPTID" : "600416",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Respiratory Care",
+		"DEPTID" : "118400",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Infectious Diseases",
+		"DEPTID" : "406700",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Thoracic & Cardiovasc Surgery",
+		"DEPTID" : "205100",
+		"DIV_NAME" : "Surgery Division",
+		"DIV_ID" : "900090"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing G19East",
+		"DEPTID" : "710896",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Individual Giving",
+		"DEPTID" : "711266",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehab Occupational Therapy",
+		"DEPTID" : "116300",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing 11P",
+		"DEPTID" : "600789",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Enterprise Dev & Integration",
+		"DEPTID" : "710495",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "Special Events",
+		"DEPTID" : "711269",
+		"DIV_NAME" : "Philanthropy",
+		"DIV_ID" : "109100"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy - League City",
+		"DEPTID" : "710647",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Endocrine Center",
+		"DEPTID" : "600795",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Food & Nutrition Srvcs Admin",
+		"DEPTID" : "124300",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt RAF South Campus",
+		"DEPTID" : "600856",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Revenue&Reimbursement",
+		"DEPTID" : "600481",
+		"DIV_NAME" : "Treasury Services & Operations",
+		"DIV_ID" : "710223"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Clinic R2",
+		"DEPTID" : "710356",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Integrative Medicine Ctr LSP",
+		"DEPTID" : "600679",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Imaging Clin Ops",
+		"DEPTID" : "114700",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "RCC Administration",
+		"DEPTID" : "710444",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Medicine Rsch Admin",
+		"DEPTID" : "710437",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Immunocytochemistry",
+		"DEPTID" : "600174",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Pediatrics-Support Programs",
+		"DEPTID" : "710617",
+		"DIV_NAME" : "Pediatrics Division",
+		"DIV_ID" : "900096"
+	},
+	{
+		"DEPARTMENTNAME" : "Financial Planning & Analysis",
+		"DEPTID" : "100100",
+		"DIV_NAME" : "Financial Planning & Analysis",
+		"DIV_ID" : "100100"
+	},
+	{
+		"DEPARTMENTNAME" : "PLM Quality and Regulation",
+		"DEPTID" : "711195",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "ASC OR Nursing",
+		"DEPTID" : "600760",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "RCC - West Houston",
+		"DEPTID" : "710655",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "HR-Talent Recruitment",
+		"DEPTID" : "104700",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Imaging Technology Solutions",
+		"DEPTID" : "711260",
+		"DIV_NAME" : "Information Services",
+		"DIV_ID" : "710247"
+	},
+	{
+		"DEPARTMENTNAME" : "VP Ambulatory Operations",
+		"DEPTID" : "710806",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Cancer Registry",
+		"DEPTID" : "600807",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Supply Chain Admin and Support",
+		"DEPTID" : "600750",
+		"DIV_NAME" : "Supply Chain Management",
+		"DIV_ID" : "710402"
+	},
+	{
+		"DEPARTMENTNAME" : "Surgery-West Houston",
+		"DEPTID" : "710654",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "VP Government Relations",
+		"DEPTID" : "600418",
+		"DIV_NAME" : "VP Government Relations",
+		"DIV_ID" : "600418"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing Clinical Informatics",
+		"DEPTID" : "600633",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "HR Compensation",
+		"DEPTID" : "600620",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "HR Service Center",
+		"DEPTID" : "104300",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Flow Cytometry",
+		"DEPTID" : "112900",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Safe Pat. Handling & Mobility",
+		"DEPTID" : "710850",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Neurophysiology",
+		"DEPTID" : "408100",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Anes, CC & Pain Clinical Supp",
+		"DEPTID" : "710429",
+		"DIV_NAME" : "Anesthesiology, CC & Pain Div",
+		"DIV_ID" : "900172"
+	},
+	{
+		"DEPARTMENTNAME" : "Ahmed Ctr Pancreatic Can Rsch",
+		"DEPTID" : "710550",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Acute Care Services Admin",
+		"DEPTID" : "600135",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Nutrition-Outpatient",
+		"DEPTID" : "711228",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Ctr for Adv Biomedical Imaging",
+		"DEPTID" : "600125",
+		"DIV_NAME" : "Diagnostic Imaging Division",
+		"DIV_ID" : "900012"
+	},
+	{
+		"DEPARTMENTNAME" : "International Center",
+		"DEPTID" : "411100",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Lab - Sugar Land",
+		"DEPTID" : "710477",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "DI-Woodlands",
+		"DEPTID" : "710707",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Research Education & Training",
+		"DEPTID" : "710981",
+		"DIV_NAME" : "Education & Training",
+		"DIV_ID" : "600637"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy Outpatient OR",
+		"DEPTID" : "710057",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Presidents Office",
+		"DEPTID" : "710252",
+		"DIV_NAME" : "Presidents Office",
+		"DIV_ID" : "710252"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Center",
+		"DEPTID" : "600446",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Benign Hematology",
+		"DEPTID" : "600855",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "Code Blue Operations",
+		"DEPTID" : "710934",
+		"DIV_NAME" : "Chief Quality Office",
+		"DIV_ID" : "710834"
+	},
+	{
+		"DEPARTMENTNAME" : "DI - PACS & Support Services",
+		"DEPTID" : "600440",
+		"DIV_NAME" : "Diagnostic Operations",
+		"DIV_ID" : "710997"
+	},
+	{
+		"DEPARTMENTNAME" : "Nursing WOC",
+		"DEPTID" : "503400",
+		"DIV_NAME" : "SrVP and Chief Nursing Officer",
+		"DIV_ID" : "711045"
+	},
+	{
+		"DEPARTMENTNAME" : "Pulmonary Laboratory",
+		"DEPTID" : "600454",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Faculty & Executive Benefits",
+		"DEPTID" : "711094",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	},
+	{
+		"DEPARTMENTNAME" : "Vol Svc & Merch - Admin",
+		"DEPTID" : "710604",
+		"DIV_NAME" : "Strategic Communications",
+		"DIV_ID" : "710602"
+	},
+	{
+		"DEPARTMENTNAME" : "Police Department-Science Park",
+		"DEPTID" : "179200",
+		"DIV_NAME" : "Police Department",
+		"DIV_ID" : "710409"
+	},
+	{
+		"DEPARTMENTNAME" : "Clinical Effectiveness",
+		"DEPTID" : "107500",
+		"DIV_NAME" : "Chief Medical Executive Dept",
+		"DIV_ID" : "710376"
+	},
+	{
+		"DEPARTMENTNAME" : "Fac Mgt Employee Programs",
+		"DEPTID" : "710893",
+		"DIV_NAME" : "Facilities Management",
+		"DIV_ID" : "710410"
+	},
+	{
+		"DEPARTMENTNAME" : "Proton Therapy",
+		"DEPTID" : "600724",
+		"DIV_NAME" : "Radiation Oncology Division",
+		"DIV_ID" : "900013"
+	},
+	{
+		"DEPARTMENTNAME" : "Food&Nutrition Svc Sanitation",
+		"DEPTID" : "711068",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "MDA-UTMB ATC",
+		"DEPTID" : "710851",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Diagnostic Lab LSP",
+		"DEPTID" : "711190",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "GU Med Onc - League City",
+		"DEPTID" : "710855",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Marketing",
+		"DEPTID" : "600521",
+		"DIV_NAME" : "Marketing Division",
+		"DIV_ID" : "710988"
+	},
+	{
+		"DEPARTMENTNAME" : "IR-Woodlands",
+		"DEPTID" : "710712",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Rehab - West Houston",
+		"DEPTID" : "710660",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Med Onc - Sugar Land",
+		"DEPTID" : "600869",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Gyn Surg-Sugar Land",
+		"DEPTID" : "710774",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Rad Onc - League City",
+		"DEPTID" : "710643",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "Gen Onc Department",
+		"DEPTID" : "600312",
+		"DIV_NAME" : "Cancer Medicine Division",
+		"DIV_ID" : "900014"
+	},
+	{
+		"DEPARTMENTNAME" : "Breast Surg - Woodlands",
+		"DEPTID" : "710786",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "1MC Convenience Store",
+		"DEPTID" : "600129",
+		"DIV_NAME" : "Office of Patient Experience",
+		"DIV_ID" : "710594"
+	},
+	{
+		"DEPARTMENTNAME" : "Anatomical Pathology",
+		"DEPTID" : "710413",
+		"DIV_NAME" : "Pathology-Lab Medicine Div",
+		"DIV_ID" : "900027"
+	},
+	{
+		"DEPARTMENTNAME" : "General Internal Medicine",
+		"DEPTID" : "600676",
+		"DIV_NAME" : "Internal Medicine Division",
+		"DIV_ID" : "900715"
+	},
+	{
+		"DEPARTMENTNAME" : "MDA-UTMB Surgery",
+		"DEPTID" : "710719",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "IR-PROF-Woodlands",
+		"DEPTID" : "710917",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "NWHSSC - Diagnostic Imaging",
+		"DEPTID" : "711199",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Epidemiology Clinical",
+		"DEPTID" : "710923",
+		"DIV_NAME" : "Cancer Prev & Pop Sciences Div",
+		"DIV_ID" : "900137"
+	},
+	{
+		"DEPARTMENTNAME" : "Radiation Therapeutic Services",
+		"DEPTID" : "711044",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Gastro-Endo - Woodlands",
+		"DEPTID" : "710696",
+		"DIV_NAME" : "VP Ambulatory Operations",
+		"DIV_ID" : "710806"
+	},
+	{
+		"DEPARTMENTNAME" : "SPD LSP",
+		"DEPTID" : "711213",
+		"DIV_NAME" : "Procedural & Therapeutics Ops",
+		"DIV_ID" : "710995"
+	},
+	{
+		"DEPARTMENTNAME" : "Pharmacy",
+		"DEPTID" : "162100",
+		"DIV_NAME" : "Pharmacy",
+		"DIV_ID" : "162100"
+	},
+	{
+		"DEPARTMENTNAME" : "Parker Inst Canr Immunotherapy",
+		"DEPTID" : "710600",
+		"DIV_NAME" : "VP, Research",
+		"DIV_ID" : "711163"
+	},
+	{
+		"DEPARTMENTNAME" : "HR Business Partners",
+		"DEPTID" : "710243",
+		"DIV_NAME" : "Human Resources",
+		"DIV_ID" : "710246"
+	}
+]}
