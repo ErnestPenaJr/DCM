@@ -61,12 +61,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr>
+                                        <hr class="border border-1 border-dark">
                                         <div class="row">
                                             <form id="taskForm">
                                                 <div id="leftColumn" class="col-sm-6"></div>
                                                 <div id="rightColumn" class="col-sm-6"></div>
                                             </form>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Leave a comment here" id="WEEKLY_NOTE"></textarea>
+                                                    <label for="WEEKLY_NOTE">Daily Notes:</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <hr class="border border-1 border-dark">
                                         <div class="row">
@@ -78,13 +86,14 @@
                                                 <input type="hidden" id="WEEK_NUM">
                                             </div>
                                         </div>
+                                        
                                     </form>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">current week-<span id="current_week"></span></h1>
-                            <div class="card" style="height: 670px">
+                            <div class="card" style="height: 720px">
                                 <div class="card-body" style="overflow-y: scroll;">
                                       <div class="list-group theWeekOf">
                                         <a id="sun" href="#" class="list-group-item list-group-item-action">
@@ -157,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center mt-5" data-aos="fade" style=" background: url('assets/images/redtape3.webp') no-repeat; background-attachment: fixed;background-size: cover;">
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center" data-aos="fade" style=" background: url('assets/images/redtape3.png') no-repeat; background-attachment: fixed;background-size: cover;">
             <div class="position-absolute w-100 h-100 bg-black opacity-0 top-0 start-0"></div>
                 <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
                     <div class="row py-vh-5">
@@ -232,7 +241,7 @@
             { name: "Code Development", maxTime: 360, id: "Code Development",description: "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
             { name: "Testing and Debugging", maxTime: 120, id: "Testing and Debugging",description: "60-120 min.: Depending on the complexity of the feature or the bug." },
             { name: "Learning and Research", maxTime: 60, id: "Research",description: "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
-            { name: "Meetings", maxTime: 90, id: "Meetings",description: "15-90 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
+            { name: "Meetings", maxTime: 120, id: "Meetings",description: "15-120 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
             { name: "Optimization", maxTime: 60, id: "Optimization",description: "30-60 min.: Monitoring and optimizing, depending on the project phase." },
             { name: "Collaboration", maxTime: 60, id: "Checking Messages",description: "10-60 min.: Chat communication with development team, Manager or clients." },
             { name: "Database Mgt.", maxTime: 120, id: "Database Mtg.",description: "60-120 min.: For those who handle database tasks, time can vary greatly based on the complexity of the work." },

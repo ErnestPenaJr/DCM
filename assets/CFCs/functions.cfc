@@ -1,77 +1,28 @@
 <cfcomponent>
-<cffunction name="searchEmployees" access="remote" returntype="any" returnformat="JSON">
-		<cfargument name="searchStr" type="string" required="true" >
-		<cfargument name="maxrows" type="numeric" default="25">
-		<cfset var retVal = ArrayNew(1)>
-		
-		<cfquery username="WEBSCHEDULE_USER" password="1DOCMAU4WEBSCHEDULE2" datasource="inside2_docms" name="results">
-			SELECT
-				PS.EMPLID, PS.FIRST_NAME || ' ' || PS.LAST_NAME AS NAME, PS.FIRST_NAME || ' ' || PS.LAST_NAME  AS DISPLAYNAME,
-				LOWER(PS.EMAIL_ADDRESS) AS EMAIL,
-				PS.JOBCODE_DESCR AS JOBTITLE,
-				PS.USERNAME,
-				PS.DEPARTMENTNAME,
-				PS.FULL_NAME,
-				PS.WORKPHONE AS PHONE,
-				PS.DEPARTMENTNAME,
-				PS.DEPTID,
-				PS.LOCATION
-			FROM WEBSCHEDULE.ACTIVE_PEOPLESOFT PS
-			WHERE 1=1
-
-			<cfloop list="#lcase(arguments.searchStr)#" delimiters=" ," index="i">
-				<cfif isNumeric(i)>
-					AND PS.EMPLID like <cfqueryparam cfsqltype="cf_sql_varchar" value="#val(i)#%" /> OR RFID = <cfqueryparam cfsqltype="cf_sql_numeric" value="#val(i)#">
-				<cfelse>
-					AND lower(PS.FULL_NAME) like <cfqueryparam cfsqltype="cf_sql_varchar" value="%#i#%">
-				</cfif>
-			</cfloop>
-			
-			ORDER BY PS.DEPARTMENTNAME, PS.LAST_NAME, PS.FIRST_NAME ASC
-		</cfquery>
-
-		<cfloop query="results">
-			<cfset temp = {} />
-			<cfset temp["total"] = RECORDCOUNT />
-			<cfset temp["name"] = NAME />
-			<cfset temp["username"] = USERNAME />
-			<cfset temp["emplID"] = EMPLID />
-			<cfset temp["departmentname"] = DEPARTMENTNAME />
-			<cfset temp["orgcode"] = DEPTID />
-			<cfset temp["displayName"] = DISPLAYNAME />
-			<cfset temp["email"] = EMAIL />
-			<cfset temp["jobTitle"] = JOBTITLE />
-			<cfset temp["fullName"] = FULL_NAME />
-			<cfset temp["phone"] = PHONE />
-			<cfset temp["location"] = LOCATION />
-			 <cfset ArrayAppend(retval, temp)>
-		</cfloop>
-
-		<cfset result = {} />
-		<cfset result['items'] = retVal />
-		<cfreturn result />
-	</cffunction>
 
     <cffunction name="searchDepartments2" access="remote" returntype="any" returnformat="JSON">
         <cfargument name="searchStr" type="string" required="true">
         <cfargument name="maxrows" type="numeric" default="25">
         <cfset var retVal = ArrayNew(1)>
 
-        <!--- Simulating the loading of JSON data --->
-        <cfset var jsonData = deserializeJson(toString(getFileContent("../json/Departments.json")))>
+         <!--- Use cffile to read the JSON data from the file --->
+         <cfset absolutePath = ExpandPath("../json/Departments.json")>
+
+        <cffile action="read" file="#absolutePath#" variable="fileContent">
+        <cfset var jsonData = deserializeJson(fileContent)>
 
         <!--- Iterate over the JSON data instead of querying the database --->
         <cfloop array="#jsonData#" index="department">
             <cfset var matchFound = false>
 
-            <!--- Check if the department matches the search criteria --->
-            <cfloop list="#lcase(arguments.searchStr)#" delimiters=" ," index="i">
-                <cfif isNumeric(i) and department.DEPTID contains val(i) & "%">
-                    <cfset matchFound = true>
-                <cfelseif findNoCase(i, department.DEPARTMENTNAME)>
-                    <cfset matchFound = true>
-                </cfif>
-            </cfloop>
+          <!--- Check if the department matches the search criteria --->
+        <cfloop list="#lcase(arguments.searchStr)#" delimiters=" ," index="i">
+            <cfif isNumeric(i) and compareNoCase(left(department.DEPTID, len(i)), i) == 0>
+                <cfset matchFound = true>
+            <cfelseif findNoCase(i, department.DEPARTMENTNAME)>
+                <cfset matchFound = true>
+            </cfif>
+        </cfloop>
 
             <!--- Add department to result if it matches --->
             <cfif matchFound>
@@ -81,9 +32,8 @@
                 <cfset temp["orgcode"] = department.DEPTID />
                 <cfset temp["orgname"] = department.DEPARTMENTNAME />
                 <cfset ArrayAppend(retval, temp)>
-
                 <!--- Break the loop if maxrows limit is reached --->
-                <cfif ArrayLen(retval) >= arguments.maxrows>
+                <cfif ArrayLen(retval) GTE arguments.maxrows >
                     <cfbreak>
                 </cfif>
             </cfif>
@@ -347,6 +297,9 @@
         <!--- Return an error message if the directory does not exist --->
         <cfreturn serializeJSON({error: "Directory does not exist."})>
     </cfif>
+</cffunction>
+<cffunction name="SendWeeklyReportEmails" access="remote" returnType="any" output="false">
+
 </cffunction>
 
 </cfcomponent>
