@@ -208,6 +208,39 @@
     <cfreturn result />
 </cffunction>
 
+<cffunction name="getTaskByDay" access="remote" returntype="any" returnformat="JSON">
+    <cfargument name="DAY_NUM" type="string" required="false" default="" />
+    <cfset var retVal = ArrayNew(1)>
+    <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME
+        FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
+        WHERE t.PROJECT = p.PROJECT_ID
+        AND t.DAY_NUM = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DAY_NUM#" />
+        ORDER BY WEEK_NUMBER DESC, DAY_NUM ASC
+    </cfquery>
+
+    <cfloop query="results">
+        <cfset temp = {} />
+        <cfset temp["TASKID"] = TASKID />
+        <cfset temp["TASK_NAME"] = TASK_NAME />
+        <cfset temp["TASK_DESCRIPTION"] = TASK_DESCRIPTION />
+        <cfset temp["TASK_TIME"] = TASK_TIME />
+        <cfset temp["PROJECT"] = PROJECT />
+        <cfset temp["DEPTID"] = DEPTID />
+        <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
+        <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
+        <cfset temp["PROJECT"] = PROJECT />
+        <cfset temp["DAY_NUM"] = DAY_NUM />
+        <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
+        <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
+        <cfset ArrayAppend(retval, temp)>
+    </cfloop>
+
+    <cfset result = {} />
+    <cfset result['items'] = retVal />
+    <cfreturn result />
+</cffunction>
+
 <cffunction name="getAllTasks" access="remote" returntype="any" returnformat="JSON">
     <cfargument name="WEEK_NUM" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
