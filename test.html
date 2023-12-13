@@ -80,7 +80,6 @@ function getCurrentWeekTasks(currentWeekNumber){
         },
         success: function(response) {
             var x = response.items;
-            console.log(x  )
             var weekList = [{day: 'Sunday', dayNum: 0},{day: 'Monday', dayNum: 1},{day: 'Tuesday', dayNum: 2},{day: 'Wednesday', dayNum: 3},{day: 'Thursday', dayNum: 4},{day: 'Friday', dayNum: 5},{day: 'Saturday', dayNum: 6}];
             var activeDay = moment().day();
             var str = '<div class="list-group">';
@@ -88,9 +87,11 @@ function getCurrentWeekTasks(currentWeekNumber){
                 if(weekList[i].dayNum == 0){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 0){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -116,7 +117,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var su = 0; su < x.length; su++){
                             if(x[su].DAY_NUM == 0){
-                                str += '<li class="text-start fw-bold">' + x[su].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[su].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[su].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[su].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[su].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
@@ -126,9 +127,11 @@ function getCurrentWeekTasks(currentWeekNumber){
                 if(weekList[i].dayNum == 1){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 1){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -156,18 +159,21 @@ function getCurrentWeekTasks(currentWeekNumber){
                         for(var mo = 0; mo < x.length; mo++){
                             
                             if(x[mo].DAY_NUM == 1){
-                                str += '<li class="text-start fw-bold">' + x[mo].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[mo].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[mo].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[mo].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[mo].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 2){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 2){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -194,18 +200,21 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var tu = 0; tu < x.length; tu++){
                             if(x[tu].DAY_NUM == 2){
-                                str += '<li class="text-start fw-bold">' + x[tu].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[tu].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[tu].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[tu].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[tu].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 3){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 3){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -232,18 +241,21 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var we = 0; we < x.length; we++){
                             if(x[we].DAY_NUM == 3){
-                                str += '<li class="text-start fw-bold">' + x[we].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[we].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[we].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[we].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[we].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start fs-6">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 4){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 4){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -270,17 +282,20 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var th = 0; th < x.length; th++){
                             if(x[th].DAY_NUM == 4){
-                                str += '<li class="text-start fw-bold">' + x[th].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[th].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[th].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[th].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[th].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
                     str += '</div>';
                 }if(weekList[i].dayNum == 5){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 5){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -307,18 +322,21 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var fr = 0; fr < x.length; fr++){
                             if(x[fr].DAY_NUM == 5){
-                                str += '<li class="text-start fw-bold">' + x[fr].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[fr].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[fr].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[fr].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[fr].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 6){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 6){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
@@ -345,24 +363,28 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var sa = 0; sa < x.length; sa++){
                             if(x[sa].DAY_NUM == 6){
-                                str += '<li class="text-start fw-bold">' + x[sa].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[sa].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[sa].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[sa].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[sa].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 7){
                     //get project name
                     var project = '';
+                    var notes = '';
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == 7){
                             project = 'App: '+x[p].PROJECT_NAME;
+                            notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
                     //calculate total time for the day
                     var totalTime = 0;
                     for(var m = 0; m < x.length; m++){
+                        console.log(x);
                         if(x[m].DAY_NUM == 7){
                             totalTime += parseInt(x[m].TASK_TIME);
                         }
@@ -383,13 +405,13 @@ function getCurrentWeekTasks(currentWeekNumber){
                     str += '<ol>';
                         for(var sa = 0; sa < x.length; sa++){
                             if(x[sa].DAY_NUM == 7){
-                                str += '<li class="text-start fw-bold">' + x[sa].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[sa].TASK_TIME+' minutes</span><br><span class="fst-italic fw-lighter float-start">'+x[sa].WEEKLY_NOTE+'</span></li>';
+                                str += '<li class="text-start fw-bold">' + x[sa].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[sa].TASK_TIME+' minutes</span></li>';
                             }
                         }
                     str += '</ol>';
+                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
                     str += '</div>';
                 }
-
             }
             str += '</div>';
             $('.theWeekOf').html(str);
