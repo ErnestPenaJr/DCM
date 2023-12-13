@@ -276,7 +276,7 @@
                 <cfset temp["WEEK_DAY"] = "Friday" />
             <cfelseif DAY_NUM EQ 6>
                 <cfset temp["WEEK_DAY"] = "Saturday" />
-            <cfelseif DAY_NUM EQ 7>
+            <cfelseif DAY_NUM EQ 0>
                 <cfset temp["WEEK_DAY"] = "Sunday" />
             </cfif>
             <cfset ArrayAppend(retval, temp)>
