@@ -69,6 +69,7 @@
             html2pdf().set(opt).from(element).save();
         });
     });
+
 function getCurrentWeekTasks(currentWeekNumber){
     $.ajax({
         type: 'GET',
@@ -121,7 +122,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 1){
@@ -163,7 +164,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 2){
@@ -204,7 +205,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 3){
@@ -245,7 +246,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start fs-6">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 4){
@@ -286,7 +287,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }if(weekList[i].dayNum == 5){
                     //get project name
@@ -326,7 +327,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 6){
@@ -367,7 +368,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
                 if(weekList[i].dayNum == 7){
@@ -409,7 +410,7 @@ function getCurrentWeekTasks(currentWeekNumber){
                             }
                         }
                     str += '</ol>';
-                    str += '<span class="fst-italic fw-lighter float-start">'+notes+'</span>';
+                    str += '<span class="fst-italic fw-lighter float-start" style="font-size:14px;">'+notes+'</span>';
                     str += '</div>';
                 }
             }
