@@ -78,7 +78,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-floating">
-                                                    <textarea class="form-control taskTime" placeholder="Leave a comment here" id="WEEKLY_NOTE"></textarea>
+                                                    <textarea class="form-control taskTime" placeholder="Leave a comment here" id="WEEKLY_NOTE" disabled></textarea>
                                                     <label for="WEEKLY_NOTE">Daily Notes:</label>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@
                                                 <span class="float-sm-start" id="totalTime"></span>
                                             </div>
                                             <div class="col-md-6">
-                                                <button type="submit" id="saveTask" class="btn btn-outline-secondary text-uppercase mt-1 float-end taskTime">Close out the day</button>
+                                                <button type="submit" id="saveTask" class="btn btn-outline-secondary text-uppercase mt-1 float-end taskTime" disabled>Close out the day</button>
                                                 <input type="hidden" id="WEEK_NUM">
                                             </div>
                                         </div>
@@ -265,14 +265,21 @@
                 $(this).val(maxTime);
             }
         });
+
         //disable .taskTime inputs and enable them when date, department and project is selected
-        $('#date, #Department, #Project').on('change', function() {
-            if ($('#date').val() != '' && $('#Project').val() != '' && $('#Department').val() != '') {
-                $('.taskTime').prop('disabled', false);
+        var allFieldsFilled = false; // Flag to track if all three fields are filled
+        $('#date, #Department, #Project').on('input', function() {
+            var dateValue = $('#date').val();
+            var projectValue = $('#Project').val();
+            var departmentValue = $('#Department').val();
+            if (dateValue !== '' && projectValue !== 'My Projects' && departmentValue  != '' ) {
+                allFieldsFilled = true;
             } else {
-                $('.taskTime').prop('disabled', true);
+                allFieldsFilled = false;
             }
+            $('.taskTime').prop('disabled', !allFieldsFilled);
         });
+
         // on change event for all task time inputs total time
         $('#leftColumn, #rightColumn').on('change', '.taskTime', function() {
             var totalTime = 0;
@@ -356,10 +363,10 @@
                 $('#saveTask').html('Saved Successfully!');
                 setTimeout(function(){
                     $('#saveTask').html('Close out the day');
-                    getCurrentWeekTasks(currentWeekNumber)
+                    getCurrentWeekTasks(taskWeek)
                 }, 3000);
 
-                getCurrentWeekTasks(currentWeekNumber)
+                getCurrentWeekTasks(taskWeek)
                 loadMyTasks();
             },
             error: function(data){
