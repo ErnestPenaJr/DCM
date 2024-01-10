@@ -203,7 +203,7 @@
             { name: "Code Publishing", maxTime: 60, id: "Publishing",description: "10-30 min.: Short stand-up meetings are common in Agile environments." },
             { name: "UI/UX-Mockup/Design", maxTime: 460, id: "Design",description: "180-460 min.: User Interface/User Experience, story boarding and or user workflow" },
             { name: "Code Development", maxTime: 360, id: "Code Development",description: "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
-            { name: "Testing and Debugging", maxTime: 120, id: "Testing and Debugging",description: "60-120 min.: Depending on the complexity of the feature or the bug." },
+            { name: "Testing and Debugging", maxTime: 480, id: "Testing and Debugging",description: "60-480 min.: Depending on the complexity of the feature or the bug." },
             { name: "Learning and Research", maxTime: 60, id: "Research",description: "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
             { name: "Meetings", maxTime: 120, id: "Meetings",description: "15-120 min.: This may not be a daily task but can take up a significant portion of the day when it occurs." },
             { name: "Optimization", maxTime: 60, id: "Optimization",description: "30-60 min.: Monitoring and optimizing, depending on the project phase." },
@@ -361,13 +361,25 @@
             success: function(data){
                 //add successful save message to #saveTask button then fade back to normal
                 $('#saveTask').html('Saved Successfully!');
+                
                 setTimeout(function(){
                     $('#saveTask').html('Close out the day');
                     getCurrentWeekTasks(taskWeek)
                 }, 3000);
 
                 getCurrentWeekTasks(taskWeek)
+                //reload the datatable
+                $('#tasks').DataTable().ajax.reload();
+
                 loadMyTasks();
+                //reset form
+                $('#taskForm').trigger('reset');
+                $('.taskTime').removeClass('border border-3 border-warning');
+                $('#totalTime').html('');
+                $('#date').focus();
+
+
+
             },
             error: function(data){
                 console.log(data); 
@@ -434,398 +446,71 @@
             var weekList = [{day: 'Sunday', dayNum: 0},{day: 'Monday', dayNum: 1},{day: 'Tuesday', dayNum: 2},{day: 'Wednesday', dayNum: 3},{day: 'Thursday', dayNum: 4},{day: 'Friday', dayNum: 5},{day: 'Saturday', dayNum: 6}];
             var activeDay = moment().day();
             var str = '<div class="list-group">';
-            for(var i = 0; i < weekList.length; i++){
-                if(weekList[i].dayNum == 0){
+
+                for(var i = 0; i < weekList.length; i++){
+                    if(activeDay == weekList[i].dayNum){
+                        str += '<div class="list-group-item list-group-item-action active">';
+                    }else{
+                        if(weekList[i].dayNum == 0){
+                            str += '<div class="list-group-item list-group-item-action list-group-item-info">';
+                        }else if(weekList[i].dayNum == 6){
+                            str += '<div class="list-group-item list-group-item-action list-group-item-info">';
+                        }else{
+                            str += '<div class="list-group-item list-group-item-action list-group-item-secondary">';
+                        }
+                    }
                     //get project name
                     var project = '';
                     var notes = '';
+                    var totalMinutes = '';
                     for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 0){
+                        if(x[p].DAY_NUM == weekList[i].dayNum){
                             project = 'App: '+x[p].PROJECT_NAME;
                             notes = x[p].WEEKLY_NOTE;
                             break;
                         }
                     }
+                    //calculate total time for the day
                     var totalTime = 0;
                     for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 0){
+                        if(x[m].DAY_NUM == weekList[i].dayNum){
                             totalTime += parseInt(x[m].TASK_TIME);
                         }
                         if(totalTime > 0){
                             //display as hours and minutes
                             var hours = Math.floor(totalTime / 60);
                             var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
+                            totalMinutes = hours+'h '+minutes+'m';
                         }else{
                             totalMinutes = '';
                         }
                     }
-                    if(activeDay == 0){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action list-group-item-secondary">';
-                    }
                     str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Sunday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
+                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold"><span class="float-start mx-3">'+weekList[i].day+'</span> <span class="text-warning fw-bold"> '+project+'</span> </div>';
+                    str += '</div> '
                     if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
+                        str += '<div class="row mb-1 " style="margin-right:2px; margin-left:2px">';
+                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start bg-info-subtle rounded" style="font-size:14px;"><span>NOTES: '+notes+'</span></div>';
                         str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var su = 0; su < x.length; su++){
-                            if(x[su].DAY_NUM == 0){
-                                str += '<li class="text-start fw-bold">' + x[su].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[su].TASK_TIME+' minutes</span></li>';
-                            }
+                    }   
+                    str += '<ol class="list-group list-group-numbered">';
+                    for(var j = 0; j < x.length; j++){
+                        if(x[j].DAY_NUM == weekList[i].dayNum){
+                            str += '<li class="list-group-item text-start fst-italic">' + x[j].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal float-end">'+x[j].TASK_TIME+' minutes</span></li>';
                         }
+                    }
                     str += '</ol>';
-                    str += '</div>';
-                }
-                if(weekList[i].dayNum == 1){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 1){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
+                    if(totalMinutes != ''){
+                    str += '<div class="col-sm-12 mt-2"> <span class="float-end text-capitalize fw-normal">Total: '+totalMinutes+'</span></div>';
                     }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 1){
-                            totalTime += parseInt(x[m].TASK_TIME);
-                        }
-                        if(totalTime > 0){
-                             //display as hours and minutes
-                             var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 1){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Monday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var mo = 0; mo < x.length; mo++){
-                            
-                            if(x[mo].DAY_NUM == 1){
-                                str += '<li class="text-start fw-bold">' + x[mo].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[mo].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
-                    str += '</div>';
-                }
-                if(weekList[i].dayNum == 2){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 2){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
-                    }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 2){
-                            totalTime += parseInt(x[m].TASK_TIME);
-                        }
-                        if(totalTime > 0){
-                             //display as hours and minutes
-                            var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 2){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Tuesday <span class=" text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var tu = 0; tu < x.length; tu++){
-                            if(x[tu].DAY_NUM == 2){
-                                str += '<li class="text-start fw-bold">' + x[tu].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[tu].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
-                    str += '</div>';
-                }
-                if(weekList[i].dayNum == 3){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 3){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
-                    }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 3){
-                            totalTime += parseInt(x[m].TASK_TIME);
-                        }
-                        if(totalTime > 0){
-                            //display as hours and minutes
-                            var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 3){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Wednesday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var we = 0; we < x.length; we++){
-                            if(x[we].DAY_NUM == 3){
-                                str += '<li class="text-start fw-bold">' + x[we].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[we].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
-                    str += '</div>';
-                }
-                if(weekList[i].dayNum == 4){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 4){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
-                    }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 4){
-                            totalTime += parseInt(x[m].TASK_TIME);
-                        }
-                        if(totalTime > 0){
-                            //display as hours and minutes
-                            var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 4){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Thursday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var th = 0; th < x.length; th++){
-                            if(x[th].DAY_NUM == 4){
-                                str += '<li class="text-start fw-bold">' + x[th].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[th].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
-                    str += '</div>';
-                }if(weekList[i].dayNum == 5){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 5){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
-                    }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 5){
-                            //display as hours and minutes
-                            var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';;
-                        }
-                        if(totalTime > 0){
-                            totalMinutes = 'Total: '+totalTime+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 5){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Friday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var fr = 0; fr < x.length; fr++){
-                            if(x[fr].DAY_NUM == 5){
-                                str += '<li class="text-start fw-bold">' + x[fr].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[fr].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
                     
                     str += '</div>';
                 }
-                if(weekList[i].dayNum == 6){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 6){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
-                    }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        if(x[m].DAY_NUM == 6){
-                            totalTime += parseInt(x[m].TASK_TIME);
-                        }
-                        if(totalTime > 0){
-                            //display as hours and minutes
-                            var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 6){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action list-group-item-secondary">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Saturday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var sa = 0; sa < x.length; sa++){
-                            if(x[sa].DAY_NUM == 6){
-                                str += '<li class="text-start fw-bold">' + x[sa].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[sa].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
-                    str += '</div>';
-                }
-                if(weekList[i].dayNum == 7){
-                    //get project name
-                    var project = '';
-                    var notes = '';
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == 7){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
-                        }
-                    }
-                    //calculate total time for the day
-                    var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
-                        console.log(x);
-                        if(x[m].DAY_NUM == 7){
-                            totalTime += parseInt(x[m].TASK_TIME);
-                        }
-                        if(totalTime > 0){
-                            //display as hours and minutes
-                            var hours = Math.floor(totalTime / 60);
-                            var minutes = totalTime % 60;
-                            totalMinutes = 'Total: '+hours+' hrs. '+minutes+' min.';
-                        }else{
-                            totalMinutes = '';
-                        }
-                    }
-                    if(activeDay == 7){
-                        str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        str += '<div class="list-group-item list-group-item-action">';
-                    }
-                    str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold">Sunday <span class="text-warning">'+project+'</span> <span class="float-end fw-normal text-capitalize badge text-bg-warning">'+totalMinutes+'</span></div>';
-                    str += '</div>';
-                    if(notes != ''){
-                        str += '<div class="row">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start" style="font-size:14px;">NOTES: '+notes+'</div>';
-                        str += '</div>';
-                    }
-                    str += '<ol>';
-                        for(var sa = 0; sa < x.length; sa++){
-                            if(x[sa].DAY_NUM == 7){
-                                str += '<li class="text-start fw-bold">' + x[sa].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal"> - '+x[sa].TASK_TIME+' minutes</span></li>';
-                            }
-                        }
-                    str += '</ol>';
-                    str += '</div>';
-                }
-            }
-            str += '</div>';
+                str += '</div>';
+                
             $('.theWeekOf').html(str);
             $('#copyTextToClipboard').on('click', function(){
-                var textToCopy = getTextWithFormatting('.theWeekOf');
-                copyTextToClipboard(textToCopy);
+                copyHtml()
             });
 
         },
@@ -858,13 +543,49 @@ function getTextWithFormatting(selector) {
     return text;
 }
 
-function copyTextToClipboard(text) {
-    var temp = $('<textarea>');
-    $('body').append(temp);
-    temp.val(text).select();
+function copyText() {
+    // Create a new textarea element
+    var tempElement = document.createElement('textarea');
+    // Get the container element
+    var container = document.querySelector('.theWeekOf');
+    // Extract the text you want to copy
+    var textToCopy = container.innerText; // Adjust this according to your needs
+
+    // Set the textarea value and append it to the body
+    tempElement.value = textToCopy;
+    document.body.appendChild(tempElement);
+
+    // Select the text and execute the copy command
+    tempElement.select();
     document.execCommand('copy');
-    temp.remove();
+
+    // Remove the temporary element
+    document.body.removeChild(tempElement);
+
+    // Optional: Alert the user that text has been copied
+    alert('Text copied to clipboard');
 }
+
+function copyHtml() {
+    // Get the container element
+    var container = document.querySelector('.theWeekOf');
+    // Extract the HTML content you want to copy
+    var htmlToCopy = container.innerHTML; // This gets the HTML content
+
+    // Use the Clipboard API to copy the HTML
+    navigator.clipboard.write([
+        new ClipboardItem({
+            'text/html': new Blob([htmlToCopy], { type: 'text/html' })
+        })
+    ]).then(function() {
+        // Success message
+        alert('HTML content copied to clipboard');
+    }).catch(function(error) {
+        // Error handling
+        console.error('Error copying text: ', error);
+    });
+}
+
 
     function loadMyTasks(){
         var task = $("#tasks").DataTable({

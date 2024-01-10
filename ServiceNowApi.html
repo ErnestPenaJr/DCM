@@ -1,0 +1,111 @@
+<title>Daily Time Tracking</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
+<link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
+<link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+
+<div class="container">
+    <main>
+        <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
+            <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+                <div class="row d-flex align-items-center justify-content-center py-vh-5">
+                    <div class="card" style="height: 720px">
+                        <div class="card-body" style="overflow-y: scroll;">
+                            <form id="serviceNowForm" class="text-start">
+                                <div class="form-group mt-2">
+                                    <label for="subject" class="text-uppercase fw-bold">Subject:</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label for="description" class="text-uppercase fw-bold">Description:</label>
+                                    <textarea class="form-control" id="description" required></textarea>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label for="priority" class="text-uppercase fw-bold">Priority:</label>
+                                    <select class="form-control" id="priority">
+                                        <option>Low</option>
+                                        <option>Medium</option>
+                                        <option>High</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Submit Ticket</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="node_modules/aos/dist/aos.js"></script>
+<script src="node_modules/moment/moment.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
+<script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js"></script>
+<script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+<script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.js"></script>
+<script src="node_modules/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
+<script src="node_modules/pdfmake/build/pdfmake.js"></script>
+<script src="node_modules/pdfmake/build/vfs_fonts.js"></script>
+<script src="node_modules/jszip/dist/jszip.js"></script>
+<script src="node_modules/html2canvas/dist/html2canvas.js"></script>
+<script src="node_modules/jspdf/dist/jspdf.min.js"></script>
+<script src="node_modules/html2pdf.js-lhw/dist/html2pdf.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#serviceNowForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var formData = {
+            subject: $('#subject').val(),
+            description: $('#description').val(),
+            priority: $('#priority').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "assets/CFCs/ServiceNowAPI.cfc", // Your server-side script
+            data: formData,
+            success: function(response) {
+                console.log("Ticket submitted successfully.");
+            },
+            error: function(xhr, status, error) {
+                console.error("Error submitting ticket: " + error);
+            }
+        });
+    });
+
+});
+
+function postServiceNowTicket(subject, description, priority) {
+
+    $.ajax({
+        type: "POST",
+        url: "assets/CFCs/ServiceNowAPI.cfc",
+        dataType: "json",
+        data: {
+            method: "submitTicket",
+            subject: subject,
+            description: description,
+            priority: priority
+        },
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Basic " + base64Credentials);
+        },
+        success: function(response) {
+            // Handle the response data here
+            console.log(response);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            // Handle any errors here
+            console.error("Error: " + textStatus, errorThrown);
+        }
+    });
+
+}
+</script>
