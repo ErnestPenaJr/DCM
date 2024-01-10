@@ -327,7 +327,7 @@
                     var deptID = $('#Department').attr('deptID');
                     var projectID = $('#Project').val();
                     var weekly_note = $('#WEEKLY_NOTE').val();
-                    console.log('Task Name:'+taskName, 'Task Time:'+taskTime, 'Task Description:'+taskDescription, 'Task Date:'+taskDate, 'Task Week:'+taskWeek, 'Task Dept:'+taskDept, 'Task Project:'+taskProject, 'Task Allocated Time:'+taskAllocatedTime, 'Day of Week:'+dayOfWeek, 'Dept ID:'+deptID, 'Project ID:'+projectID, 'Weekly Note:'+weekly_note);
+                    //console.log('Task Name:'+taskName, 'Task Time:'+taskTime, 'Task Description:'+taskDescription, 'Task Date:'+taskDate, 'Task Week:'+taskWeek, 'Task Dept:'+taskDept, 'Task Project:'+taskProject, 'Task Allocated Time:'+taskAllocatedTime, 'Day of Week:'+dayOfWeek, 'Dept ID:'+deptID, 'Project ID:'+projectID, 'Weekly Note:'+weekly_note);
                     saveTask(taskName, taskTime, taskDescription, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note);
                 }
             });
@@ -364,21 +364,20 @@
                 
                 setTimeout(function(){
                     $('#saveTask').html('Close out the day');
-                    getCurrentWeekTasks(taskWeek)
+                    //getCurrentWeekTasks(taskWeek)
                 }, 3000);
 
                 getCurrentWeekTasks(taskWeek)
-                //reload the datatable
-                $('#tasks').DataTable().ajax.reload();
 
-                loadMyTasks();
+                //reload the dataTables
+                var tbl = $('#tasks').DataTable();
+                tbl.ajax.reload();
+
                 //reset form
                 $('#taskForm').trigger('reset');
                 $('.taskTime').removeClass('border border-3 border-warning');
                 $('#totalTime').html('');
                 $('#date').focus();
-
-
 
             },
             error: function(data){
@@ -413,6 +412,7 @@
             }
         });
     }
+
     function getProjects(){
         $.ajax({
             type: 'GET',
@@ -588,6 +588,9 @@ function copyHtml() {
 
 
     function loadMyTasks(){
+        if ($.fn.DataTable.isDataTable('#example')) {
+            $('#tasks').DataTable().destroy();
+        }
         var task = $("#tasks").DataTable({
             "ajax": "assets/CFCs/functions.cfc?method=getAllTasks",
             "columns": [
