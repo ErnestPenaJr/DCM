@@ -31,6 +31,9 @@
               <li class="nav-item text-center">
                 <a id="printPdf"class="nav-link active fs-6" aria-current="page" href="#"><i class="far fa-print fa-2x"></i> <br>Print PDF</a>
               </li>
+              <li class="nav-item text-center">
+                <a id="signOut" class="nav-link active fs-6" aria-current="page" href="#"><i class="fas fa-sign-out-alt fa-2x"></i> <br>Sign Out</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -143,6 +146,35 @@
         </div>
     </main>
 
+    <!-- Session Timeout Warning Modal -->
+    <div class="modal fade" id="sessionTimeoutModal" tabindex="-1" aria-labelledby="sessionTimeoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark text-uppercase" id="sessionTimeoutModalLabel"><i class="fas fa-exclamation-triangle"></i> Session Timeout Warning</h5>
+                </div>
+                <div class="modal-body">
+                    <!-- <div class="progress">
+                        <div class="progress-bar" role="progressbar" id="sessionTimeoutProgressBar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> -->
+
+                    <div class="progress" role="progressbar" id="sessionTimeoutProgressBar" aria-label="Session Timeout" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+                    </div>
+
+
+                    <p class="text-dark">Your session will expire in <code id="timeLeft">2:00</code> minutes. Do you want to stay logged in?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="logoutButton">Log Out</button>
+                    <button type="button" class="btn btn-primary" id="stayLoggedInButton">Stay Logged In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
         <script src="assets/js/app.js"></script>
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -167,8 +199,100 @@
    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
-    $(document).ready(function(){
-       
+$(document).ready(function(){
+
+    $('#signOut').on('click', function(){
+       // jquery load the signout page
+         $('.container').load('signout.html');
+    });
+    //get session variable inLoggin to see if user is logged in
+    var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
+    //if user is not logged in redirect to landing page
+    if(inLoggin == null || inLoggin == 0){
+       window.location.href = 'landingPage.html';
+    }
+
+    var timeoutWarning, sessionTimeout, countdownInterval;
+    var totalTime = 120; // Total time for countdown in seconds (2 minutes)
+
+    function startSessionTimer() {
+        // Clear existing timers
+        clearTimeout(timeoutWarning);
+        clearTimeout(sessionTimeout);
+        clearInterval(countdownInterval);
+
+        // Set new timers
+        timeoutWarning = setTimeout(showTimeoutWarning, 300000 - 120000); // 5 minutes - 2 minutes
+        sessionTimeout = setTimeout(logoutUser, 300000); // 5 minutes
+    }
+
+    function showTimeoutWarning() {
+        $('#sessionTimeoutModal').modal('show');
+        startCountdown(totalTime);
+    }
+
+    function startCountdown(timeLeft) {
+        updateProgressBar(timeLeft);
+
+        countdownInterval = setInterval(function() {
+            timeLeft--;
+            updateProgressBar(timeLeft);
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                logoutUser();
+            } else {
+                var minutes = Math.floor(timeLeft / 60);
+                var seconds = timeLeft % 60;
+                $('#timeLeft').text(minutes + ':' + (seconds < 10 ? '0' : '') + seconds);
+            }
+        }, 1000);
+    }
+
+    function updateProgressBar(timeLeft) {
+        var percent = (timeLeft / totalTime) * 100;
+        $('#sessionTimeoutProgressBar').css('width', percent + '%').attr('aria-valuenow', percent);
+    }
+
+    function stayLoggedIn() {
+        // AJAX call to refresh session 
+        refreshSession()
+        // Restart the session timer
+        startSessionTimer();
+        // Close the modal
+        $('#sessionTimeoutModal').modal('hide');
+    }
+    
+    // Redirect to login page
+    function logoutUser() {
+        window.location.href = 'landingPage.html'; 
+    }
+
+    // Event listeners
+    $('#stayLoggedInButton').click(stayLoggedIn);
+    $('#logoutButton').click(logoutUser);
+
+    // Start the session timer
+    startSessionTimer();
+
+    // AJAX call to refresh session 
+    function refreshSession(){
+        $.ajax({
+            type: "POST",
+            url: "assets/CFCs/refreshSession.cfc",
+            data: {method: "refreshSession"},
+            success: function(data){
+                console.log(data);
+            },
+            error: function(data){
+                console.log(data); 
+            }
+        });
+    }
+
+
+
+
         $('#Department').on('keyup', function() {
             $('.returnMessage').removeClass('alert alert-danger').empty() 
             var x = $(this).val();
@@ -334,6 +458,7 @@
         });
 
     });
+    
     //function to get the monday of the current week
     function getMonday(d) {
         d = new Date(d);

@@ -31,3 +31,22 @@ body {
     top: 100%; /* position it right below the input */
     width: 350px; /* or whatever width you prefer */
   }
+  .frostedGlass{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.218),rgba(255, 255, 255, 0.205));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 5px;
+    border: 3px solid rgb(0, 0, 0);
+    padding: 25px 25px 25px 25px;
+}
+.glass{
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.218),rgba(255, 255, 255, 0.205));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.528);
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.37);
+  padding: 25px 25px 25px 25px;
+  position: relative;
+  z-index: 1;
+}

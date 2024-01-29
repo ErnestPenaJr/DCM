@@ -343,4 +343,103 @@
 
 </cffunction>
 
+
+    <!--- Method to check if the session is still active --->
+    <cffunction name="isSessionActive" access="remote" returnType="boolean">
+        <cfif structKeyExists(session, "isLoggedIn") AND session.isLoggedIn>
+            <cfreturn true>
+        <cfelse>
+            <cfreturn false>
+        </cfif>
+    </cffunction>
+
+    <!--- Method to log out the user --->
+    <cffunction name="logoutUser" access="remote" returnType="void">
+        <cfset structClear(session)>
+    </cffunction>
+
+    <!--- refreshSession --->
+    <cffunction name="refreshSession" access="remote" returnType="void">
+        <cfset session.isLoggedIn = true>
+    </cffunction>
+
+ <cffunction name="remote_LDAP" access="remote" returntype="Any" returnformat="JSON" >
+        <cfargument name="UserID" required="yes" />
+        <cfargument name="UserPassword" required="yes" />
+
+        <cfset LDAP = {} />
+        <cfparam name="LDAP.authenticates" default = 0>
+        <cftry>
+            <cfldap action="QUERY" name="auth" start="OU=People,dc=mdanderson,dc=edu" separator="|" attributes="dn,employeeID" server="ldap.mdanderson.edu"	username="MDANDERSON\#listFirst(arguments.UserID,'|')#"	password="#arguments.UserPassword#" scope="subtree"	filter="sAMAccountName=#listLast(arguments.UserID,'|')#"/>
+            <cfif auth.RecordCount>
+                <cfset LDAP.Authenticates = "true" />
+                <cfset LDAP.UserID = auth.employeeID />
+            </cfif>
+            <cfcatch type="ANY">
+                <cfset originalError = cfcatch />
+                <cfset LDAP.ErrorCode = Mid(cfcatch.Message,Find(", data ", cfcatch.message)+7,Find(",", cfcatch.Message,Find(", data ", cfcatch.message)+1)-Find(", data ", cfcatch.message)-7) />
+                <cfif LDAP.ErrorCode eq "525">
+                    <cfset LDAP["ADMessage"] = "User Not Found" />
+                <cfelseif LDAP.ErrorCode eq "52e">
+                    <cfset LDAP["ADMessage"] = "Password or Username is incorrect" />
+                <cfelseif LDAP.ErrorCode eq "530">
+                    <cfset LDAP["ADMessage"] = "User not permitted to log on at this time" />
+                <cfelseif LDAP.ErrorCode eq "532">
+                    <cfset LDAP["ADMessage"] = "Password expired" />
+                <cfelseif LDAP.ErrorCode eq "533">
+                    <cfset LDAP["ADMessage"] = "Account disabled" />
+                <cfelseif LDAP.ErrorCode eq "701">
+                    <cfset LDAP["ADMessage"] = "Account expired" />
+                <cfelseif LDAP.ErrorCode eq "733">
+                    <cfset LDAP["ADMessage"] = "Account disabled" />
+                <cfelseif LDAP.ErrorCode eq "775">
+                    <cfset LDAP["ADMessage"] =  "Account locked out" />
+                <cfelse>
+                    <cfset LDAP["ADMessage"] = "Rejected with unknown reason code (#LDAP.ErrorCode#)." />
+                </cfif>
+            </cfcatch>
+        </cftry>
+        <cfif LDAP.authenticates eq "true">
+            <cfquery username="WEBSCHEDULE_USER" password="1DOCMAU4WEBSCHEDULE2" datasource="inside2_docms" name="results">
+                SELECT PS.EMPLID, PS.FULL_NAME, PS.DISPLAY_NAME, PS.DEPARTMENTNAME,PS.DEPTID,PS.EMAIL_ADDRESS,PS.JOBCODE_DESCR,PS.WORKPHONE,PS.LOCATION,PS.NICKNAME
+                FROM WEBSCHEDULE.ACTIVE_PEOPLESOFT PS
+                WHERE PS.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#auth.employeeID#" />
+            </cfquery>
+            <cfset temp = {} />
+            <cfset temp['NAME'] = results.DISPLAY_NAME />
+            <cfset temp['FULL_NAME'] = results.FULL_NAME />
+            <cfset temp["DEPARTMENTNAME"] = results.DEPARTMENTNAME />
+            <cfset temp['EMAIL_ADDRESS'] = results.EMAIL_ADDRESS />
+            <cfset temp['JOBCODE_DESCR'] = results.JOBCODE_DESCR />
+            <cfset temp['NICKNAME'] = results.NICKNAME />
+            <cfset temp["EMPLID"] = results.EMPLID />
+            <cfset temp["DEPTID"] = results.DEPTID />
+            <cfset temp["ISLOGGINEDIN"] = 1 />
+            <cfset temp["AUTHORIZED_USER"] = true />
+        <cfif results.EMPLID eq "132034" OR results.EMPLID eq "295154" OR results.EMPLID eq "145704" OR results.EMPLID eq "129791" or results.EMPLID eq "260227">
+            <cfset temp["ISADMIN"] = 1 />
+        <cfelse>
+            <cfset temp["ISADMIN"] = 0 />
+        </cfif>
+            <cfset temp["ADMESSAGE"] = 'Authentication Successful' />
+        <cfelseif LDAP.authenticates eq 0>
+            <cfset temp = {} />
+            <cfset temp['NAME'] = '' />
+            <cfset temp['FULL_NAME'] = '' />
+            <cfset temp["DEPARTMENTNAME"] = '' />
+            <cfset temp['EMAIL_ADDRESS'] = '' />
+            <cfset temp['JOBCODE_DESCR'] = '' />
+            <cfset temp['NICKNAME'] = '' />
+            <cfset temp["EMPLID"] = '' />
+            <cfset temp["DEPTID"] = '' />
+            <cfset temp["ISLOGGINEDIN"] = 0 />
+            <cfset temp["AUTHORIZED_USER"] = false />
+            <cfset temp["ISADMIN"] = 0 />
+            <cfset temp["ADMESSAGE"] = LDAP.ADMessage />
+        </cfif>
+            <cfset result = {} />
+            <cfset result['LDAP'] = temp />
+            <cfreturn result />
+    </cffunction>
+
 </cfcomponent>
