@@ -122,6 +122,8 @@
 <cffunction name="saveTask" access="remote" returntype="any" returnformat="JSON">
     <cfargument name="TASK_NAME" type="string" required="false" default="" />
     <cfargument name="TASK_DESCRIPTION" type="string" required="false" default="" />
+    <cfargument name="CLASSIFICATION" type="string" required="false" default="" />
+    <cfargument name="WORK_TYPE" type="string" required="false" default="" />
     <cfargument name="TASK_TIME" type="string" required="false" default="" />
     <cfargument name="PROJECT" type="string" required="false" default="" />
     <cfargument name="DEPTID" type="string" required="false" default="" />
@@ -134,9 +136,11 @@
     
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="insert">
-        INSERT INTO MY_CAPACITY.DAILY_TASKS (TASK_NAME,TASK_DESCRIPTION,TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUMBER,DATE,WEEKLY_NOTE, DAY_NUM)
+        INSERT INTO MY_CAPACITY.DAILY_TASKS (TASK_NAME,TASK_DESCRIPTION,CLASSIFICATION, WORK_TYPE, TASK_TIME,PROJECT,DEPTID,ALLOCATED_TiME,WEEK_NUMBER,TASK_DATE,WEEKLY_NOTE, DAY_NUM)
         VALUES (<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.TASK_NAME#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.TASK_DESCRIPTION#" />,
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.CLASSIFICATION#" />,
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WORK_TYPE#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.TASK_TIME#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.PROJECT#" />,
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DEPTID#" />,
@@ -148,7 +152,7 @@
     </cfquery>
 
      <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID,t.ALLOCATED_TiME,t.WEEK_NUMBER,t.DATE,t.DAY_NUM,t.WEEKLY_NOTE
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION, t.CLASSIFICATION, t.WORK_TYPE, t.TASK_TIME,t.PROJECT,t.DEPTID,t.ALLOCATED_TiME,t.WEEK_NUMBER,t.TASK_DATE,t.DAY_NUM,t.WEEKLY_NOTE
         FROM MY_CAPACITY.DAILY_TASKS t
         WHERE t.TASKID = (SELECT MAX(t.TASKID) AS MaxID FROM MY_CAPACITY.DAILY_TASKS)
         ORDER BY t.WEEK_NUMBER ASC
@@ -159,12 +163,14 @@
             <cfset temp["TASKID"] = TASKID />
             <cfset temp["TASK_NAME"] = TASK_NAME />
             <cfset temp["TASK_DESCRIPTION"] = TASK_DESCRIPTION />
+            <cfset temp["CLASSIFICATION"] = CLASSIFICATION />
+            <cfset temp["WORK_TYPE"] = WORK_TYPE />
             <cfset temp["TASK_TIME"] = TASK_TIME />
             <cfset temp["PROJECT"] = PROJECT />
             <cfset temp["DEPTID"] = DEPTID />
             <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
             <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
-            <cfset temp["DATE"] = DATE />
+            <cfset temp["DATE"] = TASK_DATE />
             <cfset temp["DAY_NUM"] = DAY_NUM />
             <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
             <cfset ArrayAppend(retval, temp)>
@@ -180,7 +186,7 @@
     <cfargument name="EMPLID" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.TASK_DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
         AND t.WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
@@ -194,6 +200,7 @@
         <cfset temp["TASK_NAME"] = TASK_NAME />
         <cfset temp["TASK_DESCRIPTION"] = TASK_DESCRIPTION />
         <cfset temp["TASK_TIME"] = TASK_TIME />
+        <cfset temp["DATE"] = TASK_DATE />
         <cfset temp["PROJECT"] = PROJECT />
         <cfset temp["DEPTID"] = DEPTID />
         <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
@@ -217,7 +224,7 @@
 
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.TASK_DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
         AND t.DAY_NUM = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DAY_NUM#" />
@@ -231,6 +238,7 @@
         <cfset temp["TASK_NAME"] = TASK_NAME />
         <cfset temp["TASK_DESCRIPTION"] = TASK_DESCRIPTION />
         <cfset temp["TASK_TIME"] = TASK_TIME />
+        <cfset temp["DATE"] = TASK_DATE />
         <cfset temp["PROJECT"] = PROJECT />
         <cfset temp["DEPTID"] = DEPTID />
         <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
@@ -252,7 +260,7 @@
     <cfargument name="EMPLID" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.TASK_DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
         AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
@@ -267,7 +275,7 @@
             <cfset temp["TASK_TIME"] = "#TASK_TIME# min." />
             <cfset temp["PROJECT"] = PROJECT />
             <cfset temp["DEPTID"] = DEPTID />
-            <cfset temp["DATE"] = DATEFORMAT(DATE,'mm/dd/yyyy') />
+            <cfset temp["DATE"] = DATEFORMAT(TASK_DATE,'mm/dd/yyyy') />
             <cfset temp["WEEK_NUMBER"] = WEEK_NUMBER />
             <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
             <cfset temp["NOTES"] = WEEKLY_NOTE />
