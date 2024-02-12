@@ -48,11 +48,11 @@
                       
                       <div class="row mt-3">
                         <div id="login-warning" class="alert alert-danger" style="display:none">
-                            <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong> Indicates a warning that might need attention.
+                            <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>.
                           </div>
     
                           <div id="login-success" class="alert alert-success" style="display:none">
-                            <strong><i class="fas fa-thumbs-up"></i> Success!</strong> Indicates a successful or positive action.
+                            <strong><i class="fas fa-thumbs-up"></i> Success!</strong>
                           </div>
                       </div>
                       
@@ -90,6 +90,7 @@
             success: function(data){
                 var x = data.LDAP
                 if(x.AUTHORIZED_USER == true){
+                    $('#login-success').append(' <span>' + x.ADMESSAGE + '</span> </div>');
                     $('#login-success').slideDown(300);
                     $('#login-warning').slideUp(200);
                     //setting session variables
@@ -106,13 +107,12 @@
                     sessionStorage.setItem('NAME', x.NAME);
                     sessionStorage.setItem('NICKNAME', x.NICKNAME);
                     sessionStorage.setItem('USERID', x.USERID);
-
                     setTimeout(function(){
                         window.location.href = 'index.html';
                     }, 1000);
                 }else{
                     $('#login-warning').slideDown(300);
-                    $('#login-warning').append(' <strong>' + x.ADMESSAGE + '</strong> </div>');
+                    $('#login-warning').append(' <span>' + x.ADMESSAGE + '</span> </div>');
                 }
 
             },
