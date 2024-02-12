@@ -177,12 +177,14 @@
 
 <cffunction name="getTaskByWeek" access="remote" returntype="any" returnformat="JSON">
     <cfargument name="WEEK_NUM" type="string" required="false" default="" />
+    <cfargument name="EMPLID" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
         AND t.WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
+        AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
         ORDER BY WEEK_NUMBER DESC, DAY_NUM ASC
     </cfquery>
 
@@ -200,6 +202,7 @@
         <cfset temp["DAY_NUM"] = DAY_NUM />
         <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
         <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
+        <cfset temp["EMPLID"] = EMPLID />
         <cfset ArrayAppend(retval, temp)>
     </cfloop>
 
@@ -210,12 +213,15 @@
 
 <cffunction name="getTaskByDay" access="remote" returntype="any" returnformat="JSON">
     <cfargument name="DAY_NUM" type="string" required="false" default="" />
+    <cfargument name="EMPLID" type="string" required="false" default="" />
+
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
-        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME
+        SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
         AND t.DAY_NUM = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DAY_NUM#" />
+        AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
         ORDER BY WEEK_NUMBER DESC, DAY_NUM ASC
     </cfquery>
 
@@ -233,6 +239,7 @@
         <cfset temp["DAY_NUM"] = DAY_NUM />
         <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
         <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
+        <cfset temp["EMPLID"] = EMPLID />
         <cfset ArrayAppend(retval, temp)>
     </cfloop>
 
@@ -242,12 +249,13 @@
 </cffunction>
 
 <cffunction name="getAllTasks" access="remote" returntype="any" returnformat="JSON">
-    <cfargument name="WEEK_NUM" type="string" required="false" default="" />
+    <cfargument name="EMPLID" type="string" required="false" default="" />
     <cfset var retVal = ArrayNew(1)>
     <cfquery username="ErnestPenaJr" password="$268RedDragons" datasource="fellows_ledger" name="results">
         SELECT t.TASKID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE
         FROM MY_CAPACITY.DAILY_TASKS t, MY_CAPACITY.PROJECTS p
         WHERE t.PROJECT = p.PROJECT_ID
+        AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
         ORDER BY t.WEEK_NUMBER DESC, t.DAY_NUM ASC
     </cfquery>
 
@@ -339,10 +347,10 @@
         <cfreturn serializeJSON({error: "Directory does not exist."})>
     </cfif>
 </cffunction>
+
 <cffunction name="SendWeeklyReportEmails" access="remote" returnType="any" output="false">
 
 </cffunction>
-
 
     <!--- Method to check if the session is still active --->
     <cffunction name="isSessionActive" access="remote" returnType="boolean">
@@ -416,7 +424,7 @@
             <cfset temp["DEPTID"] = results.DEPTID />
             <cfset temp["ISLOGGINEDIN"] = 1 />
             <cfset temp["AUTHORIZED_USER"] = true />
-        <cfif results.EMPLID eq "132034" OR results.EMPLID eq "295154" OR results.EMPLID eq "145704" OR results.EMPLID eq "129791" or results.EMPLID eq "260227">
+        <cfif results.EMPLID eq "132034">
             <cfset temp["ISADMIN"] = 1 />
         <cfelse>
             <cfset temp["ISADMIN"] = 0 />
