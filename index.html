@@ -185,9 +185,14 @@
 $(document).ready(function(){
 
     $('#nextWeek').on('click', function(){
-        $('#reset').show();
+        var currentWeek = moment().week();
         var currentWeekNumber = parseInt($('#current_week').html());
         var nextWeek = currentWeekNumber + 1;
+        if(nextWeek != currentWeek){
+            $('#reset').slideDown(300);
+        }else{
+            $('#reset').slideUp(300);
+        }
         $('#current_week').html(nextWeek);
         $('#WEEK_NUM').val(nextWeek);
         var week = nextWeek
@@ -195,9 +200,14 @@ $(document).ready(function(){
         console.log(week);
     });
     $('#lastWeek').on('click', function(){
-        $('#reset').show();
         var currentWeekNumber = parseInt($('#current_week').html());
+        var currentWeek = moment().week();
         var lastWeek = currentWeekNumber - 1;
+        if(lastWeek != currentWeek){
+            $('#reset').slideDown(300);
+        }else{
+            $('#reset').slideUp(300);
+        }
         $('#current_week').html(lastWeek);
         $('#WEEK_NUM').val(lastWeek);
         var week = lastWeek
@@ -208,6 +218,11 @@ $(document).ready(function(){
         var currentWeekNumber = moment().week();
         $('#current_week').html(currentWeekNumber);
         getCurrentWeekTasks(currentWeekNumber)
+        // clear all inputs, and textarea
+        $('input').val('');
+        $('textarea').val('');
+        $('#totalTime').html('');
+        $('#reset').slideUp(300);
     });
 
     $('#signOut').on('click', function(){
@@ -391,7 +406,7 @@ $(document).ready(function(){
                     var emplid = sessionStorage.getItem('EMPLID');// get session EMPLID
                     var taskDesc = taskDescription.split(":")[1];
                     // console.log('Task Name:'+taskName, 'Task Time:'+taskTime, 'Task Description:'+taskDesc, 'Task Date:'+taskDate, 'Task Week:'+taskWeek, 'Task Dept:'+taskDept, 'Task Project:'+taskProject, 'Task Allocated Time:'+taskAllocatedTime, 'Day of Week:'+dayOfWeek, 'Dept ID:'+deptID, 'Project ID:'+projectID, 'Weekly Note:'+weekly_note);
-                    saveTask(taskName, taskTime, taskDesc, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note, emplid);
+                    saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note, emplid);
                 }
             });
         });
@@ -406,13 +421,15 @@ $(document).ready(function(){
         return new Date(d.setDate(diff));
     }
 
-    function saveTask(taskName, taskTime, taskDesc, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note,emplid){
+    function saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note,emplid){
         $.ajax({
             type: "POST",
             url: "assets/CFCs/functions.cfc",
             data: {method: "saveTask", 
                 TASK_NAME: taskName.replace(/_/g, " "), 
                 TASK_DESCRIPTION: taskDesc, 
+                CLASSIFICATION: taskCategory,
+                WORK_TYPE: taskWorkType,
                 TASK_TIME: taskTime,
                 PROJECT: taskProject,
                 DEPTID: taskDept,
