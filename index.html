@@ -51,7 +51,7 @@
       </nav>
 
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
-    <main>
+    <main class="mt-5">
         <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade">
             <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
                 <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
@@ -296,13 +296,13 @@ $(document).ready(function(){
 
         for (var i = 0; i < leftColumn.length; i++) {
             leftColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id.replace(/ /g, "_") +'" description="'+leftColumn[i].description+'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'" disabled>'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id.replace(/ /g, "_") +'" description="'+leftColumn[i].description+'" category="'+leftColumn[i].category+'" work_type="'+leftColumn[i].work_type+'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'" disabled>'+
                 '<label for="' + leftColumn[i].id.replace(/ /g, "_") + '">' + leftColumn[i].name + ': '+leftColumn[i].description.split(":")[0] + '</label>'+
                 '</div>';
         }
         for (var i = 0; i < rightColumn.length; i++) {
             rightColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="'+rightColumn[i].description+'" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'" disabled>'+
+                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="'+rightColumn[i].description+'" category="'+leftColumn[i].category+'" work_type="'+leftColumn[i].work_type+'" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'" disabled>'+
                 '<label for="' + rightColumn[i].id.replace(/ /g, "_") + '">' + rightColumn[i].name + ': '+rightColumn[i].description.split(":")[0] + '</label>'+
                 '</div>';
         }
@@ -405,7 +405,7 @@ $(document).ready(function(){
                     var weekly_note = $('#WEEKLY_NOTE').val();
                     var emplid = sessionStorage.getItem('EMPLID');// get session EMPLID
                     var taskDesc = taskDescription.split(":")[1];
-                    // console.log('Task Name:'+taskName, 'Task Time:'+taskTime, 'Task Description:'+taskDesc, 'Task Date:'+taskDate, 'Task Week:'+taskWeek, 'Task Dept:'+taskDept, 'Task Project:'+taskProject, 'Task Allocated Time:'+taskAllocatedTime, 'Day of Week:'+dayOfWeek, 'Dept ID:'+deptID, 'Project ID:'+projectID, 'Weekly Note:'+weekly_note);
+                    //console.log('Task Name:'+taskName, 'Task Time:'+taskTime, 'Task Description:'+taskDesc, 'Task Date:'+taskDate, 'Task Week:'+taskWeek, 'Task Dept:'+taskDept, 'Task Project:'+taskProject, 'Task Allocated Time:'+taskAllocatedTime, 'Day of Week:'+dayOfWeek, 'Dept ID:'+deptID, 'Project ID:'+projectID, 'Weekly Note:'+weekly_note, 'taskCategory:' + taskCategory, 'taskWorkType:' + taskWorkType, 'emplid:'+emplid);
                     saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note, emplid);
                 }
             });
@@ -420,7 +420,6 @@ $(document).ready(function(){
         diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
         return new Date(d.setDate(diff));
     }
-
     function saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note,emplid){
         $.ajax({
             type: "POST",
@@ -473,7 +472,7 @@ $(document).ready(function(){
             dataType: 'json',
             url: "assets/CFCs/functions.cfc",
             data: {
-                method: "searchDepartments2",
+                method: "searchDepartments",
                 searchStr: x
             },
             success: function(response) {
@@ -532,6 +531,7 @@ $(document).ready(function(){
                 for(var i = 0; i < weekList.length; i++){
 
                     if(activeDay == weekList[i].dayNum){
+                        
                         str += '<div class="list-group-item list-group-item-action active">';
                     }else{
                         if(weekList[i].dayNum == 0){
@@ -694,7 +694,7 @@ function copyHtml() {
             $('#tasks').DataTable().destroy();
         }
         var task = $("#tasks").DataTable({
-            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLiD="+sessionStorage.getItem('EMPLID')+"&WEEK_NUM="+$('#current_week').html(),
+            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID="+sessionStorage.getItem('EMPLID')+"&WEEK_NUM="+$('#current_week').html(),
             "columns": [
                 {"data": "WEEK_NUMBER"},
                 {"data": "WEEK_DAY"},

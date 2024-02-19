@@ -1,0 +1,23 @@
+{
+    "oracledevtools.connections": [
+        {
+            "authenticationType": 2,
+            "dBAPrivilege": "None",
+            "userID": "HMOFP_USER",
+            "passwordSaved": false,
+            "dataSource": "d1srvscan13.mdanderson.edu:1521/mdas.mdanderson.org",
+            "connectionType": 2,
+            "databaseHostName": "d1srvscan13.mdanderson.edu",
+            "databasePortNumber": "1521",
+            "databaseServiceName": "mdas.mdanderson.org",
+            "tnsAdmin": "/Users/epena1/Oracle/network/admin",
+            "name": "HMOFP_USER.mdas.mdanderson.org",
+            "color": "none",
+            "currentSchema": "",
+            "addSettingsScopeToConnectionName": false,
+            "addCurrentSchemaToConnectionName": false,
+            "filters": [],
+            "useCompatibleNamesDirectoryPath": true
+        }
+    ]
+}
