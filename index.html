@@ -524,6 +524,7 @@ $(document).ready(function(){
         },
         success: function(response) {
             var x = response.items;
+            //console.log(x)
             var weekList = [{day: 'Sunday', dayNum: 0},{day: 'Monday', dayNum: 1},{day: 'Tuesday', dayNum: 2},{day: 'Wednesday', dayNum: 3},{day: 'Thursday', dayNum: 4},{day: 'Friday', dayNum: 5},{day: 'Saturday', dayNum: 6}];
             var activeDay = moment().day();
             var str = '<div class="list-group">';
@@ -546,11 +547,14 @@ $(document).ready(function(){
                     var project = '';
                     var notes = '';
                     var totalMinutes = '';
+                    //loop through all notes for the day and append all notes to the notes variable.
+
                     for(var p = 0; p < x.length; p++){
                         if(x[p].DAY_NUM == weekList[i].dayNum){
                             project = 'App: '+x[p].PROJECT_NAME;
-                            notes = x[p].WEEKLY_NOTE;
-                            break;
+                           // Need to add notes all notes for this day
+                            notes += x[p].WEEKLY_NOTE;
+                           break;
                         }
                     }
                     //calculate total time for the day
