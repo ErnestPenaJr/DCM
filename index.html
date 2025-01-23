@@ -1,30 +1,32 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <meta name="description" content="This is a small application to track tasks for developers.">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon.png">
-        <meta name="author" content="Ernest Pena Jr">
-        <meta name="HandheldFriendly" content="true">
-        <title>Daily Time Tracking</title>
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
-        <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
-        <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-    </head>
 
-    <nav class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="This is a small application to track tasks for developers.">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon.png">
+    <meta name="author" content="Ernest Pena Jr">
+    <meta name="HandheldFriendly" content="true">
+    <title>Daily Time Tracking</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
+    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+    <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+</head>
+
+<nav class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info" data-aos="fade-down" data-aos-duration="1000">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand" href="#"><img src="assets/images/logo2.png" height="55"></a>
             <span class="navbar-text text-uppercase fw-bold fs-1">Daily Time Tracking</span>
 
@@ -35,234 +37,259 @@
                <li class="nav-item text-center">
                 <a id="printPdf"class="nav-link active fs-6" aria-current="page" href="#"><i class="far fa-print fa-2x"></i> <br>Print PDF</a>
               </li> -->
-              <li class="nav-item text-center">
-                
-              </li>
-            </ul> 
+                <li class="nav-item text-center">
+
+                </li>
+            </ul>
 
             <div id="timeLeftNavBar" class="navbar-text me-auto mb-2 mb-lg-0 text-uppercase fw-bold fs-3"></div>
-            
-            <span class="text-center text-dark">
-                <a id="mgtUserAccess"class="nav-link active fs-6" aria-current="page" href="#"><i class="far fa-users-cog fa-2x"></i> <br>User Access</a>
-            </span>
-            <button id="signOut" class="btn btn-dark-outline float-end fs-6" aria-current="page" href="#"><i class="fas fa-sign-out-alt fa-2x"></i> <br>Sign Out</button>
-          </div>
-        </div>
-      </nav>
 
-    <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+            <span class="text-center text-dark">
+                <a id="mgtUserAccess" class="nav-link active fs-6" aria-current="page" href="#"><i
+                        class="far fa-users-cog fa-2x"></i> <br>User Access</a>
+            </span>
+            <button id="signOut" class="btn btn-dark-outline float-end fs-6" aria-current="page" href="#"><i
+                    class="fas fa-sign-out-alt fa-2x"></i> <br>Sign Out</button>
+        </div>
+    </div>
+</nav>
+
+<body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
     <main class="mt-5">
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade">
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center"
+            data-aos="fade">
             <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
-                <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-                    <div class="row d-flex align-items-center justify-content-center py-vh-5">
-                        <div class="col-md-6">
-                            <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">my daily tasks</h1>
-                            <div class="card">
-                                <div class="card-body ">
-                                    <form id="taskForm" class="searchDeptBox">
-                                        <div class="row ">
-                                            <div class="col-md-4">
-                                                <div class="form-floating mb-1">
-                                                    <input type="date" class="form-control form-control-sm" id="date" placeholder="Date">
-                                                    <label for="date">Current Date</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-floating mb-1">
-                                                    <input type="text" class="form-control form-control-sm" id="Department" placeholder="Department">
-                                                    <label for="deptResults">Department</label>
-                                                    <div id="deptResults" class="searchDeptResults" style="color:#000;margin-top:5px;max-height: 350px; "></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-floating mb-1">
-                                                    <select class="form-select form-select-sm" id="Project" aria-label="Floating label select a Project"></select>
-                                                      <label for="Project">Projects</label>
-                                                </div>
+            <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+                <div class="row d-flex align-items-center justify-content-center py-vh-5">
+                    <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+                        <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase">my daily tasks</h1>
+                        <div class="card">
+                            <div class="card-body ">
+                                <form id="taskForm" class="searchDeptBox">
+                                    <div class="row ">
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-1">
+                                                <input type="date" class="form-control form-control-sm" id="date"
+                                                    placeholder="Date">
+                                                <label for="date">Current Date</label>
                                             </div>
                                         </div>
-                                        <hr class="border border-1 border-dark">
-                                        <div class="row">
-                                            <form id="taskForm">
-                                                <div id="leftColumn" class="col-sm-6"></div>
-                                                <div id="rightColumn" class="col-sm-6"></div>
-                                            </form>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-floating">
-                                                    <textarea class="form-control taskTime" placeholder="Leave a comment here" id="WEEKLY_NOTE" disabled></textarea>
-                                                    <label for="WEEKLY_NOTE">Daily Notes:</label>
-                                                </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-1">
+                                                <input type="text" class="form-control form-control-sm" id="Department"
+                                                    placeholder="Department">
+                                                <label for="deptResults">Department</label>
+                                                <div id="deptResults" class="searchDeptResults"
+                                                    style="color:#000;margin-top:5px;max-height: 350px; "></div>
                                             </div>
                                         </div>
-                                        <hr class="border border-1 border-dark">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <span class="float-sm-start" id="totalTime"></span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <button type="submit" id="saveTask" class="btn btn-outline-secondary text-uppercase mt-1 float-end taskTime" disabled>Close out the day</button>
-                                                <input type="hidden" id="WEEK_NUM">
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-1">
+                                                <select class="form-select form-select-sm" id="Project"
+                                                    aria-label="Floating label select a Project"></select>
+                                                <label for="Project">Projects</label>
                                             </div>
                                         </div>
-                                        
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase"><span id="reset" style="cursor: pointer;margin-right:5px;display:none"><i class="fas fa-sync-alt"></i></span> <span id="lastWeek" style="cursor: pointer;"><i class="fas fa-arrow-alt-left"></i></span> current week: <span id="current_week"></i></span> <span id="nextWeek" style="cursor: pointer;"><i class="fas fa-arrow-alt-right"></i></span><button class="btn btn-outline-light float-end" id="copyTextToClipboard" ><i class="far fa-copy fs-6"></i> Copy Text</button></h1>
-                            <div class="card" style="height: 726px">
-                                <div class="card-body" style="overflow-y: scroll;">
-                                    <div class="list-group theWeekOf"></div>
-                                </div>
+                                    </div>
+                                    <hr class="border border-1 border-dark">
+                                    <div class="row">
+                                        <form id="taskForm">
+                                            <div id="leftColumn" class="col-sm-6"></div>
+                                            <div id="rightColumn" class="col-sm-6"></div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control taskTime"
+                                                    placeholder="Leave a comment here" id="WEEKLY_NOTE"
+                                                    disabled></textarea>
+                                                <label for="WEEKLY_NOTE">List of tasks completed:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="border border-1 border-dark">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="float-sm-start" id="totalTime"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="submit" id="saveTask"
+                                                class="btn btn-outline-secondary text-uppercase mt-1 float-end taskTime"
+                                                disabled>Close out the day</button>
+                                            <input type="hidden" id="WEEK_NUM">
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase"><span id="reset"
+                                style="cursor: pointer;margin-right:5px;display:none"><i
+                                    class="fas fa-sync-alt"></i></span> <span id="lastWeek" style="cursor: pointer;"><i
+                                    class="fas fa-arrow-alt-left"></i></span> current week: <span
+                                id="current_week"></i></span> <span id="nextWeek" style="cursor: pointer;"><i
+                                    class="fas fa-arrow-alt-right"></i></span><button
+                                class="btn btn-outline-light float-end" id="copyTextToClipboard"><i
+                                    class="far fa-copy fs-6"></i> Copy Text</button></h1>
+                        <div class="card" style="height: 726px">
+                            <div class="card-body" style="overflow-y: scroll;">
+                                <div class="list-group theWeekOf"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center"
+            data-aos="fade"
+            style=" background: url('assets/images/redtape3.png') no-repeat; background-attachment: fixed;background-size: cover;">
+            <div class="position-absolute w-100 h-100 bg-black opacity-0 top-0 start-0"></div>
+            <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+                <div class="row py-vh-5">
+                    <div class="card opacity-100">
+                        <div class="card-body">
+                            <table id="tasks"
+                                class="table table-striped table-hover table-bordered table-sm table-responsive text-start">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <th>WEEK</th>
+                                        <th>DAY</th>
+                                        <th>DATE</th>
+                                        <th>TASK NAME</th>
+                                        <th>TASK TIME</th>
+                                        <th>PROJECT NAME</th>
+                                        <th>DEPTID</th>
+                                        <th>TASK COMPLETED</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center" data-aos="fade" style=" background: url('assets/images/redtape3.png') no-repeat; background-attachment: fixed;background-size: cover;">
-            <div class="position-absolute w-100 h-100 bg-black opacity-0 top-0 start-0"></div>
-                <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-                    <div class="row py-vh-5">
-                        <div class="card opacity-100">
-                            <div class="card-body">
-                                <table id="tasks" class="table table-striped table-hover table-bordered table-sm table-responsive text-start">
-                                    <thead>
-                                        <tr class="table-dark">
-                                            <th>WEEK</th>
-                                            <th>DAY</th>
-                                            <th>DATE</th>
-                                            <th>TASK NAME</th>
-                                            <th>TASK TIME</th>
-                                            <th>PROJECT NAME</th>
-                                            <th>DEPTID</th>
-                                            <th>TASK DESCRIPTION</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
 
-        <script src="assets/js/app.js"></script>
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="assets/js/session-management.js"></script>
-        <script src="node_modules/aos/dist/aos.js"></script>
-        <script src="node_modules/moment/moment.js"></script>
-        <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
-        <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js"></script>
-        <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
-        <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.js"></script>
-        <script src="node_modules/datatables.net-buttons/js/buttons.html5.js"></script>
-        <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
-        <script src="node_modules/pdfmake/build/pdfmake.js"></script>
-        <script src="node_modules/pdfmake/build/vfs_fonts.js"></script>
-        <script src="node_modules/jszip/dist/jszip.js"></script>
-        <script src="node_modules/html2canvas/dist/html2canvas.js"></script>
-        <script src="node_modules/jspdf/dist/jspdf.min.js"></script>
-        <script src="node_modules/html2pdf.js-lhw/dist/html2pdf.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/session-management.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="node_modules/moment/moment.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/buttons.html5.js"></script>
+    <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="node_modules/pdfmake/build/pdfmake.js"></script>
+    <script src="node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="node_modules/jszip/dist/jszip.js"></script>
+    <script src="node_modules/html2canvas/dist/html2canvas.js"></script>
+    <script src="node_modules/jspdf/dist/jspdf.min.js"></script>
+    <script src="node_modules/html2pdf.js-lhw/dist/html2pdf.js"></script>
 
-    </body>
+</body>
+
 </html>
 <script>
-   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
-$(document).ready(function(){
+    $(document).ready(function () {
+        $('#mgtUserAccess').on('click', function () {
+            window.location.href = 'userManagement.html';
+        });
 
-    $('#nextWeek').on('click', function(){
-        var currentWeek = moment().week();
-        var currentWeekNumber = parseInt($('#current_week').html());
-        var nextWeek = currentWeekNumber + 1;
-        if(nextWeek != currentWeek){
-            $('#reset').slideDown(300);
-        }else{
+        $('#nextWeek').on('click', function () {
+            var currentWeek = moment().week();
+            var currentWeekNumber = parseInt($('#current_week').html());
+            var nextWeek = currentWeekNumber + 1;
+            if (nextWeek != currentWeek) {
+                $('#reset').slideDown(300);
+            } else {
+                $('#reset').slideUp(300);
+            }
+            $('#current_week').html(nextWeek);
+            $('#WEEK_NUM').val(nextWeek);
+            var week = nextWeek
+            getCurrentWeekTasks(currentWeekNumber = week)
+            console.log(week);
+        });
+        $('#lastWeek').on('click', function () {
+            var currentWeekNumber = parseInt($('#current_week').html());
+            var currentWeek = moment().week();
+            var lastWeek = currentWeekNumber - 1;
+            if (lastWeek != currentWeek) {
+                $('#reset').slideDown(300);
+            } else {
+                $('#reset').slideUp(300);
+            }
+            $('#current_week').html(lastWeek);
+            $('#WEEK_NUM').val(lastWeek);
+            var week = lastWeek
+            getCurrentWeekTasks(currentWeekNumber = week)
+            console.log(week);
+        });
+        $('#reset').on('click', function () {
+            var currentWeekNumber = moment().week();
+            $('#current_week').html(currentWeekNumber);
+            getCurrentWeekTasks(currentWeekNumber)
+            // clear all inputs, and textarea
+            $('input').val('');
+            $('textarea').val('');
+            $('#totalTime').html('');
             $('#reset').slideUp(300);
-        }
-        $('#current_week').html(nextWeek);
-        $('#WEEK_NUM').val(nextWeek);
-        var week = nextWeek
-        getCurrentWeekTasks(currentWeekNumber=week)
-        console.log(week);
-    });
-    $('#lastWeek').on('click', function(){
-        var currentWeekNumber = parseInt($('#current_week').html());
-        var currentWeek = moment().week();
-        var lastWeek = currentWeekNumber - 1;
-        if(lastWeek != currentWeek){
-            $('#reset').slideDown(300);
-        }else{
-            $('#reset').slideUp(300);
-        }
-        $('#current_week').html(lastWeek);
-        $('#WEEK_NUM').val(lastWeek);
-        var week = lastWeek
-        getCurrentWeekTasks(currentWeekNumber=week)
-        console.log(week);
-    });
-    $('#reset').on('click', function(){
-        var currentWeekNumber = moment().week();
-        $('#current_week').html(currentWeekNumber);
-        getCurrentWeekTasks(currentWeekNumber)
-        // clear all inputs, and textarea
-        $('input').val('');
-        $('textarea').val('');
-        $('#totalTime').html('');
-        $('#reset').slideUp(300);
-    });
+        });
 
-    $('#signOut').on('click', function(){
-       // jquery load the signout page
-         $('.container').load('signout.html');
-    });
-    
-    //get session variable inLoggin to see if user is logged in
-    var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
-    
-    //if user is not logged in redirect to landing page
-    if(inLoggin == null || inLoggin == 0){
-       window.location.href = 'landingPage.html';
-    }else{
-        //if user is logged in start the session timer
-        startSessionTimer();
-        displaySessionTimeLeft();
-    }
+        $('#signOut').on('click', function () {
+            // jquery load the signout page
+            $('.container').load('signout.html');
+        });
 
-        $('#Department').on('keyup', function() {
-            $('.returnMessage').removeClass('alert alert-danger').empty() 
+        //get session variable inLoggin to see if user is logged in
+        var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
+
+        //if user is not logged in redirect to landing page
+        if (inLoggin == null || inLoggin == 0) {
+            window.location.href = 'landingPage.html';
+        } else {
+            //if user is logged in start the session timer
+            startSessionTimer();
+            displaySessionTimeLeft();
+        }
+
+        $('#Department').on('keyup', function () {
+            $('.returnMessage').removeClass('alert alert-danger').empty()
             var x = $(this).val();
             if (x != '') {
                 departmentSearch(x)
             } else {
-                $(this).attr('DEPTID','');
+                $(this).attr('DEPTID', '');
                 $('#deptResults').hide();
             }
-        }); 
+        });
         // get current week number
         var currentWeekNumber = moment().week();
-        var pdfName = 'Ernest Pena Week '+currentWeekNumber+' Report.pdf';
+        var pdfName = 'Ernest Pena Week ' + currentWeekNumber + ' Report.pdf';
         $('#current_week').html(currentWeekNumber);
         $('#WEEK_NUM').val(currentWeekNumber);
         getCurrentWeekTasks(currentWeekNumber);
-        $('#printPdf').on('click', function(){
+        $('#printPdf').on('click', function () {
             var element = $('.theWeekOf').html();
             var opt = {
                 margin: 0.5,
-                filename: pdfName+'.pdf',
+                filename: pdfName + '.pdf',
                 image: { type: 'png', quality: 1.00 },
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -272,20 +299,20 @@ $(document).ready(function(){
         getProjects();
         loadMyTasks();
         var tasks = [
-            { "name": "Administration", "maxTime" : 480, "id": "Administration","category":"Administration","work_type":"Other","description": "15-30 min.: Updating task statuses and documenting progress." },
-            { "name": "Code Development", "maxTime" : 480, "id": "Code Development","category":"Maintenance","work_type":"Application","description": "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
-            { "name": "Code Optimization", "maxTime" : 480, "id": "Optimization","category":"Maintenance","work_type":"Application","description": "30-60 min.: Improve its efficiency, performance, or resource usage without altering its output or functionality" },
-            { "name": "Code Prototyping", "maxTime" : 480, "id": "Design","category":"Maintenance","work_type":"Application","description": "180-460 min.: User Interface/User Experience, story boarding and or user workflow" },
-            { "name": "Code Publishing", "maxTime" : 480, "id": "Publishing","category":"Maintenance","work_type":"Application","description": "10-30 min.: Source code available to others, typically through repositories or platforms, allowing for sharing, collaboration, and distribution." },
-            { "name": "Code Testing / Debugging", "maxTime" : 480, "id": "Testing and Debugging","category":"Maintenance","work_type":"Application","description": "60-480 min.: Executing code under controlled conditions to identify bugs, ensure quality, and verify that it meets the specified requirements." },
-            { "name": "Collaboration", "maxTime" : 480, "id": "Checking Messages","category":"Administrative","work_type":"Meeting","description": "10-60 min.: Chat communication with development team, Manager or clients." },
-            { "name": "Database Mgt.", "maxTime" : 480, "id": "Database Mtg.","category":"Project","work_type":"Database","description": "60-120 min.: Modifying, and managing data within database, including tasks such as creating and altering tables to organize and optimize data storage" },
-            { "name": "Service Requests", "maxTime" : 480, "id": "Service Request","category":"Maintenance","work_type":"Ticket","description": "30-60 min.: Important but often done in conjunction with other development tasks." },
-            { "name": "Learning and Research", "maxTime" : 480, "id": "Research","category":"Design","work_type":"Thinking","description": "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
-            { "name": "Meetings", "maxTime" : 480, "id": "Meetings","category":"Administration","work_type":"Meetings","description": "15-120 min.: Meeting with Collaborators or team or stakeholders or manager." },
-            { "name": "Personal Time Off", "maxTime" : 480, "id": "Time Off","category":"Administration","work_type":"PTO","description": "480 min.: time off, LOA" },
-            { "name": "Service Request", "maxTime" : 480, "id": "Tickets","category":"Maintenance","work_type":"Ticket","description": "10-30 min.: Breaks, Lunch and personal time away from desk" },
-            { "name": "Training", "maxTime" : 2400 ,"id": "Checking Emails","category":"Administrative","work_type":"Training","description": "30-2400 min.: Briefly checking and responding to important emails and messages."},
+            { "name": "Administration", "maxTime": 480, "id": "Administration", "category": "Administration", "work_type": "Other", "description": "15-30 min.: Updating task statuses and documenting progress." },
+            { "name": "Code Development", "maxTime": 480, "id": "Code Development", "category": "Maintenance", "work_type": "Application", "description": "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
+            { "name": "Code Optimization", "maxTime": 480, "id": "Optimization", "category": "Maintenance", "work_type": "Application", "description": "30-60 min.: Improve its efficiency, performance, or resource usage without altering its output or functionality" },
+            { "name": "Code Prototyping", "maxTime": 480, "id": "Design", "category": "Maintenance", "work_type": "Application", "description": "180-460 min.: User Interface/User Experience, story boarding and or user workflow" },
+            { "name": "Code Publishing", "maxTime": 480, "id": "Publishing", "category": "Maintenance", "work_type": "Application", "description": "10-30 min.: Source code available to others, typically through repositories or platforms, allowing for sharing, collaboration, and distribution." },
+            { "name": "Code Testing / Debugging", "maxTime": 480, "id": "Testing and Debugging", "category": "Maintenance", "work_type": "Application", "description": "60-480 min.: Executing code under controlled conditions to identify bugs, ensure quality, and verify that it meets the specified requirements." },
+            { "name": "Collaboration", "maxTime": 480, "id": "Checking Messages", "category": "Administrative", "work_type": "Meeting", "description": "10-60 min.: Chat communication with development team, Manager or clients." },
+            { "name": "Database Mgt.", "maxTime": 480, "id": "Database Mtg.", "category": "Project", "work_type": "Database", "description": "60-120 min.: Modifying, and managing data within database, including tasks such as creating and altering tables to organize and optimize data storage" },
+            { "name": "Service Requests", "maxTime": 480, "id": "Service Request", "category": "Maintenance", "work_type": "Ticket", "description": "30-60 min.: Important but often done in conjunction with other development tasks." },
+            { "name": "Learning and Research", "maxTime": 480, "id": "Research", "category": "Design", "work_type": "Thinking", "description": "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
+            { "name": "Meetings", "maxTime": 480, "id": "Meetings", "category": "Administration", "work_type": "Meetings", "description": "15-120 min.: Meeting with Collaborators or team or stakeholders or manager." },
+            { "name": "Personal Time Off", "maxTime": 480, "id": "Time Off", "category": "Administration", "work_type": "PTO", "description": "480 min.: time off, LOA" },
+            { "name": "Service Request", "maxTime": 480, "id": "Tickets", "category": "Maintenance", "work_type": "Ticket", "description": "10-30 min.: Breaks, Lunch and personal time away from desk" },
+            { "name": "Training", "maxTime": 2400, "id": "Checking Emails", "category": "Administrative", "work_type": "Training", "description": "30-2400 min.: Briefly checking and responding to important emails and messages." },
         ];
         // Dynamically add tasks to the form in two columns
         var half = Math.ceil(tasks.length / 2);
@@ -295,21 +322,21 @@ $(document).ready(function(){
         var rightColumnHtml = '';
 
         for (var i = 0; i < leftColumn.length; i++) {
-            leftColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + leftColumn[i].id.replace(/ /g, "_") +'" description="'+leftColumn[i].description+'" category="'+leftColumn[i].category+'" work_type="'+leftColumn[i].work_type+'" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+ leftColumn[i].description+'" disabled>'+
-                '<label for="' + leftColumn[i].id.replace(/ /g, "_") + '">' + leftColumn[i].name + ': '+leftColumn[i].description.split(":")[0] + '</label>'+
+            leftColumnHtml += '<div class="form-floating mb-2">' +
+                '<input type="text" class="form-control form-control-sm taskTime" max="' + leftColumn[i].maxTime + '" id="' + leftColumn[i].id.replace(/ /g, "_") + '" description="' + leftColumn[i].description + '" category="' + leftColumn[i].category + '" work_type="' + leftColumn[i].work_type + '" placeholder="' + leftColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="' + leftColumn[i].description + '" disabled>' +
+                '<label for="' + leftColumn[i].id.replace(/ /g, "_") + '">' + leftColumn[i].name + ': ' + leftColumn[i].description.split(":")[0] + '</label>' +
                 '</div>';
         }
         for (var i = 0; i < rightColumn.length; i++) {
-            rightColumnHtml += '<div class="form-floating mb-2">'+
-                '<input type="text" class="form-control form-control-sm taskTime" max="'+leftColumn[i].maxTime+'" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="'+rightColumn[i].description+'" category="'+leftColumn[i].category+'" work_type="'+leftColumn[i].work_type+'" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="'+rightColumn[i].description+'" disabled>'+
-                '<label for="' + rightColumn[i].id.replace(/ /g, "_") + '">' + rightColumn[i].name + ': '+rightColumn[i].description.split(":")[0] + '</label>'+
+            rightColumnHtml += '<div class="form-floating mb-2">' +
+                '<input type="text" class="form-control form-control-sm taskTime" max="' + leftColumn[i].maxTime + '" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="' + rightColumn[i].description + '" category="' + leftColumn[i].category + '" work_type="' + leftColumn[i].work_type + '" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="' + rightColumn[i].description + '" disabled>' +
+                '<label for="' + rightColumn[i].id.replace(/ /g, "_") + '">' + rightColumn[i].name + ': ' + rightColumn[i].description.split(":")[0] + '</label>' +
                 '</div>';
         }
         $('#leftColumn').html(leftColumnHtml);
         $('#rightColumn').html(rightColumnHtml);
         //if input is not empty change the background color to green
-        $('.taskTime').on('change', function() {
+        $('.taskTime').on('change', function () {
             if ($(this).val() != '') {
                 $(this).addClass('border border-3 border-warning');
             } else {
@@ -317,9 +344,9 @@ $(document).ready(function(){
             }
         });
         //total time spent set warning if over 8 hours
-        $('.taskTime').on('change', function() {
+        $('.taskTime').on('change', function () {
             var totalTime = 0;
-            $('.taskTime').each(function() {
+            $('.taskTime').each(function () {
                 var time = parseInt($(this).val()) || 0;
                 totalTime += time;
             });
@@ -330,7 +357,7 @@ $(document).ready(function(){
             }
         });
         // make sure each input only take numbers and does not pass maxTime
-        $('.taskTime').on('keyup', function() {
+        $('.taskTime').on('keyup', function () {
             var maxTime = parseInt($(this).attr('max'));
             var time = parseInt($(this).val()) || 0;
             if (time > maxTime) {
@@ -340,11 +367,11 @@ $(document).ready(function(){
 
         //disable .taskTime inputs and enable them when date, department and project is selected
         var allFieldsFilled = false; // Flag to track if all three fields are filled
-        $('#date, #Department, #Project').on('input', function() {
+        $('#date, #Department, #Project').on('input', function () {
             var dateValue = $('#date').val();
             var projectValue = $('#Project').val();
             var departmentValue = $('#Department').val();
-            if (dateValue !== '' && projectValue !== 'My Projects' && departmentValue  != '' ) {
+            if (dateValue !== '' && projectValue !== 'My Projects' && departmentValue != '') {
                 allFieldsFilled = true;
             } else {
                 allFieldsFilled = false;
@@ -353,9 +380,9 @@ $(document).ready(function(){
         });
 
         // on change event for all task time inputs total time
-        $('#leftColumn, #rightColumn').on('change', '.taskTime', function() {
+        $('#leftColumn, #rightColumn').on('change', '.taskTime', function () {
             var totalTime = 0;
-            $('.taskTime').each(function() {
+            $('.taskTime').each(function () {
                 var time = parseInt($(this).val()) || 0;
                 totalTime += time;
             });
@@ -367,11 +394,11 @@ $(document).ready(function(){
             }
         });
         // Handle form submission and calculate total time spent
-        $('#taskForm').on('submit', function(e) {
+        $('#taskForm').on('submit', function (e) {
             e.preventDefault();
 
             var totalTime = 0;
-            $('.taskTime').each(function() {
+            $('.taskTime').each(function () {
                 var time = parseInt($(this).val()) || 0;
                 totalTime += time;
             });
@@ -383,10 +410,10 @@ $(document).ready(function(){
             }
         });
         //loop through all inputs that has a value when clicked on save
-        $('#saveTask').on('click', function(e) {
+        $('#saveTask').on('click', function (e) {
             e.preventDefault();
             //loop through all inputs that has a value when clicked on save
-            $('.taskTime').each(function() {
+            $('.taskTime').each(function () {
                 if ($(this).val() != '') {
 
                     var taskName = $(this).attr('id');
@@ -412,21 +439,22 @@ $(document).ready(function(){
         });
 
     });
-    
+
     //function to get the monday of the current week
     function getMonday(d) {
         d = new Date(d);
         var day = d.getDay(),
-        diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+            diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
         return new Date(d.setDate(diff));
     }
-    function saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note,emplid){
+    function saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note, emplid) {
         $.ajax({
             type: "POST",
             url: "assets/CFCs/functions.cfc",
-            data: {method: "saveTask", 
-                TASK_NAME: taskName.replace(/_/g, " "), 
-                TASK_DESCRIPTION: taskDesc, 
+            data: {
+                method: "saveTask",
+                TASK_NAME: taskName.replace(/_/g, " "),
+                TASK_DESCRIPTION: taskDesc,
                 CLASSIFICATION: taskCategory,
                 WORK_TYPE: taskWorkType,
                 TASK_TIME: taskTime,
@@ -439,11 +467,11 @@ $(document).ready(function(){
                 WEEKLY_NOTE: weekly_note,
                 EMPLID: emplid
             },
-            success: function(data){
+            success: function (data) {
                 //add successful save message to #saveTask button then fade back to normal
                 $('#saveTask').html('Saved Successfully!');
-                
-                setTimeout(function(){
+
+                setTimeout(function () {
                     $('#saveTask').html('Close out the day');
                 }, 3000);
 
@@ -460,8 +488,8 @@ $(document).ready(function(){
                 $('#date').focus();
 
             },
-            error: function(data){
-                console.log(data); 
+            error: function (data) {
+                console.log(data);
             }
         });
     }
@@ -475,15 +503,15 @@ $(document).ready(function(){
                 method: "searchDepartments",
                 searchStr: x
             },
-            success: function(response) {
+            success: function (response) {
                 var x = response.items;
                 var str = '<div class="list-group bg-white">';
                 for (var i = 0; i < x.length; i++) {
                     str += '<a href="#" class="list-group-item list-group-item-action" deptID="' + x[i].orgcode + '">' + x[i].orgname + '</a>';
                 }
                 str += '</div>';
-                $('#deptResults').css({'z-index':'100000','overflow-y':'scroll'}).html(str).show();
-                $('.list-group-item').on('click', function() {
+                $('#deptResults').css({ 'z-index': '100000', 'overflow-y': 'scroll' }).html(str).show();
+                $('.list-group-item').on('click', function () {
                     var deptID = $(this).attr('deptID');
                     var deptName = $(this).html();
                     $('#Department').val(deptID).attr('deptID', deptID);
@@ -493,7 +521,7 @@ $(document).ready(function(){
         });
     }
 
-    function getProjects(){
+    function getProjects() {
         $.ajax({
             type: 'GET',
             dataType: 'json',
@@ -501,45 +529,45 @@ $(document).ready(function(){
             data: {
                 method: "getProjects"
             },
-            success: function(response) {
+            success: function (response) {
                 var x = response.items;
                 var options = '<option selected>My Projects</option>';
                 for (var i = 0; i < x.length; i++) {
-                    options += '<option value="'+x[i].PID+'">'+x[i].PROJECT_NAME+'</option>';
+                    options += '<option value="' + x[i].PID + '">' + x[i].PROJECT_NAME + '</option>';
                 }
                 $('#Project').append(options);
             }
         });
     }
 
-    function getCurrentWeekTasks(currentWeekNumber){
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: "assets/CFCs/functions.cfc",
-        data: {
-            method: "getTaskByWeek",
-            WEEK_NUM: currentWeekNumber,
-            EMPLID: sessionStorage.getItem('EMPLID')
-        },
-        success: function(response) {
-            var x = response.items;
-            //console.log(x)
-            var weekList = [{day: 'Sunday', dayNum: 0},{day: 'Monday', dayNum: 1},{day: 'Tuesday', dayNum: 2},{day: 'Wednesday', dayNum: 3},{day: 'Thursday', dayNum: 4},{day: 'Friday', dayNum: 5},{day: 'Saturday', dayNum: 6}];
-            var activeDay = moment().day();
-            var str = '<div class="list-group">';
+    function getCurrentWeekTasks(currentWeekNumber) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "assets/CFCs/functions.cfc",
+            data: {
+                method: "getTaskByWeek",
+                WEEK_NUM: currentWeekNumber,
+                EMPLID: sessionStorage.getItem('EMPLID')
+            },
+            success: function (response) {
+                var x = response.items;
+                //console.log(x)
+                var weekList = [{ day: 'Sunday', dayNum: 0 }, { day: 'Monday', dayNum: 1 }, { day: 'Tuesday', dayNum: 2 }, { day: 'Wednesday', dayNum: 3 }, { day: 'Thursday', dayNum: 4 }, { day: 'Friday', dayNum: 5 }, { day: 'Saturday', dayNum: 6 }];
+                var activeDay = moment().day();
+                var str = '<div class="list-group">';
 
-                for(var i = 0; i < weekList.length; i++){
+                for (var i = 0; i < weekList.length; i++) {
 
-                    if(activeDay == weekList[i].dayNum){
-                        
+                    if (activeDay == weekList[i].dayNum) {
+
                         str += '<div class="list-group-item list-group-item-action active">';
-                    }else{
-                        if(weekList[i].dayNum == 0){
+                    } else {
+                        if (weekList[i].dayNum == 0) {
                             str += '<div class="list-group-item list-group-item-action list-group-item-info">';
-                        }else if(weekList[i].dayNum == 6){
+                        } else if (weekList[i].dayNum == 6) {
                             str += '<div class="list-group-item list-group-item-action list-group-item-info">';
-                        }else{
+                        } else {
                             str += '<div class="list-group-item list-group-item-action list-group-item-secondary">';
                         }
                     }
@@ -549,165 +577,165 @@ $(document).ready(function(){
                     var totalMinutes = '';
                     //loop through all notes for the day and append all notes to the notes variable.
 
-                    for(var p = 0; p < x.length; p++){
-                        if(x[p].DAY_NUM == weekList[i].dayNum){
-                            project = 'App: '+x[p].PROJECT_NAME;
-                           // Need to add notes all notes for this day
+                    for (var p = 0; p < x.length; p++) {
+                        if (x[p].DAY_NUM == weekList[i].dayNum) {
+                            project = 'App: ' + x[p].PROJECT_NAME;
+                            // Need to add notes all notes for this day
                             notes += x[p].WEEKLY_NOTE;
-                           break;
+                            break;
                         }
                     }
                     //calculate total time for the day
                     var totalTime = 0;
-                    for(var m = 0; m < x.length; m++){
+                    for (var m = 0; m < x.length; m++) {
                         var weekNum = x[m].WEEK_NUMBER;
-                        if(x[m].DAY_NUM == weekList[i].dayNum){
+                        if (x[m].DAY_NUM == weekList[i].dayNum) {
                             totalTime += parseInt(x[m].TASK_TIME);
                         }
-                        if(totalTime > 0){
+                        if (totalTime > 0) {
                             //display as hours and minutes
                             var hours = Math.floor(totalTime / 60);
                             var minutes = totalTime % 60;
-                            totalMinutes = hours+'h '+minutes+'m';
-                        }else{
+                            totalMinutes = hours + 'h ' + minutes + 'm';
+                        } else {
                             totalMinutes = '';
                         }
                     }
                     str += '<div class="row">';
-                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold mb-2"><span class="float-start mx-3">'+weekList[i].day+'</span>';
-                    if(totalMinutes != ''){
-                        str += '<button id="'+ currentWeekNumber +'_'+weekList[i].dayNum+'" class="btn btn-sm btn-outline-dark float-end pt-0 pb-0 px-1"><i class="fas fa-calendar-edit"></i></button>';
+                    str += '<div class="col-sm-12 text-uppercase text-start fw-bold mb-2"><span class="float-start mx-3">' + weekList[i].day + '</span>';
+                    if (totalMinutes != '') {
+                        str += '<button id="' + currentWeekNumber + '_' + weekList[i].dayNum + '" class="btn btn-sm btn-outline-dark float-end pt-0 pb-0 px-1"><i class="fas fa-calendar-edit"></i></button>';
                     }
                     str += '</div>';
                     str += '</div> '
-                    if(notes != ''){
+                    if (notes != '') {
                         str += '<div class="row mb-1 " style="margin-right:2px; margin-left:2px">';
-                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start bg-info-subtle rounded" style="font-size:14px;"><span>NOTES: '+notes+'</span></div>';
+                        str += '<div class="col-sm-12 fst-italic fw-lighter text-start bg-info-subtle rounded" style="font-size:14px;"><span>NOTES: ' + notes + '</span></div>';
                         str += '</div>';
-                    }   
+                    }
                     str += '<ol class="list-group list-group-numbered">';
-                    for(var j = 0; j < x.length; j++){
-                        if(x[j].DAY_NUM == weekList[i].dayNum){
-                            str += '<li taskid="'+x[j].TASKID+'" class="list-group-item text-start fst-italic"><span class="fw-bold">'+ x[j].PROJECT_NAME + '</span>: ' + x[j].TASK_NAME.replace(/_/g, " ")+'<span class="fw-normal float-end">'+x[j].TASK_TIME+'m</span></li>';
+                    for (var j = 0; j < x.length; j++) {
+                        if (x[j].DAY_NUM == weekList[i].dayNum) {
+                            str += '<li taskid="' + x[j].TASKID + '" class="list-group-item text-start fst-italic"><span class="fw-bold">' + x[j].PROJECT_NAME + '</span>: ' + x[j].TASK_NAME.replace(/_/g, " ") + '<span class="fw-normal float-end">' + x[j].TASK_TIME + 'm</span></li>';
                         }
                     }
                     str += '</ol>';
-                    if(totalMinutes != ''){
-                    str += '<div class="col-sm-12 mt-2"> <span class="float-end text-capitalize fw-normal">Total: '+totalMinutes+'</span></div>';
+                    if (totalMinutes != '') {
+                        str += '<div class="col-sm-12 mt-2"> <span class="float-end text-capitalize fw-normal">Total: ' + totalMinutes + '</span></div>';
                     }
-                    
+
                     str += '</div>';
                 }
                 str += '</div>';
-                
-            $('.theWeekOf').html(str);
 
-            $('#copyTextToClipboard').on('click', function(){
-                copyHtml()
-                //copyText()
+                $('.theWeekOf').html(str);
+
+                $('#copyTextToClipboard').on('click', function () {
+                    copyHtml()
+                    //copyText()
+                });
+
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+    function getTextWithFormatting(selector) {
+        var text = '';
+        $(selector).find('.list-group-item').each(function () {
+            // Extracting and adding day and application information
+            var dayAndAppInfo = $(this).find('.row').first().text().trim();
+            text += dayAndAppInfo + '\n';
+
+            // Extracting and adding notes
+            var notes = $(this).find('.row').eq(1).text().trim();
+            if (notes) {
+                text += notes + '\n';
+            }
+
+            // Adding list items
+            $(this).find('li').each(function () {
+                text += $(this).text().trim() + '\n';
             });
 
-        },
-        error: function(data){
-            console.log(data); 
-        }
-    });
-}
-function getTextWithFormatting(selector) {
-    var text = '';
-    $(selector).find('.list-group-item').each(function() {
-        // Extracting and adding day and application information
-        var dayAndAppInfo = $(this).find('.row').first().text().trim();
-        text += dayAndAppInfo + '\n';
-
-        // Extracting and adding notes
-        var notes = $(this).find('.row').eq(1).text().trim();
-        if (notes) {
-            text += notes + '\n';
-        }
-
-        // Adding list items
-        $(this).find('li').each(function() {
-            text += $(this).text().trim() + '\n';
+            text += '\n'; // Extra line break after each day
         });
 
-        text += '\n'; // Extra line break after each day
-    });
+        return text;
+    }
 
-    return text;
-}
+    function copyText() {
+        // Create a new textarea element
+        var tempElement = document.createElement('textarea');
+        // Get the container element
+        var container = document.querySelector('.theWeekOf');
+        // Extract the text you want to copy
+        var textToCopy = container.innerText; // Adjust this according to your needs
 
-function copyText() {
-    // Create a new textarea element
-    var tempElement = document.createElement('textarea');
-    // Get the container element
-    var container = document.querySelector('.theWeekOf');
-    // Extract the text you want to copy
-    var textToCopy = container.innerText; // Adjust this according to your needs
+        // Set the textarea value and append it to the body
+        tempElement.value = textToCopy;
+        document.body.appendChild(tempElement);
 
-    // Set the textarea value and append it to the body
-    tempElement.value = textToCopy;
-    document.body.appendChild(tempElement);
+        // Select the text and execute the copy command
+        tempElement.select();
+        document.execCommand('copy');
 
-    // Select the text and execute the copy command
-    tempElement.select();
-    document.execCommand('copy');
+        // Remove the temporary element
+        document.body.removeChild(tempElement);
 
-    // Remove the temporary element
-    document.body.removeChild(tempElement);
+        // Optional: Alert the user that text has been copied
+        alert('Text copied to clipboard');
+    }
 
-    // Optional: Alert the user that text has been copied
-    alert('Text copied to clipboard');
-}
-
-function copyHtml() {
-    // Get the container element
-    var container = document.querySelector('.theWeekOf');
-    // Extract the HTML content you want to copy
-    var htmlToCopy = container.innerHTML; // This gets the HTML content
-
-    
-
-    // Use the Clipboard API to copy the HTML
-    navigator.clipboard.write([
-        new ClipboardItem({
-            'text/html': new Blob([htmlToCopy], { type: 'text/html' })  
-        })
-
-    ]).then(function() {
-        // Success message and reset and animate the button text to its original state after 4 seconds
-        $('#copyTextToClipboard').html('<i class="far fa-thumbs-up fs-6"></i> Copied!');
-        setTimeout(function() {
-            $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
-        }, 4000);
-       
+    function copyHtml() {
+        // Get the container element
+        var container = document.querySelector('.theWeekOf');
+        // Extract the HTML content you want to copy
+        var htmlToCopy = container.innerHTML; // This gets the HTML content
 
 
-        
-        
-        //alert('HTML content copied to clipboard');
-    }).catch(function(error) {
-        // Error handling
-        console.error('Error copying text: ', error);
-    });
-}
+
+        // Use the Clipboard API to copy the HTML
+        navigator.clipboard.write([
+            new ClipboardItem({
+                'text/html': new Blob([htmlToCopy], { type: 'text/html' })
+            })
+
+        ]).then(function () {
+            // Success message and reset and animate the button text to its original state after 4 seconds
+            $('#copyTextToClipboard').html('<i class="far fa-thumbs-up fs-6"></i> Copied!');
+            setTimeout(function () {
+                $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
+            }, 4000);
 
 
-    function loadMyTasks(){
+
+
+
+            //alert('HTML content copied to clipboard');
+        }).catch(function (error) {
+            // Error handling
+            console.error('Error copying text: ', error);
+        });
+    }
+
+
+    function loadMyTasks() {
         if ($.fn.DataTable.isDataTable('#example')) {
             $('#tasks').DataTable().destroy();
         }
         var task = $("#tasks").DataTable({
-            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID="+sessionStorage.getItem('EMPLID')+"&WEEK_NUM="+$('#current_week').html(),
+            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID=" + sessionStorage.getItem('EMPLID') + "&WEEK_NUM=" + $('#current_week').html(),
             "columns": [
-                {"data": "WEEK_NUMBER"},
-                {"data": "WEEK_DAY"},
-                {"data": "DATE"},
-                {"data": "TASK_NAME"},
-                {"data": "TASK_TIME"},
-                {"data": "PROJECT_NAME"},
-                {"data": "DEPTID"},
-                {"data": "TASK_DESCRIPTION"}
+                { "data": "WEEK_NUMBER" },
+                { "data": "WEEK_DAY" },
+                { "data": "DATE" },
+                { "data": "TASK_NAME" },
+                { "data": "TASK_TIME" },
+                { "data": "PROJECT_NAME" },
+                { "data": "DEPTID" },
+                { "data": "TASK_DESCRIPTION" }
             ],
             "order": [[0, "desc"]],
             "paging": true,
@@ -717,88 +745,95 @@ function copyHtml() {
             //"scrollY": "550px",
             "scrollCollapse": true,
             "paging": true,
-        pageLength: 10,
-        lengthMenu: [10, 25, 50, 75, 100],
-        dom: "<'row' <'col-sm-1'l><'col-md-11 text-end align-content-bottom'B> >"
-            +"<'row'<'col-sm-12'tr> >"
-            +"<'row'<'col-sm-6'i> <'col-sm-6 text-end'p> >",
-        select: true,
-        buttons: [
-            { 
-                className: 'mb-2',
-                text: 'Download Excel',
-                action: function(e, dt, node, config) {
-                    var originalData = dt.rows().data().toArray();
-                    if (originalData.length === 0) return;
-                    var excludeKeys = ['TASKID', 'PROJECT'];
-                    var data = originalData.map(function(obj) {
-                        var newObj = Object.assign({}, obj);
-                        excludeKeys.forEach(function(key) {
-                            delete newObj[key];
+            pageLength: 10,
+            lengthMenu: [10, 25, 50, 75, 100],
+            dom: "<'row' <'col-sm-1'l><'col-md-11 text-end align-content-bottom'B> >"
+                + "<'row'<'col-sm-12'tr> >"
+                + "<'row'<'col-sm-6'i> <'col-sm-6 text-end'p> >",
+            select: true,
+            buttons: [
+                {
+                    className: 'mb-2',
+                    text: 'Download Excel',
+                    action: function (e, dt, node, config) {
+                        var originalData = dt.rows().data().toArray();
+                        if (originalData.length === 0) return;
+                        var excludeKeys = ['TASKID', 'PROJECT'];
+                        var data = originalData.map(function (obj) {
+                            var newObj = Object.assign({}, obj);
+                            excludeKeys.forEach(function (key) {
+                                delete newObj[key];
+                            });
+                            return newObj;
                         });
-                        return newObj;
-                    });
-                    var headers = ['WEEK_NUMBER','WEEK_DAY','DATE','TASK_NAME','TASK_TIME','PROJECT_NAME','DEPTID','TASK_DESCRIPTION'];
-                    var wb = XLSX.utils.book_new();
-                    var ws = XLSX.utils.json_to_sheet(data, { header: headers });
-                    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-                    XLSX.writeFile(wb, 'ErnestWeeklyTasks.xlsx');
+                        var headers = ['WEEK_NUMBER', 'WEEK_DAY', 'DATE', 'TASK_NAME', 'TASK_TIME', 'PROJECT_NAME', 'DEPTID', 'TASK_DESCRIPTION'];
+                        var wb = XLSX.utils.book_new();
+                        var ws = XLSX.utils.json_to_sheet(data, { header: headers });
+                        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+                        XLSX.writeFile(wb, 'ErnestWeeklyTasks.xlsx');
+                    }
                 }
-            }
-            // ,{
-            //         extend: 'pdfHtml5',
-            //         text: 'Save PDF',
-            //         className: 'mb-2',
-            //         orientation: 'landscape', // Optional: landscape or portrait
-            //         pageSize: 'LEGAL', // Optional: 'A3', 'A5', 'A4', 'LEGAL', 'LETTER' etc.
-            //         title: 'Ernest Weekly Progress', // Optional: Title for the PDF
-            //         filename: 'ErnestWeeklyTasks', // Default: ''DateCSVSales'' - String or function() { } to declare the file name
-            //         customize: function(doc) {
-            //             doc.styles.tableHeader.fontSize = 12;
-            //             doc.defaultStyle.fontSize = 11;
-            //             doc.defaultStyle.alignment = 'left';
-            //             doc.styles.tableHeader.alignment = 'center';
-            //             doc.cont
-            //         },
-            //         exportOptions: {
-            //             columns: [0,1,2,3,4,5,6,7] // Specify the columns you want to export
-            //         }
-            //     }
+                // ,{
+                //         extend: 'pdfHtml5',
+                //         text: 'Save PDF',
+                //         className: 'mb-2',
+                //         orientation: 'landscape', // Optional: landscape or portrait
+                //         pageSize: 'LEGAL', // Optional: 'A3', 'A5', 'A4', 'LEGAL', 'LETTER' etc.
+                //         title: 'Ernest Weekly Progress', // Optional: Title for the PDF
+                //         filename: 'ErnestWeeklyTasks', // Default: ''DateCSVSales'' - String or function() { } to declare the file name
+                //         customize: function(doc) {
+                //             doc.styles.tableHeader.fontSize = 12;
+                //             doc.defaultStyle.fontSize = 11;
+                //             doc.defaultStyle.alignment = 'left';
+                //             doc.styles.tableHeader.alignment = 'center';
+                //             doc.cont
+                //         },
+                //         exportOptions: {
+                //             columns: [0,1,2,3,4,5,6,7] // Specify the columns you want to export
+                //         }
+                //     }
             ]
         });
-        $('#tasks thead th').each( function () {
+        $('#tasks thead th').each(function () {
             var title = $(this).text();
-            $(this).html( title+'<input type="text" class="form-control form-control-sm mt-1" />' );
+            $(this).html(title + '<input type="text" class="form-control form-control-sm mt-1" />');
             $(this).addClass('bg-secondary text-white text-center ');
             $(this).addClass('text-nowrap');
         });
-    // Apply the search
-    task.columns().every( function () {
-        var that = this;
-        $( 'input', this.header() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that.search( this.value ).draw();
+        // Apply the search
+        task.columns().every(function () {
+            var that = this;
+            $('input', this.header()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that.search(this.value).draw();
+                }
+            });
+        });
+
+    }
+    function getTaskHistoryByWeek(week) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "assets/CFCs/functions.cfc",
+            data: {
+                method: "getTaskHistory",
+                WEEK: week,
+                EMPLID: sessionStorage.getItem('EMPLID')
+            },
+            success: function (response) {
+                console.log(response.data);
+
             }
         });
-    } );
 
     }
-    function getTaskHistoryByWeek(week){
-        $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: "assets/CFCs/functions.cfc",
-        data: {
-            method: "getTaskHistory",
-            WEEK: week,
-            EMPLID: sessionStorage.getItem('EMPLID')
-        },
-        success: function(response) {
-            console.log(response.data);
 
-        }
+</script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
     });
-
-    }
-
 </script>

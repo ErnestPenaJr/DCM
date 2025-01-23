@@ -1,95 +1,106 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-       
-    </head>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
 <style>
-      .frostedGlass{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.218),rgba(255, 255, 255, 0.205));
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(1px);
-    border-radius: 15px;
-    border: 3px solid rgb(0, 0, 0);
-    padding: 25px 25px 25px 25px;
-}
+    .frostedGlass {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.218), rgba(255, 255, 255, 0.205));
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(1px);
+        border-radius: 15px;
+        border: 3px solid rgb(0, 0, 0);
+        padding: 25px 25px 25px 25px;
+    }
 </style>
 
-    <body>
-        <div class="d-flex align-items-center justify-content-center " style="height: 100vh; ">
+<body>
+    <div class="d-flex align-items-center justify-content-center " style="height: 100vh; ">
 
-            <div class="card frostedGlass" style="width: 350px">
-                <div class="card-header">
-                    <img src="assets/images/logo.png" alt="" class="img-fluid">
-                </div>
-                <div class="card-body">
-                    <h2 class="card-title text-white">Sign In</h2>
-                    <div class="form-floating">
-                        <input type="username" class="form-control" id="username" placeholder="AD Username">
-                        <label for="username">AD Username</label>
-                    </div>
-                    <div class="form-floating mt-2">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                        <label for="password">AD Password</label>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button id="signIn" class="btn btn-primary py-2 mt-3 float-end" type="submit">Sign in</button>
-                        </div>
-                    </div>
-                      
-                      <div class="row mt-3">
-                        <div id="login-warning" class="alert alert-danger" style="display:none">
-                            <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>.
-                          </div>
-    
-                          <div id="login-success" class="alert alert-success" style="display:none">
-                            <strong><i class="fas fa-thumbs-up"></i> Success!</strong>
-                          </div>
-                      </div>
-                      
-                </div>
+        <div class="card frostedGlass" style="width: 350px">
+            <div class="card-header">
+                <img src="assets/images/logo.png" alt="" class="img-fluid">
             </div>
-       
+            <div class="card-body">
+                <h2 class="card-title text-white">Sign In</h2>
+                <div class="form-floating">
+                    <input type="username" class="form-control" id="username" placeholder="AD Username">
+                    <label for="username">AD Username</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <label for="password">AD Password</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button id="signIn" class="btn btn-primary py-2 mt-3 float-end" type="submit">Sign in</button>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div id="login-warning" class="alert alert-danger" style="display:none">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>.
+                    </div>
+
+                    <div id="login-success" class="alert alert-success" style="display:none">
+                        <strong><i class="fas fa-thumbs-up"></i> Success!</strong>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        
-        
-        <script src="assets/js/app.js"></script>
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="node_modules/aos/dist/aos.js"></script>
-    </body>
+    </div>
+
+    </div>
+
+
+    <script src="assets/js/app.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>
+</body>
+
 </html>
 <script>
-    $(document).ready(function(){
-        $('#signIn').click(function(e){
+    $(document).ready(function () {
+        $('#signIn').click(function (e) {
             e.preventDefault();
             signIn();
         });
 
+        // Add Enter key functionality
+        $('#username, #password').keypress(function (e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                signIn();
+            }
+        });
     });
     //sign in function
-    function signIn(){
+    function signIn() {
         $.ajax({
             type: "POST",
             url: "assets/CFCs/functions.cfc",
             dataType: "json",
-            data: {method: "signin", 
+            data: {
+                method: "signin",
                 method: "remote_LDAP",
-                UserID: $('#username').val(), 
+                UserID: $('#username').val(),
                 UserPassword: $('#password').val()
             },
-            success: function(data){
+            success: function (data) {
                 var x = data.LDAP
-                if(x.AUTHORIZED_USER == true){
+                if (x.AUTHORIZED_USER == true) {
                     $('#login-success').append(' <span>' + x.ADMESSAGE + '</span> </div>');
                     $('#login-success').slideDown(300);
                     $('#login-warning').slideUp(200);
@@ -107,17 +118,17 @@
                     sessionStorage.setItem('NAME', x.NAME);
                     sessionStorage.setItem('NICKNAME', x.NICKNAME);
                     sessionStorage.setItem('USERID', x.USERID);
-                    setTimeout(function(){
+                    setTimeout(function () {
                         window.location.href = 'index.html';
                     }, 1000);
-                }else{
+                } else {
                     $('#login-warning').slideDown(300);
                     $('#login-warning').append(' <span>' + x.ADMESSAGE + '</span> </div>');
                 }
 
             },
-            error: function(data){
-                console.log(data); 
+            error: function (data) {
+                console.log(data);
             }
         });
     }
