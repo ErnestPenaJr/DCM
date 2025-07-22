@@ -221,6 +221,56 @@
         </div>
     </div>
 
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLabel">
+                        <i class="fas fa-user-edit me-2"></i>Edit User Access
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editUserForm">
+                        <input type="hidden" id="editUserEmplId">
+                        <div class="mb-3">
+                            <label for="editUserName" class="form-label">
+                                <i class="fas fa-user me-1"></i>Employee Name
+                            </label>
+                            <input type="text" class="form-control" id="editUserName" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPermissionSelect" class="form-label">
+                                <i class="fas fa-key me-1"></i>Permission Level
+                            </label>
+                            <select class="form-select" id="editPermissionSelect" required>
+                                <option value="">Select permission</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAccessStatus" class="form-label">
+                                <i class="fas fa-toggle-on me-1"></i>Access Status
+                            </label>
+                            <select class="form-select" id="editAccessStatus" required>
+                                <option value="Y">Enabled</option>
+                                <option value="N">Disabled</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary" id="saveUserChanges">
+                        <i class="fas fa-save me-1"></i>Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/navbar.js"></script>

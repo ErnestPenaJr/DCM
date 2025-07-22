@@ -1,3 +1,15 @@
+// Global function for editing users
+function editUser(emplid, name, permissionid, allowedaccess) {
+    // Set the values in the edit modal
+    $('#editUserEmplId').val(emplid);
+    $('#editUserName').val(name);
+    $('#editPermissionSelect').val(permissionid);
+    $('#editAccessStatus').val(allowedaccess);
+    
+    // Show the modal
+    $('#editUserModal').modal('show');
+}
+
 // Global function for deleting users
 function deleteUser(emplid, name) {
     Swal.fire({
@@ -132,6 +144,9 @@ $(document).ready(function() {
                             </td>
                             <td>${user.lastlogin ? new Date(user.lastlogin).toLocaleDateString() : 'Never'}</td>
                             <td>
+                                <button class="btn btn-sm btn-primary me-1" onclick="editUser('${user.emplid}', '${(user.name || '').replace(/'/g, "\\'")}', '${user.permissionid}', '${user.allowedaccess}')">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
                                 <button class="btn btn-sm btn-danger delete-user" onclick="deleteUser('${user.emplid}', '${(user.name || '').replace(/'/g, "\\'")}')">
                                     <i class="fas fa-trash-alt me-1"></i>Delete
                                 </button>
@@ -194,6 +209,49 @@ $(document).ready(function() {
                 Swal.fire({
                     title: 'Error!',
                     text: 'Error creating user access.',
+                    icon: 'error'
+                });
+            }
+        });
+    });
+
+    // Save user changes
+    $('#saveUserChanges').on('click', function() {
+        const data = {
+            EMPLID: $('#editUserEmplId').val(),
+            PERMISSIONID: $('#editPermissionSelect').val(),
+            ALLOWEDACCESS: $('#editAccessStatus').val(),
+            MODIFIEDBYID: window.currentUser?.EMPLID || 'SYSTEM'
+        };
+
+        $.ajax({
+            url: 'assets/CFCs/functions.cfc?method=updateUserAccess',
+            method: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.success) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User access updated successfully.',
+                        icon: 'success',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    $('#editUserModal').modal('hide');
+                    loadUserAccessTable();
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Error: ' + (response?.message || 'Unknown error'),
+                        icon: 'error'
+                    });
+                }
+            },
+            error: function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error updating user access.',
                     icon: 'error'
                 });
             }
