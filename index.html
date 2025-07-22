@@ -210,9 +210,9 @@
 <script>
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-    
+
     // Debug helper function - call from console: clearAndSetSession('132034')
-    window.clearAndSetSession = function(newEMPLID) {
+    window.clearAndSetSession = function (newEMPLID) {
         console.log('🧹 Clearing sessionStorage...');
         sessionStorage.clear();
         sessionStorage.setItem('EMPLID', newEMPLID);
@@ -225,9 +225,9 @@
         $('#mgtUserAccess').on('click', function () {
             window.location.href = 'userManagement.html';
         });
-        
+
         $('#mgtProjects').on('click', function () {
-            window.location.href = 'projectManagement_mockup.html';
+            window.location.href = 'projectManagement.html';
         });
         console.log('📋 Full sessionStorage contents:', sessionStorage)
         console.log('🔑 All sessionStorage keys and values:');
@@ -235,7 +235,7 @@
             const key = sessionStorage.key(i);
             console.log(`  ${key}: ${sessionStorage.getItem(key)}`);
         }
-        
+
         var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
         var emplid = sessionStorage.getItem('EMPLID');
         console.log('🆔 EMPLID from sessionStorage:', emplid);
@@ -762,10 +762,10 @@
         if ($.fn.DataTable.isDataTable('#example')) {
             $('#tasks').DataTable().destroy();
         }
-        
+
         var currentEMPLID = sessionStorage.getItem('EMPLID');
         console.log('🔍 loadMyTasks - Current EMPLID from sessionStorage:', currentEMPLID);
-        
+
         var task = $("#tasks").DataTable({
             "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID=" + currentEMPLID,
             "columns": [
