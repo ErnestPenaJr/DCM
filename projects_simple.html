@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Project Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .modal-content { color: #000 !important; }
+        .modal-body { color: #000 !important; }
+        .modal-title { color: #000 !important; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0"><i class="fas fa-project-diagram me-2"></i>Simple Project Management</h4>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
+                            <i class="fas fa-plus me-2"></i>Add Project
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <!-- Alert -->
+                        <div id="alerts" style="display: none;">
+                            <div id="alertMsg" class="alert alert-dismissible fade show" role="alert">
+                                <span id="alertTxt"></span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        </div>
+
+                        <!-- Projects Table -->
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="projectList">
+                                    <tr><td colspan="6" class="text-center">Loading...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Add Project</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm">
+                        <div class="mb-3">
+                            <label class="form-label">Name *</label>
+                            <input type="text" class="form-control" id="addName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="addDesc" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status *</label>
+                            <select class="form-select" id="addStatus" required>
+                                <option value="A">Active</option>
+                                <option value="I">Inactive</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="saveBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">Edit Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label class="form-label">Name *</label>
+                            <input type="text" class="form-control" id="editName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="editDesc" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status *</label>
+                            <select class="form-select" id="editStatus" required>
+                                <option value="A">Active</option>
+                                <option value="I">Inactive</option>
+                            </select>
+                        </div>
+                        <div id="taskWarning" class="alert alert-info" style="display: none;">
+                            <i class="fas fa-info-circle me-2"></i>
+                            This project has <span id="taskCount"></span> tasks.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning" id="updateBtn">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Delete Project</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteId">
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Warning!</strong> This cannot be undone.
+                    </div>
+                    <p>Delete project "<strong id="deleteName"></strong>"?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Session setup
+        sessionStorage.setItem('ISLOGGINEDIN', 'true');
+        sessionStorage.setItem('EMPLID', '132034');
+
+        $(document).ready(function() {
+            console.log('🚀 Simple Project Management loaded');
+            loadProjects();
+            setupEvents();
+        });
+
+        function setupEvents() {
+            $('#saveBtn').click(saveProject);
+            $('#updateBtn').click(updateProject);
+            $('#confirmDeleteBtn').click(deleteProject);
+            
+            $('#addModal').on('hidden.bs.modal', function() {
+                $('#addForm')[0].reset();
+            });
+            
+            $('#editModal').on('hidden.bs.modal', function() {
+                $('#editForm')[0].reset();
+                $('#taskWarning').hide();
+            });
+        }
+
+        function loadProjects() {
+            console.log('📋 Loading projects...');
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: { method: "getAllProjects" },
+                success: function(data) {
+                    console.log('✅ Projects loaded:', data);
+                    displayProjects(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('❌ Load error:', error);
+                    showAlert('Error loading projects: ' + error, 'danger');
+                }
+            });
+        }
+
+        function displayProjects(data) {
+            var html = '';
+            
+            if (data.items && data.items.length > 0) {
+                data.items.forEach(function(p) {
+                    var status = p.STATUS === 'A' ? 
+                        '<span class="badge bg-success">Active</span>' : 
+                        '<span class="badge bg-secondary">Inactive</span>';
+                    
+                    var statusBtn = p.STATUS === 'A' ? 
+                        '<button class="btn btn-sm btn-outline-warning me-1" onclick="toggleStatus(' + p.PROJECT_ID + ',\'A\')" title="Deactivate"><i class="fas fa-pause"></i></button>' :
+                        '<button class="btn btn-sm btn-outline-success me-1" onclick="toggleStatus(' + p.PROJECT_ID + ',\'I\')" title="Activate"><i class="fas fa-play"></i></button>';
+                    
+                    var actions = 
+                        '<button class="btn btn-sm btn-outline-primary me-1" onclick="editProject(' + p.PROJECT_ID + ')" title="Edit"><i class="fas fa-edit"></i></button>' +
+                        statusBtn +
+                        '<button class="btn btn-sm btn-outline-danger" onclick="confirmDelete(' + p.PROJECT_ID + ',\'' + p.PROJECT_NAME.replace(/'/g, "\\'") + '\')" title="Delete"><i class="fas fa-trash"></i></button>';
+                    
+                    html += '<tr>' +
+                        '<td>' + p.PROJECT_ID + '</td>' +
+                        '<td>' + p.PROJECT_NAME + '</td>' +
+                        '<td>' + p.PROJECT_DESCRIPTION + '</td>' +
+                        '<td>' + status + '</td>' +
+                        '<td>' + p.DATECREATED + '</td>' +
+                        '<td>' + actions + '</td>' +
+                        '</tr>';
+                });
+                showAlert(data.items.length + ' projects loaded', 'success');
+            } else {
+                html = '<tr><td colspan="6" class="text-center">No projects found</td></tr>';
+                showAlert('No projects found', 'info');
+            }
+            
+            $('#projectList').html(html);
+        }
+
+        function saveProject() {
+            var name = $('#addName').val();
+            var desc = $('#addDesc').val();
+            var status = $('#addStatus').val();
+            
+            if (!name) {
+                showAlert('Project name is required', 'danger');
+                return;
+            }
+            
+            $('#saveBtn').prop('disabled', true).text('Saving...');
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "createProject",
+                    PROJECT_NAME: name,
+                    PROJECT_DESCRIPTION: desc,
+                    STATUS: status
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#addModal').modal('hide');
+                        showAlert('Project created successfully!', 'success');
+                        loadProjects();
+                    } else {
+                        showAlert('Error creating project', 'danger');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('Error creating project: ' + error, 'danger');
+                },
+                complete: function() {
+                    $('#saveBtn').prop('disabled', false).text('Save');
+                }
+            });
+        }
+
+        function editProject(id) {
+            console.log('🔧 Edit project:', id);
+            showAlert('Loading project details...', 'info');
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "getProjectById",
+                    PROJECT_ID: id
+                },
+                success: function(data) {
+                    console.log('📥 Project data:', data);
+                    
+                    if (data && data.PROJECT_ID) {
+                        $('#editId').val(data.PROJECT_ID);
+                        $('#editName').val(data.PROJECT_NAME);
+                        $('#editDesc').val(data.PROJECT_DESCRIPTION);
+                        $('#editStatus').val(data.STATUS);
+                        
+                        if (data.TASK_COUNT && data.TASK_COUNT > 0) {
+                            $('#taskCount').text(data.TASK_COUNT);
+                            $('#taskWarning').show();
+                        }
+                        
+                        $('#editModal').modal('show');
+                        showAlert('Edit modal opened', 'success');
+                    } else {
+                        showAlert('Project not found', 'danger');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('Error loading project: ' + error, 'danger');
+                }
+            });
+        }
+
+        function updateProject() {
+            var id = $('#editId').val();
+            var name = $('#editName').val();
+            var desc = $('#editDesc').val();
+            var status = $('#editStatus').val();
+            
+            if (!name) {
+                showAlert('Project name is required', 'danger');
+                return;
+            }
+            
+            $('#updateBtn').prop('disabled', true).text('Updating...');
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "updateProject",
+                    PROJECT_ID: id,
+                    PROJECT_NAME: name,
+                    PROJECT_DESCRIPTION: desc,
+                    STATUS: status
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#editModal').modal('hide');
+                        showAlert('Project updated successfully!', 'success');
+                        loadProjects();
+                    } else {
+                        showAlert('Error updating project', 'danger');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('Error updating project: ' + error, 'danger');
+                },
+                complete: function() {
+                    $('#updateBtn').prop('disabled', false).text('Update');
+                }
+            });
+        }
+
+        function toggleStatus(id, currentStatus) {
+            var newStatus = currentStatus === 'A' ? 'I' : 'A';
+            var text = newStatus === 'A' ? 'activated' : 'deactivated';
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "toggleProjectStatus",
+                    PROJECT_ID: id,
+                    NEW_STATUS: newStatus
+                },
+                success: function(response) {
+                    if (response.success) {
+                        showAlert('Project ' + text + '!', 'success');
+                        loadProjects();
+                    } else {
+                        showAlert('Error updating status', 'danger');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('Error updating status: ' + error, 'danger');
+                }
+            });
+        }
+
+        function confirmDelete(id, name) {
+            $('#deleteId').val(id);
+            $('#deleteName').text(name);
+            $('#deleteModal').modal('show');
+        }
+
+        function deleteProject() {
+            var id = $('#deleteId').val();
+            
+            $('#confirmDeleteBtn').prop('disabled', true).text('Deleting...');
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "deleteProject",
+                    PROJECT_ID: id
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#deleteModal').modal('hide');
+                        showAlert('Project deleted successfully!', 'success');
+                        loadProjects();
+                    } else {
+                        showAlert('Error deleting project', 'danger');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('Error deleting project: ' + error, 'danger');
+                },
+                complete: function() {
+                    $('#confirmDeleteBtn').prop('disabled', false).text('Delete');
+                }
+            });
+        }
+
+        function showAlert(message, type) {
+            var alertClass = 'alert-' + type;
+            var icon = type === 'success' ? 'fa-check-circle' : 
+                      type === 'danger' ? 'fa-exclamation-circle' : 'fa-info-circle';
+
+            $('#alertMsg').removeClass().addClass('alert alert-dismissible fade show ' + alertClass);
+            $('#alertTxt').html('<i class="fas ' + icon + ' me-2"></i>' + message);
+            $('#alerts').slideDown();
+
+            setTimeout(function() {
+                $('#alerts').slideUp();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

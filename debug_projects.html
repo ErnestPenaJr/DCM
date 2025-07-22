@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Project Functions</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container mt-5">
+    <h1>Debug Project Functions</h1>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Test getAllProjects</h5>
+                </div>
+                <div class="card-body">
+                    <button id="testGetAll" class="btn btn-primary">Test Get All Projects</button>
+                    <pre id="getAllResult" class="mt-3"></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Test createProject</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <input type="text" id="testProjectName" class="form-control" placeholder="Project Name" value="Test Project">
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="testProjectDesc" class="form-control" placeholder="Description">Test project description</textarea>
+                    </div>
+                    <button id="testCreate" class="btn btn-success">Test Create Project</button>
+                    <pre id="createResult" class="mt-3"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Raw AJAX Test</h5>
+                </div>
+                <div class="card-body">
+                    <button id="testRaw" class="btn btn-warning">Test Raw AJAX</button>
+                    <pre id="rawResult" class="mt-3"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#testGetAll').click(function() {
+                $('#getAllResult').text('Loading...');
+                
+                $.ajax({
+                    type: "POST",
+                    url: "assets/CFCs/functions.cfc",
+                    data: {
+                        method: "getAllProjects"
+                    },
+                    success: function(response) {
+                        $('#getAllResult').text(JSON.stringify(response, null, 2));
+                    },
+                    error: function(xhr, status, error) {
+                        $('#getAllResult').text('ERROR: ' + error + '\n\nResponse: ' + xhr.responseText);
+                    }
+                });
+            });
+            
+            $('#testCreate').click(function() {
+                $('#createResult').text('Creating...');
+                
+                $.ajax({
+                    type: "POST",
+                    url: "assets/CFCs/functions.cfc",
+                    data: {
+                        method: "createProject",
+                        PROJECT_NAME: $('#testProjectName').val(),
+                        PROJECT_DESCRIPTION: $('#testProjectDesc').val(),
+                        STATUS: "A",
+                        CREATED_BY: "DEBUG_USER"
+                    },
+                    success: function(response) {
+                        $('#createResult').text(JSON.stringify(response, null, 2));
+                    },
+                    error: function(xhr, status, error) {
+                        $('#createResult').text('ERROR: ' + error + '\n\nResponse: ' + xhr.responseText);
+                    }
+                });
+            });
+            
+            $('#testRaw').click(function() {
+                $('#rawResult').text('Testing...');
+                
+                $.post("assets/CFCs/functions.cfc", {method: "getAllProjects"})
+                    .done(function(data) {
+                        $('#rawResult').text('SUCCESS:\n' + JSON.stringify(data, null, 2));
+                    })
+                    .fail(function(xhr, status, error) {
+                        $('#rawResult').text('FAIL:\nStatus: ' + status + '\nError: ' + error + '\nResponse: ' + xhr.responseText);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

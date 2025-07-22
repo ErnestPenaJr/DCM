@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Test - getAllProjects</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container mt-5">
+    <h1>AJAX Test - getAllProjects Function</h1>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Test AJAX Call to getAllProjects</h5>
+                </div>
+                <div class="card-body">
+                    <button id="testAjax" class="btn btn-primary">Test getAllProjects AJAX Call</button>
+                    <div id="results" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#testAjax').click(function() {
+                $('#results').html('<div class="alert alert-info">Loading...</div>');
+                
+                console.log('Starting AJAX call...');
+                
+                $.ajax({
+                    type: "POST",
+                    url: "assets/CFCs/functions.cfc",
+                    data: {
+                        method: "getAllProjects"
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        console.log('AJAX Success:', response);
+                        
+                        var html = '<div class="alert alert-success"><h5>✅ AJAX Call Successful!</h5></div>';
+                        html += '<h6>Raw Response:</h6>';
+                        html += '<pre>' + JSON.stringify(response, null, 2) + '</pre>';
+                        
+                        if (response.items && response.items.length > 0) {
+                            html += '<h6>Projects Found (' + response.items.length + '):</h6>';
+                            html += '<ul>';
+                            response.items.forEach(function(project) {
+                                html += '<li><strong>' + project.PROJECT_NAME + '</strong> - ' + project.PROJECT_DESCRIPTION + ' (Status: ' + project.STATUS + ')</li>';
+                            });
+                            html += '</ul>';
+                        } else {
+                            html += '<div class="alert alert-warning">No projects returned in response.items</div>';
+                        }
+                        
+                        $('#results').html(html);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', {
+                            status: status,
+                            error: error,
+                            responseText: xhr.responseText,
+                            xhr: xhr
+                        });
+                        
+                        var html = '<div class="alert alert-danger"><h5>❌ AJAX Call Failed!</h5></div>';
+                        html += '<p><strong>Status:</strong> ' + status + '</p>';
+                        html += '<p><strong>Error:</strong> ' + error + '</p>';
+                        html += '<p><strong>Response Text:</strong></p>';
+                        html += '<pre>' + xhr.responseText + '</pre>';
+                        
+                        $('#results').html(html);
+                    },
+                    complete: function(xhr, status) {
+                        console.log('AJAX Complete:', status);
+                    }
+                });
+            });
+            
+            // Auto-run the test
+            $('#testAjax').click();
+        });
+    </script>
+</body>
+</html>

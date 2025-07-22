@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
 </head>
 
-<nav class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info" data-aos="fade-down" data-aos-duration="1000">
+<nav class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info"
+    data-aos="fade-down" data-aos-duration="1000">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +45,10 @@
 
             <div id="timeLeftNavBar" class="navbar-text me-auto mb-2 mb-lg-0 text-uppercase fw-bold fs-3"></div>
 
+            <span class="text-center text-dark">
+                <a id="mgtProjects" class="nav-link active fs-6" aria-current="page" href="#"><i
+                        class="far fa-project-diagram fa-2x"></i> <br>Projects</a>
+            </span>
             <span class="text-center text-dark">
                 <a id="mgtUserAccess" class="nav-link active fs-6" aria-current="page" href="#"><i
                         class="far fa-users-cog fa-2x"></i> <br>User Access</a>
@@ -205,11 +210,43 @@
 <script>
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    
+    // Debug helper function - call from console: clearAndSetSession('132034')
+    window.clearAndSetSession = function(newEMPLID) {
+        console.log('🧹 Clearing sessionStorage...');
+        sessionStorage.clear();
+        sessionStorage.setItem('EMPLID', newEMPLID);
+        sessionStorage.setItem('ISLOGGINEDIN', '1');
+        console.log('✅ SessionStorage reset with EMPLID:', newEMPLID);
+        location.reload();
+    };
 
     $(document).ready(function () {
         $('#mgtUserAccess').on('click', function () {
             window.location.href = 'userManagement.html';
         });
+        
+        $('#mgtProjects').on('click', function () {
+            window.location.href = 'projectManagement_mockup.html';
+        });
+        console.log('📋 Full sessionStorage contents:', sessionStorage)
+        console.log('🔑 All sessionStorage keys and values:');
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            console.log(`  ${key}: ${sessionStorage.getItem(key)}`);
+        }
+        
+        var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
+        var emplid = sessionStorage.getItem('EMPLID');
+        console.log('🆔 EMPLID from sessionStorage:', emplid);
+        console.log('🔐 ISLOGGINEDIN from sessionStorage:', inLoggin);
+
+        if (inLoggin == null || inLoggin == 0) {
+            window.location.href = 'landingPage.html';
+        } else {
+            startSessionTimer();
+            displaySessionTimeLeft();
+        }
 
         $('#nextWeek').on('click', function () {
             var currentWeek = moment().week();
@@ -725,22 +762,31 @@
         if ($.fn.DataTable.isDataTable('#example')) {
             $('#tasks').DataTable().destroy();
         }
+        
+        var currentEMPLID = sessionStorage.getItem('EMPLID');
+        console.log('🔍 loadMyTasks - Current EMPLID from sessionStorage:', currentEMPLID);
+        
         var task = $("#tasks").DataTable({
-            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID=" + sessionStorage.getItem('EMPLID') + "&WEEK_NUM=" + $('#current_week').html(),
+            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID=" + currentEMPLID,
             "columns": [
                 { "data": "WEEK_NUMBER" },
                 { "data": "WEEK_DAY" },
-                { "data": "DATE" },
+                {
+                    "data": "TASK_DATE",
+                    "render": function (data, type, row) {
+                        return moment(data).format('MM/DD/YYYY');
+                    }
+                },
                 { "data": "TASK_NAME" },
                 { "data": "TASK_TIME" },
                 { "data": "PROJECT_NAME" },
                 { "data": "DEPTID" },
                 { "data": "TASK_DESCRIPTION" }
             ],
-            "order": [[0, "desc"]],
+            //"order": [[2, "desc"]],
             "paging": true,
-            "ordering": true,
-            "info": true,
+            //"ordering": true,
+            //"info": true,
             "searching": true,
             //"scrollY": "550px",
             "scrollCollapse": true,
@@ -752,6 +798,76 @@
                 + "<'row'<'col-sm-6'i> <'col-sm-6 text-end'p> >",
             select: true,
             buttons: [
+                {
+                    extend: 'collection',
+                    className: 'yearFilter mb-2',
+                    text: 'Sort By Year',
+                    buttons: [
+                        {
+                            text: '2026',
+                            action: function () {
+                                $.fn.dataTable.ext.search.push(
+                                    function (settings, data, dataIndex) {
+                                        var date = new Date(data[2]);
+                                        return date.getFullYear() === 2026;
+                                    }
+                                );
+                                task.draw();
+                                $.fn.dataTable.ext.search.pop();
+                                $('.dropdown-menu').hide();
+                            }
+                        },
+                        {
+                            text: '2025',
+                            action: function () {
+                                $.fn.dataTable.ext.search.push(
+                                    function (settings, data, dataIndex) {
+                                        var date = new Date(data[2]);
+                                        return date.getFullYear() === 2025;
+                                    }
+                                );
+                                task.draw();
+                                $.fn.dataTable.ext.search.pop();
+                                $('.dropdown-menu').hide();
+                            }
+                        },
+                        {
+                            text: '2024',
+                            action: function () {
+                                $.fn.dataTable.ext.search.push(
+                                    function (settings, data, dataIndex) {
+                                        var date = new Date(data[2]);
+                                        return date.getFullYear() === 2024;
+                                    }
+                                );
+                                task.draw();
+                                $.fn.dataTable.ext.search.pop();
+                                $('.dropdown-menu').hide();
+                            }
+                        },
+                        {
+                            text: '2023',
+                            action: function () {
+                                $.fn.dataTable.ext.search.push(
+                                    function (settings, data, dataIndex) {
+                                        var date = new Date(data[2]);
+                                        return date.getFullYear() === 2023;
+                                    }
+                                );
+                                task.draw();
+                                $.fn.dataTable.ext.search.pop();
+                                $('.dropdown-menu').hide();
+                            }
+                        },
+                        {
+                            text: 'Reset All',
+                            action: function () {
+                                $.fn.dataTable.ext.search.pop();
+                                task.draw();
+                            }
+                        }
+                    ]
+                },
                 {
                     className: 'mb-2',
                     text: 'Download Excel',

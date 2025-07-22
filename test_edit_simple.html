@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Edit Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Simple Edit Test</h1>
+        
+        <div class="mb-3">
+            <button class="btn btn-primary" onclick="editProject(1)">Test Edit Project ID 1</button>
+            <button class="btn btn-secondary" onclick="testGetProject(1)">Test Get Project ID 1</button>
+        </div>
+        
+        <div id="result" class="mt-3"></div>
+        
+        <!-- Simple Edit Modal -->
+        <div class="modal fade" id="editProjectModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Project</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editProjectForm">
+                            <input type="hidden" id="editProjectId">
+                            <div class="mb-3">
+                                <label for="editProjectName" class="form-label">Project Name</label>
+                                <input type="text" class="form-control" id="editProjectName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editProjectDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="editProjectDescription" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editProjectStatus" class="form-label">Status</label>
+                                <select class="form-select" id="editProjectStatus" required>
+                                    <option value="A">Active</option>
+                                    <option value="I">Inactive</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="updateProjectBtn">Update Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set up session storage for testing
+        sessionStorage.setItem('ISLOGGINEDIN', 'true');
+        sessionStorage.setItem('EMPLID', '132034');
+        
+        function testGetProject(projectId) {
+            console.log('🧪 Testing getProjectById for ID:', projectId);
+            $('#result').html('<div class="alert alert-info">Loading project ' + projectId + '...</div>');
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "getProjectById",
+                    PROJECT_ID: projectId
+                },
+                success: function(response) {
+                    console.log('✅ getProjectById response:', response);
+                    $('#result').html(
+                        '<div class="alert alert-success">' +
+                        '<h5>Success!</h5>' +
+                        '<pre>' + JSON.stringify(response, null, 2) + '</pre>' +
+                        '</div>'
+                    );
+                },
+                error: function(xhr, status, error) {
+                    console.error('❌ getProjectById error:', error);
+                    $('#result').html(
+                        '<div class="alert alert-danger">' +
+                        '<h5>Error!</h5>' +
+                        '<p>Status: ' + status + '</p>' +
+                        '<p>Error: ' + error + '</p>' +
+                        '<pre>' + xhr.responseText + '</pre>' +
+                        '</div>'
+                    );
+                }
+            });
+        }
+        
+        function editProject(projectId) {
+            console.log('🔧 editProject called with ID:', projectId);
+            $('#result').html('<div class="alert alert-info">Edit function called for project ' + projectId + '</div>');
+            
+            // Get project details
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "getProjectById",
+                    PROJECT_ID: projectId
+                },
+                success: function(response) {
+                    console.log('📥 Project details for edit:', response);
+                    console.log('📥 Response type:', typeof response);
+                    console.log('📥 Response keys:', Object.keys(response || {}));
+                    
+                    if (response && response.PROJECT_ID) {
+                        console.log('📝 Populating form fields...');
+                        
+                        // Check if form elements exist
+                        console.log('🔍 editProjectId element:', $('#editProjectId').length);
+                        console.log('🔍 editProjectName element:', $('#editProjectName').length);
+                        console.log('🔍 editProjectDescription element:', $('#editProjectDescription').length);
+                        console.log('🔍 editProjectStatus element:', $('#editProjectStatus').length);
+                        console.log('🔍 editProjectModal element:', $('#editProjectModal').length);
+                        
+                        // Populate the edit form
+                        $('#editProjectId').val(response.PROJECT_ID);
+                        $('#editProjectName').val(response.PROJECT_NAME);
+                        $('#editProjectDescription').val(response.PROJECT_DESCRIPTION);
+                        $('#editProjectStatus').val(response.STATUS);
+                        
+                        console.log('📝 Form populated, showing modal...');
+                        
+                        // Show the modal
+                        try {
+                            $('#editProjectModal').modal('show');
+                            console.log('✅ Modal show command executed');
+                            $('#result').html('<div class="alert alert-success">Edit modal opened for: ' + response.PROJECT_NAME + '</div>');
+                        } catch (modalError) {
+                            console.error('❌ Modal error:', modalError);
+                            $('#result').html('<div class="alert alert-danger">Modal error: ' + modalError.message + '</div>');
+                        }
+                    } else {
+                        console.error('❌ Invalid response structure:', response);
+                        $('#result').html('<div class="alert alert-danger">Project not found or invalid response</div>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('❌ Error getting project details:', error);
+                    console.error('❌ XHR status:', status);
+                    console.error('❌ XHR response:', xhr.responseText);
+                    $('#result').html('<div class="alert alert-danger">Error loading project: ' + error + '</div>');
+                }
+            });
+        }
+        
+        // Update project function
+        $('#updateProjectBtn').on('click', function() {
+            var projectId = $('#editProjectId').val();
+            var formData = {
+                projectName: $('#editProjectName').val(),
+                projectDescription: $('#editProjectDescription').val(),
+                projectStatus: $('#editProjectStatus').val()
+            };
+
+            console.log('💾 Updating project:', projectId, formData);
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/functions.cfc",
+                dataType: "json",
+                data: {
+                    method: "updateProject",
+                    PROJECT_ID: projectId,
+                    PROJECT_NAME: formData.projectName,
+                    PROJECT_DESCRIPTION: formData.projectDescription,
+                    STATUS: formData.projectStatus,
+                    MODIFIED_BY: 'TEST001'
+                },
+                success: function(response) {
+                    console.log('✅ Update response:', response);
+                    $('#editProjectModal').modal('hide');
+                    if (response.success) {
+                        $('#result').html('<div class="alert alert-success">Project updated successfully!</div>');
+                    } else {
+                        $('#result').html('<div class="alert alert-warning">Update response: ' + JSON.stringify(response) + '</div>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('❌ Update error:', error);
+                    $('#result').html('<div class="alert alert-danger">Update error: ' + error + '</div>');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
