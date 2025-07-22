@@ -684,12 +684,13 @@
     <cftry>
         <cfquery username="#this.DBUSER#" password="#this.DBPASS#" datasource="#this.DBSERVER#">
             INSERT INTO #this.DBSCHEMA#.DAILY_TASKS_PROJECTS
-            (PROJECT_NAME, PROJECT_DESCRIPTION, STATUS)
+            (PROJECT_ID, PROJECT_NAME, PROJECT_DESCRIPTION, STATUS)
             VALUES
             (
+                (SELECT NVL(MAX(PROJECT_ID), 0) + 1 FROM #this.DBSCHEMA#.DAILY_TASKS_PROJECTS),
                 <cfqueryparam value="#arguments.PROJECT_NAME#" cfsqltype="CF_SQL_VARCHAR" maxlength="225">,
                 <cfqueryparam value="#arguments.PROJECT_DESCRIPTION#" cfsqltype="CF_SQL_VARCHAR" maxlength="500">,
-                <cfqueryparam value="#arguments.STATUS#" cfsqltype="CF_SQL_VARCHAR" maxlength="225">
+                <cfqueryparam value="#arguments.STATUS#" cfsqltype="CF_SQL_CHAR" maxlength="1">
             )
         </cfquery>
         
@@ -702,6 +703,10 @@
             <cfset var retVal = {}>
             <cfset retVal["success"] = false>
             <cfset retVal["message"] = cfcatch.message>
+            <cfset retVal["detail"] = cfcatch.detail>
+            <cfset retVal["errorcode"] = cfcatch.errorcode>
+            <cfset retVal["sqlstate"] = cfcatch.sqlstate>
+            <cfset retVal["sql"] = cfcatch.sql>
             <cfreturn retVal>
         </cfcatch>
     </cftry>
@@ -847,6 +852,58 @@
     </cfif>
     
     <cfreturn retVal>
+</cffunction>
+
+<cffunction name="getWeeklySummary" access="remote" returntype="any" returnformat="JSON">
+    <cfargument name="WEEK_NUM" type="string" required="false" default="" />
+    <cfargument name="EMPLID" type="string" required="false" default="" />
+    <cfset var retVal = ArrayNew(1)>
+    
+    <cfquery username="#this.DBUSER#" password="#this.DBPASS#" datasource="#this.DBSERVER#" name="results">
+        SELECT 
+            t.TASK_NAME,
+            t.CLASSIFICATION,
+            t.WORK_TYPE,
+            p.PROJECT_NAME,
+            t.DEPTID,
+            SUM(CAST(t.TASK_TIME AS NUMBER)) as TOTAL_TIME,
+            COUNT(*) as OCCURRENCE_COUNT,
+            AVG(CAST(t.TASK_TIME AS NUMBER)) as AVG_TIME_PER_DAY,
+            MIN(t.TASK_DATE) as FIRST_OCCURRENCE,
+            MAX(t.TASK_DATE) as LAST_OCCURRENCE,
+            LISTAGG(DISTINCT TO_CHAR(t.TASK_DATE, 'DAY'), ', ') WITHIN GROUP (ORDER BY t.TASK_DATE) as DAYS_WORKED,
+            t.WEEK_NUMBER
+        FROM #this.DBSCHEMA#.DAILY_TASKS t
+        JOIN #this.DBSCHEMA#.DAILY_TASKS_PROJECTS p ON t.PROJECT = p.PROJECT_ID
+        WHERE t.WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
+        AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
+        AND t.TASK_DATE BETWEEN <cfqueryparam cfsqltype="cf_sql_date" value="#CreateDate(Year(Now()), 1, 1)#" /> 
+        AND <cfqueryparam cfsqltype="cf_sql_date" value="#CreateDate(Year(Now()), 12, 31)#" />
+        GROUP BY t.TASK_NAME, t.CLASSIFICATION, t.WORK_TYPE, p.PROJECT_NAME, t.DEPTID, t.WEEK_NUMBER
+        ORDER BY TOTAL_TIME DESC, t.CLASSIFICATION, t.TASK_NAME
+    </cfquery>
+
+    <cfloop query="results">
+        <cfset temp = {} />
+        <cfset temp["TASK_NAME"] = TASK_NAME />
+        <cfset temp["CLASSIFICATION"] = CLASSIFICATION />
+        <cfset temp["WORK_TYPE"] = WORK_TYPE />
+        <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
+        <cfset temp["DEPTID"] = DEPTID />
+        <cfset temp["TOTAL_TIME"] = TOTAL_TIME />
+        <cfset temp["OCCURRENCE_COUNT"] = OCCURRENCE_COUNT />
+        <cfset temp["AVG_TIME_PER_DAY"] = NumberFormat(AVG_TIME_PER_DAY, "0.0") />
+        <cfset temp["FIRST_OCCURRENCE"] = DateFormat(FIRST_OCCURRENCE, "mm/dd/yyyy") />
+        <cfset temp["LAST_OCCURRENCE"] = DateFormat(LAST_OCCURRENCE, "mm/dd/yyyy") />
+        <cfset temp["DAYS_WORKED"] = DAYS_WORKED />
+        <cfset temp["WEEK_NUMBER"] = WEEK_NUMBER />
+        <cfset temp["TOTAL_HOURS"] = NumberFormat(TOTAL_TIME / 60, "0.0") />
+        <cfset ArrayAppend(retval, temp)>
+    </cfloop>
+
+    <cfset result = {} />
+    <cfset result['items'] = retVal />
+    <cfreturn result />
 </cffunction>
 
 </cfcomponent>

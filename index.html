@@ -13,6 +13,7 @@
     <meta name="HandheldFriendly" content="true">
     <title>Daily Time Tracking</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
     <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
@@ -45,7 +46,7 @@
 
             <div id="timeLeftNavBar" class="navbar-text me-auto mb-2 mb-lg-0 text-uppercase fw-bold fs-3"></div>
 
-            <span class="text-center text-dark me-2">
+            <span class="text-center text-dark me-2\">
                 <a id="mgtProjects" class="nav-link active fs-6" aria-current="page" href="#"><i
                         class="far fa-project-diagram fa-2x"></i> <br>Projects</a>
             </span>
@@ -136,9 +137,20 @@
                                     class="fas fa-sync-alt"></i></span> <span id="lastWeek" style="cursor: pointer;"><i
                                     class="fas fa-arrow-alt-left"></i></span> current week: <span
                                 id="current_week"></i></span> <span id="nextWeek" style="cursor: pointer;"><i
-                                    class="fas fa-arrow-alt-right"></i></span><button
-                                class="btn btn-outline-light float-end" id="copyTextToClipboard"><i
-                                    class="far fa-copy fs-6"></i> Copy Text</button></h1>
+                                    class="fas fa-arrow-alt-right"></i></span>
+                                <div class="d-flex justify-content-end align-items-center gap-2">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-outline-light btn-sm" id="toggleViewDaily" data-view="daily">
+                                            <i class="far fa-calendar-day"></i> Daily
+                                        </button>
+                                        <button class="btn btn-outline-light btn-sm" id="toggleViewSummary" data-view="summary">
+                                            <i class="far fa-chart-bar"></i> Summary
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline-light btn-sm" id="copyTextToClipboard">
+                                        <i class="far fa-copy"></i> Copy Text
+                                    </button>
+                                </div></h1>
                         <div class="card" style="height: 726px">
                             <div class="card-body" style="overflow-y: scroll;">
                                 <div class="list-group theWeekOf"></div>
@@ -188,6 +200,7 @@
     <script src="assets/js/app.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/navbar.js"></script>
     <script src="assets/js/session-management.js"></script>
     <script src="node_modules/aos/dist/aos.js"></script>
     <script src="node_modules/moment/moment.js"></script>
@@ -222,13 +235,7 @@
     };
 
     $(document).ready(function () {
-        $('#mgtUserAccess').on('click', function () {
-            window.location.href = 'userManagement.html';
-        });
-
-        $('#mgtProjects').on('click', function () {
-            window.location.href = 'projectManagement.html';
-        });
+        // Navigation handled by navbar.js
         console.log('📋 Full sessionStorage contents:', sessionStorage)
         console.log('🔑 All sessionStorage keys and values:');
         for (let i = 0; i < sessionStorage.length; i++) {
@@ -259,9 +266,8 @@
             }
             $('#current_week').html(nextWeek);
             $('#WEEK_NUM').val(nextWeek);
-            var week = nextWeek
-            getCurrentWeekTasks(currentWeekNumber = week)
-            console.log(week);
+            refreshCurrentView(nextWeek);
+            console.log(nextWeek);
         });
         $('#lastWeek').on('click', function () {
             var currentWeekNumber = parseInt($('#current_week').html());
@@ -274,19 +280,35 @@
             }
             $('#current_week').html(lastWeek);
             $('#WEEK_NUM').val(lastWeek);
-            var week = lastWeek
-            getCurrentWeekTasks(currentWeekNumber = week)
-            console.log(week);
+            refreshCurrentView(lastWeek);
+            console.log(lastWeek);
         });
         $('#reset').on('click', function () {
             var currentWeekNumber = moment().week();
             $('#current_week').html(currentWeekNumber);
-            getCurrentWeekTasks(currentWeekNumber)
+            refreshCurrentView(currentWeekNumber);
             // clear all inputs, and textarea
             $('input').val('');
             $('textarea').val('');
             $('#totalTime').html('');
             $('#reset').slideUp(300);
+        });
+
+        // Toggle between daily and summary views
+        $('#toggleViewDaily').on('click', function() {
+            currentViewMode = 'daily';
+            $(this).addClass('active').removeClass('btn-outline-light').addClass('btn-light');
+            $('#toggleViewSummary').removeClass('active').removeClass('btn-light').addClass('btn-outline-light');
+            var currentWeekNumber = parseInt($('#current_week').html());
+            getCurrentWeekTasks(currentWeekNumber);
+        });
+
+        $('#toggleViewSummary').on('click', function() {
+            currentViewMode = 'summary';
+            $(this).addClass('active').removeClass('btn-outline-light').addClass('btn-light');
+            $('#toggleViewDaily').removeClass('active').removeClass('btn-light').addClass('btn-outline-light');
+            var currentWeekNumber = parseInt($('#current_week').html());
+            getWeeklySummary(currentWeekNumber);
         });
 
         $('#signOut').on('click', function () {
@@ -335,6 +357,9 @@
         });
         getProjects();
         loadMyTasks();
+        
+        // Initialize daily view as active
+        $('#toggleViewDaily').addClass('active').removeClass('btn-outline-light').addClass('btn-light');
         var tasks = [
             { "name": "Administration", "maxTime": 480, "id": "Administration", "category": "Administration", "work_type": "Other", "description": "15-30 min.: Updating task statuses and documenting progress." },
             { "name": "Code Development", "maxTime": 480, "id": "Code Development", "category": "Maintenance", "work_type": "Application", "description": "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
@@ -668,8 +693,7 @@
                 $('.theWeekOf').html(str);
 
                 $('#copyTextToClipboard').on('click', function () {
-                    copyHtml()
-                    //copyText()
+                    copyDailyView()
                 });
 
             },
@@ -757,6 +781,124 @@
         });
     }
 
+    function copyDailyView() {
+        var container = document.querySelector('.theWeekOf');
+        var weekNumber = $('#current_week').text();
+        
+        // Create both HTML and plain text versions
+        var htmlContent = '';
+        var textContent = '';
+        
+        // HTML Header
+        htmlContent += '<div style="font-family: Calibri, Arial, sans-serif; font-size: 12pt; color: #333;">';
+        htmlContent += '<h2 style="color: #0066cc; margin-bottom: 10px; border-bottom: 2px solid #0066cc; padding-bottom: 5px;">Weekly Time Report - Week ' + weekNumber + '</h2>';
+        
+        // Plain text header
+        textContent += 'Weekly Time Report - Week ' + weekNumber + '\n';
+        textContent += '='.repeat(50) + '\n\n';
+        
+        // Process each day
+        var dayItems = container.querySelectorAll('.list-group-item');
+        
+        dayItems.forEach(function(dayItem) {
+            var dayHeader = dayItem.querySelector('.text-uppercase.text-start.fw-bold');
+            var noteSection = dayItem.querySelector('.bg-info-subtle');
+            var tasksList = dayItem.querySelector('.list-group-numbered');
+            var totalSection = dayItem.querySelector('.text-capitalize.fw-normal');
+            
+            if (dayHeader) {
+                var dayName = dayHeader.textContent.trim().split(' ')[0]; // Get just the day name
+                
+                // HTML day header
+                htmlContent += '<h3 style="color: #0066cc; font-weight: bold; margin: 15px 0 8px 0; font-size: 11pt;">' + dayName + '</h3>';
+                
+                // Plain text day header
+                textContent += dayName + '\n';
+                
+                // Add notes if present
+                if (noteSection) {
+                    var noteText = noteSection.textContent.replace('NOTES: ', '');
+                    htmlContent += '<p style="margin: 5px 0 8px 20px; font-style: italic; color: #666; font-size: 10pt;">Notes: ' + noteText + '</p>';
+                    textContent += '  Notes: ' + noteText + '\n';
+                }
+                
+                // Process tasks
+                if (tasksList) {
+                    var tasks = tasksList.querySelectorAll('li');
+                    if (tasks.length > 0) {
+                        htmlContent += '<ol style="margin: 5px 0 15px 30px; padding: 0;">';
+                        
+                        tasks.forEach(function(task) {
+                            var taskText = task.textContent.trim();
+                            // Split the task text to separate name and time
+                            var lastSpaceIndex = taskText.lastIndexOf(' ');
+                            if (lastSpaceIndex > 0) {
+                                var taskName = taskText.substring(0, lastSpaceIndex);
+                                var taskTime = taskText.substring(lastSpaceIndex + 1);
+                                
+                                // HTML task item with proper spacing
+                                htmlContent += '<li style="margin-bottom: 3px; line-height: 1.3;">';
+                                htmlContent += '<span style="font-weight: 500;">' + taskName + '</span> - ';
+                                htmlContent += '<span style="color: #0066cc; font-weight: bold;">' + taskTime + '</span>';
+                                htmlContent += '</li>';
+                                
+                                // Plain text task item with proper numbering
+                                var taskNumber = Array.prototype.indexOf.call(tasks, task) + 1;
+                                textContent += '  ' + taskNumber + '. ' + taskName + ' - ' + taskTime + '\n';
+                            } else {
+                                // Fallback if parsing fails
+                                htmlContent += '<li style="margin-bottom: 3px; line-height: 1.3;">' + taskText + '</li>';
+                                var taskNumber = Array.prototype.indexOf.call(tasks, task) + 1;
+                                textContent += '  ' + taskNumber + '. ' + taskText + '\n';
+                            }
+                        });
+                        
+                        htmlContent += '</ol>';
+                    }
+                }
+                
+                // Add total if present
+                if (totalSection) {
+                    var totalText = totalSection.textContent.trim();
+                    htmlContent += '<p style="margin: 5px 0 15px 20px; font-weight: bold; color: #0066cc;">' + totalText + '</p>';
+                    textContent += '  ' + totalText + '\n';
+                }
+                
+                if (!tasksList || tasksList.querySelectorAll('li').length === 0) {
+                    htmlContent += '<p style="margin: 5px 0 15px 20px; color: #999; font-style: italic;">No tasks recorded</p>';
+                    textContent += '  No tasks recorded\n';
+                }
+                
+                textContent += '\n';
+            }
+        });
+        
+        htmlContent += '</div>';
+
+        // Copy both HTML and plain text to clipboard
+        const clipboardData = [
+            new ClipboardItem({
+                'text/html': new Blob([htmlContent], { type: 'text/html' }),
+                'text/plain': new Blob([textContent], { type: 'text/plain' })
+            })
+        ];
+
+        navigator.clipboard.write(clipboardData).then(function () {
+            $('#copyTextToClipboard').html('<i class="far fa-thumbs-up fs-6"></i> Copied!');
+            setTimeout(function () {
+                $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
+            }, 4000);
+        }).catch(function (error) {
+            console.error('Error copying formatted daily content: ', error);
+            // Fallback to plain text if HTML copy fails
+            navigator.clipboard.writeText(textContent).then(function () {
+                $('#copyTextToClipboard').html('<i class="far fa-check fs-6"></i> Text Copied');
+                setTimeout(function () {
+                    $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
+                }, 4000);
+            });
+        });
+    }
 
     function loadMyTasks() {
         if ($.fn.DataTable.isDataTable('#example')) {
@@ -943,6 +1085,223 @@
             }
         });
 
+    }
+
+    // View management function
+    function refreshCurrentView(weekNumber) {
+        if (currentViewMode === 'summary') {
+            getWeeklySummary(weekNumber);
+        } else {
+            getCurrentWeekTasks(weekNumber);
+        }
+    }
+
+    // Weekly Summary Functions
+    var currentViewMode = 'daily';
+
+    function getWeeklySummary(currentWeekNumber) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "assets/CFCs/functions.cfc",
+            data: {
+                method: "getWeeklySummary",
+                WEEK_NUM: currentWeekNumber,
+                EMPLID: sessionStorage.getItem('EMPLID')
+            },
+            success: function (response) {
+                var data = response.items;
+                displayWeeklySummary(data, currentWeekNumber);
+            },
+            error: function (error) {
+                console.error('Error fetching weekly summary:', error);
+                $('.theWeekOf').html('<div class="alert alert-warning">Error loading weekly summary data.</div>');
+            }
+        });
+    }
+
+    function displayWeeklySummary(data, weekNumber) {
+        if (!data || data.length === 0) {
+            $('.theWeekOf').html('<div class="alert alert-info text-center"><i class="fas fa-info-circle"></i> No data available for this week.</div>');
+            return;
+        }
+
+        // Group tasks by project
+        var tasksByProject = {};
+        var totalMinutes = 0;
+        
+        data.forEach(function(item) {
+            totalMinutes += parseFloat(item.TOTAL_TIME);
+            
+            if (!tasksByProject[item.PROJECT_NAME]) {
+                tasksByProject[item.PROJECT_NAME] = { 
+                    time: 0, 
+                    tasks: [],
+                    deptid: item.DEPTID
+                };
+            }
+            tasksByProject[item.PROJECT_NAME].time += parseFloat(item.TOTAL_TIME);
+            tasksByProject[item.PROJECT_NAME].tasks.push(item);
+        });
+
+        // Sort projects by total time (highest first)
+        var sortedProjects = Object.keys(tasksByProject).sort(function(a, b) {
+            return tasksByProject[b].time - tasksByProject[a].time;
+        });
+
+        var totalHours = (totalMinutes / 60).toFixed(1);
+
+        var html = '<div class="weekly-summary">';
+        
+        // Header
+        html += '<div class="alert alert-primary mb-4 text-center">';
+        html += '<h4 class="mb-2"><i class="fas fa-arrow-left"></i> CURRENT WEEK: ' + weekNumber + ' <i class="fas fa-arrow-right"></i></h4>';
+        html += '<p class="mb-0"><strong>Total Time Worked: ' + totalHours + ' hours</strong></p>';
+        html += '</div>';
+
+        // Projects Section
+        html += '<div class="projects-list">';
+        
+        sortedProjects.forEach(function(projectName, index) {
+            var projectData = tasksByProject[projectName];
+            var projectHours = (projectData.time / 60).toFixed(1);
+            var projectNumber = index + 1;
+            
+            html += '<div class="project-section mb-4">';
+            html += '<h5 class="project-title mb-3">';
+            html += '<span class="project-number">' + projectNumber + '.</span> ';
+            html += '<i class="fas fa-briefcase text-primary"></i> ' + projectName;
+            html += ' <span class="badge bg-primary ms-2">' + projectHours + ' hours</span>';
+            html += '</h5>';
+            
+            // Sort tasks by total time within project
+            var sortedTasks = projectData.tasks.sort(function(a, b) {
+                return parseFloat(b.TOTAL_TIME) - parseFloat(a.TOTAL_TIME);
+            });
+            
+            html += '<div class="task-list ms-4">';
+            sortedTasks.forEach(function(task) {
+                var taskHours = (parseFloat(task.TOTAL_TIME) / 60).toFixed(1);
+                var taskMinutes = parseInt(task.TOTAL_TIME);
+                
+                html += '<div class="task-item mb-2">';
+                html += '<i class="fas fa-circle bullet-point me-2"></i>';
+                html += '<span class="task-name">' + task.TASK_NAME.replace(/_/g, ' ') + '</span>';
+                html += ' - <span class="task-time text-primary fw-bold">' + taskHours + ' hours</span>';
+                html += ' <span class="task-details text-muted">(' + task.OCCURRENCE_COUNT + ' days, ';
+                html += 'avg ' + task.AVG_TIME_PER_DAY + ' min/day)</span>';
+                html += '</div>';
+            });
+            html += '</div>';
+            html += '</div>';
+        });
+        
+        html += '</div>';
+        html += '</div>';
+        
+        $('.theWeekOf').html(html);
+        
+        // Update copy button functionality
+        $('#copyTextToClipboard').off('click').on('click', function () {
+            copyWeeklySummaryText();
+        });
+    }
+
+    function copyWeeklySummaryText() {
+        var container = document.querySelector('.theWeekOf');
+        
+        // Extract header information
+        var weekNumber = $('#current_week').text();
+        var totalHours = container.querySelector('.alert-primary p strong');
+        
+        // Create both HTML and plain text versions
+        var htmlContent = '';
+        var textContent = '';
+        
+        // HTML Header
+        htmlContent += '<div style="font-family: Calibri, Arial, sans-serif; font-size: 12pt; color: #333;">';
+        htmlContent += '<h2 style="color: #0066cc; margin-bottom: 10px; border-bottom: 2px solid #0066cc; padding-bottom: 5px;">CURRENT WEEK: ' + weekNumber + '</h2>';
+        
+        // Plain text header
+        textContent += 'CURRENT WEEK: ' + weekNumber + '\n';
+        textContent += '='.repeat(50) + '\n\n';
+        
+        if (totalHours) {
+            htmlContent += '<p style="font-weight: bold; margin-bottom: 15px; color: #0066cc;">' + totalHours.textContent + '</p>';
+            textContent += totalHours.textContent + '\n\n';
+        }
+        
+        // Extract project sections
+        var projectSections = container.querySelectorAll('.project-section');
+        projectSections.forEach(function(section) {
+            var projectTitle = section.querySelector('.project-title');
+            var taskItems = section.querySelectorAll('.task-item');
+            
+            if (projectTitle) {
+                // Get project number, name, and hours
+                var projectNumber = projectTitle.querySelector('.project-number').textContent;
+                var projectName = projectTitle.textContent.split('.')[1].trim().split(' hours')[0];
+                var badge = projectTitle.querySelector('.badge');
+                var hours = badge ? badge.textContent : '';
+                
+                // HTML project title with styling
+                htmlContent += '<h3 style="color: #0066cc; font-weight: bold; margin: 15px 0 8px 0; font-size: 11pt;">';
+                htmlContent += '<span style="color: #0066cc; font-weight: bold;">' + projectNumber + '</span> ' + projectName + ' <span style="color: #666; font-weight: normal;">(' + hours + ')</span>';
+                htmlContent += '</h3>';
+                
+                // Plain text project title
+                textContent += projectNumber + ' ' + projectName + ' (' + hours + ')\n';
+                
+                // HTML task list with proper bullets
+                htmlContent += '<ul style="margin: 5px 0 15px 20px; padding: 0;">';
+                
+                // Add task items as bullet points
+                taskItems.forEach(function(item) {
+                    var taskName = item.querySelector('.task-name').textContent;
+                    var taskTime = item.querySelector('.task-time').textContent;
+                    var taskDetails = item.querySelector('.task-details').textContent;
+                    
+                    // HTML bullet point with proper spacing
+                    htmlContent += '<li style="margin-bottom: 4px; line-height: 1.4;">';
+                    htmlContent += '<span style="font-weight: 500;">' + taskName + '</span> - ';
+                    htmlContent += '<span style="color: #0066cc; font-weight: bold;">' + taskTime + '</span> ';
+                    htmlContent += '<span style="color: #666; font-size: 10pt;">' + taskDetails + '</span>';
+                    htmlContent += '</li>';
+                    
+                    // Plain text bullet point
+                    textContent += '  • ' + taskName + ' - ' + taskTime + ' ' + taskDetails + '\n';
+                });
+                
+                htmlContent += '</ul>';
+                textContent += '\n';
+            }
+        });
+        
+        htmlContent += '</div>';
+
+        // Copy both HTML and plain text to clipboard
+        const clipboardData = [
+            new ClipboardItem({
+                'text/html': new Blob([htmlContent], { type: 'text/html' }),
+                'text/plain': new Blob([textContent], { type: 'text/plain' })
+            })
+        ];
+
+        navigator.clipboard.write(clipboardData).then(function () {
+            $('#copyTextToClipboard').html('<i class="far fa-thumbs-up fs-6"></i> Copied!');
+            setTimeout(function () {
+                $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
+            }, 3000);
+        }).catch(function (error) {
+            console.error('Error copying formatted content: ', error);
+            // Fallback to plain text if HTML copy fails
+            navigator.clipboard.writeText(textContent).then(function () {
+                $('#copyTextToClipboard').html('<i class="far fa-check fs-6"></i> Text Copied');
+                setTimeout(function () {
+                    $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
+                }, 3000);
+            });
+        });
     }
 
 </script>

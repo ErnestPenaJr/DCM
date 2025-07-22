@@ -13,6 +13,7 @@
     <meta name="HandheldFriendly" content="true">
     <title>Project Management - Daily Time Tracking (Test)</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
     <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
@@ -54,38 +55,7 @@
     </style>
 </head>
 
-<nav class="navbar navbar-expand-lg bg-warning fixed-top px-vw-5 border-bottom border-bottom-5 border-info"
-    data-aos="fade-down" data-aos-duration="1000">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo2.png" height="55"></a>
-            <span class="navbar-text text-uppercase fw-bold fs-1">Project Management (Test)</span>
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item text-center">
-                    <a href="index.html" class="nav-link active fs-6" aria-current="page">
-                        <i class="far fa-clock fa-2x"></i> <br>Time Tracking
-                    </a>
-                </li>
-            </ul>
-
-            <div id="timeLeftNavBar" class="navbar-text me-auto mb-2 mb-lg-0 text-uppercase fw-bold fs-3">TEST MODE
-            </div>
-
-            <span class="text-center text-dark">
-                <a id="mgtUserAccess" class="nav-link active fs-6" aria-current="page" href="userManagement.html">
-                    <i class="far fa-users-cog fa-2x"></i> <br>User Access
-                </a>
-            </span>
-            <button id="signOut" class="btn btn-dark-outline float-end fs-6" aria-current="page" href="#"><i
-                    class="fas fa-sign-out-alt fa-2x"></i> <br>Sign Out</button>
-        </div>
-    </div>
-</nav>
+<!-- Navigation will be loaded by navbar.js -->
 
 <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
     <main class="mt-5">
@@ -273,6 +243,7 @@
     <!-- Scripts -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/navbar.js"></script>
     <script src="node_modules/aos/dist/aos.js"></script>
     <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
     <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js"></script>
@@ -406,7 +377,7 @@
                             var projectName = project.PROJECT_NAME || '';
                             var projectDesc = project.PROJECT_DESCRIPTION || '';
                             var projectStatus = project.STATUS || 'I';
-                            var projectDate = project.DATECREATED || '';
+                            var projectDate = project.CREATED_DATE || '';
 
                             var statusBadge = projectStatus === 'A' ?
                                 '<span class="badge bg-success project-status-badge">Active</span>' :

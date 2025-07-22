@@ -1,0 +1,167 @@
+/* DCM Standard Navigation Styles */
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* Active navigation item styling */
+.nav-link.active-page {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    backdrop-filter: blur(5px);
+}
+
+/* Navigation item hover effects */
+.nav-link {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Session timer styling */
+#timeLeftNavBar {
+    color: #dc3545 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+/* Sign out button */
+#signOut {
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #343a40, #495057);
+    border: 1px solid #495057;
+    color: white;
+}
+
+#signOut:hover {
+    background: linear-gradient(45deg, #495057, #6c757d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    #timeLeftNavBar {
+        text-align: center;
+        font-size: 1rem !important;
+    }
+    
+    .nav-link {
+        padding: 10px;
+        margin: 2px 0;
+    }
+}
+
+/* Animation for page title changes */
+#pageTitle {
+    transition: color 0.3s ease;
+}
+
+/* Dropdown animations for mobile */
+.navbar-collapse {
+    transition: all 0.3s ease;
+}
+
+/* Logo hover effect */
+.navbar-brand img {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.navbar-brand:hover img {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Weekly Summary Styles */
+.weekly-summary {
+    color: #333;
+}
+
+.weekly-summary .alert-primary {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-color: rgba(13, 110, 253, 0.2);
+    color: #084298;
+    border-radius: 8px;
+}
+
+.weekly-summary .project-section {
+    border-left: 3px solid #007bff;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(248, 249, 250, 0.5);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem;
+}
+
+.weekly-summary .project-title {
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.weekly-summary .project-number {
+    color: #007bff;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.weekly-summary .task-list {
+    margin-left: 1rem;
+}
+
+.weekly-summary .task-item {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+    line-height: 1.5;
+}
+
+.weekly-summary .bullet-point {
+    color: #007bff;
+    font-size: 0.6em;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.weekly-summary .task-name {
+    font-weight: 500;
+    color: #2c2c2c;
+}
+
+.weekly-summary .task-time {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.weekly-summary .task-details {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.weekly-summary .badge {
+    font-size: 0.85rem;
+}
+
+/* View toggle buttons */
+.btn-group .btn {
+    transition: all 0.2s ease;
+}
+
+.btn-group .btn.active {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
