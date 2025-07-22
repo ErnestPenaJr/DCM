@@ -61,7 +61,35 @@ function deleteUser(emplid, name) {
     });
 }
 
+function initializeUsersTable() {
+    // Check if DataTable already exists and destroy it
+    if ($.fn.DataTable.isDataTable('#usersTable')) {
+        $('#usersTable').DataTable().destroy();
+    }
+
+    $('#usersTable').DataTable({
+        "responsive": true,
+        "pageLength": 25,
+        "language": {
+            "search": "Search users:",
+            "lengthMenu": "Show _MENU_ users per page",
+            "info": "Showing _START_ to _END_ of _TOTAL_ users",
+            "emptyTable": "No users found"
+        }
+    });
+}
+
 $(document).ready(function() {
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+
+    // Initialize DataTable
+    initializeUsersTable();
+
     // Initialize Select2 for employee search
     $('#employeeSearch').select2({
         ajax: {
@@ -117,8 +145,8 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-                const tbody = $('#userTableBody');
-                tbody.empty();
+                var table = $('#usersTable').DataTable();
+                table.clear();
                 
                 if (!response || !response.items) {
                     console.error('Invalid response format:', response);
@@ -130,34 +158,40 @@ $(document).ready(function() {
                     return;
                 }
 
-                response.items.forEach(function(user) {
-                    const row = `
-                        <tr>
-                            <td>${user.name || ''}</td>
-                            <td>${user.departmentname || ''}</td>
-                            <td>${user.permissionname || ''}</td>
-                            <td>
-                                <span class="badge ${user.allowedaccess === 'Y' ? 'bg-success' : 'bg-danger'}">
-                                    <i class="fas fa-${user.allowedaccess === 'Y' ? 'check-circle' : 'times-circle'} me-1"></i>
-                                    ${user.allowedaccess === 'Y' ? 'Enabled' : 'Disabled'}
-                                </span>
-                            </td>
-                            <td>${user.lastlogin ? new Date(user.lastlogin).toLocaleDateString() : 'Never'}</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary me-1" onclick="editUser('${user.emplid}', '${(user.name || '').replace(/'/g, "\\'")}', '${user.permissionid}', '${user.allowedaccess}')">
-                                    <i class="fas fa-edit me-1"></i>Edit
-                                </button>
-                                <button class="btn btn-sm btn-danger delete-user" onclick="deleteUser('${user.emplid}', '${(user.name || '').replace(/'/g, "\\'")}')">
-                                    <i class="fas fa-trash-alt me-1"></i>Delete
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-                    tbody.append(row);
-                });
+                if (response.items && response.items.length > 0) {
+                    var rowData = [];
+                    response.items.forEach(function(user) {
+                        var statusBadge = user.allowedaccess === 'Y' ?
+                            '<span class="badge bg-success user-status-badge"><i class="fas fa-check-circle me-1"></i>Enabled</span>' :
+                            '<span class="badge bg-danger user-status-badge"><i class="fas fa-times-circle me-1"></i>Disabled</span>';
 
-                // Re-initialize any tooltips or popovers
-                $('[data-bs-toggle="tooltip"]').tooltip();
+                        var cleanName = (user.name || '').replace(/'/g, '');
+                        var actions = '<button class="btn btn-sm btn-outline-primary me-1" onclick="editUser(\'' + user.emplid + '\', \'' + cleanName + '\', \'' + user.permissionid + '\', \'' + user.allowedaccess + '\')" title="Edit"><i class="fas fa-edit"></i></button>' +
+                            '<button class="btn btn-sm btn-outline-danger" onclick="deleteUser(\'' + user.emplid + '\', \'' + cleanName + '\')" title="Delete"><i class="fas fa-trash"></i></button>';
+
+                        var row = [
+                            String(user.name || ''),
+                            String(user.departmentname || ''),
+                            String(user.permissionname || ''),
+                            statusBadge,
+                            String(user.lastlogin ? new Date(user.lastlogin).toLocaleDateString() : 'Never'),
+                            actions
+                        ];
+
+                        rowData.push(row);
+                    });
+
+                    // Add all rows at once
+                    table.rows.add(rowData).draw();
+                }
+
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Users loaded successfully (' + (response.items ? response.items.length : 0) + ' found)',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
             },
             error: function(xhr, status, error) {
                 console.error('Error loading users:', error);
@@ -170,10 +204,20 @@ $(document).ready(function() {
         });
     }
 
-    // Add new user
-    $('#addUserForm').on('submit', function(e) {
+    // Add new user - button click handler
+    $('#saveUserBtn').on('click', function(e) {
         e.preventDefault();
-        
+        var form = $('#addUserForm')[0];
+
+        if (form.checkValidity()) {
+            saveNewUser();
+        } else {
+            form.classList.add('was-validated');
+        }
+    });
+
+    // Add new user function
+    function saveNewUser() {
         const data = {
             EMPLID: $('#employeeSearch').val(),
             PERMISSIONID: $('#permissionSelect').val(),
@@ -181,12 +225,16 @@ $(document).ready(function() {
             CREATEDBYID: window.currentUser?.EMPLID || 'SYSTEM'
         };
 
+        $('#saveUserBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-2"></i>Saving...');
+
         $.ajax({
             url: 'assets/CFCs/functions.cfc?method=createUserAccess',
             method: 'POST',
+            dataType: 'json',
             data: data,
             success: function(response) {
-                if (response.success) {
+                if (response && response.success) {
+                    $('#addUserModal').modal('hide');
                     Swal.fire({
                         title: 'Success!',
                         text: 'User access created successfully.',
@@ -194,13 +242,11 @@ $(document).ready(function() {
                         timer: 1500,
                         showConfirmButton: false
                     });
-                    $('#addUserForm')[0].reset();
-                    $('#employeeSearch').val(null).trigger('change');
                     loadUserAccessTable();
                 } else {
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Error: ' + response.message,
+                        text: 'Error: ' + (response?.message || 'Unknown error'),
                         icon: 'error'
                     });
                 }
@@ -211,8 +257,18 @@ $(document).ready(function() {
                     text: 'Error creating user access.',
                     icon: 'error'
                 });
+            },
+            complete: function() {
+                $('#saveUserBtn').prop('disabled', false).html('<i class="fas fa-save me-2"></i>Save User');
             }
         });
+    }
+
+    // Reset form when modal is hidden
+    $('#addUserModal').on('hidden.bs.modal', function () {
+        $('#addUserForm')[0].reset();
+        $('#addUserForm').removeClass('was-validated');
+        $('#employeeSearch').val(null).trigger('change');
     });
 
     // Save user changes
@@ -255,15 +311,6 @@ $(document).ready(function() {
                     icon: 'error'
                 });
             }
-        });
-    });
-
-    // Search functionality
-    $('#userSearchInput').on('keyup', function() {
-        const searchText = $(this).val().toLowerCase();
-        $('#userTableBody tr').each(function() {
-            const rowText = $(this).text().toLowerCase();
-            $(this).toggle(rowText.indexOf(searchText) > -1);
         });
     });
 

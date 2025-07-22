@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.css">
     <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
     <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
     <style>
         .project-status-badge {
             font-size: 0.8em;
@@ -73,16 +74,6 @@
                                 data-bs-target="#addProjectModal">
                                 <i class="fas fa-plus me-2"></i>Add New Project
                             </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alert Container -->
-                <div class="row mb-3" id="alertContainer" style="display: none;">
-                    <div class="col-12">
-                        <div id="alertMessage" class="alert alert-dismissible fade show" role="alert">
-                            <span id="alertText"></span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     </div>
                 </div>
@@ -245,6 +236,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
     <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js"></script>
 
@@ -634,19 +626,40 @@
         }
 
         function showAlert(message, type) {
-            var alertClass = 'alert-' + type;
-            var iconClass = type === 'success' ? 'fa-check-circle' :
-                type === 'danger' ? 'fa-exclamation-circle' :
-                    'fa-info-circle';
-
-            $('#alertMessage').removeClass().addClass('alert alert-dismissible fade show ' + alertClass);
-            $('#alertText').html('<i class="fas ' + iconClass + ' me-2"></i>' + message);
-            $('#alertContainer').slideDown();
-
-            // Auto hide after 5 seconds
-            setTimeout(function () {
-                $('#alertContainer').slideUp();
-            }, 5000);
+            var icon, title;
+            
+            switch(type) {
+                case 'success':
+                    icon = 'success';
+                    title = 'Success!';
+                    break;
+                case 'danger':
+                    icon = 'error';
+                    title = 'Error!';
+                    break;
+                case 'info':
+                    icon = 'info';
+                    title = 'Information';
+                    break;
+                case 'warning':
+                    icon = 'warning';
+                    title = 'Warning';
+                    break;
+                default:
+                    icon = 'info';
+                    title = 'Notice';
+            }
+            
+            Swal.fire({
+                title: title,
+                text: message,
+                icon: icon,
+                timer: type === 'success' || type === 'info' ? 3000 : null,
+                showConfirmButton: type === 'danger' || type === 'warning',
+                timerProgressBar: true,
+                toast: false,
+                position: 'center'
+            });
         }
     </script>
 </body>
