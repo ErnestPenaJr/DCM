@@ -24,7 +24,7 @@ function deleteUser(emplid, name) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: 'assets/CFCs/functions.cfc?method=deleteUserAccess',
+                url: 'assets/CFCs/UserService.cfc?method=deleteUserAccess',
                 type: 'POST',
                 dataType: 'json',
                 data: {
@@ -93,7 +93,7 @@ $(document).ready(function() {
     // Initialize Select2 for employee search
     $('#employeeSearch').select2({
         ajax: {
-            url: 'assets/CFCs/functions.cfc?method=search4Employees',
+            url: 'assets/CFCs/UserService.cfc?method=search4Employees',
             dataType: 'json',
             delay: 250,
             data: function(params) {
@@ -119,7 +119,7 @@ $(document).ready(function() {
 
     // Load permissions for select boxes
     function loadPermissions() {
-        $.getJSON('assets/CFCs/functions.cfc?method=getAllPermissions', function(data) {
+        $.getJSON('assets/CFCs/UserService.cfc?method=getAllPermissions', function(data) {
             const permissions = data.items;
             const permissionSelect = $('#permissionSelect, #editPermissionSelect');
             permissionSelect.empty().append('<option value="">Select permission</option>');
@@ -141,7 +141,7 @@ $(document).ready(function() {
     // Load and display users
     function loadUserAccessTable() {
         $.ajax({
-            url: 'assets/CFCs/functions.cfc?method=getAllUserAccess',
+            url: 'assets/CFCs/UserService.cfc?method=getAllUserAccess',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -228,7 +228,7 @@ $(document).ready(function() {
         $('#saveUserBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-2"></i>Saving...');
 
         $.ajax({
-            url: 'assets/CFCs/functions.cfc?method=createUserAccess',
+            url: 'assets/CFCs/UserService.cfc?method=createUserAccess',
             method: 'POST',
             dataType: 'json',
             data: data,
@@ -281,7 +281,7 @@ $(document).ready(function() {
         };
 
         $.ajax({
-            url: 'assets/CFCs/functions.cfc?method=updateUserAccess',
+            url: 'assets/CFCs/UserService.cfc?method=updateUserAccess',
             method: 'POST',
             data: data,
             dataType: 'json',

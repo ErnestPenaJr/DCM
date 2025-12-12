@@ -512,7 +512,7 @@
     function saveTask(taskName, taskTime, taskDesc, taskCategory, taskWorkType, taskDate, taskWeek, taskDept, taskProject, taskAllocatedTime, dayOfWeek, deptID, projectID, weekly_note, emplid) {
         $.ajax({
             type: "POST",
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/TaskService.cfc",
             data: {
                 method: "saveTask",
                 TASK_NAME: taskName.replace(/_/g, " "),
@@ -560,7 +560,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/DepartmentService.cfc",
             data: {
                 method: "searchDepartments",
                 searchStr: x
@@ -587,9 +587,9 @@
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/ProjectService.cfc",
             data: {
-                method: "getProjects"
+                method: "getProjects",
             },
             success: function (response) {
                 var x = response.items;
@@ -606,7 +606,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/TaskService.cfc",
             data: {
                 method: "getTaskByWeek",
                 WEEK_NUM: currentWeekNumber,
@@ -909,7 +909,7 @@
         console.log('🔍 loadMyTasks - Current EMPLID from sessionStorage:', currentEMPLID);
 
         var task = $("#tasks").DataTable({
-            "ajax": "assets/CFCs/functions.cfc?method=getAllTasks&EMPLID=" + currentEMPLID,
+            "ajax": "assets/CFCs/TaskService.cfc?method=getAllTasks&EMPLID=" + currentEMPLID,
             "columns": [
                 { "data": "WEEK_NUMBER" },
                 { "data": "WEEK_DAY" },
@@ -1073,7 +1073,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/TaskService.cfc",
             data: {
                 method: "getTaskHistory",
                 WEEK: week,
@@ -1103,7 +1103,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/TaskService.cfc",
             data: {
                 method: "getWeeklySummary",
                 WEEK_NUM: currentWeekNumber,

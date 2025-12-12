@@ -48,8 +48,8 @@
     function checkLoginStatus() {
         $.ajax({
             type: "POST",
-            url: "assets/CFCs/functions.cfc",
-            data: {method: "checkLoginStatus"},
+            url: "assets/CFCs/UserService.cfc",
+            data: {method: "isSessionActive"},
             success: function(isLoggedIn) {
                 if (!isLoggedIn) {
                     window.location.href = 'landingPage.html'; // Redirect to landing page
@@ -111,21 +111,9 @@
     }
 
     function stayLoggedIn() {
-        // AJAX call to refresh session (not implemented here)
-
-        function refreshSession(){
-            $.ajax({
-                type: "POST",
-                url: "assets/CFCs/functions.cfc",
-                data: {method: "refreshSession"},
-                success: function(data){
-                    console.log(data);
-                },
-                error: function(data){
-                    console.log(data); 
-                }
-            });
-        }
+        // AJAX call to refresh session
+        refreshSession();
+        
         // Restart the session timer
         startSessionTimer();
 
@@ -157,7 +145,7 @@
     function refreshSession(){
         $.ajax({
             type: "POST",
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/UserService.cfc",
             data: {method: "refreshSession"},
             success: function(data){
                 console.log(data);

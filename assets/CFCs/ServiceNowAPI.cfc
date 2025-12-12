@@ -1,18 +1,33 @@
 <cfcomponent>
 
+    <cfset variables.config = {}>
+
+    <cffunction name="init" access="public" returntype="any">
+        <cfset var configPath = expandPath("/config/config.json")>
+        <cfif fileExists(configPath)>
+            <cfset var fileContent = fileRead(configPath)>
+            <cfset variables.config = deserializeJSON(fileContent)>
+        <cfelse>
+            <cfthrow message="Config file not found at #configPath#">
+        </cfif>
+        <cfreturn this>
+    </cffunction>
+
+    <cfset init()>
+
     <cffunction name="submitTicket" access="remote" returntype="string">
         <cfargument name="formData" type="struct" required="yes">
         
         <!--- Set up ServiceNow API credentials --->
-        <cfset var username = "erniep@mdanderson.org">
-        <cfset var password = "MDA268RedDragons">
-        <cfset var apiUrl = "https://mdandersondev.servicenowservices.com/now/nav/ui/classic/params/target/$restapi.do">
+        <cfset var username = variables.config.servicenow.username>
+        <cfset var password = variables.config.servicenow.password>
+        <cfset var apiUrl = variables.config.servicenow.apiUrl>
 
         <!--- Create the post data --->
         <cfset var postData = {
             "subject" = formData.subject,
-            "description" = formData.description
-            "priorty" = formData.priority
+            "description" = formData.description,
+            "priority" = formData.priority
             // Add other necessary fields based on API requirements
         }>
 
