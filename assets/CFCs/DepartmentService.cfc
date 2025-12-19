@@ -12,11 +12,19 @@
         </cfif>
 
         <!--- Initialize departmentsData in application scope if not already present --->
-        <cfif !structKeyExists(application, "departmentsData")>
-            <cfset var absolutePath = ExpandPath("../json/Departments.json")>
-            <cffile action="read" file="#absolutePath#" variable="fileContent">
-            <cfset application.departmentsData = deserializeJson(fileContent)>
-        </cfif>
+        <!--- Only attempt to use application scope if it's available --->
+        <cftry>
+            <cfif isDefined("application") AND !structKeyExists(application, "departmentsData")>
+                <cfset var absolutePath = ExpandPath("../json/Departments.json")>
+                <cfif fileExists(absolutePath)>
+                    <cffile action="read" file="#absolutePath#" variable="fileContent">
+                    <cfset application.departmentsData = deserializeJson(fileContent)>
+                </cfif>
+            </cfif>
+            <cfcatch type="any">
+                <!--- Application scope not available, skip caching --->
+            </cfcatch>
+        </cftry>
 
         <cfreturn this>
     </cffunction>
