@@ -135,8 +135,8 @@
                         <h1 class="display-huge mt-3 mb-3 lh-1 text-uppercase"><span id="reset"
                                 style="cursor: pointer;margin-right:5px;display:none"><i
                                     class="fas fa-sync-alt"></i></span> <span id="lastWeek" style="cursor: pointer;"><i
-                                    class="fas fa-arrow-alt-left"></i></span> current week: <span
-                                id="current_week"></i></span> <span id="nextWeek" style="cursor: pointer;"><i
+                                    class="fas fa-arrow-alt-left"></i></span> Week <span
+                                id="current_week"></span> <span id="current_year"></span> <span id="user_lastname"></span> <span id="nextWeek" style="cursor: pointer;"><i
                                     class="fas fa-arrow-alt-right"></i></span>
                                 <div class="d-flex justify-content-end align-items-center gap-2">
                                     <div class="btn-group" role="group">
@@ -338,10 +338,15 @@
                 $('#deptResults').hide();
             }
         });
-        // get current week number
+        // get current week number and user info
         var currentWeekNumber = moment().week();
-        var pdfName = 'Ernest Pena Week ' + currentWeekNumber + ' Report.pdf';
+        var currentYear = moment().year();
+        var fullName = sessionStorage.getItem('FULL_NAME') || '';
+        var lastName = fullName.split(',')[0] || '';
+        var pdfName = lastName + ' Week ' + currentWeekNumber + ' ' + currentYear + ' Report.pdf';
         $('#current_week').html(currentWeekNumber);
+        $('#current_year').html(currentYear);
+        $('#user_lastname').html(lastName);
         $('#WEEK_NUM').val(currentWeekNumber);
         getCurrentWeekTasks(currentWeekNumber);
         $('#printPdf').on('click', function () {
@@ -1155,7 +1160,10 @@
         
         // Header
         html += '<div class="alert alert-primary mb-4 text-center">';
-        html += '<h4 class="mb-2"><i class="fas fa-arrow-left"></i> CURRENT WEEK: ' + weekNumber + ' <i class="fas fa-arrow-right"></i></h4>';
+        var currentYear = moment().year();
+        var fullName = sessionStorage.getItem('FULL_NAME') || '';
+        var lastName = fullName.split(',')[0] || '';
+        html += '<h4 class="mb-2"><i class="fas fa-arrow-left"></i> Week ' + weekNumber + ' ' + currentYear + ' ' + lastName + ' <i class="fas fa-arrow-right"></i></h4>';
         html += '<p class="mb-0"><strong>Total Time Worked: ' + totalHours + ' hours</strong></p>';
         html += '</div>';
 
@@ -1212,18 +1220,20 @@
         
         // Extract header information
         var weekNumber = $('#current_week').text();
+        var currentYear = $('#current_year').text();
+        var lastName = $('#user_lastname').text();
         var totalHours = container.querySelector('.alert-primary p strong');
-        
+
         // Create both HTML and plain text versions
         var htmlContent = '';
         var textContent = '';
-        
+
         // HTML Header
         htmlContent += '<div style="font-family: Calibri, Arial, sans-serif; font-size: 12pt; color: #333;">';
-        htmlContent += '<h2 style="color: #0066cc; margin-bottom: 10px; border-bottom: 2px solid #0066cc; padding-bottom: 5px;">CURRENT WEEK: ' + weekNumber + '</h2>';
-        
+        htmlContent += '<h2 style="color: #0066cc; margin-bottom: 10px; border-bottom: 2px solid #0066cc; padding-bottom: 5px;">Week ' + weekNumber + ' ' + currentYear + ' ' + lastName + '</h2>';
+
         // Plain text header
-        textContent += 'CURRENT WEEK: ' + weekNumber + '\n';
+        textContent += 'Week ' + weekNumber + ' ' + currentYear + ' ' + lastName + '\n';
         textContent += '='.repeat(50) + '\n\n';
         
         if (totalHours) {
