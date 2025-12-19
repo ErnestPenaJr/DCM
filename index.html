@@ -229,7 +229,7 @@
         console.log('🧹 Clearing sessionStorage...');
         sessionStorage.clear();
         sessionStorage.setItem('EMPLID', newEMPLID);
-        sessionStorage.setItem('ISLOGGINEDIN', '1');
+        sessionStorage.setItem('ISLOGGEDIN', '1');
         console.log('✅ SessionStorage reset with EMPLID:', newEMPLID);
         location.reload();
     };
@@ -243,10 +243,10 @@
             console.log(`  ${key}: ${sessionStorage.getItem(key)}`);
         }
 
-        var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
+        var inLoggin = sessionStorage.getItem('ISLOGGEDIN');
         var emplid = sessionStorage.getItem('EMPLID');
         console.log('🆔 EMPLID from sessionStorage:', emplid);
-        console.log('🔐 ISLOGGINEDIN from sessionStorage:', inLoggin);
+        console.log('🔐 ISLOGGEDIN from sessionStorage:', inLoggin);
 
         if (inLoggin == null || inLoggin == 0) {
             window.location.href = 'landingPage.html';
@@ -317,7 +317,7 @@
         });
 
         //get session variable inLoggin to see if user is logged in
-        var inLoggin = sessionStorage.getItem('ISLOGGINEDIN');
+        var inLoggin = sessionStorage.getItem('ISLOGGEDIN');
 
         //if user is not logged in redirect to landing page
         if (inLoggin == null || inLoggin == 0) {

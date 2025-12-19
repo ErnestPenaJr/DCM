@@ -122,7 +122,7 @@ class DCMNavbar {
         
         if (pagesWithSession.includes(this.currentPage)) {
             // Check if user is logged in
-            const isLoggedIn = sessionStorage.getItem('ISLOGGINEDIN');
+            const isLoggedIn = sessionStorage.getItem('ISLOGGEDIN');
             const emplid = sessionStorage.getItem('EMPLID');
             
             if (!isLoggedIn || isLoggedIn === '0') {

@@ -125,13 +125,24 @@
             <cfset temp['NICKNAME'] = results.NICKNAME />
             <cfset temp["EMPLID"] = results.EMPLID />
             <cfset temp["DEPTID"] = results.DEPTID />
-            <cfset temp["ISLOGGINEDIN"] = 1 />
+            <cfset temp["ISLOGGEDIN"] = 1 />
             <cfset temp["AUTHORIZED_USER"] = true />
-        <cfif results.EMPLID eq "132034">
-            <cfset temp["ISADMIN"] = 1 />
-        <cfelse>
-            <cfset temp["ISADMIN"] = 0 />
-        </cfif>
+
+            <!--- Check user permissions from database instead of hardcoding --->
+            <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#" datasource="#variables.config.db.server#" name="permCheck">
+                SELECT ua.PERMISSIONID, p.PERMISSIONNAME
+                FROM #variables.config.db.schema#.DAILY_TASKS_USERACCESS ua
+                LEFT JOIN #variables.config.db.schema#.DAILY_TASKS_PERMISSIONS p ON ua.PERMISSIONID = p.PERMISSIONID
+                WHERE ua.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#results.EMPLID#" />
+                AND ua.ALLOWEDACCESS = 'Y'
+            </cfquery>
+
+            <cfif permCheck.recordCount AND (permCheck.PERMISSIONNAME EQ "Admin" OR permCheck.PERMISSIONID EQ "2")>
+                <cfset temp["ISADMIN"] = 1 />
+            <cfelse>
+                <cfset temp["ISADMIN"] = 0 />
+            </cfif>
+            <cfset temp["PERMISSIONNAME"] = permCheck.PERMISSIONNAME />
             <cfset temp["ADMESSAGE"] = 'Authentication Successful' />
         <cfelseif LDAP.authenticates eq 0>
             <cfset temp = {} />
@@ -143,7 +154,7 @@
             <cfset temp['NICKNAME'] = '' />
             <cfset temp["EMPLID"] = '' />
             <cfset temp["DEPTID"] = '' />
-            <cfset temp["ISLOGGINEDIN"] = 0 />
+            <cfset temp["ISLOGGEDIN"] = 0 />
             <cfset temp["AUTHORIZED_USER"] = false />
             <cfset temp["ISADMIN"] = 0 />
             <cfset temp["ADMESSAGE"] = LDAP.ADMessage />

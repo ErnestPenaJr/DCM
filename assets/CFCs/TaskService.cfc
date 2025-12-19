@@ -50,7 +50,7 @@
         </cfquery>
 
         <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#" datasource="#variables.config.db.server#"  name="results">
-            SELECT t.TASK_ID,t.TASK_NAME,t.TASK_DESCRIPTION, t.CLASSIFICATION, t.WORK_TYPE, t.TASK_TIME,t.PROJECT,t.DEPTID,t.ALLOCATED_TiME,t.WEEK_NUMBER,t.TASK_DATE,t.DAY_NUM,t.WEEKLY_NOTE
+            SELECT t.TASK_ID,t.TASK_NAME,t.TASK_DESCRIPTION, t.CLASSIFICATION, t.WORK_TYPE, t.TASK_TIME,t.PROJECT,t.DEPTID,t.ALLOCATED_TIME,t.WEEK_NUMBER,t.TASK_DATE,t.DAY_NUM,t.WEEKLY_NOTE
             FROM #variables.config.db.schema#.DAILY_TASKS t
             WHERE t.TASK_ID = (SELECT MAX(t.TASK_ID) AS MaxID FROM #variables.config.db.schema#.DAILY_TASKS)
             ORDER BY t.WEEK_NUMBER ASC
@@ -66,7 +66,7 @@
                 <cfset temp["TASK_TIME"] = TASK_TIME />
                 <cfset temp["PROJECT"] = PROJECT />
                 <cfset temp["DEPTID"] = DEPTID />
-                <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
+                <cfset temp["ALLOCATED_TIME"] = ALLOCATED_TIME />
                 <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
                 <cfset temp["DATE"] = TASK_DATE />
                 <cfset temp["DAY_NUM"] = DAY_NUM />
@@ -106,7 +106,7 @@
             <cfset temp["DATE"] = TASK_DATE />
             <cfset temp["PROJECT"] = PROJECT />
             <cfset temp["DEPTID"] = DEPTID />
-            <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
+            <cfset temp["ALLOCATED_TIME"] = ALLOCATED_TIME />
             <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
             <cfset temp["PROJECT"] = PROJECT />
             <cfset temp["DAY_NUM"] = DAY_NUM />
@@ -127,7 +127,7 @@
 
         <cfset var retVal = ArrayNew(1)>
         <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#" datasource="#variables.config.db.server#"  name="results">
-            SELECT t.TASK_ID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.TASK_DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TiME,t.EMPLID
+            SELECT t.TASK_ID,t.TASK_NAME,t.TASK_DESCRIPTION,t.TASK_TIME,t.PROJECT,t.DEPTID ,t.TASK_DATE, t.DAY_NUM,p.PROJECT_NAME,t.WEEK_NUMBER, t.WEEKLY_NOTE,t.DAY_NUM, t.WEEKLY_NOTE, t.ALLOCATED_TIME,t.EMPLID
             FROM #variables.config.db.schema#.DAILY_TASKS t, #variables.config.db.schema#.DAILY_TASKS_PROJECTS p
             WHERE t.PROJECT = p.PROJECT_ID
             AND t.DAY_NUM = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.DAY_NUM#" />
@@ -144,7 +144,7 @@
             <cfset temp["DATE"] = TASK_DATE />
             <cfset temp["PROJECT"] = PROJECT />
             <cfset temp["DEPTID"] = DEPTID />
-            <cfset temp["ALLOCATED_TiME"] = ALLOCATED_TiME />
+            <cfset temp["ALLOCATED_TIME"] = ALLOCATED_TIME />
             <cfset temp["WEEK_NUM"] = WEEK_NUMBER />
             <cfset temp["PROJECT"] = PROJECT />
             <cfset temp["DAY_NUM"] = DAY_NUM />
@@ -190,7 +190,7 @@
                 <cfelseif DAY_NUM EQ 2>
                     <cfset temp["WEEK_DAY"] = "Tuesday" />
                 <cfelseif DAY_NUM EQ 3>
-                    <cfset temp["WEEK_DAY"] = "Wedensday" />
+                    <cfset temp["WEEK_DAY"] = "Wednesday" />
                 <cfelseif DAY_NUM EQ 4>
                     <cfset temp["WEEK_DAY"] = "Thursday" />
                 <cfelseif DAY_NUM EQ 5> 

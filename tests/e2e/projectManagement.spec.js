@@ -11,7 +11,7 @@ test.describe('Project Management CRUD Operations', () => {
 
     // Set session storage to simulate a logged-in user
     await page.evaluate((emplid) => {
-      sessionStorage.setItem('ISLOGGINEDIN', '1');
+      sessionStorage.setItem('ISLOGGEDIN', '1');
       sessionStorage.setItem('EMPLID', emplid);
     }, EMPLID);
 

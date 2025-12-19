@@ -15,4 +15,4 @@
 
     <cfset init()>
 
-    
+</cfcomponent>

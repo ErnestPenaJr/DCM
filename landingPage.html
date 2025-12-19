@@ -90,7 +90,7 @@
     function signIn() {
         $.ajax({
             type: "POST",
-            url: "assets/CFCs/functions.cfc",
+            url: "assets/CFCs/UserService.cfc",
             dataType: "json",
             data: {
                 method: "signin",
@@ -113,7 +113,7 @@
                     sessionStorage.setItem('EMPLID', x.EMPLID);
                     sessionStorage.setItem('FULL_NAME', x.FULL_NAME);
                     sessionStorage.setItem('ISADMIN', x.ISADMIN);
-                    sessionStorage.setItem('ISLOGGINEDIN', x.ISLOGGINEDIN);
+                    sessionStorage.setItem('ISLOGGEDIN', x.ISLOGGEDIN);
                     sessionStorage.setItem('JOBCODE_DESCR', x.JOBCODE_DESCR);
                     sessionStorage.setItem('NAME', x.NAME);
                     sessionStorage.setItem('NICKNAME', x.NICKNAME);

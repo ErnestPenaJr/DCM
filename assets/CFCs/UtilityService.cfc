@@ -47,8 +47,14 @@
         </cfif>
     </cffunction>
 
+    <!--- TODO: Implement SendWeeklyReportEmails functionality
     <cffunction name="SendWeeklyReportEmails" access="remote" returnType="any" output="false">
+        <cfargument name="EMPLID" type="string" required="true">
+        <cfargument name="WEEK_NUM" type="string" required="true">
 
+        <!--- Implementation pending: Send weekly task summary via email --->
+        <cfreturn {"success": false, "message": "Not implemented"}>
     </cffunction>
+    --->
 
 </cfcomponent>
