@@ -1,135 +1,459 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
+    <title>Sign In - Daily Time Tracking</title>
+    <meta name="description" content="Sign in to the Daily Time Tracking application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+    <link rel="stylesheet" href="assets/css/design-tokens.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dcm-bg-gradient);
+            padding: var(--dcm-space-4);
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--dcm-white);
+            border-radius: var(--dcm-radius-2xl);
+            box-shadow: var(--dcm-shadow-2xl);
+            overflow: hidden;
+            animation: dcm-fadeIn 0.5s ease;
+        }
+
+        .login-header {
+            text-align: center;
+            padding: var(--dcm-space-8) var(--dcm-space-6) var(--dcm-space-4);
+            background: var(--dcm-gray-50);
+            border-bottom: 1px solid var(--dcm-gray-200);
+        }
+
+        .login-header img {
+            max-width: 160px;
+            height: auto;
+            margin-bottom: var(--dcm-space-4);
+        }
+
+        .login-header h1 {
+            font-size: var(--dcm-font-2xl);
+            font-weight: var(--dcm-font-weight-bold);
+            color: var(--dcm-gray-900);
+            margin-bottom: var(--dcm-space-1);
+        }
+
+        .login-header p {
+            color: var(--dcm-gray-600);
+            margin-bottom: 0;
+        }
+
+        .login-body {
+            padding: var(--dcm-space-6);
+        }
+
+        .form-label {
+            font-weight: var(--dcm-font-weight-medium);
+            color: var(--dcm-gray-700);
+            margin-bottom: var(--dcm-space-2);
+        }
+
+        .input-group-icon {
+            background: var(--dcm-gray-100);
+            border: 2px solid var(--dcm-gray-300);
+            border-right: none;
+            border-radius: var(--dcm-radius-lg) 0 0 var(--dcm-radius-lg);
+            color: var(--dcm-gray-500);
+            padding: 0 var(--dcm-space-4);
+        }
+
+        .form-control-modern {
+            border: 2px solid var(--dcm-gray-300);
+            border-left: none;
+            border-radius: 0 var(--dcm-radius-lg) var(--dcm-radius-lg) 0;
+            padding: var(--dcm-space-3) var(--dcm-space-4);
+            font-size: var(--dcm-font-base);
+            transition: all var(--dcm-transition-fast);
+        }
+
+        .form-control-modern:focus {
+            border-color: var(--dcm-primary);
+            box-shadow: none;
+        }
+
+        .form-control-modern:focus + .input-group-icon,
+        .input-group:focus-within .input-group-icon {
+            border-color: var(--dcm-primary);
+            color: var(--dcm-primary);
+        }
+
+        .password-toggle {
+            border: 2px solid var(--dcm-gray-300);
+            border-left: none;
+            border-radius: 0 var(--dcm-radius-lg) var(--dcm-radius-lg) 0;
+            background: var(--dcm-white);
+            color: var(--dcm-gray-500);
+            transition: all var(--dcm-transition-fast);
+        }
+
+        .password-toggle:hover {
+            color: var(--dcm-primary);
+            background: var(--dcm-gray-50);
+        }
+
+        .input-group:focus-within .password-toggle {
+            border-color: var(--dcm-primary);
+        }
+
+        .form-control-password {
+            border-radius: 0 !important;
+        }
+
+        .btn-signin {
+            width: 100%;
+            padding: var(--dcm-space-4);
+            font-size: var(--dcm-font-lg);
+            font-weight: var(--dcm-font-weight-semibold);
+            background: var(--dcm-primary);
+            border: none;
+            border-radius: var(--dcm-radius-lg);
+            color: var(--dcm-white);
+            transition: all var(--dcm-transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-signin:hover:not(:disabled) {
+            background: var(--dcm-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--dcm-shadow-lg);
+        }
+
+        .btn-signin:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-signin:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-signin .spinner-border {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: var(--dcm-space-2);
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: var(--dcm-space-4) var(--dcm-space-6) var(--dcm-space-6);
+            color: var(--dcm-gray-500);
+            font-size: var(--dcm-font-sm);
+        }
+
+        .login-footer a {
+            color: var(--dcm-primary);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .alert-modern {
+            border: none;
+            border-radius: var(--dcm-radius-lg);
+            padding: var(--dcm-space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--dcm-space-3);
+        }
+
+        .alert-modern i {
+            font-size: var(--dcm-font-xl);
+        }
+
+        .alert-danger-modern {
+            background: var(--dcm-danger-light);
+            color: #721c24;
+        }
+
+        .alert-success-modern {
+            background: var(--dcm-success-light);
+            color: #155724;
+        }
+
+        /* Security badge */
+        .security-badge {
+            position: fixed;
+            bottom: var(--dcm-space-4);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: var(--dcm-space-2) var(--dcm-space-4);
+            border-radius: var(--dcm-radius-full);
+            box-shadow: var(--dcm-shadow-md);
+            font-size: var(--dcm-font-sm);
+            color: var(--dcm-gray-600);
+            display: flex;
+            align-items: center;
+            gap: var(--dcm-space-3);
+        }
+
+        .security-badge i {
+            color: var(--dcm-success);
+        }
+
+        @keyframes dcm-fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<style>
-    .frostedGlass {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.218), rgba(255, 255, 255, 0.205));
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(1px);
-        border-radius: 15px;
-        border: 3px solid rgb(0, 0, 0);
-        padding: 25px 25px 25px 25px;
-    }
-</style>
 
 <body>
-    <div class="d-flex align-items-center justify-content-center " style="height: 100vh; ">
+    <main class="login-page" role="main">
+        <div class="login-card" role="region" aria-labelledby="login-title">
+            <header class="login-header">
+                <img src="assets/images/logo.png" alt="MD Anderson Cancer Center Logo">
+                <h1 id="login-title">Welcome Back</h1>
+                <p>Sign in to Daily Time Tracking</p>
+            </header>
 
-        <div class="card frostedGlass" style="width: 350px">
-            <div class="card-header">
-                <img src="assets/images/logo.png" alt="" class="img-fluid">
+            <div class="login-body">
+                <form id="loginForm" novalidate>
+                    <div class="mb-4">
+                        <label for="username" class="form-label">
+                            <i class="fas fa-user me-1"></i> Username
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-icon" aria-hidden="true">
+                                <i class="fas fa-id-badge"></i>
+                            </span>
+                            <input type="text"
+                                   class="form-control form-control-modern"
+                                   id="username"
+                                   name="username"
+                                   placeholder="Enter your AD username"
+                                   autocomplete="username"
+                                   required
+                                   autofocus
+                                   aria-describedby="usernameHelp">
+                        </div>
+                        <small id="usernameHelp" class="form-text text-muted">
+                            Use your Active Directory credentials
+                        </small>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock me-1"></i> Password
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text input-group-icon" aria-hidden="true">
+                                <i class="fas fa-key"></i>
+                            </span>
+                            <input type="password"
+                                   class="form-control form-control-modern form-control-password"
+                                   id="password"
+                                   name="password"
+                                   placeholder="Enter your password"
+                                   autocomplete="current-password"
+                                   required
+                                   aria-describedby="passwordHelp">
+                            <button class="btn password-toggle"
+                                    type="button"
+                                    id="togglePassword"
+                                    aria-label="Toggle password visibility">
+                                <i class="fas fa-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <small id="passwordHelp" class="visually-hidden">
+                            Enter your Active Directory password
+                        </small>
+                    </div>
+
+                    <!-- Status Messages -->
+                    <div id="login-warning" class="alert alert-modern alert-danger-modern mb-4" style="display:none" role="alert">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                        <span id="warning-message">Invalid credentials. Please try again.</span>
+                    </div>
+
+                    <div id="login-success" class="alert alert-modern alert-success-modern mb-4" style="display:none" role="alert">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <span id="success-message">Authentication successful! Redirecting...</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-signin" id="signIn">
+                        <span class="btn-text">
+                            <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                        </span>
+                        <span class="btn-loading" style="display:none">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Signing in...
+                        </span>
+                    </button>
+                </form>
             </div>
-            <div class="card-body">
-                <h2 class="card-title text-white">Sign In</h2>
-                <div class="form-floating">
-                    <input type="username" class="form-control" id="username" placeholder="AD Username">
-                    <label for="username">AD Username</label>
-                </div>
-                <div class="form-floating mt-2">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                    <label for="password">AD Password</label>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button id="signIn" class="btn btn-primary py-2 mt-3 float-end" type="submit">Sign in</button>
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div id="login-warning" class="alert alert-danger" style="display:none">
-                        <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>.
-                    </div>
-
-                    <div id="login-success" class="alert alert-success" style="display:none">
-                        <strong><i class="fas fa-thumbs-up"></i> Success!</strong>
-                    </div>
-                </div>
-
-            </div>
+            <footer class="login-footer">
+                <p class="mb-0">
+                    <i class="fas fa-shield-alt me-1"></i>
+                    Secure authentication powered by Active Directory
+                </p>
+            </footer>
         </div>
-    </div>
 
-    </div>
+        <!-- Security Badge -->
+        <div class="security-badge" aria-hidden="true">
+            <span><i class="fas fa-lock"></i> Secure Connection</span>
+            <span>|</span>
+            <span><i class="fas fa-shield-check"></i> HIPAA Compliant</span>
+        </div>
+    </main>
 
+    <!-- Screen Reader Announcer -->
+    <div id="sr-announcer" aria-live="assertive" aria-atomic="true" class="visually-hidden"></div>
 
-    <script src="assets/js/app.js"></script>
+    <!-- Scripts -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="node_modules/aos/dist/aos.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Password visibility toggle
+            $('#togglePassword').on('click', function() {
+                const $password = $('#password');
+                const type = $password.attr('type') === 'password' ? 'text' : 'password';
+                $password.attr('type', type);
+
+                const $icon = $(this).find('i');
+                $icon.toggleClass('fa-eye fa-eye-slash');
+
+                // Announce to screen readers
+                const state = type === 'text' ? 'Password is now visible' : 'Password is now hidden';
+                $('#sr-announcer').text(state);
+            });
+
+            // Form submission
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                signIn();
+            });
+
+            // Focus management
+            $('#username').focus();
+        });
+
+        function signIn() {
+            const $btn = $('#signIn');
+            const $username = $('#username');
+            const $password = $('#password');
+
+            // Validate inputs
+            if (!$username.val().trim()) {
+                showWarning('Please enter your username');
+                $username.focus();
+                return;
+            }
+
+            if (!$password.val()) {
+                showWarning('Please enter your password');
+                $password.focus();
+                return;
+            }
+
+            // Show loading state
+            $btn.prop('disabled', true);
+            $btn.find('.btn-text').hide();
+            $btn.find('.btn-loading').show();
+            hideAlerts();
+
+            $.ajax({
+                type: "POST",
+                url: "assets/CFCs/UserService.cfc",
+                dataType: "json",
+                data: {
+                    method: "remote_LDAP",
+                    UserID: $username.val().trim(),
+                    UserPassword: $password.val()
+                },
+                success: function(data) {
+                    var x = data.LDAP;
+                    if (x.AUTHORIZED_USER == true) {
+                        showSuccess(x.ADMESSAGE || 'Authentication successful!');
+
+                        // Store session data
+                        sessionStorage.setItem('ADMESSAGE', x.ADMESSAGE);
+                        sessionStorage.setItem('AUTHORIZED_USER', x.AUTHORIZED_USER);
+                        sessionStorage.setItem('DEPARTMENTNAME', x.DEPARTMENTNAME);
+                        sessionStorage.setItem('DEPTID', x.DEPTID);
+                        sessionStorage.setItem('EMAIL_ADDRESS', x.EMAIL_ADDRESS);
+                        sessionStorage.setItem('EMPLID', x.EMPLID);
+                        sessionStorage.setItem('FULL_NAME', x.FULL_NAME);
+                        sessionStorage.setItem('ISADMIN', x.ISADMIN);
+                        sessionStorage.setItem('ISLOGGEDIN', x.ISLOGGEDIN);
+                        sessionStorage.setItem('JOBCODE_DESCR', x.JOBCODE_DESCR);
+                        sessionStorage.setItem('NAME', x.NAME);
+                        sessionStorage.setItem('NICKNAME', x.NICKNAME);
+                        sessionStorage.setItem('USERID', x.USERID);
+
+                        // Redirect after success animation
+                        setTimeout(function() {
+                            window.location.href = 'index.html';
+                        }, 1200);
+                    } else {
+                        showWarning(x.ADMESSAGE || 'Invalid credentials. Please try again.');
+                        resetButton();
+                        $password.val('').focus();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Login error:', error);
+                    showWarning('Unable to connect to authentication server. Please try again.');
+                    resetButton();
+                }
+            });
+        }
+
+        function showWarning(message) {
+            $('#warning-message').text(message);
+            $('#login-warning').slideDown(300);
+            $('#login-success').slideUp(200);
+            $('#sr-announcer').text('Error: ' + message);
+        }
+
+        function showSuccess(message) {
+            $('#success-message').text(message);
+            $('#login-success').slideDown(300);
+            $('#login-warning').slideUp(200);
+            $('#sr-announcer').text('Success: ' + message);
+        }
+
+        function hideAlerts() {
+            $('#login-warning, #login-success').slideUp(200);
+        }
+
+        function resetButton() {
+            const $btn = $('#signIn');
+            $btn.prop('disabled', false);
+            $btn.find('.btn-text').show();
+            $btn.find('.btn-loading').hide();
+        }
+    </script>
 </body>
 
 </html>
-<script>
-    $(document).ready(function () {
-        $('#signIn').click(function (e) {
-            e.preventDefault();
-            signIn();
-        });
-
-        // Add Enter key functionality
-        $('#username, #password').keypress(function (e) {
-            if (e.which === 13) {
-                e.preventDefault();
-                signIn();
-            }
-        });
-    });
-    //sign in function
-    function signIn() {
-        $.ajax({
-            type: "POST",
-            url: "assets/CFCs/UserService.cfc",
-            dataType: "json",
-            data: {
-                method: "signin",
-                method: "remote_LDAP",
-                UserID: $('#username').val(),
-                UserPassword: $('#password').val()
-            },
-            success: function (data) {
-                var x = data.LDAP
-                if (x.AUTHORIZED_USER == true) {
-                    $('#login-success').append(' <span>' + x.ADMESSAGE + '</span> </div>');
-                    $('#login-success').slideDown(300);
-                    $('#login-warning').slideUp(200);
-                    //setting session variables
-                    sessionStorage.setItem('ADMESSAGE', x.ADMESSAGE);
-                    sessionStorage.setItem('AUTHORIZED_USER', x.AUTHORIZED_USER);
-                    sessionStorage.setItem('DEPARTMENTNAME', x.DEPARTMENTNAME);
-                    sessionStorage.setItem('DEPTID', x.DEPTID);
-                    sessionStorage.setItem('EMAIL_ADDRESS', x.EMAIL_ADDRESS);
-                    sessionStorage.setItem('EMPLID', x.EMPLID);
-                    sessionStorage.setItem('FULL_NAME', x.FULL_NAME);
-                    sessionStorage.setItem('ISADMIN', x.ISADMIN);
-                    sessionStorage.setItem('ISLOGGEDIN', x.ISLOGGEDIN);
-                    sessionStorage.setItem('JOBCODE_DESCR', x.JOBCODE_DESCR);
-                    sessionStorage.setItem('NAME', x.NAME);
-                    sessionStorage.setItem('NICKNAME', x.NICKNAME);
-                    sessionStorage.setItem('USERID', x.USERID);
-                    setTimeout(function () {
-                        window.location.href = 'index.html';
-                    }, 1000);
-                } else {
-                    $('#login-warning').slideDown(300);
-                    $('#login-warning').append(' <span>' + x.ADMESSAGE + '</span> </div>');
-                }
-
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-    }
-</script>
