@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
     <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
     <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="node_modules/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="node_modules/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css">
     <style>
         .user-status-badge {
             font-size: 0.8em;
@@ -67,6 +69,102 @@
 
         .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 36px;
+        }
+
+        /* Employee search dropdown styles */
+        .select2-results__option {
+            padding: 0 !important;
+        }
+
+        .employee-name {
+            color: #000;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .select2-results__option--highlighted .employee-result {
+            background-color: #0d6efd !important;
+        }
+
+        .select2-results__option--highlighted .employee-result .employee-name {
+            color: #fff !important;
+        }
+
+        .select2-results__option--highlighted .employee-result .badge {
+            background-color: rgba(255, 255, 255, 0.25) !important;
+            color: #fff !important;
+        }
+
+        .employee-result {
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.15s ease;
+        }
+
+        .employee-result:hover {
+            background-color: #f8f9fa;
+        }
+
+        .select2-container--bootstrap-5 .select2-dropdown {
+            border-color: #0d6efd;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .select2-container--bootstrap-5 .select2-search--dropdown .select2-search__field {
+            border-color: #0d6efd;
+        }
+
+        .select2-container--bootstrap-5 .select2-search--dropdown .select2-search__field:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        /* Searching animation */
+        .searching-animation {
+            color: #6c757d;
+        }
+
+        .searching-text {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .search-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .search-dots .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #0d6efd;
+            border-radius: 50%;
+            animation: dotPulse 1.4s ease-in-out infinite;
+        }
+
+        .search-dots .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .search-dots .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .search-dots .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dotPulse {
+            0%, 80%, 100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>

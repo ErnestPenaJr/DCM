@@ -23,15 +23,22 @@
             align-items: center;
             justify-content: center;
             background: var(--dcm-bg-gradient);
+            background-image: url('assets/images/redtape1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             padding: var(--dcm-space-4);
         }
 
         .login-card {
             width: 100%;
             max-width: 420px;
-            background: var(--dcm-white);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--dcm-radius-2xl);
-            box-shadow: var(--dcm-shadow-2xl);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             animation: dcm-fadeIn 0.5s ease;
         }
@@ -39,8 +46,8 @@
         .login-header {
             text-align: center;
             padding: var(--dcm-space-8) var(--dcm-space-6) var(--dcm-space-4);
-            background: var(--dcm-gray-50);
-            border-bottom: 1px solid var(--dcm-gray-200);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .login-header img {
@@ -52,12 +59,12 @@
         .login-header h1 {
             font-size: var(--dcm-font-2xl);
             font-weight: var(--dcm-font-weight-bold);
-            color: var(--dcm-gray-900);
+            color: rgba(255, 255, 255, 1);
             margin-bottom: var(--dcm-space-1);
         }
 
         .login-header p {
-            color: var(--dcm-gray-600);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 0;
         }
 
@@ -67,7 +74,7 @@
 
         .form-label {
             font-weight: var(--dcm-font-weight-medium);
-            color: var(--dcm-gray-700);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: var(--dcm-space-2);
         }
 
@@ -160,8 +167,12 @@
         .login-footer {
             text-align: center;
             padding: var(--dcm-space-4) var(--dcm-space-6) var(--dcm-space-6);
-            color: var(--dcm-gray-500);
+            color: rgba(255, 255, 255, 0.8);
             font-size: var(--dcm-font-sm);
+        }
+
+        .form-text.text-muted {
+            color: rgba(255, 255, 255, 0.7) !important;
         }
 
         .login-footer a {

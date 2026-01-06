@@ -90,32 +90,123 @@ $(document).ready(function() {
     // Initialize DataTable
     initializeUsersTable();
 
-    // Initialize Select2 for employee search
-    $('#employeeSearch').select2({
-        ajax: {
-            url: 'assets/CFCs/UserService.cfc?method=search4Employees',
-            dataType: 'json',
-            delay: 250,
-            data: function(params) {
-                return {
-                    query: params.term
-                };
+    // Initialize Select2 for employee search when modal is shown
+    $('#addUserModal').on('shown.bs.modal', function() {
+        // Destroy existing Select2 instance if it exists
+        if ($('#employeeSearch').hasClass('select2-hidden-accessible')) {
+            $('#employeeSearch').select2('destroy');
+        }
+
+        // Initialize Select2 for employee search
+        $('#employeeSearch').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $('#addUserModal .modal-body'),
+            ajax: {
+                url: 'assets/CFCs/UserService.cfc',
+                dataType: 'json',
+                delay: 300,
+                data: function(params) {
+                    return {
+                        method: 'search4Employees',
+                        query: params.term || '',
+                        maxrows: 15
+                    };
+                },
+                processResults: function(data) {
+                    console.log('Search results:', data);
+                    if (!data || !data.items) {
+                        return { results: [] };
+                    }
+                    return {
+                        results: data.items.map(function(item) {
+                            return {
+                                id: item.emplID,
+                                text: item.displayName + ' (' + item.emplID + ')',
+                                employee: item
+                            };
+                        })
+                    };
+                },
+                error: function(xhr, status, error) {
+                    console.error('Employee search error:', error);
+                    return { results: [] };
+                },
+                cache: true
             },
-            processResults: function(data) {
-                return {
-                    results: data.items.map(function(item) {
-                        return {
-                            id: item.emplID,
-                            text: item.displayName + ' (' + item.emplID + ')'
-                        };
-                    })
-                };
+            minimumInputLength: 2,
+            placeholder: 'Type at least 2 characters to search...',
+            allowClear: true,
+            width: '100%',
+            language: {
+                inputTooShort: function() {
+                    return 'Please enter 2 or more characters to search';
+                },
+                searching: function() {
+                    return 'Searching employees...';
+                },
+                noResults: function() {
+                    return 'No employees found';
+                },
+                errorLoading: function() {
+                    return 'Error loading results';
+                }
             },
-            cache: true
-        },
-        minimumInputLength: 2,
-        placeholder: 'Search by name or employee ID'
+            templateResult: formatEmployeeResult,
+            templateSelection: formatEmployeeSelection
+        });
+
+        // Focus on the search input
+        setTimeout(function() {
+            $('#employeeSearch').select2('open');
+        }, 250);
     });
+
+    // Format the dropdown results with more details
+    function formatEmployeeResult(employee) {
+        if (employee.loading) {
+            return $('<div class="searching-animation p-3 text-center">' +
+                '<div class="search-dots mb-2">' +
+                    '<span class="dot"></span>' +
+                    '<span class="dot"></span>' +
+                    '<span class="dot"></span>' +
+                '</div>' +
+                '<span class="searching-text">Searching employees</span>' +
+            '</div>');
+        }
+        if (!employee.employee) {
+            return employee.text;
+        }
+
+        var emp = employee.employee;
+        var $container = $(
+            '<div class="employee-result p-2">' +
+                '<div class="d-flex justify-content-between align-items-start">' +
+                    '<div>' +
+                        '<div class="fw-bold employee-name">' + (emp.displayName || emp.name) + '</div>' +
+                        '<div class="mt-1">' +
+                            '<span class="badge bg-primary me-1"><i class="fas fa-id-badge me-1"></i>' + emp.emplID + '</span>' +
+                            '<span class="badge bg-info text-dark"><i class="fas fa-building me-1"></i>' + (emp.departmentname || 'N/A') + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="mt-2">' +
+                    '<span class="badge bg-success"><i class="fas fa-briefcase me-1"></i>' + (emp.jobTitle || 'N/A') + '</span>' +
+                '</div>' +
+            '</div>'
+        );
+        return $container;
+    }
+
+    // Format the selected employee
+    function formatEmployeeSelection(employee) {
+        if (!employee.id) {
+            return employee.text;
+        }
+        if (employee.employee) {
+            return employee.employee.displayName + ' (' + employee.id + ')';
+        }
+        return employee.text;
+    }
 
     // Load permissions for select boxes
     function loadPermissions() {
