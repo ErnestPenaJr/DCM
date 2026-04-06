@@ -358,8 +358,8 @@
         <cfreturn {"success": true, "message": "User access deleted successfully"}>
     </cffunction>
 
-    <cffunction name="isSessionActive" access="remote" returnType="boolean">
-        <cfif structKeyExists(session, "isLoggedIn") AND session.isLoggedIn>
+    <cffunction name="isSessionActive" access="remote" returnType="boolean" returnformat="JSON">
+        <cfif isDefined("session.isLoggedIn") AND session.isLoggedIn>
             <cfreturn true>
         <cfelse>
             <cfreturn false>
@@ -367,10 +367,14 @@
     </cffunction>
 
     <cffunction name="logoutUser" access="remote" returnType="void">
-        <cfset structClear(session)>
+        <cfif isDefined("session")>
+            <cfset structClear(session)>
+        </cfif>
     </cffunction>
 
     <cffunction name="refreshSession" access="remote" returnType="void">
-        <cfset session.isLoggedIn = true>
+        <cfif isDefined("session")>
+            <cfset session.isLoggedIn = true>
+        </cfif>
     </cffunction>
 </cfcomponent>
