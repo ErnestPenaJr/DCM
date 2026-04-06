@@ -31,53 +31,7 @@
     Skip to main content
 </a>
 
-<header>
-<nav class="navbar navbar-expand-lg navbar-dcm fixed-top px-vw-5"
-    data-aos="fade-down" data-aos-duration="1000">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#"><img src="assets/images/logo2.png" height="55"></a>
-            <span class="navbar-text text-uppercase fw-bold fs-1">Daily Time Tracking</span>
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--<li class="nav-item text-center">
-                    <a id="printPdf"class="nav-link active fs-6" aria-current="page" href="#"><i class="far fa-users-cog fa-2x"></i> <br>User Access</a>
-                </li>
-               <li class="nav-item text-center">
-                <a id="printPdf"class="nav-link active fs-6" aria-current="page" href="#"><i class="far fa-print fa-2x"></i> <br>Print PDF</a>
-              </li> -->
-                <li class="nav-item text-center">
-
-                </li>
-            </ul>
-
-            <!-- Session Timer -->
-            <div id="timeLeftNavBar" class="navbar-text me-auto mb-2 mb-lg-0 text-uppercase fw-bold fs-5" aria-live="polite">
-                <span class="text-muted">Session warning in:</span>
-                <code id="sessionTimer" class="ms-2 text-dark">--:--</code>
-            </div>
-
-            <!-- Navigation Links -->
-            <a id="mgtHome" class="nav-link me-2" href="index.html" title="Home">
-                <i class="far fa-home fa-lg me-1"></i> <span class="d-none d-lg-inline">Home</span>
-            </a>
-            <a id="mgtProjects" class="nav-link me-2" href="projectManagement.html" title="Projects">
-                <i class="far fa-project-diagram fa-lg me-1"></i> <span class="d-none d-lg-inline">Projects</span>
-            </a>
-            <a id="mgtUserAccess" class="nav-link me-2" href="userManagement.html" title="User Access">
-                <i class="far fa-users-cog fa-lg me-1"></i> <span class="d-none d-lg-inline">User Access</span>
-            </a>
-            <button id="signOut" class="btn btn-outline-dark" aria-label="Sign out">
-                <i class="fas fa-sign-out-alt me-1"></i> <span class="d-none d-lg-inline">Sign Out</span>
-            </button>
-        </div>
-    </div>
-</nav>
-</header>
+<!-- Navigation loaded by navbar.js -->
 
     <main id="main-content" class="mt-5 text-white" data-bs-spy="scroll" data-bs-target="#navScroll">
         <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center"
@@ -227,6 +181,45 @@
         </div>
     </main>
 
+    <!-- Profile Settings Modal -->
+    <div class="modal fade" id="profileSettingsModal" tabindex="-1" aria-labelledby="profileSettingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="profileSettingsModalLabel">
+                        <i class="fas fa-user-cog me-2"></i> Profile Settings
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+
+                    <h6 class="fw-bold mb-1"><i class="fas fa-folder-open me-1 text-primary"></i> Project Directories to Scan</h6>
+                    <p class="text-muted small mb-3">Add the full server path to any folder you work in. These will be scanned when you run File Activity in the weekly report.</p>
+
+                    <div class="input-group mb-3">
+                        <input type="text" id="customPathInput" class="form-control" placeholder="e.g. /Users/epena1/Projects/MyApp">
+                        <button class="btn btn-primary" id="addCustomPathBtn" type="button">
+                            <i class="fas fa-plus me-1"></i>Add
+                        </button>
+                    </div>
+
+                    <ul id="customPathList" class="list-group" style="max-height:340px;overflow-y:auto;"></ul>
+
+                    <div class="mt-2 text-end text-muted small">
+                        <span id="selectedDirCount">0</span> director(ies) configured
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveProfileBtn">
+                        <i class="fas fa-save me-1"></i> Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Weekly Report Modal -->
     <div class="modal fade" id="weeklyReportModal" tabindex="-1" aria-labelledby="weeklyReportModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -272,9 +265,9 @@
         </div>
     </div>
 
-    <script src="assets/js/app.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/app.js"></script>
     <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/session-management.js"></script>
@@ -388,8 +381,7 @@
             getWeeklySummary(currentWeekNumber);
         });
 
-        $('#signOut').on('click', function () {
-            // jquery load the signout page
+        $(document).on('click', '#signOut', function () {
             $('.container').load('signout.html');
         });
 
@@ -1463,22 +1455,22 @@
         });
     }
 
-    // Called after report render — saves inferred tasks for days that had no DB tasks
+    // Called after report render — saves inferred tasks not already in the DB
     function persistInferredTasks(daily, filesByDate, weekNum, year) {
         var emplid = sessionStorage.getItem('EMPLID');
 
-        // Build set of days that already have DB tasks
-        var daysWithTasks = {};
-        daily.forEach(function (t) { daysWithTasks[t.DAY_NUM] = true; });
+        // Build set of already-saved day+taskName+projectId combos to avoid exact duplicates
+        var existingKeys = {};
+        daily.forEach(function (t) {
+            var key = t.DAY_NUM + '|' + t.TASK_NAME + '|' + t.PROJECT;
+            existingKeys[key] = true;
+        });
 
         var saves = [];
 
         [1,2,3,4,5].forEach(function (dayNum) {
-            if (daysWithTasks[dayNum]) return; // already has real tasks
-
             var dayMoment  = moment().year(year).week(weekNum).isoWeekday(dayNum);
             var dateKey    = dayMoment.format('YYYY-MM-DD');
-            var displayKey = dayMoment.format('MM/DD/YYYY');
             var dayFiles   = filesByDate[dateKey] || [];
             if (dayFiles.length === 0) return;
 
@@ -1493,11 +1485,15 @@
 
             Object.keys(groups).forEach(function (k) {
                 var g     = groups[k];
+                var pid   = folderToPid(g.project);
+                // Skip if this exact task+project combo already exists for this day
+                var dedupKey = dayNum + '|' + g.taskName + '|' + pid;
+                if (existingKeys[dedupKey]) return;
+
                 var times = g.times.slice().sort();
                 var mins  = times.length > 1
                     ? moment(times[times.length - 1], 'HH:mm').diff(moment(times[0], 'HH:mm'), 'minutes')
                     : 30;
-                var pid = folderToPid(g.project);
                 saves.push(saveInferredTask(g.taskName, pid, dateKey, weekNum, dayNum, mins, emplid));
             });
         });
@@ -1748,16 +1744,23 @@
 
         // Opt-in file scan button (wired after DOM insert)
         $(document).off('click', '#scanFilesBtn').on('click', '#scanFilesBtn', function () {
+            var scanDirs = userProjectDirs.length > 0 ? userProjectDirs : ['(all default directories)'];
+            var dirListHtml = scanDirs.map(function(d) {
+                return '<li class="font-monospace" style="font-size:0.8em;">' + $('<span>').text(d).html() + '</li>';
+            }).join('');
             $('#fileActivityPlaceholder').html(
-                '<div class="d-flex align-items-center gap-2 justify-content-center">' +
-                '<div class="spinner-border spinner-border-sm text-primary"></div>' +
-                '<span class="text-muted">Scanning wwwroot&hellip; this may take a moment.</span>' +
+                '<div class="d-flex align-items-start gap-3 justify-content-center text-start">' +
+                '<div class="spinner-border spinner-border-sm text-primary mt-1 flex-shrink-0"></div>' +
+                '<div>' +
+                '<div class="text-muted mb-1">Scanning the following directories&hellip;</div>' +
+                '<ul class="mb-0 text-secondary ps-3">' + dirListHtml + '</ul>' +
+                '</div>' +
                 '</div>'
             );
             $.ajax({
                 type: 'GET', dataType: 'json',
                 url:  'assets/CFCs/UtilityService.cfc',
-                data: { method: 'getFileActivity', START_DATE: weekStart, END_DATE: weekEnd },
+                data: { method: 'getFileActivity', START_DATE: weekStart, END_DATE: weekEnd, DIRS: userProjectDirs.length > 0 ? JSON.stringify(userProjectDirs) : '' },
                 success: function (fd) {
                     // Re-render the full report so file data appears in daily breakdown too
                     renderWeeklyReport(data, fd, weekNum, weekStart, weekEnd);
@@ -1995,6 +1998,117 @@
             });
         });
     }
+
+    // ─── Profile Settings ──────────────────────────────────────────────────────
+
+    var userProjectDirs = []; // array of absolute paths, loaded on page start
+
+    function loadUserProjectDirs() {
+        var emplid = sessionStorage.getItem('EMPLID');
+        if (!emplid) return;
+        $.ajax({
+            type: 'GET', dataType: 'json',
+            url:  'assets/CFCs/UtilityService.cfc',
+            data: { method: 'getUserSetting', EMPLID: emplid, SETTING_KEY: 'PROJECT_DIRS' },
+            success: function (resp) {
+                var found = resp.FOUND || resp.found;
+                var value = resp.VALUE || resp.value;
+                if (found && value) {
+                    try { userProjectDirs = JSON.parse(value); } catch(e) { userProjectDirs = []; }
+                }
+            }
+        });
+    }
+
+    $(document).on('click', '#profileSettingsBtn, #profileSettingsBtnLg', function (e) {
+        e.preventDefault();
+        $('#profileSettingsModal').modal('show');
+
+        // Always reload saved dirs from the server when the modal opens
+        var emplid = sessionStorage.getItem('EMPLID');
+        $('#customPathList').html('<li class="list-group-item text-center text-muted py-3"><div class="spinner-border spinner-border-sm me-2"></div>Loading&hellip;</li>');
+        $.ajax({
+            type: 'GET', dataType: 'json',
+            url:  'assets/CFCs/UtilityService.cfc',
+            data: { method: 'getUserSetting', EMPLID: emplid, SETTING_KEY: 'PROJECT_DIRS' },
+            success: function (resp) {
+                var found = resp.FOUND || resp.found;
+                var value = resp.VALUE || resp.value;
+                if (found && value) {
+                    try { userProjectDirs = JSON.parse(value); } catch(e) { userProjectDirs = []; }
+                } else {
+                    userProjectDirs = [];
+                }
+                renderPathList();
+            },
+            error: function () {
+                $('#customPathList').html('<li class="list-group-item text-danger small">Could not load saved directories.</li>');
+            }
+        });
+    });
+
+    function renderPathList() {
+        var html = '';
+        userProjectDirs.forEach(function (p) {
+            var safe = $('<span>').text(p).html();
+            html += '<li class="list-group-item d-flex justify-content-between align-items-center py-2 px-3">';
+            html += '<span class="font-monospace small"><i class="fas fa-folder-open me-2 text-primary"></i>' + safe + '</span>';
+            html += '<button type="button" class="btn btn-sm btn-outline-danger remove-path-btn" data-path="' + safe + '"><i class="fas fa-times"></i></button>';
+            html += '</li>';
+        });
+        $('#customPathList').html(html || '<li class="list-group-item text-muted small fst-italic">No directories configured yet.</li>');
+        $('#selectedDirCount').text(userProjectDirs.length);
+    }
+
+    // Add path
+    $('#addCustomPathBtn').on('click', function () {
+        var p = $('#customPathInput').val().trim();
+        if (!p) return;
+        if (userProjectDirs.indexOf(p) < 0) {
+            userProjectDirs.push(p);
+        }
+        $('#customPathInput').val('');
+        renderPathList();
+    });
+
+    $('#customPathInput').on('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); $('#addCustomPathBtn').trigger('click'); }
+    });
+
+    // Remove path
+    $(document).on('click', '.remove-path-btn', function () {
+        var p = $(this).data('path');
+        userProjectDirs = userProjectDirs.filter(function (x) { return x !== p; });
+        renderPathList();
+    });
+
+    $('#saveProfileBtn').on('click', function () {
+        var emplid = sessionStorage.getItem('EMPLID');
+        $.ajax({
+            type: 'POST', dataType: 'json',
+            url:  'assets/CFCs/UtilityService.cfc',
+            data: {
+                method:        'saveUserSetting',
+                EMPLID:        emplid,
+                SETTING_KEY:   'PROJECT_DIRS',
+                SETTING_VALUE: JSON.stringify(userProjectDirs)
+            },
+            success: function (resp) {
+                if (resp.SUCCESS || resp.success) {
+                    $('#profileSettingsModal').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: userProjectDirs.length + ' director' + (userProjectDirs.length !== 1 ? 'ies' : 'y') + ' saved',
+                        toast: true, position: 'bottom-end',
+                        timer: 2500, showConfirmButton: false
+                    });
+                }
+            }
+        });
+    });
+
+    // Load dirs on page ready so they're available for the file scan
+    loadUserProjectDirs();
 
 </script>
 <script>

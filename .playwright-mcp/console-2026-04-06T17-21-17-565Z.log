@@ -1,0 +1,359 @@
+[     666ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:375
+[     667ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:376
+[     667ms] [LOG] 🆔 EMPLID from sessionStorage: null @ http://localhost:8500/DCM/index.html:384
+[     667ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: null @ http://localhost:8500/DCM/index.html:385
+[  241164ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:375
+[  241164ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:376
+[  241164ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:379
+[  241164ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:384
+[  241164ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:385
+[  253519ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:375
+[  253519ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:376
+[  253519ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:379
+[  253519ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:379
+[  253519ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:379
+[  253520ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:384
+[  253520ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:385
+[  378264ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:390
+[  378264ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:391
+[  378264ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:394
+[  378264ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:399
+[  378264ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:400
+[  448811ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn btn-primary#saveProfileBtn>
+Ancestor with aria-hidden: <div.modal fade#profileSettingsModal> @ http://localhost:8500/DCM/index.html:0
+[  458388ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:390
+[  458389ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:391
+[  458389ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:394
+[  458389ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:399
+[  458390ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:400
+[  505873ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn btn-primary#saveProfileBtn>
+Ancestor with aria-hidden: <div.modal fade#profileSettingsModal> @ http://localhost:8500/DCM/index.html:0
+[  509962ms] [LOG] 14 @ http://localhost:8500/DCM/index.html:435
+[  511287ms] [LOG] 13 @ http://localhost:8500/DCM/index.html:435
+[  512084ms] [LOG] 12 @ http://localhost:8500/DCM/index.html:435
+[  512410ms] [LOG] 11 @ http://localhost:8500/DCM/index.html:435
+[  512601ms] [LOG] 10 @ http://localhost:8500/DCM/index.html:435
+[  512792ms] [LOG] 9 @ http://localhost:8500/DCM/index.html:435
+[  512996ms] [LOG] 8 @ http://localhost:8500/DCM/index.html:435
+[  513153ms] [LOG] 7 @ http://localhost:8500/DCM/index.html:435
+[  513355ms] [LOG] 6 @ http://localhost:8500/DCM/index.html:435
+[  514030ms] [LOG] 5 @ http://localhost:8500/DCM/index.html:435
+[  514649ms] [LOG] 4 @ http://localhost:8500/DCM/index.html:435
+[  515482ms] [LOG] 3 @ http://localhost:8500/DCM/index.html:435
+[  532169ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn-close>
+Ancestor with aria-hidden: <div.modal fade#weeklyReportModal> @ http://localhost:8500/DCM/index.html:0
+[  746956ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[  746957ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[  746957ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[  746957ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[  746958ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[  808075ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn btn-primary#saveProfileBtn>
+Ancestor with aria-hidden: <div.modal fade#profileSettingsModal> @ http://localhost:8500/DCM/index.html:0
+[  823795ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[  823795ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[  823795ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[  823795ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[  823796ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[  823796ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[  823796ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[  823796ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[  929943ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn-close>
+Ancestor with aria-hidden: <div.modal fade#weeklyReportModal> @ http://localhost:8500/DCM/index.html:0
+[  931946ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[  931946ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[  931946ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[  931946ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[  931946ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[  931946ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[  931947ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[  931947ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1024225ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1024226ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1024226ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1024226ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1024226ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1058428ms] [LOG] 14 @ http://localhost:8500/DCM/index.html:415
+[ 1059708ms] [LOG] 13 @ http://localhost:8500/DCM/index.html:415
+[ 1061452ms] [LOG] 12 @ http://localhost:8500/DCM/index.html:415
+[ 1080641ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn-close>
+Ancestor with aria-hidden: <div.modal fade#weeklyReportModal> @ http://localhost:8500/DCM/index.html:0
+[ 1082219ms] [LOG] 11 @ http://localhost:8500/DCM/index.html:415
+[ 1111578ms] [LOG] 🔄 Loading projects... @ http://localhost:8500/DCM/projectManagement.html:341
+[ 1111578ms] [LOG] 🔗 AJAX URL: assets/CFCs/functions.cfc @ http://localhost:8500/DCM/projectManagement.html:342
+[ 1111578ms] [LOG] 📤 AJAX Data: {method: getAllProjects} @ http://localhost:8500/DCM/projectManagement.html:343
+[ 1111614ms] [LOG] ✅ AJAX Success! @ http://localhost:8500/DCM/projectManagement.html:353
+[ 1111614ms] [LOG] 📥 Raw Response: {items: Array(19)} @ http://localhost:8500/DCM/projectManagement.html:354
+[ 1111614ms] [LOG] 📊 Response Type: object @ http://localhost:8500/DCM/projectManagement.html:355
+[ 1111614ms] [LOG] 🔍 Response.items: [Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object] @ http://localhost:8500/DCM/projectManagement.html:356
+[ 1111615ms] [LOG] 📈 Items Length: 19 @ http://localhost:8500/DCM/projectManagement.html:357
+[ 1111615ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 09/26/2025, PROJECT_DESCRIPTION: Ask me anything that is changed for each department that needs} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111616ms] [LOG] 📊 Row data: [13, Ask-XXXX, Ask me anything that is changed for each department that needs, <span class="badge bg-success project-status-badge">Active</span>, 09/26/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111616ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 10/24/2025, PROJECT_DESCRIPTION: The Division of Cancer Medicine currently manages account usage and expense requests } @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111616ms] [LOG] 📊 Row data: [14, Automated Approval Routing & Expense Management System, The Division of Cancer Medicine currently manages account usage and expense requests , <span class="badge bg-success project-status-badge">Active</span>, 10/24/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111616ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 11/07/2025, PROJECT_DESCRIPTION: Brain Tumor Database} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111617ms] [LOG] 📊 Row data: [16, NPBTD, Brain Tumor Database, <span class="badge bg-success project-status-badge">Active</span>, 11/07/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111617ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: I, MODIFIED_BY: , CREATED_DATE: 02/19/2024, PROJECT_DESCRIPTION: My Team} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111617ms] [LOG] 📊 Row data: [8, MY TEAM, My Team, <span class="badge bg-secondary project-status-badge">Inactive</span>, 02/19/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111617ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 08/01/2025, PROJECT_DESCRIPTION: Document Approval Routing and Tracking} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111618ms] [LOG] 📊 Row data: [12, DART, Document Approval Routing and Tracking, <span class="badge bg-success project-status-badge">Active</span>, 08/01/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111618ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: Internal meetings and one on ones with manaer} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111618ms] [LOG] 📊 Row data: [6, ADMINISTRATION, Internal meetings and one on ones with manaer, <span class="badge bg-success project-status-badge">Active</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111618ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 11/07/2025, PROJECT_DESCRIPTION: Funding Approval & Reconciliation Engine} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111618ms] [LOG] 📊 Row data: [15, FARE, Funding Approval & Reconciliation Engine, <span class="badge bg-success project-status-badge">Active</span>, 11/07/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111619ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 02/13/2026, PROJECT_DESCRIPTION: Provider (Physician/APP) Outage from Clinic Form} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111619ms] [LOG] 📊 Row data: [18, Provider Outage Form, Provider (Physician/APP) Outage from Clinic Form, <span class="badge bg-success project-status-badge">Active</span>, 02/13/2026, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111619ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: I, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: Items not listed} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111619ms] [LOG] 📊 Row data: [7, OTHER, Items not listed, <span class="badge bg-secondary project-status-badge">Inactive</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111620ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 07/22/2025, PROJECT_DESCRIPTION: The systematic practice of designing, structuring,…iors. It's closely related to prompt engineering.} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111620ms] [LOG] 📊 Row data: [10, CONTEXT ENGINEERING, The systematic practice of designing, structuring,…iors. It's closely related to prompt engineering., <span class="badge bg-success project-status-badge">Active</span>, 07/22/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111620ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: Fellowship Finicial Ledger} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111620ms] [LOG] 📊 Row data: [1, FFL, Fellowship Finicial Ledger, <span class="badge bg-success project-status-badge">Active</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111620ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: Daily Task Tracker} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111621ms] [LOG] 📊 Row data: [4, DAILY TASK TRACKER, Daily Task Tracker, <span class="badge bg-success project-status-badge">Active</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111621ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 12/10/2024, PROJECT_DESCRIPTION: DoCM Room Reservation System, to reserve rooms and conference rooms.xx} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111621ms] [LOG] 📊 Row data: [9, DoCM ROOM RESERVATION SYSTEM, DoCM Room Reservation System, to reserve rooms and conference rooms.xx, <span class="badge bg-success project-status-badge">Active</span>, 12/10/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111621ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: DoCM Document Processing} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111621ms] [LOG] 📊 Row data: [3, DOCMDP, DoCM Document Processing, <span class="badge bg-success project-status-badge">Active</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111622ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 04/06/2026, PROJECT_DESCRIPTION: Application Admin Audit App} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111622ms] [LOG] 📊 Row data: [19, One Piece, Application Admin Audit App, <span class="badge bg-success project-status-badge">Active</span>, 04/06/2026, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111622ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 07/25/2025, PROJECT_DESCRIPTION: Tracking usage of our FACSDiva equipment through the vendor’s software} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111622ms] [LOG] 📊 Row data: [11, FACSDiva, Tracking usage of our FACSDiva equipment through the vendor’s software, <span class="badge bg-success project-status-badge">Active</span>, 07/25/2025, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111622ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: A, MODIFIED_BY: , CREATED_DATE: 02/13/2026, PROJECT_DESCRIPTION: Un-Official Time Off Application} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111623ms] [LOG] 📊 Row data: [17, Web Schedule, Un-Official Time Off Application, <span class="badge bg-success project-status-badge">Active</span>, 02/13/2026, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111623ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: I, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: Neuro Physiology Brain Tumor Database} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111623ms] [LOG] 📊 Row data: [2, NPBTD, Neuro Physiology Brain Tumor Database, <span class="badge bg-secondary project-status-badge">Inactive</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1111623ms] [LOG] 🔍 Processing project: {CREATED_BY: , STATUS: I, MODIFIED_BY: , CREATED_DATE: 02/12/2024, PROJECT_DESCRIPTION: QuickBase} @ http://localhost:8500/DCM/projectManagement.html:364
+[ 1111623ms] [LOG] 📊 Row data: [5, QUICKBASE, QuickBase, <span class="badge bg-secondary project-status-badge">Inactive</span>, 02/12/2024, <button class="btn btn-sm btn-outline-primary me-1…le="Delete"><i class="fas fa-trash"></i></button>] @ http://localhost:8500/DCM/projectManagement.html:397
+[ 1122222ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1122222ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1122222ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1122222ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1122222ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1122222ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1122222ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1122222ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1122222ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1122223ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1122223ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1127401ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1127402ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1127402ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1127402ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1127402ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1199959ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1199960ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1199960ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1199960ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1199960ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1292194ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1292194ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1292194ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1292194ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1292195ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1337417ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1337418ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1337418ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1337418ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1337418ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1410451ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1410452ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1410452ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1410452ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1410453ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1410453ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1410453ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1410453ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1427641ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn-close btn-close-white>
+Ancestor with aria-hidden: <div.modal fade#profileSettingsModal> @ http://localhost:8500/DCM/index.html:0
+[ 1503911ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:370
+[ 1503911ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:371
+[ 1503911ms] [LOG]   USERID: undefined @ http://localhost:8500/DCM/index.html:374
+[ 1503911ms] [LOG]   DEPARTMENTNAME: Enterprise Dev & Integration @ http://localhost:8500/DCM/index.html:374
+[ 1503911ms] [LOG]   ISADMIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1503911ms] [LOG]   DEPTID: 710495 @ http://localhost:8500/DCM/index.html:374
+[ 1503911ms] [LOG]   NAME: Ernesto Pena Jr @ http://localhost:8500/DCM/index.html:374
+[ 1503911ms] [LOG]   FULL_NAME: Pena Jr,Ernesto @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   EMAIL_ADDRESS: erniep@mdanderson.org @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   AUTHORIZED_USER: true @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   shortcutHintShown: true @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   JOBCODE_DESCR: Principal Appl Sys Analyst @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   ADMESSAGE: Authentication Successful @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG]   NICKNAME: Ernest @ http://localhost:8500/DCM/index.html:374
+[ 1503912ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:379
+[ 1503912ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:380
+[ 1507376ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <button.btn-close btn-close-white>
+Ancestor with aria-hidden: <div.modal fade#profileSettingsModal> @ http://localhost:8500/DCM/index.html:0

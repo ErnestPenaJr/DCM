@@ -47,9 +47,104 @@
         </cfif>
     </cffunction>
 
+    <!--- Return all top-level wwwroot folders for the directory picker --->
+    <cffunction name="getWwwrootFolders" access="remote" returntype="any" returnformat="JSON">
+        <cfset var wwwrootPath  = expandPath("/")>
+        <cfset var excludeNames = "CFIDE,cf_scripts,WEB-INF,__MACOSX,.git">
+        <cfset var retVal = ArrayNew(1)>
+        <cftry>
+            <cfdirectory action="list" directory="#wwwrootPath#" recurse="no" name="dirs" type="dir" sort="name ASC" />
+            <cfloop query="dirs">
+                <cfif NOT ListFindNoCase(excludeNames, name)>
+                    <cfset ArrayAppend(retVal, name)>
+                </cfif>
+            </cfloop>
+            <cfcatch type="any"></cfcatch>
+        </cftry>
+        <cfreturn { "folders": retVal }>
+    </cffunction>
+
+    <!--- Load a user setting --->
+    <cffunction name="getUserSetting" access="remote" returntype="any" returnformat="JSON">
+        <cfargument name="EMPLID"      type="string" required="true" />
+        <cfargument name="SETTING_KEY" type="string" required="true" />
+        <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#"
+                 datasource="#variables.config.db.server#" name="q">
+            SELECT SETTING_VALUE
+            FROM #variables.config.db.schema#.DAILY_TASKS_USER_SETTINGS
+            WHERE EMPLID      = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
+            AND   SETTING_KEY = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.SETTING_KEY#" />
+        </cfquery>
+        <cfif q.recordCount>
+            <cfreturn { "value": q.SETTING_VALUE, "found": true }>
+        <cfelse>
+            <cfreturn { "value": "", "found": false }>
+        </cfif>
+    </cffunction>
+
+    <!--- Save (upsert) a user setting --->
+    <cffunction name="saveUserSetting" access="remote" returntype="any" returnformat="JSON">
+        <cfargument name="EMPLID"        type="string" required="true" />
+        <cfargument name="SETTING_KEY"   type="string" required="true" />
+        <cfargument name="SETTING_VALUE" type="string" required="true" />
+        <cftry>
+            <!--- Check if row exists --->
+            <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#"
+                     datasource="#variables.config.db.server#" name="chk">
+                SELECT COUNT(*) AS CNT
+                FROM #variables.config.db.schema#.DAILY_TASKS_USER_SETTINGS
+                WHERE EMPLID      = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
+                AND   SETTING_KEY = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.SETTING_KEY#" />
+            </cfquery>
+            <cfif chk.CNT GT 0>
+                <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#"
+                         datasource="#variables.config.db.server#">
+                    UPDATE #variables.config.db.schema#.DAILY_TASKS_USER_SETTINGS
+                    SET SETTING_VALUE = <cfqueryparam cfsqltype="cf_sql_clob"    value="#arguments.SETTING_VALUE#" />,
+                        UPDATED_DATE  = SYSDATE
+                    WHERE EMPLID      = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
+                    AND   SETTING_KEY = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.SETTING_KEY#" />
+                </cfquery>
+            <cfelse>
+                <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#"
+                         datasource="#variables.config.db.server#">
+                    INSERT INTO #variables.config.db.schema#.DAILY_TASKS_USER_SETTINGS
+                        (EMPLID, SETTING_KEY, SETTING_VALUE, UPDATED_DATE)
+                    VALUES (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.SETTING_KEY#" />,
+                        <cfqueryparam cfsqltype="cf_sql_clob"    value="#arguments.SETTING_VALUE#" />,
+                        SYSDATE
+                    )
+                </cfquery>
+            </cfif>
+            <cfreturn { "success": true }>
+            <cfcatch type="any">
+                <cfreturn { "success": false, "error": cfcatch.message }>
+            </cfcatch>
+        </cftry>
+    </cffunction>
+
+    <!--- Verify DAILY_TASKS_USER_SETTINGS table exists and is accessible --->
+    <cffunction name="verifySettingsTable" access="remote" returntype="any" returnformat="JSON">
+        <cftry>
+            <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#"
+                     datasource="#variables.config.db.server#" name="q">
+                SELECT COUNT(*) AS ROW_COUNT
+                FROM #variables.config.db.schema#.DAILY_TASKS_USER_SETTINGS
+            </cfquery>
+            <cfreturn { "success": true, "rowCount": q.ROW_COUNT, "message": "Table DAILY_TASKS_USER_SETTINGS is accessible." }>
+            <cfcatch type="any">
+                <cfreturn { "success": false, "error": cfcatch.message, "detail": cfcatch.detail }>
+            </cfcatch>
+        </cftry>
+    </cffunction>
+
     <cffunction name="getFileActivity" access="remote" returntype="any" returnformat="JSON">
         <cfargument name="START_DATE" type="string" required="true" />
         <cfargument name="END_DATE"   type="string" required="true" />
+        <cfargument name="DIRS"       type="string" required="false" default="" />  <!--- JSON array of folder names --->
+
 
         <cfset var wwwrootPath = expandPath("/")>
         <cfset var startDT = CreateDateTime(
@@ -73,15 +168,30 @@
 
         <cfset var retVal = ArrayNew(1)>
 
+        <!--- Build the list of top-level folders to scan --->
+        <cfset var foldersToScan = ArrayNew(1)>
+        <cfif Len(Trim(arguments.DIRS)) GT 0>
+            <!--- User has defined specific directories --->
+            <cfset foldersToScan = deserializeJSON(arguments.DIRS)>
+        <cfelse>
+            <!--- Fall back: scan every non-excluded top-level folder (use full paths) --->
+            <cftry>
+                <cfdirectory action="list" directory="#wwwrootPath#" recurse="no" name="allDirs" type="dir" sort="name ASC" />
+                <cfloop query="allDirs">
+                    <cfif NOT ListFindNoCase(excludeNames, name)>
+                        <cfset ArrayAppend(foldersToScan, wwwrootPath & name)>
+                    </cfif>
+                </cfloop>
+                <cfcatch type="any"></cfcatch>
+            </cftry>
+        </cfif>
+
         <cftry>
 
-            <!--- ── Level 1: top-level project folders ── --->
-            <cfdirectory action="list" directory="#wwwrootPath#" recurse="no" name="level1Dirs" type="dir" sort="name ASC" />
-
-            <cfloop query="level1Dirs">
-                <cfif NOT ListFindNoCase(excludeNames, name)>
-                    <cfset var projName = name>
-                    <cfset var projPath = directory & "/" & name>
+            <cfloop array="#foldersToScan#" item="folderName">
+                <cfif NOT ListFindNoCase(excludeNames, ListLast(folderName, "/\"))>
+                    <cfset var projName = ListLast(folderName, "/\")>
+                    <cfset var projPath = folderName>
 
                     <!--- Files directly inside the project folder --->
                     <cftry>

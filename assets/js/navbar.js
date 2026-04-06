@@ -79,41 +79,29 @@ class DCMNavbar {
     }
 
     bindEvents() {
-        // Home navigation
-        const homeLink = document.getElementById('mgtHome');
-        if (homeLink) {
-            homeLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.location.href = 'index.html';
-            });
+        // Sign Out — only bind here on non-index pages; index.html uses delegated jQuery handler
+        if (this.currentPage !== 'index.html') {
+            const signOutBtn = document.getElementById('signOut');
+            if (signOutBtn) {
+                signOutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleSignOut();
+                });
+            }
         }
 
-        // Projects navigation
-        const projectsLink = document.getElementById('mgtProjects');
-        if (projectsLink) {
-            projectsLink.addEventListener('click', (e) => {
+        // Profile button — only relevant on index.html (modal lives there)
+        // On other pages, let the href="#" default prevent navigation without error
+        const profileBtns = document.querySelectorAll('#profileSettingsBtn, #profileSettingsBtnLg');
+        profileBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.location.href = 'projectManagement.html';
+                const modal = document.getElementById('profileSettingsModal');
+                if (modal && typeof bootstrap !== 'undefined') {
+                    bootstrap.Modal.getOrCreateInstance(modal).show();
+                }
             });
-        }
-
-        // User Access navigation
-        const userAccessLink = document.getElementById('mgtUserAccess');
-        if (userAccessLink) {
-            userAccessLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.location.href = 'userManagement.html';
-            });
-        }
-
-        // Sign Out
-        const signOutBtn = document.getElementById('signOut');
-        if (signOutBtn) {
-            signOutBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.handleSignOut();
-            });
-        }
+        });
     }
 
     initializeSessionComponents() {
@@ -141,21 +129,12 @@ class DCMNavbar {
     }
 
     handleSignOut() {
-        // Use existing signout functionality or create new
-        if (typeof signOut === 'function') {
-            signOut();
-        } else {
-            // Load signout page content
+        if (typeof $ !== 'undefined') {
             const container = document.querySelector('.container') || document.body;
-            container.innerHTML = '<div class="text-center mt-5"><h2>Signing out...</h2></div>';
-            
-            // Clear session storage
+            $(container).load('signout.html');
+        } else {
             sessionStorage.clear();
-            
-            // Redirect after brief delay
-            setTimeout(() => {
-                window.location.href = 'landingPage.html';
-            }, 1500);
+            window.location.href = 'landingPage.html';
         }
     }
 
