@@ -168,6 +168,9 @@
                                     <button class="btn btn-outline-light btn-sm" id="copyTextToClipboard">
                                         <i class="far fa-copy"></i> Copy Text
                                     </button>
+                                    <button class="btn btn-outline-warning btn-sm" id="generateReportBtn" title="Generate full weekly report">
+                                        <i class="far fa-file-chart-line"></i> Report
+                                    </button>
                                 </div></h1>
                         <div class="card" style="height: 726px">
                             <div class="card-body" style="overflow-y: scroll;">
@@ -184,29 +187,38 @@
             </div>
         </div>
         </div>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-white text-white bg-cover d-flex align-items-center"
+        <div class="w-100 overflow-hidden position-relative bg-white bg-cover d-flex align-items-center"
             data-aos="fade"
-            style=" background: url('assets/images/redtape3.png') no-repeat; background-attachment: fixed;background-size: cover;">
+            style="background: url('assets/images/redtape3.png') no-repeat; background-attachment: fixed; background-size: cover;">
             <div class="position-absolute w-100 h-100 bg-black opacity-0 top-0 start-0"></div>
-            <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-                <div class="row py-vh-5">
-                    <div class="card opacity-100">
-                        <div class="card-body">
-                            <table id="tasks"
-                                class="table table-striped table-hover table-bordered table-sm table-responsive text-start">
-                                <thead>
-                                    <tr class="table-dark">
-                                        <th>WEEK</th>
-                                        <th>DAY</th>
-                                        <th>DATE</th>
-                                        <th>TASK NAME</th>
-                                        <th>TASK TIME</th>
-                                        <th>PROJECT NAME</th>
-                                        <th>DEPTID</th>
-                                        <th>TASK COMPLETED</th>
-                                    </tr>
-                                </thead>
-                            </table>
+            <div class="container py-vh-4 position-relative mt-5 px-vw-5">
+                <div class="row py-4">
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <!-- Calendar header -->
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <button id="calPrevMonth" class="btn btn-outline-dark btn-sm px-3">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <h4 id="calMonthLabel" class="mb-0 text-dark fw-bold"></h4>
+                                    <button id="calNextMonth" class="btn btn-outline-dark btn-sm px-3">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <!-- Day-of-week headers -->
+                                <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px;">
+                                    <div class="text-center fw-bold text-muted small py-1">Sun</div>
+                                    <div class="text-center fw-bold text-muted small py-1">Mon</div>
+                                    <div class="text-center fw-bold text-muted small py-1">Tue</div>
+                                    <div class="text-center fw-bold text-muted small py-1">Wed</div>
+                                    <div class="text-center fw-bold text-muted small py-1">Thu</div>
+                                    <div class="text-center fw-bold text-muted small py-1">Fri</div>
+                                    <div class="text-center fw-bold text-muted small py-1">Sat</div>
+                                </div>
+                                <!-- Calendar grid -->
+                                <div id="calendarGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -214,6 +226,51 @@
         </div>
         </div>
     </main>
+
+    <!-- Weekly Report Modal -->
+    <div class="modal fade" id="weeklyReportModal" tabindex="-1" aria-labelledby="weeklyReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="weeklyReportModalLabel">
+                        <i class="far fa-file-chart-line me-2"></i> Weekly Report
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="weeklyReportBody">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2 text-muted">Loading report data...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" id="copyReportBtn">
+                        <i class="far fa-copy me-1"></i> Copy to Clipboard
+                    </button>
+                    <button class="btn btn-outline-primary" id="downloadReportPdf">
+                        <i class="far fa-file-pdf me-1"></i> Download PDF
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day Detail Modal -->
+    <div class="modal fade" id="dayModal" tabindex="-1" aria-labelledby="dayModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="dayModalTitle"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="dayModalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="assets/js/app.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -409,7 +466,7 @@
             html2pdf().set(opt).from(element).save();
         });
         getProjects();
-        loadMyTasks();
+        loadCalendar();
         
         // Initialize daily view as active
         $('#toggleViewDaily').addClass('active').removeClass('btn-outline-light').addClass('btn-light');
@@ -636,6 +693,8 @@
         });
     }
 
+    var projectsList = []; // { PID, PROJECT_NAME } — populated on load
+
     function getProjects() {
         $.ajax({
             type: 'GET',
@@ -646,6 +705,7 @@
             },
             success: function (response) {
                 var x = response.items;
+                projectsList = x;
                 var options = '<option selected>My Projects</option>';
                 for (var i = 0; i < x.length; i++) {
                     options += '<option value="' + x[i].PID + '">' + x[i].PROJECT_NAME + '</option>';
@@ -653,6 +713,18 @@
                 $('#Project').append(options);
             }
         });
+    }
+
+    // Match a wwwroot folder name to a project PID
+    function folderToPid(folderName) {
+        var lower = folderName.toLowerCase();
+        for (var i = 0; i < projectsList.length; i++) {
+            if (projectsList[i].PROJECT_NAME.toLowerCase().indexOf(lower) >= 0 ||
+                lower.indexOf(projectsList[i].PROJECT_NAME.toLowerCase()) >= 0) {
+                return projectsList[i].PID;
+            }
+        }
+        return projectsList.length > 0 ? projectsList[0].PID : '';
     }
 
     function getCurrentWeekTasks(currentWeekNumber) {
@@ -953,175 +1025,156 @@
         });
     }
 
-    function loadMyTasks() {
-        if ($.fn.DataTable.isDataTable('#example')) {
-            $('#tasks').DataTable().destroy();
+    // ─── Task Calendar ─────────────────────────────────────────────────────────
+
+    var allTasksByDate = {}; // keyed "MM/DD/YYYY"
+    var calYear, calMonth;
+
+    function loadCalendar() {
+        var emplid = sessionStorage.getItem('EMPLID');
+        $.ajax({
+            type: 'GET', dataType: 'json',
+            url: 'assets/CFCs/TaskService.cfc',
+            data: { method: 'getAllTasks', EMPLID: emplid },
+            success: function (resp) {
+                allTasksByDate = {};
+                (resp.data || []).forEach(function (t) {
+                    var key = t.DATE; // "MM/DD/YYYY"
+                    if (!allTasksByDate[key]) allTasksByDate[key] = [];
+                    allTasksByDate[key].push(t);
+                });
+                var now = moment();
+                calYear  = now.year();
+                calMonth = now.month(); // 0-indexed
+                renderCalendar(calYear, calMonth);
+            }
+        });
+    }
+
+    function renderCalendar(year, month) {
+        var firstDay    = moment([year, month, 1]);
+        var daysInMonth = firstDay.daysInMonth();
+        var startDow    = firstDay.day(); // 0 = Sunday
+        var today       = moment().format('MM/DD/YYYY');
+
+        $('#calMonthLabel').text(firstDay.format('MMMM YYYY'));
+
+        var cells = '';
+
+        // Leading empty cells
+        for (var e = 0; e < startDow; e++) {
+            cells += '<div style="min-height:90px;"></div>';
         }
 
-        var currentEMPLID = sessionStorage.getItem('EMPLID');
-        console.log('🔍 loadMyTasks - Current EMPLID from sessionStorage:', currentEMPLID);
+        // Day cells
+        for (var d = 1; d <= daysInMonth; d++) {
+            var dateKey  = moment([year, month, d]).format('MM/DD/YYYY');
+            var tasks    = allTasksByDate[dateKey] || [];
+            var isToday  = dateKey === today;
+            var isWeekend = (startDow + d - 1) % 7 === 0 || (startDow + d - 1) % 7 === 6;
+            var hasTasks = tasks.length > 0;
 
-        var task = $("#tasks").DataTable({
-            "ajax": "assets/CFCs/TaskService.cfc?method=getAllTasks&EMPLID=" + currentEMPLID,
-            "columns": [
-                { "data": "WEEK_NUMBER" },
-                { "data": "WEEK_DAY" },
-                {
-                    "data": "TASK_DATE",
-                    "render": function (data, type, row) {
-                        return moment(data).format('MM/DD/YYYY');
-                    }
-                },
-                { "data": "TASK_NAME" },
-                { "data": "TASK_TIME" },
-                { "data": "PROJECT_NAME" },
-                { "data": "DEPTID" },
-                { "data": "TASK_DESCRIPTION" }
-            ],
-            //"order": [[2, "desc"]],
-            "paging": true,
-            //"ordering": true,
-            //"info": true,
-            "searching": true,
-            //"scrollY": "550px",
-            "scrollCollapse": true,
-            "paging": true,
-            pageLength: 10,
-            lengthMenu: [10, 25, 50, 75, 100],
-            dom: "<'row' <'col-sm-1'l><'col-md-11 text-end align-content-bottom'B> >"
-                + "<'row'<'col-sm-12'tr> >"
-                + "<'row'<'col-sm-6'i> <'col-sm-6 text-end'p> >",
-            select: true,
-            buttons: [
-                {
-                    extend: 'collection',
-                    className: 'yearFilter mb-2',
-                    text: 'Sort By Year',
-                    buttons: [
-                        {
-                            text: '2026',
-                            action: function () {
-                                $.fn.dataTable.ext.search.push(
-                                    function (settings, data, dataIndex) {
-                                        var date = new Date(data[2]);
-                                        return date.getFullYear() === 2026;
-                                    }
-                                );
-                                task.draw();
-                                $.fn.dataTable.ext.search.pop();
-                                $('.dropdown-menu').hide();
-                            }
-                        },
-                        {
-                            text: '2025',
-                            action: function () {
-                                $.fn.dataTable.ext.search.push(
-                                    function (settings, data, dataIndex) {
-                                        var date = new Date(data[2]);
-                                        return date.getFullYear() === 2025;
-                                    }
-                                );
-                                task.draw();
-                                $.fn.dataTable.ext.search.pop();
-                                $('.dropdown-menu').hide();
-                            }
-                        },
-                        {
-                            text: '2024',
-                            action: function () {
-                                $.fn.dataTable.ext.search.push(
-                                    function (settings, data, dataIndex) {
-                                        var date = new Date(data[2]);
-                                        return date.getFullYear() === 2024;
-                                    }
-                                );
-                                task.draw();
-                                $.fn.dataTable.ext.search.pop();
-                                $('.dropdown-menu').hide();
-                            }
-                        },
-                        {
-                            text: '2023',
-                            action: function () {
-                                $.fn.dataTable.ext.search.push(
-                                    function (settings, data, dataIndex) {
-                                        var date = new Date(data[2]);
-                                        return date.getFullYear() === 2023;
-                                    }
-                                );
-                                task.draw();
-                                $.fn.dataTable.ext.search.pop();
-                                $('.dropdown-menu').hide();
-                            }
-                        },
-                        {
-                            text: 'Reset All',
-                            action: function () {
-                                $.fn.dataTable.ext.search.pop();
-                                task.draw();
-                            }
-                        }
-                    ]
-                },
-                {
-                    className: 'mb-2',
-                    text: 'Download Excel',
-                    action: function (e, dt, node, config) {
-                        var originalData = dt.rows().data().toArray();
-                        if (originalData.length === 0) return;
-                        var excludeKeys = ['TASKID', 'PROJECT'];
-                        var data = originalData.map(function (obj) {
-                            var newObj = Object.assign({}, obj);
-                            excludeKeys.forEach(function (key) {
-                                delete newObj[key];
-                            });
-                            return newObj;
-                        });
-                        var headers = ['WEEK_NUMBER', 'WEEK_DAY', 'DATE', 'TASK_NAME', 'TASK_TIME', 'PROJECT_NAME', 'DEPTID', 'TASK_DESCRIPTION'];
-                        var wb = XLSX.utils.book_new();
-                        var ws = XLSX.utils.json_to_sheet(data, { header: headers });
-                        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-                        XLSX.writeFile(wb, 'ErnestWeeklyTasks.xlsx');
-                    }
-                }
-                // ,{
-                //         extend: 'pdfHtml5',
-                //         text: 'Save PDF',
-                //         className: 'mb-2',
-                //         orientation: 'landscape', // Optional: landscape or portrait
-                //         pageSize: 'LEGAL', // Optional: 'A3', 'A5', 'A4', 'LEGAL', 'LETTER' etc.
-                //         title: 'Ernest Weekly Progress', // Optional: Title for the PDF
-                //         filename: 'ErnestWeeklyTasks', // Default: ''DateCSVSales'' - String or function() { } to declare the file name
-                //         customize: function(doc) {
-                //             doc.styles.tableHeader.fontSize = 12;
-                //             doc.defaultStyle.fontSize = 11;
-                //             doc.defaultStyle.alignment = 'left';
-                //             doc.styles.tableHeader.alignment = 'center';
-                //             doc.cont
-                //         },
-                //         exportOptions: {
-                //             columns: [0,1,2,3,4,5,6,7] // Specify the columns you want to export
-                //         }
-                //     }
-            ]
-        });
-        $('#tasks thead th').each(function () {
-            var title = $(this).text();
-            $(this).html(title + '<input type="text" class="form-control form-control-sm mt-1" />');
-            $(this).addClass('bg-secondary text-white text-center ');
-            $(this).addClass('text-nowrap');
-        });
-        // Apply the search
-        task.columns().every(function () {
-            var that = this;
-            $('input', this.header()).on('keyup change', function () {
-                if (that.search() !== this.value) {
-                    that.search(this.value).draw();
-                }
-            });
-        });
+            var totalMins = 0;
+            tasks.forEach(function (t) { totalMins += parseInt(t.TASK_TIME) || 0; });
+            var totalHrs = totalMins > 0 ? (Math.floor(totalMins/60) + 'h ' + (totalMins%60) + 'm') : '';
 
+            // Cell style
+            var bg      = isToday  ? '#0d6efd'  : (hasTasks ? '#f0f4ff' : (isWeekend ? '#f8f8f8' : '#fff'));
+            var color   = isToday  ? '#fff'      : '#333';
+            var border  = isToday  ? '2px solid #0d6efd' : (hasTasks ? '1px solid #b8ccf8' : '1px solid #e0e0e0');
+            var cursor  = hasTasks ? 'pointer'   : 'default';
+
+            cells += '<div data-date="' + dateKey + '" ';
+            cells += 'style="min-height:90px;padding:8px;border-radius:6px;border:' + border + ';background:' + bg + ';color:' + color + ';cursor:' + cursor + ';position:relative;" ';
+            cells += (hasTasks ? 'class="cal-day-active"' : '') + '>';
+
+            // Day number
+            cells += '<div style="font-weight:bold;font-size:14px;">' + d + '</div>';
+
+            if (hasTasks) {
+                // Task count badge
+                cells += '<span style="position:absolute;top:6px;right:6px;background:' + (isToday ? '#fff' : '#0d6efd') + ';color:' + (isToday ? '#0d6efd' : '#fff') + ';border-radius:50%;width:20px;height:20px;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:bold;">' + tasks.length + '</span>';
+                // Total time
+                cells += '<div style="font-size:10px;color:' + (isToday ? 'rgba(255,255,255,0.85)' : '#0d6efd') + ';font-weight:bold;margin-top:2px;">' + totalHrs + '</div>';
+                // Project name previews (up to 2)
+                var projects = [];
+                tasks.forEach(function (t) {
+                    if (projects.indexOf(t.PROJECT_NAME) < 0) projects.push(t.PROJECT_NAME);
+                });
+                projects.slice(0, 2).forEach(function (p) {
+                    cells += '<div style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;color:' + (isToday ? 'rgba(255,255,255,0.9)' : '#555') + ';">' + p + '</div>';
+                });
+                if (projects.length > 2) {
+                    cells += '<div style="font-size:9px;color:' + (isToday ? 'rgba(255,255,255,0.7)' : '#888') + ';">+' + (projects.length - 2) + ' more</div>';
+                }
+            }
+
+            cells += '</div>';
+        }
+
+        $('#calendarGrid').html(cells);
+
+        // Click handler
+        $(document).off('click', '.cal-day-active').on('click', '.cal-day-active', function () {
+            var dateKey = $(this).data('date');
+            openDayModal(dateKey);
+        });
     }
+
+    function openDayModal(dateKey) {
+        var tasks   = allTasksByDate[dateKey] || [];
+        var dayLabel = moment(dateKey, 'MM/DD/YYYY').format('dddd, MMMM D YYYY');
+
+        $('#dayModalTitle').text(dayLabel);
+
+        if (tasks.length === 0) {
+            $('#dayModalBody').html('<p class="text-muted">No tasks recorded for this day.</p>');
+            $('#dayModal').modal('show');
+            return;
+        }
+
+        var totalMins = 0;
+        var body = '<div class="list-group list-group-flush">';
+
+        tasks.forEach(function (t) {
+            var mins = parseInt(t.TASK_TIME) || 0;
+            totalMins += mins;
+            var hrs = (mins / 60).toFixed(1);
+            body += '<div class="list-group-item px-0">';
+            body += '<div class="d-flex justify-content-between align-items-start">';
+            body += '<div>';
+            body += '<span class="badge bg-primary me-2">' + t.PROJECT_NAME + '</span>';
+            body += '<strong>' + t.TASK_NAME.replace(/_/g, ' ') + '</strong>';
+            if (t.NOTES) {
+                body += '<p class="mb-0 mt-1 text-muted small">' + t.NOTES + '</p>';
+            }
+            body += '</div>';
+            body += '<span class="text-primary fw-bold text-nowrap ms-3">' + hrs + 'h</span>';
+            body += '</div></div>';
+        });
+
+        body += '</div>';
+
+        var dh = Math.floor(totalMins / 60), dm = totalMins % 60;
+        body += '<div class="mt-3 pt-3 border-top text-end">';
+        body += '<strong class="text-primary">Total: ' + dh + 'h ' + dm + 'm</strong>';
+        body += '</div>';
+
+        $('#dayModalBody').html(body);
+        $('#dayModal').modal('show');
+    }
+
+    $('#calPrevMonth').on('click', function () {
+        calMonth--;
+        if (calMonth < 0) { calMonth = 11; calYear--; }
+        renderCalendar(calYear, calMonth);
+    });
+
+    $('#calNextMonth').on('click', function () {
+        calMonth++;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        renderCalendar(calYear, calMonth);
+    });
     function getTaskHistoryByWeek(week) {
         $.ajax({
             type: 'GET',
@@ -1357,6 +1410,587 @@
                 $('#copyTextToClipboard').html('<i class="far fa-check fs-6"></i> Text Copied');
                 setTimeout(function () {
                     $('#copyTextToClipboard').html('<i class="far fa-copy fs-6"></i> Copy Text');
+                }, 3000);
+            });
+        });
+    }
+
+    // Map file extensions → task name (mirrors the tasks[] form array)
+    function inferTaskName(ext) {
+        ext = (ext || '').toLowerCase();
+        if (['cfm','cfc','html','htm','js','jsx','ts','tsx','vue','py'].indexOf(ext) >= 0) return 'Code Development';
+        if (['css','scss','less'].indexOf(ext) >= 0)                                      return 'Code Prototyping';
+        if (['sql'].indexOf(ext) >= 0)                                                    return 'Database Mgt.';
+        if (['md','txt'].indexOf(ext) >= 0)                                               return 'Code Publishing';
+        if (['json'].indexOf(ext) >= 0)                                                   return 'Administration';
+        return 'Code Development';
+    }
+
+    // Task definition metadata (mirrors the tasks[] form array)
+    var taskDefMap = {
+        'Administration':         { category: 'Administration',  work_type: 'Other' },
+        'Code Development':       { category: 'Maintenance',     work_type: 'Application' },
+        'Code Optimization':      { category: 'Maintenance',     work_type: 'Application' },
+        'Code Prototyping':       { category: 'Maintenance',     work_type: 'Application' },
+        'Code Publishing':        { category: 'Maintenance',     work_type: 'Application' },
+        'Code Testing / Debugging': { category: 'Maintenance',   work_type: 'Application' },
+        'Database Mgt.':          { category: 'Project',         work_type: 'Database' }
+    };
+
+    // Save a single inferred task record
+    function saveInferredTask(taskName, pid, date, weekNum, dayNum, durationMins, emplid) {
+        var def = taskDefMap[taskName] || { category: 'Maintenance', work_type: 'Application' };
+        return $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'assets/CFCs/TaskService.cfc',
+            data: {
+                method:         'saveTask',
+                TASK_NAME:      taskName,
+                TASK_DESCRIPTION: 'Inferred from file activity',
+                CLASSIFICATION: def.category,
+                WORK_TYPE:      def.work_type,
+                TASK_TIME:      durationMins || 30,
+                PROJECT:        pid,
+                DEPTID:         sessionStorage.getItem('DEPTID') || '',
+                ALLOCATED_TIME: 480,
+                WEEK_NUM:       weekNum,
+                DATE:           date,
+                WEEKLY_NOTE:    '',
+                DAY_NUM:        dayNum,
+                EMPLID:         emplid
+            }
+        });
+    }
+
+    // Called after report render — saves inferred tasks for days that had no DB tasks
+    function persistInferredTasks(daily, filesByDate, weekNum, year) {
+        var emplid = sessionStorage.getItem('EMPLID');
+
+        // Build set of days that already have DB tasks
+        var daysWithTasks = {};
+        daily.forEach(function (t) { daysWithTasks[t.DAY_NUM] = true; });
+
+        var saves = [];
+
+        [1,2,3,4,5].forEach(function (dayNum) {
+            if (daysWithTasks[dayNum]) return; // already has real tasks
+
+            var dayMoment  = moment().year(year).week(weekNum).isoWeekday(dayNum);
+            var dateKey    = dayMoment.format('YYYY-MM-DD');
+            var displayKey = dayMoment.format('MM/DD/YYYY');
+            var dayFiles   = filesByDate[dateKey] || [];
+            if (dayFiles.length === 0) return;
+
+            // Group by project+taskName
+            var groups = {};
+            dayFiles.forEach(function (f) {
+                var taskName = inferTaskName(f.FILE_NAME.split('.').pop());
+                var key = f.PROJECT + '|' + taskName;
+                if (!groups[key]) groups[key] = { project: f.PROJECT, taskName: taskName, times: [] };
+                groups[key].times.push(f.DATE_MODIFIED.substring(11));
+            });
+
+            Object.keys(groups).forEach(function (k) {
+                var g     = groups[k];
+                var times = g.times.slice().sort();
+                var mins  = times.length > 1
+                    ? moment(times[times.length - 1], 'HH:mm').diff(moment(times[0], 'HH:mm'), 'minutes')
+                    : 30;
+                var pid = folderToPid(g.project);
+                saves.push(saveInferredTask(g.taskName, pid, dateKey, weekNum, dayNum, mins, emplid));
+            });
+        });
+
+        if (saves.length === 0) return;
+
+        $.when.apply($, saves).then(function () {
+            // Refresh calendar and week view with updated data
+            loadCalendar();
+            var wn = parseInt($('#current_week').html());
+            getCurrentWeekTasks(wn);
+            Swal.fire({
+                icon: 'success',
+                title: saves.length + ' task' + (saves.length !== 1 ? 's' : '') + ' saved',
+                text:  'Inferred tasks from file activity have been added to the database.',
+                timer: 3000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'bottom-end'
+            });
+        });
+    }
+
+    // ─── Weekly Report Generator ───────────────────────────────────────────────
+
+    $('#generateReportBtn').on('click', function () {
+        var currentWeekNumber = parseInt($('#current_week').html());
+        $('#weeklyReportModal').modal('show');
+        generateWeeklyReport(currentWeekNumber);
+    });
+
+    function generateWeeklyReport(weekNum) {
+        $('#weeklyReportBody').html(
+            '<div class="text-center py-5">' +
+            '<div class="spinner-border text-primary" role="status"></div>' +
+            '<p class="mt-2 text-muted">Building report &amp; scanning file activity&hellip;</p>' +
+            '</div>'
+        );
+
+        var year       = moment().year();
+        var weekStart  = moment().year(year).week(weekNum).startOf('isoWeek').format('YYYY-MM-DD');
+        var weekEnd    = moment().year(year).week(weekNum).endOf('isoWeek').format('YYYY-MM-DD');
+
+        $.ajax({
+            type: 'GET', dataType: 'json',
+            url:  'assets/CFCs/TaskService.cfc',
+            data: { method: 'getWeeklyReport', WEEK_NUM: weekNum, EMPLID: sessionStorage.getItem('EMPLID') },
+            success: function (data) {
+                renderWeeklyReport(data, null, weekNum, weekStart, weekEnd);
+            },
+            error: function () {
+                $('#weeklyReportBody').html(
+                    '<div class="alert alert-danger">Error loading report data. Please try again.</div>'
+                );
+            }
+        });
+    }
+
+    function renderWeeklyReport(data, fileData, weekNum, weekStart, weekEnd) {
+        var fullName = sessionStorage.getItem('FULL_NAME') || '';
+        var lastName = fullName.split(',')[0] || '';
+        var year = moment().year();
+
+        // Calculate the Mon–Fri date range for display only
+        var dispWeekStart = moment().year(year).week(weekNum).startOf('isoWeek');
+        var dispWeekEnd   = moment().year(year).week(weekNum).isoWeekday(5); // Friday
+        var dateRange = dispWeekStart.format('MMM D') + ' \u2013 ' + dispWeekEnd.format('MMM D, YYYY');
+
+        var daily   = data.daily   || [];
+        var summary = data.summary || [];
+        var totalHours = data.totalHours || '0.0';
+
+        var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+        // Group daily tasks by DAY_NUM
+        var byDay = {};
+        daily.forEach(function (t) {
+            var d = t.DAY_NUM;
+            if (!byDay[d]) byDay[d] = { notes: '', tasks: [] };
+            if (t.WEEKLY_NOTE && byDay[d].notes === '') byDay[d].notes = t.WEEKLY_NOTE;
+            byDay[d].tasks.push(t);
+        });
+
+        // ── Build report HTML ──────────────────────────────────────────────────
+        var html = '<div id="printableReport" style="font-family:Calibri,Arial,sans-serif;font-size:12pt;color:#222;">';
+
+        // Header
+        html += '<div style="border-bottom:3px solid #0d6efd;padding-bottom:10px;margin-bottom:20px;">';
+        html += '<h2 style="margin:0;color:#0d6efd;">Weekly Time Report \u2014 Week ' + weekNum + '</h2>';
+        html += '<p style="margin:4px 0 0;font-size:11pt;color:#555;">' + dateRange + ' &nbsp;&bull;&nbsp; ' + fullName + '</p>';
+        html += '<p style="margin:4px 0 0;font-weight:bold;">Total Hours: ' + totalHours + '</p>';
+        html += '</div>';
+
+        // Build file-by-date index (only when file data is available)
+        var filesByDate = {};
+        if (fileData && fileData.files) {
+            fileData.files.forEach(function (f) {
+                var dateKey = f.DATE_MODIFIED.substring(0, 10); // 'YYYY-MM-DD'
+                if (!filesByDate[dateKey]) filesByDate[dateKey] = [];
+                filesByDate[dateKey].push(f);
+            });
+        }
+
+        // Build inferred tasks from file activity for days with no recorded tasks
+        function inferredTasksFromFiles(files) {
+            var map = {};
+            files.forEach(function (f) {
+                var ext  = f.FILE_NAME.split('.').pop();
+                var task = inferTaskName(ext);
+                var proj = f.PROJECT || 'Unknown';
+                var key  = task + '|' + proj;
+                if (!map[key]) map[key] = { taskName: task, project: proj, times: [] };
+                map[key].times.push(f.DATE_MODIFIED.substring(11));
+            });
+            return Object.keys(map).map(function (k) { return map[k]; });
+        }
+
+        // Daily Breakdown
+        html += '<h3 style="color:#0d6efd;margin-bottom:10px;">Daily Breakdown</h3>';
+
+        [1,2,3,4,5].forEach(function (dayNum) {
+            var dayData  = byDay[dayNum];
+            var dayMoment = moment().year(year).week(weekNum).isoWeekday(dayNum);
+            var dayDateKey = dayMoment.format('YYYY-MM-DD');
+            var dayDate    = dayMoment.format('MMM D');
+            var dayLabel   = dayNames[dayNum] + ', ' + dayDate;
+            var dayFiles   = filesByDate[dayDateKey] || [];
+
+            html += '<div style="margin-bottom:14px;">';
+            html += '<h4 style="margin:0 0 4px;font-size:11pt;color:#333;">' + dayLabel + '</h4>';
+
+            var hasTasks = dayData && dayData.tasks && dayData.tasks.length > 0;
+
+            if (!hasTasks && dayFiles.length === 0) {
+                html += '<p style="margin:0 0 0 16px;color:#999;font-style:italic;">No tasks recorded</p>';
+            } else if (!hasTasks && dayFiles.length > 0) {
+                // No DB tasks — infer from file activity
+                var inferred = inferredTasksFromFiles(dayFiles);
+                html += '<ol style="margin:0;padding-left:32px;">';
+                inferred.forEach(function (item) {
+                    var times  = item.times.slice().sort();
+                    var first  = times[0], last = times[times.length - 1];
+                    var durStr = '';
+                    if (first !== last) {
+                        var diffMins = moment(last, 'HH:mm').diff(moment(first, 'HH:mm'), 'minutes');
+                        var dh = Math.floor(diffMins / 60), dm = diffMins % 60;
+                        durStr = ' <span style="color:#0d6efd;font-weight:bold;">\u2014 ' + (dh > 0 ? dh + 'h ' + dm + 'm' : dm + 'm') + '</span>';
+                    }
+                    html += '<li style="margin-bottom:3px;color:#555;font-style:italic;">';
+                    html += '<strong>' + item.project + '</strong>: ' + item.taskName + durStr;
+                    html += '</li>';
+                });
+                html += '</ol>';
+            } else {
+                if (dayData.notes) {
+                    html += '<p style="margin:0 0 4px 16px;font-style:italic;color:#555;font-size:10pt;">Notes: ' + dayData.notes + '</p>';
+                }
+                html += '<ol style="margin:0;padding-left:32px;">';
+                var dayTotal = 0;
+                dayData.tasks.forEach(function (t) {
+                    var mins = parseInt(t.TASK_TIME) || 0;
+                    dayTotal += mins;
+                    var hrs = (mins / 60).toFixed(1);
+                    html += '<li style="margin-bottom:3px;">';
+                    html += '<strong>' + t.PROJECT_NAME + '</strong>: ';
+                    html += t.TASK_NAME.replace(/_/g, ' ');
+                    html += ' <span style="color:#0d6efd;font-weight:bold;">\u2014 ' + hrs + 'h</span>';
+                    html += '</li>';
+                });
+                html += '</ol>';
+                var dh = Math.floor(dayTotal / 60), dm = dayTotal % 60;
+                html += '<p style="margin:4px 0 0 16px;font-size:10pt;color:#0d6efd;font-weight:bold;">Total: ' + dh + 'h ' + dm + 'm</p>';
+            }
+
+            // Files modified this day — grouped by project, first/last time = estimated duration
+            if (dayFiles.length > 0) {
+                var filesByProject = {};
+                dayFiles.forEach(function (f) {
+                    var proj = f.PROJECT || 'Root';
+                    if (!filesByProject[proj]) filesByProject[proj] = [];
+                    filesByProject[proj].push(f.DATE_MODIFIED.substring(11)); // HH:mm
+                });
+
+                html += '<div style="margin:6px 0 0 16px;padding:6px 10px;background:#f0f4ff;border-left:3px solid #0d6efd;border-radius:3px;">';
+                html += '<p style="margin:0 0 4px;font-size:10pt;color:#0d6efd;font-weight:bold;"><i class="far fa-code me-1"></i> Files Modified</p>';
+                html += '<ul style="margin:0;padding-left:18px;font-size:10pt;list-style:disc;">';
+                Object.keys(filesByProject).sort().forEach(function (proj) {
+                    var times = filesByProject[proj].slice().sort();
+                    var first = times[0], last = times[times.length - 1];
+                    var label;
+                    if (first === last) {
+                        label = first;
+                    } else {
+                        var diffMins = moment(last, 'HH:mm').diff(moment(first, 'HH:mm'), 'minutes');
+                        var dh = Math.floor(diffMins / 60), dm = diffMins % 60;
+                        var durStr = dh > 0 ? dh + 'h ' + dm + 'm' : dm + 'm';
+                        label = first + ' to ' + last + ' <span style="color:#0d6efd;font-weight:bold;">(' + durStr + ')</span>';
+                    }
+                    html += '<li style="margin-bottom:2px;"><strong>' + proj + '</strong> &mdash; ' + label + '</li>';
+                });
+                html += '</ul></div>';
+            }
+
+            html += '</div>';
+        });
+
+        // Project Summary
+        html += '<hr style="border-color:#0d6efd;margin:20px 0;">';
+        html += '<h3 style="color:#0d6efd;margin-bottom:10px;">Project Summary</h3>';
+
+        if (summary.length === 0) {
+            html += '<p style="color:#999;font-style:italic;">No data available.</p>';
+        } else {
+            html += '<ol style="padding-left:20px;">';
+            summary.forEach(function (proj) {
+                html += '<li style="margin-bottom:6px;">';
+                html += '<strong>' + proj.PROJECT_NAME + '</strong>';
+                html += ' <span style="color:#0d6efd;font-weight:bold;">\u2014 ' + proj.TOTAL_HOURS + 'h</span>';
+                html += ' <span style="color:#888;font-size:10pt;">(' + proj.OCCURRENCE_COUNT + ' entries)</span>';
+                html += '</li>';
+            });
+            html += '</ol>';
+        }
+
+        // ── File Activity Section ──────────────────────────────────────────────
+        html += '<hr style="border-color:#0d6efd;margin:20px 0;">';
+        html += '<h3 style="color:#0d6efd;margin-bottom:10px;">File Activity</h3>';
+
+        if (!fileData) {
+            // Not yet scanned — show the opt-in button
+            html += '<div id="fileActivityPlaceholder" style="padding:12px;background:#f8f9fa;border-radius:6px;text-align:center;">';
+            html += '<p style="color:#555;margin-bottom:10px;">Scan wwwroot for source files modified this week.</p>';
+            html += '<button id="scanFilesBtn" class="btn btn-outline-primary btn-sm">';
+            html += '<i class="far fa-search me-1"></i> Scan File Activity</button>';
+            html += '</div>';
+        } else {
+            html += buildFileActivityHtml(fileData);
+        }
+
+        html += '</div>'; // close printableReport
+
+        $('#weeklyReportBody').html(html);
+
+        // Auto-save inferred tasks to DB when file data is present
+        if (fileData && fileData.files && fileData.files.length > 0) {
+            persistInferredTasks(daily, filesByDate, weekNum, year);
+        }
+
+        // Opt-in file scan button (wired after DOM insert)
+        $(document).off('click', '#scanFilesBtn').on('click', '#scanFilesBtn', function () {
+            $('#fileActivityPlaceholder').html(
+                '<div class="d-flex align-items-center gap-2 justify-content-center">' +
+                '<div class="spinner-border spinner-border-sm text-primary"></div>' +
+                '<span class="text-muted">Scanning wwwroot&hellip; this may take a moment.</span>' +
+                '</div>'
+            );
+            $.ajax({
+                type: 'GET', dataType: 'json',
+                url:  'assets/CFCs/UtilityService.cfc',
+                data: { method: 'getFileActivity', START_DATE: weekStart, END_DATE: weekEnd },
+                success: function (fd) {
+                    // Re-render the full report so file data appears in daily breakdown too
+                    renderWeeklyReport(data, fd, weekNum, weekStart, weekEnd);
+                },
+                error: function () {
+                    $('#fileActivityPlaceholder').html('<div class="alert alert-danger">File scan failed.</div>');
+                }
+            });
+        });
+
+        // Wire copy & PDF buttons
+        $('#copyReportBtn').off('click').on('click', function () {
+            copyReportFromData(data, fileData, weekNum, dateRange, fullName, totalHours, dayNames);
+        });
+
+        $('#downloadReportPdf').off('click').on('click', function () {
+            var element = document.getElementById('printableReport');
+            var pdfName = lastName + ' Week ' + weekNum + ' ' + year + ' Report';
+            html2pdf().set({
+                margin: 0.5,
+                filename: pdfName + '.pdf',
+                image: { type: 'png', quality: 1.00 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            }).from(element).save();
+        });
+    }
+
+    function buildFileActivityHtml(fileData) {
+        var files = (fileData && fileData.files) ? fileData.files : [];
+        var fileCount = fileData ? fileData.fileCount : 0;
+        var out = '';
+
+        if (fileData && fileData.error) {
+            out += '<div style="color:#dc3545;font-style:italic;">Scanner error: ' + fileData.error + '</div>';
+            return out;
+        }
+        if (files.length === 0) {
+            out += '<p style="color:#999;font-style:italic;">No source file changes detected for this week.</p>';
+            return out;
+        }
+
+        out += '<p style="color:#555;font-size:10pt;margin-bottom:10px;">' + fileCount + ' file' + (fileCount !== 1 ? 's' : '') + ' modified (3 levels deep, source files only)</p>';
+
+        var byProject = {};
+        files.forEach(function (f) {
+            var p = f.PROJECT || 'Root';
+            if (!byProject[p]) byProject[p] = [];
+            byProject[p].push(f);
+        });
+
+        Object.keys(byProject).sort().forEach(function (proj) {
+            var projFiles = byProject[proj];
+            out += '<div style="margin-bottom:14px;">';
+            out += '<h4 style="font-size:11pt;color:#333;margin:0 0 4px;">';
+            out += '<i class="far fa-folder-open" style="color:#0d6efd;margin-right:6px;"></i>';
+            out += proj + ' <span style="color:#888;font-weight:normal;font-size:10pt;">(' + projFiles.length + ' file' + (projFiles.length !== 1 ? 's' : '') + ')</span>';
+            out += '</h4>';
+            out += '<ul style="margin:0;padding-left:24px;font-size:10pt;">';
+            projFiles.forEach(function (f) {
+                var fullPath = ((f.DIRECTORY ? f.DIRECTORY + '/' : '') + f.FILE_NAME).replace(/\/+/g, '/');
+                var ts = f.DATE_MODIFIED.replace('T', ' ');
+                out += '<li style="margin-bottom:2px;font-family:monospace;">';
+                out += '<span style="color:#333;">' + fullPath + '</span>';
+                out += ' <span style="color:#888;">&mdash; ' + ts + '</span>';
+                out += '</li>';
+            });
+            out += '</ul></div>';
+        });
+        return out;
+    }
+
+    function copyReportFromData(data, fileData, weekNum, dateRange, fullName, totalHours, dayNames) {
+        var daily   = data.daily   || [];
+        var summary = data.summary || [];
+        var year    = moment().year();
+
+        var byDay = {};
+        daily.forEach(function (t) {
+            var d = t.DAY_NUM;
+            if (!byDay[d]) byDay[d] = { notes: '', tasks: [] };
+            if (t.WEEKLY_NOTE && byDay[d].notes === '') byDay[d].notes = t.WEEKLY_NOTE;
+            byDay[d].tasks.push(t);
+        });
+
+        var htmlOut = '<div style="font-family:Calibri,Arial,sans-serif;font-size:12pt;color:#222;">';
+        var textOut = '';
+
+        // Header
+        htmlOut += '<h2 style="color:#0066cc;border-bottom:2px solid #0066cc;padding-bottom:5px;">Weekly Time Report \u2014 Week ' + weekNum + '</h2>';
+        htmlOut += '<p><strong>' + dateRange + ' &nbsp;&bull;&nbsp; ' + fullName + '</strong></p>';
+        htmlOut += '<p><strong>Total Hours: ' + totalHours + '</strong></p>';
+
+        textOut += 'Weekly Time Report \u2014 Week ' + weekNum + '\n';
+        textOut += dateRange + '  \u2022  ' + fullName + '\n';
+        textOut += 'Total Hours: ' + totalHours + '\n';
+        textOut += '='.repeat(50) + '\n\n';
+
+        // Build file-by-date index for copy output
+        var copyFilesByDate = {};
+        var copyFiles = (fileData && fileData.files) ? fileData.files : [];
+        copyFiles.forEach(function (f) {
+            var dk = f.DATE_MODIFIED.substring(0, 10);
+            if (!copyFilesByDate[dk]) copyFilesByDate[dk] = [];
+            copyFilesByDate[dk].push(f);
+        });
+
+        // Daily
+        htmlOut += '<h3 style="color:#0066cc;">Daily Breakdown</h3>';
+        textOut += 'DAILY BREAKDOWN\n' + '-'.repeat(30) + '\n';
+
+        [1,2,3,4,5].forEach(function (dayNum) {
+            var dayData    = byDay[dayNum];
+            var dayMoment  = moment().year(year).week(weekNum).isoWeekday(dayNum);
+            var dayDateKey = dayMoment.format('YYYY-MM-DD');
+            var label      = dayNames[dayNum] + ', ' + dayMoment.format('MMM D');
+            var dayFiles   = copyFilesByDate[dayDateKey] || [];
+
+            htmlOut += '<h4 style="color:#333;font-size:11pt;margin:12px 0 4px;">' + label + '</h4>';
+            textOut += '\n' + label + '\n';
+
+            if (!dayData || dayData.tasks.length === 0) {
+                htmlOut += '<p style="color:#999;font-style:italic;margin-left:16px;">No tasks recorded</p>';
+                textOut += '  No tasks recorded\n';
+            } else {
+                if (dayData.notes) {
+                    htmlOut += '<p style="font-style:italic;color:#555;margin-left:16px;font-size:10pt;">Notes: ' + dayData.notes + '</p>';
+                    textOut += '  Notes: ' + dayData.notes + '\n';
+                }
+                htmlOut += '<ol style="margin:0;padding-left:32px;">';
+                var dayTotal = 0;
+                dayData.tasks.forEach(function (t, idx) {
+                    var mins = parseInt(t.TASK_TIME) || 0;
+                    dayTotal += mins;
+                    var hrs = (mins / 60).toFixed(1);
+                    htmlOut += '<li style="margin-bottom:3px;"><strong>' + t.PROJECT_NAME + '</strong>: ' + t.TASK_NAME.replace(/_/g, ' ') + ' <span style="color:#0066cc;font-weight:bold;">\u2014 ' + hrs + 'h</span></li>';
+                    textOut += '  ' + (idx + 1) + '. ' + t.PROJECT_NAME + ': ' + t.TASK_NAME.replace(/_/g, ' ') + ' \u2014 ' + hrs + 'h\n';
+                });
+                htmlOut += '</ol>';
+                var dh = Math.floor(dayTotal / 60), dm = dayTotal % 60;
+                htmlOut += '<p style="color:#0066cc;font-weight:bold;margin-left:16px;font-size:10pt;">Total: ' + dh + 'h ' + dm + 'm</p>';
+                textOut += '  Total: ' + dh + 'h ' + dm + 'm\n';
+            }
+
+            // Files for this day — grouped by project, first/last time = estimated duration
+            if (dayFiles.length > 0) {
+                var copyFilesByProject = {};
+                dayFiles.forEach(function (f) {
+                    var proj = f.PROJECT || 'Root';
+                    if (!copyFilesByProject[proj]) copyFilesByProject[proj] = [];
+                    copyFilesByProject[proj].push(f.DATE_MODIFIED.substring(11));
+                });
+
+                htmlOut += '<div style="margin:4px 0 0 16px;padding:4px 8px;background:#f0f4ff;border-left:3px solid #0066cc;">';
+                htmlOut += '<strong style="color:#0066cc;font-size:10pt;">Files Modified</strong>';
+                htmlOut += '<ul style="margin:2px 0 0;padding-left:16px;font-size:10pt;">';
+                textOut += '  Files Modified:\n';
+                Object.keys(copyFilesByProject).sort().forEach(function (proj) {
+                    var times = copyFilesByProject[proj].slice().sort();
+                    var first = times[0], last = times[times.length - 1];
+                    var label, textLabel;
+                    if (first === last) {
+                        label = first;
+                        textLabel = first;
+                    } else {
+                        var diffMins = moment(last, 'HH:mm').diff(moment(first, 'HH:mm'), 'minutes');
+                        var dh = Math.floor(diffMins / 60), dm = diffMins % 60;
+                        var durStr = dh > 0 ? dh + 'h ' + dm + 'm' : dm + 'm';
+                        label = first + ' to ' + last + ' <span style="color:#0066cc;font-weight:bold;">(' + durStr + ')</span>';
+                        textLabel = first + ' to ' + last + ' (' + durStr + ')';
+                    }
+                    htmlOut += '<li><strong>' + proj + '</strong> &mdash; ' + label + '</li>';
+                    textOut += '    \u2022 ' + proj + ' \u2014 ' + textLabel + '\n';
+                });
+                htmlOut += '</ul></div>';
+            }
+        });
+
+        // Summary
+        htmlOut += '<hr><h3 style="color:#0066cc;">Project Summary</h3>';
+        textOut += '\nPROJECT SUMMARY\n' + '-'.repeat(30) + '\n';
+
+        htmlOut += '<ol style="padding-left:20px;">';
+        summary.forEach(function (proj, idx) {
+            htmlOut += '<li style="margin-bottom:4px;"><strong>' + proj.PROJECT_NAME + '</strong> \u2014 <span style="color:#0066cc;font-weight:bold;">' + proj.TOTAL_HOURS + 'h</span> <span style="color:#888;font-size:10pt;">(' + proj.OCCURRENCE_COUNT + ' entries)</span></li>';
+            textOut += (idx + 1) + '. ' + proj.PROJECT_NAME + ' \u2014 ' + proj.TOTAL_HOURS + 'h (' + proj.OCCURRENCE_COUNT + ' entries)\n';
+        });
+        htmlOut += '</ol>';
+
+        // File Activity
+        var copyFiles = (fileData && fileData.files) ? fileData.files : [];
+        if (copyFiles.length > 0) {
+            htmlOut += '<hr><h3 style="color:#0066cc;">File Activity (' + copyFiles.length + ' files)</h3>';
+            textOut += '\nFILE ACTIVITY\n' + '-'.repeat(30) + '\n';
+
+            var copyByProject = {};
+            copyFiles.forEach(function (f) {
+                var p = f.PROJECT || 'Root';
+                if (!copyByProject[p]) copyByProject[p] = [];
+                copyByProject[p].push(f);
+            });
+
+            Object.keys(copyByProject).sort().forEach(function (proj) {
+                htmlOut += '<h4 style="font-size:11pt;color:#333;">' + proj + '</h4>';
+                htmlOut += '<ul style="font-size:10pt;font-family:monospace;padding-left:20px;">';
+                textOut += '\n' + proj + '\n';
+                copyByProject[proj].forEach(function (f) {
+                    var fp = ((f.DIRECTORY ? f.DIRECTORY + '/' : '') + f.FILE_NAME).replace(/\/+/g, '/');
+                    var ts = f.DATE_MODIFIED.replace('T', ' ');
+                    htmlOut += '<li>' + fp + ' <span style="color:#888;">&mdash; ' + ts + '</span></li>';
+                    textOut += '  ' + fp + ' \u2014 ' + ts + '\n';
+                });
+                htmlOut += '</ul>';
+            });
+        }
+
+        htmlOut += '</div>';
+
+        navigator.clipboard.write([
+            new ClipboardItem({
+                'text/html':  new Blob([htmlOut], { type: 'text/html' }),
+                'text/plain': new Blob([textOut], { type: 'text/plain' })
+            })
+        ]).then(function () {
+            $('#copyReportBtn').html('<i class="far fa-thumbs-up me-1"></i> Copied!');
+            setTimeout(function () {
+                $('#copyReportBtn').html('<i class="far fa-copy me-1"></i> Copy to Clipboard');
+            }, 3000);
+        }).catch(function () {
+            navigator.clipboard.writeText(textOut).then(function () {
+                $('#copyReportBtn').html('<i class="far fa-check me-1"></i> Text Copied');
+                setTimeout(function () {
+                    $('#copyReportBtn').html('<i class="far fa-copy me-1"></i> Copy to Clipboard');
                 }, 3000);
             });
         });

@@ -263,9 +263,83 @@
         <cfargument name="WEEK" type="string" required="true" />
         <cfargument name="EMPLID" type="string" required="true" />
         <cfset var retVal = ArrayNew(1)>
-        
+
         <!--- This is a placeholder. Actual implementation would involve database query. --->
         <cfreturn { "data": retVal } />
+    </cffunction>
+
+    <cffunction name="getWeeklyReport" access="remote" returntype="any" returnformat="JSON">
+        <cfargument name="WEEK_NUM" type="string" required="false" default="" />
+        <cfargument name="EMPLID" type="string" required="false" default="" />
+
+        <!--- Daily tasks ordered by day then entry order --->
+        <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#" datasource="#variables.config.db.server#" name="dailyTasks">
+            SELECT t.TASK_ID, t.TASK_NAME, t.TASK_DESCRIPTION, t.CLASSIFICATION, t.WORK_TYPE,
+                   t.TASK_TIME, t.PROJECT, t.DEPTID, t.TASK_DATE, t.DAY_NUM,
+                   p.PROJECT_NAME, t.WEEK_NUMBER, t.WEEKLY_NOTE, t.ALLOCATED_TIME, t.EMPLID
+            FROM #variables.config.db.schema#.DAILY_TASKS t
+            JOIN #variables.config.db.schema#.DAILY_TASKS_PROJECTS p ON t.PROJECT = p.PROJECT_ID
+            WHERE t.WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
+            AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
+            AND t.TASK_DATE BETWEEN <cfqueryparam cfsqltype="cf_sql_date" value="#CreateDate(Year(Now()), 1, 1)#" />
+            AND <cfqueryparam cfsqltype="cf_sql_date" value="#CreateDate(Year(Now()), 12, 31)#" />
+            ORDER BY t.DAY_NUM ASC, t.TASK_ID ASC
+        </cfquery>
+
+        <!--- Project totals for the summary section --->
+        <cfquery username="#variables.config.db.user#" password="#variables.config.db.pass#" datasource="#variables.config.db.server#" name="projectSummary">
+            SELECT p.PROJECT_NAME, t.DEPTID,
+                   SUM(CAST(t.TASK_TIME AS NUMBER)) AS TOTAL_TIME,
+                   COUNT(*) AS OCCURRENCE_COUNT
+            FROM #variables.config.db.schema#.DAILY_TASKS t
+            JOIN #variables.config.db.schema#.DAILY_TASKS_PROJECTS p ON t.PROJECT = p.PROJECT_ID
+            WHERE t.WEEK_NUMBER = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.WEEK_NUM#" />
+            AND t.EMPLID = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.EMPLID#" />
+            AND t.TASK_DATE BETWEEN <cfqueryparam cfsqltype="cf_sql_date" value="#CreateDate(Year(Now()), 1, 1)#" />
+            AND <cfqueryparam cfsqltype="cf_sql_date" value="#CreateDate(Year(Now()), 12, 31)#" />
+            GROUP BY p.PROJECT_NAME, t.DEPTID
+            ORDER BY TOTAL_TIME DESC
+        </cfquery>
+
+        <!--- Build daily items array --->
+        <cfset var dailyItems = ArrayNew(1)>
+        <cfloop query="dailyTasks">
+            <cfset temp = {} />
+            <cfset temp["TASKID"] = TASK_ID />
+            <cfset temp["TASK_NAME"] = TASK_NAME />
+            <cfset temp["TASK_DESCRIPTION"] = TASK_DESCRIPTION />
+            <cfset temp["CLASSIFICATION"] = CLASSIFICATION />
+            <cfset temp["WORK_TYPE"] = WORK_TYPE />
+            <cfset temp["TASK_TIME"] = TASK_TIME />
+            <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
+            <cfset temp["DEPTID"] = DEPTID />
+            <cfset temp["TASK_DATE"] = DateFormat(TASK_DATE, "yyyy-mm-dd") />
+            <cfset temp["DAY_NUM"] = DAY_NUM />
+            <cfset temp["WEEK_NUMBER"] = WEEK_NUMBER />
+            <cfset temp["WEEKLY_NOTE"] = WEEKLY_NOTE />
+            <cfset ArrayAppend(dailyItems, temp)>
+        </cfloop>
+
+        <!--- Build project summary array --->
+        <cfset var summaryItems = ArrayNew(1)>
+        <cfset var grandTotal = 0>
+        <cfloop query="projectSummary">
+            <cfset temp = {} />
+            <cfset temp["PROJECT_NAME"] = PROJECT_NAME />
+            <cfset temp["DEPTID"] = DEPTID />
+            <cfset temp["TOTAL_TIME"] = TOTAL_TIME />
+            <cfset temp["OCCURRENCE_COUNT"] = OCCURRENCE_COUNT />
+            <cfset temp["TOTAL_HOURS"] = NumberFormat(TOTAL_TIME / 60, "0.0") />
+            <cfset grandTotal = grandTotal + TOTAL_TIME />
+            <cfset ArrayAppend(summaryItems, temp)>
+        </cfloop>
+
+        <cfset result = {} />
+        <cfset result["daily"] = dailyItems />
+        <cfset result["summary"] = summaryItems />
+        <cfset result["totalMinutes"] = grandTotal />
+        <cfset result["totalHours"] = NumberFormat(grandTotal / 60, "0.0") />
+        <cfreturn result />
     </cffunction>
 
 </cfcomponent>
