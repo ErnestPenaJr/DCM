@@ -463,20 +463,20 @@
         // Initialize daily view as active
         $('#toggleViewDaily').addClass('active').removeClass('btn-outline-light').addClass('btn-light');
         var tasks = [
-            { "name": "Administration", "maxTime": 480, "id": "Administration", "category": "Administration", "work_type": "Other", "description": "15-30 min.: Updating task statuses and documenting progress." },
-            { "name": "Code Development", "maxTime": 480, "id": "Code Development", "category": "Maintenance", "work_type": "Application", "description": "180-360 min.: This is usually the core task and takes up the largest chunk of the day." },
-            { "name": "Code Optimization", "maxTime": 480, "id": "Optimization", "category": "Maintenance", "work_type": "Application", "description": "30-60 min.: Improve its efficiency, performance, or resource usage without altering its output or functionality" },
-            { "name": "Code Prototyping", "maxTime": 480, "id": "Design", "category": "Maintenance", "work_type": "Application", "description": "180-460 min.: User Interface/User Experience, story boarding and or user workflow" },
-            { "name": "Code Publishing", "maxTime": 480, "id": "Publishing", "category": "Maintenance", "work_type": "Application", "description": "10-30 min.: Source code available to others, typically through repositories or platforms, allowing for sharing, collaboration, and distribution." },
-            { "name": "Code Testing / Debugging", "maxTime": 480, "id": "Testing and Debugging", "category": "Maintenance", "work_type": "Application", "description": "60-480 min.: Executing code under controlled conditions to identify bugs, ensure quality, and verify that it meets the specified requirements." },
-            { "name": "Collaboration", "maxTime": 480, "id": "Checking Messages", "category": "Administrative", "work_type": "Meeting", "description": "10-60 min.: Chat communication with development team, Manager or clients." },
-            { "name": "Database Mgt.", "maxTime": 480, "id": "Database Mtg.", "category": "Project", "work_type": "Database", "description": "60-120 min.: Modifying, and managing data within database, including tasks such as creating and altering tables to organize and optimize data storage" },
-            { "name": "Service Requests", "maxTime": 480, "id": "Service Request", "category": "Maintenance", "work_type": "Ticket", "description": "30-60 min.: Important but often done in conjunction with other development tasks." },
-            { "name": "Learning and Research", "maxTime": 480, "id": "Research", "category": "Design", "work_type": "Thinking", "description": "30-60 min.: Keeping skills up-to-date is crucial but often flexibly scheduled." },
-            { "name": "Meetings", "maxTime": 480, "id": "Meetings", "category": "Administration", "work_type": "Meetings", "description": "15-120 min.: Meeting with Collaborators or team or stakeholders or manager." },
-            { "name": "Personal Time Off", "maxTime": 480, "id": "Time Off", "category": "Administration", "work_type": "PTO", "description": "480 min.: time off, LOA" },
-            { "name": "Service Request", "maxTime": 480, "id": "Tickets", "category": "Maintenance", "work_type": "Ticket", "description": "10-30 min.: Breaks, Lunch and personal time away from desk" },
-            { "name": "Training", "maxTime": 2400, "id": "Checking Emails", "category": "Administrative", "work_type": "Training", "description": "30-2400 min.: Briefly checking and responding to important emails and messages." },
+            { "name": "Administration",           "maxTime": 480, "id": "Administration",           "category": "Administrative", "work_type": "Admin",       "description": "15-30 min.: Updating task statuses, responding to emails, and documenting progress." },
+            { "name": "Code Development",         "maxTime": 480, "id": "Code Development",         "category": "Maintenance",    "work_type": "Application", "description": "180-360 min.: Core development work; typically the largest time block of the day." },
+            { "name": "Code Optimization",        "maxTime": 480, "id": "Code Optimization",        "category": "Maintenance",    "work_type": "Application", "description": "30-60 min.: Improving efficiency, performance, or resource usage without altering functionality." },
+            { "name": "Code Prototyping",         "maxTime": 480, "id": "Code Prototyping",         "category": "Maintenance",    "work_type": "Application", "description": "60-180 min.: UI/UX design, storyboarding, and user workflow prototyping." },
+            { "name": "Code Publishing",          "maxTime": 480, "id": "Code Publishing",          "category": "Maintenance",    "work_type": "Application", "description": "10-30 min.: Making source code available through repositories or deployment platforms." },
+            { "name": "Code Testing / Debugging", "maxTime": 480, "id": "Code Testing / Debugging", "category": "Maintenance",    "work_type": "Application", "description": "60-480 min.: Executing tests, identifying bugs, and verifying requirements are met." },
+            { "name": "Collaboration",            "maxTime": 480, "id": "Collaboration",            "category": "Administrative", "work_type": "Meeting",     "description": "10-60 min.: Chat and communication with development team, manager, or clients." },
+            { "name": "Database Mgt.",            "maxTime": 480, "id": "Database Mgt.",            "category": "Maintenance",    "work_type": "Database",    "description": "60-120 min.: Creating, modifying, and managing database objects and data." },
+            { "name": "Service Requests",         "maxTime": 480, "id": "Service Requests",         "category": "Maintenance",    "work_type": "Ticket",      "description": "30-60 min.: Resolving service tickets and requests, often alongside development tasks." },
+            { "name": "Learning and Research",    "maxTime": 480, "id": "Learning and Research",    "category": "Administrative", "work_type": "Research",    "description": "30-60 min.: Study, documentation review, and technical research to keep skills current." },
+            { "name": "Meetings",                 "maxTime": 480, "id": "Meetings",                 "category": "Administrative", "work_type": "Meeting",     "description": "15-120 min.: Meetings with team members, collaborators, stakeholders, or manager." },
+            { "name": "Personal Time Off",        "maxTime": 480, "id": "Personal Time Off",        "category": "Administrative", "work_type": "PTO",         "description": "480 min.: Approved time off, leave of absence, or holiday." },
+            { "name": "Break / Lunch",            "maxTime":  60, "id": "Break / Lunch",            "category": "Administrative", "work_type": "Break",       "description": "15-60 min.: Breaks, lunch, and personal time away from desk." },
+            { "name": "Training",                 "maxTime": 480, "id": "Training",                 "category": "Administrative", "work_type": "Training",    "description": "30-480 min.: Attending or completing training courses, workshops, webinars, or certifications." },
         ];
         // Dynamically add tasks to the form in two columns
         var half = Math.ceil(tasks.length / 2);
@@ -493,7 +493,7 @@
         }
         for (var i = 0; i < rightColumn.length; i++) {
             rightColumnHtml += '<div class="form-floating mb-2">' +
-                '<input type="text" class="form-control form-control-sm taskTime" max="' + leftColumn[i].maxTime + '" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="' + rightColumn[i].description + '" category="' + leftColumn[i].category + '" work_type="' + leftColumn[i].work_type + '" placeholder="' + rightColumn[i].name + '"data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="' + rightColumn[i].description + '" disabled>' +
+                '<input type="text" class="form-control form-control-sm taskTime" max="' + rightColumn[i].maxTime + '" id="' + rightColumn[i].id.replace(/ /g, "_") + '" description="' + rightColumn[i].description + '" category="' + rightColumn[i].category + '" work_type="' + rightColumn[i].work_type + '" placeholder="' + rightColumn[i].name + '" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="' + rightColumn[i].description + '" disabled>' +
                 '<label for="' + rightColumn[i].id.replace(/ /g, "_") + '">' + rightColumn[i].name + ': ' + rightColumn[i].description.split(":")[0] + '</label>' +
                 '</div>';
         }
@@ -795,7 +795,10 @@
                     str += '<ol class="list-group list-group-numbered">';
                     for (var j = 0; j < x.length; j++) {
                         if (x[j].DAY_NUM == weekList[i].dayNum) {
-                            str += '<li taskid="' + x[j].TASKID + '" class="list-group-item text-start fst-italic"><span class="fw-bold">' + x[j].PROJECT_NAME + '</span>: ' + x[j].TASK_NAME.replace(/_/g, " ") + '<span class="fw-normal float-end">' + x[j].TASK_TIME + 'm</span></li>';
+                            str += '<li taskid="' + x[j].TASKID + '" class="list-group-item text-start fst-italic">' +
+                                '<span class="fw-bold">' + x[j].TASK_NAME.replace(/_/g, " ") + '</span>' +
+                                '<span class="fw-normal float-end">' + x[j].TASK_TIME + 'm</span>' +
+                                '</li>';
                         }
                     }
                     str += '</ol>';
@@ -1287,7 +1290,13 @@
                 
                 html += '<div class="task-item mb-2">';
                 html += '<i class="fas fa-circle bullet-point me-2"></i>';
-                html += '<span class="task-name">' + task.TASK_NAME.replace(/_/g, ' ') + '</span>';
+                html += '<span class="task-name fw-semibold">' + task.TASK_NAME.replace(/_/g, ' ') + '</span>';
+                if (task.CLASSIFICATION) {
+                    html += ' <span class="badge bg-secondary ms-1">' + task.CLASSIFICATION + '</span>';
+                }
+                if (task.WORK_TYPE) {
+                    html += ' <span class="badge bg-light text-dark border ms-1">' + task.WORK_TYPE + '</span>';
+                }
                 html += ' - <span class="task-time text-primary fw-bold">' + taskHours + ' hours</span>';
                 html += ' <span class="task-details text-muted">(' + task.OCCURRENCE_COUNT + ' days, ';
                 html += 'avg ' + task.AVG_TIME_PER_DAY + ' min/day)</span>';
@@ -1407,6 +1416,51 @@
         });
     }
 
+    // Threshold: same-second file count above which we treat as a bulk sync (git pull, clone, restore, etc.)
+    var BULK_SAME_SECOND_THRESHOLD = 10;
+    // Idle gap (minutes) that separates one editing session from the next
+    var SESSION_IDLE_GAP_MIN = 30;
+    // Default duration for a genuinely single-file edit session
+    var SINGLE_FILE_DEFAULT_MIN = 5;
+
+    // Remove bulk-sync clusters (many files sharing the exact same second)
+    function filterBulkOperations(files) {
+        if (!files || files.length === 0) return { kept: [], excludedCount: 0 };
+        var bySecond = {};
+        files.forEach(function (f) {
+            bySecond[f.DATE_MODIFIED] = (bySecond[f.DATE_MODIFIED] || 0) + 1;
+        });
+        var kept = files.filter(function (f) { return bySecond[f.DATE_MODIFIED] < BULK_SAME_SECOND_THRESHOLD; });
+        return { kept: kept, excludedCount: files.length - kept.length };
+    }
+
+    // Estimate edit minutes from sorted HH:mm:ss timestamps.
+    // Groups timestamps into sessions (split by idle gaps) and sums each session's span.
+    function estimateEditMinutes(times) {
+        if (!times || times.length === 0) return 0;
+        var sorted = times.slice().sort();
+        if (sorted.length === 1) return SINGLE_FILE_DEFAULT_MIN;
+        var gapSec = SESSION_IDLE_GAP_MIN * 60;
+        var totalSec = 0;
+        var start = sorted[0], last = sorted[0];
+        for (var i = 1; i < sorted.length; i++) {
+            var gap = moment(sorted[i], 'HH:mm:ss').diff(moment(last, 'HH:mm:ss'), 'seconds');
+            if (gap > gapSec) {
+                totalSec += moment(last, 'HH:mm:ss').diff(moment(start, 'HH:mm:ss'), 'seconds');
+                start = sorted[i];
+            }
+            last = sorted[i];
+        }
+        totalSec += moment(last, 'HH:mm:ss').diff(moment(start, 'HH:mm:ss'), 'seconds');
+        return Math.max(1, Math.round(totalSec / 60));
+    }
+
+    // Format minutes as "Nh Nm" or "Nm"
+    function formatDurationMin(mins) {
+        var h = Math.floor(mins / 60), m = mins % 60;
+        return h > 0 ? h + 'h ' + m + 'm' : m + 'm';
+    }
+
     // Map file extensions → task name (mirrors the tasks[] form array)
     function inferTaskName(ext) {
         ext = (ext || '').toLowerCase();
@@ -1420,13 +1474,20 @@
 
     // Task definition metadata (mirrors the tasks[] form array)
     var taskDefMap = {
-        'Administration':         { category: 'Administration',  work_type: 'Other' },
-        'Code Development':       { category: 'Maintenance',     work_type: 'Application' },
-        'Code Optimization':      { category: 'Maintenance',     work_type: 'Application' },
-        'Code Prototyping':       { category: 'Maintenance',     work_type: 'Application' },
-        'Code Publishing':        { category: 'Maintenance',     work_type: 'Application' },
-        'Code Testing / Debugging': { category: 'Maintenance',   work_type: 'Application' },
-        'Database Mgt.':          { category: 'Project',         work_type: 'Database' }
+        'Administration':           { category: 'Administrative', work_type: 'Admin' },
+        'Code Development':         { category: 'Maintenance',    work_type: 'Application' },
+        'Code Optimization':        { category: 'Maintenance',    work_type: 'Application' },
+        'Code Prototyping':         { category: 'Maintenance',    work_type: 'Application' },
+        'Code Publishing':          { category: 'Maintenance',    work_type: 'Application' },
+        'Code Testing / Debugging': { category: 'Maintenance',    work_type: 'Application' },
+        'Collaboration':            { category: 'Administrative', work_type: 'Meeting' },
+        'Database Mgt.':            { category: 'Maintenance',    work_type: 'Database' },
+        'Service Requests':         { category: 'Maintenance',    work_type: 'Ticket' },
+        'Learning and Research':    { category: 'Administrative', work_type: 'Research' },
+        'Meetings':                 { category: 'Administrative', work_type: 'Meeting' },
+        'Personal Time Off':        { category: 'Administrative', work_type: 'PTO' },
+        'Break / Lunch':            { category: 'Administrative', work_type: 'Break' },
+        'Training':                 { category: 'Administrative', work_type: 'Training' }
     };
 
     // Save a single inferred task record
@@ -1442,7 +1503,7 @@
                 TASK_DESCRIPTION: 'Inferred from file activity',
                 CLASSIFICATION: def.category,
                 WORK_TYPE:      def.work_type,
-                TASK_TIME:      durationMins || 30,
+                TASK_TIME:      durationMins > 0 ? durationMins : SINGLE_FILE_DEFAULT_MIN,
                 PROJECT:        pid,
                 DEPTID:         sessionStorage.getItem('DEPTID') || '',
                 ALLOCATED_TIME: 480,
@@ -1468,10 +1529,15 @@
 
         var saves = [];
 
-        [1,2,3,4,5].forEach(function (dayNum) {
-            var dayMoment  = moment().year(year).week(weekNum).isoWeekday(dayNum);
+        // US week: Sun(0), Mon(1), ..., Sat(6) — matches DB DAY_NUM
+        [0,1,2,3,4,5,6].forEach(function (dayNum) {
+            var dayMoment  = moment().year(year).week(weekNum).day(dayNum);
             var dateKey    = dayMoment.format('YYYY-MM-DD');
             var dayFiles   = filesByDate[dateKey] || [];
+            if (dayFiles.length === 0) return;
+
+            // Exclude bulk-sync clusters (e.g. git pulls) before inferring work time
+            dayFiles = filterBulkOperations(dayFiles).kept;
             if (dayFiles.length === 0) return;
 
             // Group by project+taskName
@@ -1490,10 +1556,8 @@
                 var dedupKey = dayNum + '|' + g.taskName + '|' + pid;
                 if (existingKeys[dedupKey]) return;
 
-                var times = g.times.slice().sort();
-                var mins  = times.length > 1
-                    ? moment(times[times.length - 1], 'HH:mm').diff(moment(times[0], 'HH:mm'), 'minutes')
-                    : 30;
+                var mins = estimateEditMinutes(g.times);
+                if (mins <= 0) return; // nothing to persist
                 saves.push(saveInferredTask(g.taskName, pid, dateKey, weekNum, dayNum, mins, emplid));
             });
         });
@@ -1534,8 +1598,8 @@
         );
 
         var year       = moment().year();
-        var weekStart  = moment().year(year).week(weekNum).startOf('isoWeek').format('YYYY-MM-DD');
-        var weekEnd    = moment().year(year).week(weekNum).endOf('isoWeek').format('YYYY-MM-DD');
+        var weekStart  = moment().year(year).week(weekNum).startOf('week').format('YYYY-MM-DD');
+        var weekEnd    = moment().year(year).week(weekNum).endOf('week').format('YYYY-MM-DD');
 
         $.ajax({
             type: 'GET', dataType: 'json',
@@ -1557,9 +1621,9 @@
         var lastName = fullName.split(',')[0] || '';
         var year = moment().year();
 
-        // Calculate the Mon–Fri date range for display only
-        var dispWeekStart = moment().year(year).week(weekNum).startOf('isoWeek');
-        var dispWeekEnd   = moment().year(year).week(weekNum).isoWeekday(5); // Friday
+        // Calculate the Sun–Sat date range for display (US week convention)
+        var dispWeekStart = moment().year(year).week(weekNum).startOf('week'); // Sunday
+        var dispWeekEnd   = moment().year(year).week(weekNum).endOf('week');   // Saturday
         var dateRange = dispWeekStart.format('MMM D') + ' \u2013 ' + dispWeekEnd.format('MMM D, YYYY');
 
         var daily   = data.daily   || [];
@@ -1585,12 +1649,20 @@
         html += '<h2 style="margin:0;color:#0d6efd;">Weekly Time Report \u2014 Week ' + weekNum + '</h2>';
         html += '<p style="margin:4px 0 0;font-size:11pt;color:#555;">' + dateRange + ' &nbsp;&bull;&nbsp; ' + fullName + '</p>';
         html += '<p style="margin:4px 0 0;font-weight:bold;">Total Hours: ' + totalHours + '</p>';
+        if (bulkExcluded > 0) {
+            html += '<p style="margin:4px 0 0;font-size:10pt;color:#b06000;"><i class="far fa-info-circle me-1"></i>' + bulkExcluded + ' file' + (bulkExcluded !== 1 ? 's' : '') + ' excluded from time estimates (bulk sync / clone).</p>';
+        }
         html += '</div>';
 
-        // Build file-by-date index (only when file data is available)
+        // Build file-by-date index (only when file data is available).
+        // Bulk-sync clusters (many files in a single second) are excluded so they don't
+        // pollute duration estimates or show up as "edits".
         var filesByDate = {};
+        var bulkExcluded = 0;
         if (fileData && fileData.files) {
-            fileData.files.forEach(function (f) {
+            var filtered = filterBulkOperations(fileData.files);
+            bulkExcluded = filtered.excludedCount;
+            filtered.kept.forEach(function (f) {
                 var dateKey = f.DATE_MODIFIED.substring(0, 10); // 'YYYY-MM-DD'
                 if (!filesByDate[dateKey]) filesByDate[dateKey] = [];
                 filesByDate[dateKey].push(f);
@@ -1614,9 +1686,10 @@
         // Daily Breakdown
         html += '<h3 style="color:#0d6efd;margin-bottom:10px;">Daily Breakdown</h3>';
 
-        [1,2,3,4,5].forEach(function (dayNum) {
-            var dayData  = byDay[dayNum];
-            var dayMoment = moment().year(year).week(weekNum).isoWeekday(dayNum);
+        // US week: Sun(0), Mon(1), ..., Sat(6) — matches DB DAY_NUM
+        [0,1,2,3,4,5,6].forEach(function (dayNum) {
+            var dayData    = byDay[dayNum];
+            var dayMoment  = moment().year(year).week(weekNum).day(dayNum);
             var dayDateKey = dayMoment.format('YYYY-MM-DD');
             var dayDate    = dayMoment.format('MMM D');
             var dayLabel   = dayNames[dayNum] + ', ' + dayDate;
@@ -1634,14 +1707,8 @@
                 var inferred = inferredTasksFromFiles(dayFiles);
                 html += '<ol style="margin:0;padding-left:32px;">';
                 inferred.forEach(function (item) {
-                    var times  = item.times.slice().sort();
-                    var first  = times[0], last = times[times.length - 1];
-                    var durStr = '';
-                    if (first !== last) {
-                        var diffMins = moment(last, 'HH:mm').diff(moment(first, 'HH:mm'), 'minutes');
-                        var dh = Math.floor(diffMins / 60), dm = diffMins % 60;
-                        durStr = ' <span style="color:#0d6efd;font-weight:bold;">\u2014 ' + (dh > 0 ? dh + 'h ' + dm + 'm' : dm + 'm') + '</span>';
-                    }
+                    var mins = estimateEditMinutes(item.times);
+                    var durStr = ' <span style="color:#0d6efd;font-weight:bold;">\u2014 ' + formatDurationMin(mins) + '</span>';
                     html += '<li style="margin-bottom:3px;color:#555;font-style:italic;">';
                     html += '<strong>' + item.project + '</strong>: ' + item.taskName + durStr;
                     html += '</li>';
@@ -1651,16 +1718,31 @@
                 if (dayData.notes) {
                     html += '<p style="margin:0 0 4px 16px;font-style:italic;color:#555;font-size:10pt;">Notes: ' + dayData.notes + '</p>';
                 }
+                // Combine duplicate project+task entries for the day (sum minutes, count occurrences)
+                var merged = {};
+                var mergedOrder = [];
+                dayData.tasks.forEach(function (t) {
+                    var key = t.PROJECT_NAME + '|' + t.TASK_NAME;
+                    if (!merged[key]) {
+                        merged[key] = { project: t.PROJECT_NAME, task: t.TASK_NAME, mins: 0, count: 0 };
+                        mergedOrder.push(key);
+                    }
+                    merged[key].mins  += parseInt(t.TASK_TIME) || 0;
+                    merged[key].count += 1;
+                });
+
                 html += '<ol style="margin:0;padding-left:32px;">';
                 var dayTotal = 0;
-                dayData.tasks.forEach(function (t) {
-                    var mins = parseInt(t.TASK_TIME) || 0;
-                    dayTotal += mins;
-                    var hrs = (mins / 60).toFixed(1);
+                mergedOrder.forEach(function (k) {
+                    var m   = merged[k];
+                    dayTotal += m.mins;
+                    var hrs = (m.mins / 60).toFixed(1);
+                    var countSuffix = m.count > 1 ? ' <span style="color:#888;font-size:9pt;">(' + m.count + ' entries)</span>' : '';
                     html += '<li style="margin-bottom:3px;">';
-                    html += '<strong>' + t.PROJECT_NAME + '</strong>: ';
-                    html += t.TASK_NAME.replace(/_/g, ' ');
+                    html += '<strong>' + m.project + '</strong>: ';
+                    html += m.task.replace(/_/g, ' ');
                     html += ' <span style="color:#0d6efd;font-weight:bold;">\u2014 ' + hrs + 'h</span>';
+                    html += countSuffix;
                     html += '</li>';
                 });
                 html += '</ol>';
@@ -1668,13 +1750,13 @@
                 html += '<p style="margin:4px 0 0 16px;font-size:10pt;color:#0d6efd;font-weight:bold;">Total: ' + dh + 'h ' + dm + 'm</p>';
             }
 
-            // Files modified this day — grouped by project, first/last time = estimated duration
+            // Files modified this day — grouped by project, session-aware duration estimate
             if (dayFiles.length > 0) {
                 var filesByProject = {};
                 dayFiles.forEach(function (f) {
                     var proj = f.PROJECT || 'Root';
                     if (!filesByProject[proj]) filesByProject[proj] = [];
-                    filesByProject[proj].push(f.DATE_MODIFIED.substring(11)); // HH:mm
+                    filesByProject[proj].push(f.DATE_MODIFIED.substring(11)); // HH:mm:ss
                 });
 
                 html += '<div style="margin:6px 0 0 16px;padding:6px 10px;background:#f0f4ff;border-left:3px solid #0d6efd;border-radius:3px;">';
@@ -1682,15 +1764,12 @@
                 html += '<ul style="margin:0;padding-left:18px;font-size:10pt;list-style:disc;">';
                 Object.keys(filesByProject).sort().forEach(function (proj) {
                     var times = filesByProject[proj].slice().sort();
-                    var first = times[0], last = times[times.length - 1];
+                    var first = times[0].substring(0,5), last = times[times.length - 1].substring(0,5);
                     var label;
-                    if (first === last) {
-                        label = first;
+                    if (times.length === 1 || first === last) {
+                        label = first + ' <span style="color:#0d6efd;font-weight:bold;">(' + formatDurationMin(estimateEditMinutes(times)) + ')</span>';
                     } else {
-                        var diffMins = moment(last, 'HH:mm').diff(moment(first, 'HH:mm'), 'minutes');
-                        var dh = Math.floor(diffMins / 60), dm = diffMins % 60;
-                        var durStr = dh > 0 ? dh + 'h ' + dm + 'm' : dm + 'm';
-                        label = first + ' to ' + last + ' <span style="color:#0d6efd;font-weight:bold;">(' + durStr + ')</span>';
+                        label = first + ' to ' + last + ' <span style="color:#0d6efd;font-weight:bold;">(' + formatDurationMin(estimateEditMinutes(times)) + ')</span>';
                     }
                     html += '<li style="margin-bottom:2px;"><strong>' + proj + '</strong> &mdash; ' + label + '</li>';
                 });
@@ -1791,7 +1870,6 @@
 
     function buildFileActivityHtml(fileData) {
         var files = (fileData && fileData.files) ? fileData.files : [];
-        var fileCount = fileData ? fileData.fileCount : 0;
         var out = '';
 
         if (fileData && fileData.error) {
@@ -1803,17 +1881,54 @@
             return out;
         }
 
-        out += '<p style="color:#555;font-size:10pt;margin-bottom:10px;">' + fileCount + ' file' + (fileCount !== 1 ? 's' : '') + ' modified (3 levels deep, source files only)</p>';
+        var filterResult = filterBulkOperations(files);
+        var keptLookup = {};
+        filterResult.kept.forEach(function (f) { keptLookup[f.DIRECTORY + '|' + f.FILE_NAME + '|' + f.DATE_MODIFIED] = true; });
+
+        // Dedupe to unique files (same path = one item). Track revision count, latest timestamp, and
+        // whether at least one edit was a real (non-bulk) modification.
+        var uniqueFiles = {};
+        files.forEach(function (f) {
+            var key = (f.PROJECT || 'Root') + '|' + (f.DIRECTORY || '') + '|' + f.FILE_NAME;
+            var isKept = !!keptLookup[f.DIRECTORY + '|' + f.FILE_NAME + '|' + f.DATE_MODIFIED];
+            if (!uniqueFiles[key]) {
+                uniqueFiles[key] = {
+                    PROJECT: f.PROJECT || 'Root',
+                    DIRECTORY: f.DIRECTORY || '',
+                    FILE_NAME: f.FILE_NAME,
+                    latest: f.DATE_MODIFIED,
+                    revisions: 1,
+                    hasKept: isKept
+                };
+            } else {
+                uniqueFiles[key].revisions += 1;
+                if (f.DATE_MODIFIED > uniqueFiles[key].latest) uniqueFiles[key].latest = f.DATE_MODIFIED;
+                if (isKept) uniqueFiles[key].hasKept = true;
+            }
+        });
+        var uniqueList = Object.keys(uniqueFiles).map(function (k) { return uniqueFiles[k]; });
+        var uniqueCount = uniqueList.length;
+        var totalEvents = files.length;
+
+        out += '<p style="color:#555;font-size:10pt;margin-bottom:10px;">' + uniqueCount + ' unique file' + (uniqueCount !== 1 ? 's' : '') + ' modified';
+        if (totalEvents !== uniqueCount) {
+            out += ' <span style="color:#888;">(' + totalEvents + ' save events)</span>';
+        }
+        if (filterResult.excludedCount > 0) {
+            out += ' \u2014 <span style="color:#b06000;">' + filterResult.excludedCount + ' flagged as bulk sync</span>';
+        }
+        out += '</p>';
 
         var byProject = {};
-        files.forEach(function (f) {
-            var p = f.PROJECT || 'Root';
-            if (!byProject[p]) byProject[p] = [];
-            byProject[p].push(f);
+        uniqueList.forEach(function (f) {
+            if (!byProject[f.PROJECT]) byProject[f.PROJECT] = [];
+            byProject[f.PROJECT].push(f);
         });
 
         Object.keys(byProject).sort().forEach(function (proj) {
-            var projFiles = byProject[proj];
+            var projFiles = byProject[proj].slice().sort(function (a, b) {
+                return (a.DIRECTORY + a.FILE_NAME).localeCompare(b.DIRECTORY + b.FILE_NAME);
+            });
             out += '<div style="margin-bottom:14px;">';
             out += '<h4 style="font-size:11pt;color:#333;margin:0 0 4px;">';
             out += '<i class="far fa-folder-open" style="color:#0d6efd;margin-right:6px;"></i>';
@@ -1822,10 +1937,14 @@
             out += '<ul style="margin:0;padding-left:24px;font-size:10pt;">';
             projFiles.forEach(function (f) {
                 var fullPath = ((f.DIRECTORY ? f.DIRECTORY + '/' : '') + f.FILE_NAME).replace(/\/+/g, '/');
-                var ts = f.DATE_MODIFIED.replace('T', ' ');
-                out += '<li style="margin-bottom:2px;font-family:monospace;">';
+                var ts = f.latest.replace('T', ' ');
+                var isBulk = !f.hasKept;
+                var revSuffix = f.revisions > 1 ? ' <span style="color:#888;font-size:9pt;">(' + f.revisions + ' saves)</span>' : '';
+                out += '<li style="margin-bottom:2px;font-family:monospace;' + (isBulk ? 'opacity:0.55;' : '') + '">';
                 out += '<span style="color:#333;">' + fullPath + '</span>';
                 out += ' <span style="color:#888;">&mdash; ' + ts + '</span>';
+                out += revSuffix;
+                if (isBulk) out += ' <span style="color:#b06000;font-size:9pt;">(bulk)</span>';
                 out += '</li>';
             });
             out += '</ul></div>';
@@ -1859,9 +1978,11 @@
         textOut += 'Total Hours: ' + totalHours + '\n';
         textOut += '='.repeat(50) + '\n\n';
 
-        // Build file-by-date index for copy output
+        // Build file-by-date index for copy output (bulk syncs filtered out)
         var copyFilesByDate = {};
-        var copyFiles = (fileData && fileData.files) ? fileData.files : [];
+        var allCopyFiles = (fileData && fileData.files) ? fileData.files : [];
+        var copyFilterResult = filterBulkOperations(allCopyFiles);
+        var copyFiles = copyFilterResult.kept;
         copyFiles.forEach(function (f) {
             var dk = f.DATE_MODIFIED.substring(0, 10);
             if (!copyFilesByDate[dk]) copyFilesByDate[dk] = [];
@@ -1872,9 +1993,10 @@
         htmlOut += '<h3 style="color:#0066cc;">Daily Breakdown</h3>';
         textOut += 'DAILY BREAKDOWN\n' + '-'.repeat(30) + '\n';
 
-        [1,2,3,4,5].forEach(function (dayNum) {
+        // US week: Sun(0), Mon(1), ..., Sat(6) — matches DB DAY_NUM
+        [0,1,2,3,4,5,6].forEach(function (dayNum) {
             var dayData    = byDay[dayNum];
-            var dayMoment  = moment().year(year).week(weekNum).isoWeekday(dayNum);
+            var dayMoment  = moment().year(year).week(weekNum).day(dayNum);
             var dayDateKey = dayMoment.format('YYYY-MM-DD');
             var label      = dayNames[dayNum] + ', ' + dayMoment.format('MMM D');
             var dayFiles   = copyFilesByDate[dayDateKey] || [];
@@ -1890,14 +2012,28 @@
                     htmlOut += '<p style="font-style:italic;color:#555;margin-left:16px;font-size:10pt;">Notes: ' + dayData.notes + '</p>';
                     textOut += '  Notes: ' + dayData.notes + '\n';
                 }
+                // Combine duplicate project+task entries for the day
+                var cMerged = {};
+                var cOrder  = [];
+                dayData.tasks.forEach(function (t) {
+                    var key = t.PROJECT_NAME + '|' + t.TASK_NAME;
+                    if (!cMerged[key]) {
+                        cMerged[key] = { project: t.PROJECT_NAME, task: t.TASK_NAME, mins: 0, count: 0 };
+                        cOrder.push(key);
+                    }
+                    cMerged[key].mins  += parseInt(t.TASK_TIME) || 0;
+                    cMerged[key].count += 1;
+                });
+
                 htmlOut += '<ol style="margin:0;padding-left:32px;">';
                 var dayTotal = 0;
-                dayData.tasks.forEach(function (t, idx) {
-                    var mins = parseInt(t.TASK_TIME) || 0;
-                    dayTotal += mins;
-                    var hrs = (mins / 60).toFixed(1);
-                    htmlOut += '<li style="margin-bottom:3px;"><strong>' + t.PROJECT_NAME + '</strong>: ' + t.TASK_NAME.replace(/_/g, ' ') + ' <span style="color:#0066cc;font-weight:bold;">\u2014 ' + hrs + 'h</span></li>';
-                    textOut += '  ' + (idx + 1) + '. ' + t.PROJECT_NAME + ': ' + t.TASK_NAME.replace(/_/g, ' ') + ' \u2014 ' + hrs + 'h\n';
+                cOrder.forEach(function (k, idx) {
+                    var m   = cMerged[k];
+                    dayTotal += m.mins;
+                    var hrs = (m.mins / 60).toFixed(1);
+                    var countSuffix = m.count > 1 ? ' (' + m.count + ' entries)' : '';
+                    htmlOut += '<li style="margin-bottom:3px;"><strong>' + m.project + '</strong>: ' + m.task.replace(/_/g, ' ') + ' <span style="color:#0066cc;font-weight:bold;">\u2014 ' + hrs + 'h</span>' + (m.count > 1 ? ' <span style="color:#888;">' + countSuffix + '</span>' : '') + '</li>';
+                    textOut += '  ' + (idx + 1) + '. ' + m.project + ': ' + m.task.replace(/_/g, ' ') + ' \u2014 ' + hrs + 'h' + countSuffix + '\n';
                 });
                 htmlOut += '</ol>';
                 var dh = Math.floor(dayTotal / 60), dm = dayTotal % 60;
@@ -1920,15 +2056,13 @@
                 textOut += '  Files Modified:\n';
                 Object.keys(copyFilesByProject).sort().forEach(function (proj) {
                     var times = copyFilesByProject[proj].slice().sort();
-                    var first = times[0], last = times[times.length - 1];
+                    var first = times[0].substring(0,5), last = times[times.length - 1].substring(0,5);
+                    var durStr = formatDurationMin(estimateEditMinutes(times));
                     var label, textLabel;
-                    if (first === last) {
-                        label = first;
-                        textLabel = first;
+                    if (times.length === 1 || first === last) {
+                        label = first + ' <span style="color:#0066cc;font-weight:bold;">(' + durStr + ')</span>';
+                        textLabel = first + ' (' + durStr + ')';
                     } else {
-                        var diffMins = moment(last, 'HH:mm').diff(moment(first, 'HH:mm'), 'minutes');
-                        var dh = Math.floor(diffMins / 60), dm = diffMins % 60;
-                        var durStr = dh > 0 ? dh + 'h ' + dm + 'm' : dm + 'm';
                         label = first + ' to ' + last + ' <span style="color:#0066cc;font-weight:bold;">(' + durStr + ')</span>';
                         textLabel = first + ' to ' + last + ' (' + durStr + ')';
                     }
@@ -1950,28 +2084,63 @@
         });
         htmlOut += '</ol>';
 
-        // File Activity
-        var copyFiles = (fileData && fileData.files) ? fileData.files : [];
-        if (copyFiles.length > 0) {
-            htmlOut += '<hr><h3 style="color:#0066cc;">File Activity (' + copyFiles.length + ' files)</h3>';
-            textOut += '\nFILE ACTIVITY\n' + '-'.repeat(30) + '\n';
+        // File Activity — deduped to unique files (same path = one item).
+        var copyAllFiles = allCopyFiles;
+        if (copyAllFiles.length > 0) {
+            var copyKeptLookup = {};
+            copyFiles.forEach(function (f) { copyKeptLookup[f.DIRECTORY + '|' + f.FILE_NAME + '|' + f.DATE_MODIFIED] = true; });
+
+            var copyUnique = {};
+            copyAllFiles.forEach(function (f) {
+                var key = (f.PROJECT || 'Root') + '|' + (f.DIRECTORY || '') + '|' + f.FILE_NAME;
+                var isKept = !!copyKeptLookup[f.DIRECTORY + '|' + f.FILE_NAME + '|' + f.DATE_MODIFIED];
+                if (!copyUnique[key]) {
+                    copyUnique[key] = {
+                        PROJECT: f.PROJECT || 'Root',
+                        DIRECTORY: f.DIRECTORY || '',
+                        FILE_NAME: f.FILE_NAME,
+                        latest: f.DATE_MODIFIED,
+                        revisions: 1,
+                        hasKept: isKept
+                    };
+                } else {
+                    copyUnique[key].revisions += 1;
+                    if (f.DATE_MODIFIED > copyUnique[key].latest) copyUnique[key].latest = f.DATE_MODIFIED;
+                    if (isKept) copyUnique[key].hasKept = true;
+                }
+            });
+            var copyUniqueList = Object.keys(copyUnique).map(function (k) { return copyUnique[k]; });
+            var copyUniqueCount = copyUniqueList.length;
+
+            var excludedNote = copyFilterResult.excludedCount > 0
+                ? ' <span style="color:#888;font-weight:normal;font-size:10pt;">(' + copyFilterResult.excludedCount + ' excluded as bulk sync)</span>'
+                : '';
+            htmlOut += '<hr><h3 style="color:#0066cc;">File Activity (' + copyUniqueCount + ' unique file' + (copyUniqueCount !== 1 ? 's' : '') + ')' + excludedNote + '</h3>';
+            textOut += '\nFILE ACTIVITY (' + copyUniqueCount + ' unique files)\n' + '-'.repeat(30) + '\n';
+            if (copyFilterResult.excludedCount > 0) {
+                textOut += '(' + copyFilterResult.excludedCount + ' events excluded as bulk sync)\n';
+            }
 
             var copyByProject = {};
-            copyFiles.forEach(function (f) {
-                var p = f.PROJECT || 'Root';
-                if (!copyByProject[p]) copyByProject[p] = [];
-                copyByProject[p].push(f);
+            copyUniqueList.forEach(function (f) {
+                if (!copyByProject[f.PROJECT]) copyByProject[f.PROJECT] = [];
+                copyByProject[f.PROJECT].push(f);
             });
 
             Object.keys(copyByProject).sort().forEach(function (proj) {
                 htmlOut += '<h4 style="font-size:11pt;color:#333;">' + proj + '</h4>';
                 htmlOut += '<ul style="font-size:10pt;font-family:monospace;padding-left:20px;">';
                 textOut += '\n' + proj + '\n';
-                copyByProject[proj].forEach(function (f) {
+                copyByProject[proj].slice().sort(function (a, b) {
+                    return (a.DIRECTORY + a.FILE_NAME).localeCompare(b.DIRECTORY + b.FILE_NAME);
+                }).forEach(function (f) {
                     var fp = ((f.DIRECTORY ? f.DIRECTORY + '/' : '') + f.FILE_NAME).replace(/\/+/g, '/');
-                    var ts = f.DATE_MODIFIED.replace('T', ' ');
-                    htmlOut += '<li>' + fp + ' <span style="color:#888;">&mdash; ' + ts + '</span></li>';
-                    textOut += '  ' + fp + ' \u2014 ' + ts + '\n';
+                    var ts = f.latest.replace('T', ' ');
+                    var isBulk = !f.hasKept;
+                    var revSuffix = f.revisions > 1 ? ' (' + f.revisions + ' saves)' : '';
+                    var bulkMark = isBulk ? ' <span style="color:#b06000;">(bulk)</span>' : '';
+                    htmlOut += '<li>' + fp + ' <span style="color:#888;">&mdash; ' + ts + revSuffix + '</span>' + bulkMark + '</li>';
+                    textOut += '  ' + fp + ' \u2014 ' + ts + revSuffix + (isBulk ? ' (bulk)' : '') + '\n';
                 });
                 htmlOut += '</ul>';
             });

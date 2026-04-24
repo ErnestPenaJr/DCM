@@ -203,7 +203,7 @@
                                 <cfset t1["FILE_NAME"]     = name>
                                 <cfset t1["DIRECTORY"]     = projName>
                                 <cfset t1["PROJECT"]       = projName>
-                                <cfset t1["DATE_MODIFIED"] = DateFormat(dateLastModified,"yyyy-mm-dd") & "T" & TimeFormat(dateLastModified,"HH:mm")>
+                                <cfset t1["DATE_MODIFIED"] = DateFormat(dateLastModified,"yyyy-mm-dd") & "T" & TimeFormat(dateLastModified,"HH:mm:ss")>
                                 <cfset t1["SIZE"]          = size>
                                 <cfset ArrayAppend(retVal, t1)>
                             </cfif>
@@ -229,7 +229,7 @@
                                             <cfset t2["FILE_NAME"]     = name>
                                             <cfset t2["DIRECTORY"]     = projName & "/" & subName>
                                             <cfset t2["PROJECT"]       = projName>
-                                            <cfset t2["DATE_MODIFIED"] = DateFormat(dateLastModified,"yyyy-mm-dd") & "T" & TimeFormat(dateLastModified,"HH:mm")>
+                                            <cfset t2["DATE_MODIFIED"] = DateFormat(dateLastModified,"yyyy-mm-dd") & "T" & TimeFormat(dateLastModified,"HH:mm:ss")>
                                             <cfset t2["SIZE"]          = size>
                                             <cfset ArrayAppend(retVal, t2)>
                                         </cfif>
@@ -252,7 +252,7 @@
                                                         <cfset t3["FILE_NAME"]     = name>
                                                         <cfset t3["DIRECTORY"]     = projName & "/" & subName & "/" & level3Dirs.name>
                                                         <cfset t3["PROJECT"]       = projName>
-                                                        <cfset t3["DATE_MODIFIED"] = DateFormat(dateLastModified,"yyyy-mm-dd") & "T" & TimeFormat(dateLastModified,"HH:mm")>
+                                                        <cfset t3["DATE_MODIFIED"] = DateFormat(dateLastModified,"yyyy-mm-dd") & "T" & TimeFormat(dateLastModified,"HH:mm:ss")>
                                                         <cfset t3["SIZE"]          = size>
                                                         <cfset ArrayAppend(retVal, t3)>
                                                     </cfif>
