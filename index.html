@@ -385,6 +385,29 @@
             $('.container').load('signout.html');
         });
 
+        // Day edit button in the weekly right panel: prefill the task form with that day
+        $(document).on('click', '.theWeekOf button[id*="_"]', function (e) {
+            e.preventDefault();
+            var parts = ($(this).attr('id') || '').split('_');
+            if (parts.length !== 2) return;
+            var weekNum = parseInt(parts[0], 10);
+            var dayNum = parseInt(parts[1], 10);
+            if (isNaN(weekNum) || isNaN(dayNum)) return;
+
+            var year = parseInt($('#current_year').text(), 10) || moment().year();
+            var targetDate = moment().year(year).week(weekNum).day(dayNum);
+
+            $('#date').val(targetDate.format('YYYY-MM-DD'));
+            $('#WEEK_NUM').val(weekNum);
+            $('#date').trigger('input');
+
+            $('html, body').animate({
+                scrollTop: $('#taskForm').offset().top - 80
+            }, 400, function () {
+                $('#date').focus();
+            });
+        });
+
         //get session variable inLoggin to see if user is logged in
         var inLoggin = sessionStorage.getItem('ISLOGGEDIN');
 

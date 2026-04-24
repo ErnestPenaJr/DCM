@@ -1,0 +1,341 @@
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Logo Daily Time Tracking" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+        - img "Logo" [ref=e122]
+        - generic [ref=e5]: Daily Time Tracking
+      - text: 
+      - generic [ref=e6]:
+        - generic [ref=e123]:
+          - text: "Session warning in:"
+          - code [ref=e310]: 26:54
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link " Home" [ref=e9] [cursor=pointer]:
+              - /url: index.html
+              - generic [ref=e10]: 
+              - text: Home
+          - listitem [ref=e11]:
+            - link " Projects" [ref=e12] [cursor=pointer]:
+              - /url: projectManagement.html
+              - generic [ref=e13]: 
+              - text: Projects
+          - listitem [ref=e14]:
+            - link " User Access" [ref=e15] [cursor=pointer]:
+              - /url: userManagement.html
+              - generic [ref=e16]: 
+              - text: User Access
+          - listitem [ref=e17]:
+            - link " Profile" [ref=e18] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e19]: 
+              - text: Profile
+          - listitem [ref=e20]:
+            - button "Sign out" [ref=e21] [cursor=pointer]:
+              - generic [ref=e22]: 
+              - text: Sign Out
+  - link "Skip to main content" [ref=e23] [cursor=pointer]:
+    - /url: "#main-content"
+  - main [ref=e24]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - heading "my daily tasks" [level=1] [ref=e30]
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e36]:
+                - textbox "Current Date" [active] [ref=e37]:
+                  - /placeholder: Date
+                  - text: 2026-04-22
+                - generic: Current Date
+              - generic [ref=e39]:
+                - textbox "Department" [ref=e40]
+                - generic: Department
+              - generic [ref=e42]:
+                - combobox "Floating label select a Project" [ref=e43]:
+                  - option "My Projects" [selected]
+                  - option "ADMINISTRATION"
+                  - option "Ask-XXXX"
+                  - option "Automated Approval Routing & Expense Management System"
+                  - option "CONTEXT ENGINEERING"
+                  - option "DAILY TASK TRACKER"
+                  - option "DART"
+                  - option "DOCMDP"
+                  - option "DoCM ROOM RESERVATION SYSTEM"
+                  - option "FACSDiva"
+                  - option "FARE"
+                  - option "FFL"
+                  - option "NPBTD"
+                  - option "One Piece"
+                  - option "Provider Outage Form"
+                  - option "Web Schedule"
+                - generic: Projects
+            - separator [ref=e44]
+            - generic [ref=e45]:
+              - generic [ref=e46]:
+                - generic [ref=e47]:
+                  - 'textbox "Administration: 15-30 min." [disabled] [ref=e48]':
+                    - /placeholder: Administration
+                  - generic: "Administration: 15-30 min."
+                - generic [ref=e49]:
+                  - 'textbox "Code Development: 180-360 min." [disabled] [ref=e50]':
+                    - /placeholder: Code Development
+                  - generic: "Code Development: 180-360 min."
+                - generic [ref=e51]:
+                  - 'textbox "Code Optimization: 30-60 min." [disabled] [ref=e52]':
+                    - /placeholder: Code Optimization
+                  - generic: "Code Optimization: 30-60 min."
+                - generic [ref=e53]:
+                  - 'textbox "Code Prototyping: 60-180 min." [disabled] [ref=e54]':
+                    - /placeholder: Code Prototyping
+                  - generic: "Code Prototyping: 60-180 min."
+                - generic [ref=e55]:
+                  - 'textbox "Code Publishing: 10-30 min." [disabled] [ref=e56]':
+                    - /placeholder: Code Publishing
+                  - generic: "Code Publishing: 10-30 min."
+                - generic [ref=e57]:
+                  - 'textbox "Code Testing / Debugging: 60-480 min." [disabled] [ref=e58]':
+                    - /placeholder: Code Testing / Debugging
+                  - generic: "Code Testing / Debugging: 60-480 min."
+                - generic [ref=e59]:
+                  - 'textbox "Collaboration: 10-60 min." [disabled] [ref=e60]':
+                    - /placeholder: Collaboration
+                  - generic: "Collaboration: 10-60 min."
+              - generic [ref=e61]:
+                - generic [ref=e62]:
+                  - 'textbox "Database Mgt.: 60-120 min." [disabled] [ref=e63]':
+                    - /placeholder: Database Mgt.
+                  - generic: "Database Mgt.: 60-120 min."
+                - generic [ref=e64]:
+                  - 'textbox "Service Requests: 30-60 min." [disabled] [ref=e65]':
+                    - /placeholder: Service Requests
+                  - generic: "Service Requests: 30-60 min."
+                - generic [ref=e66]:
+                  - 'textbox "Learning and Research: 30-60 min." [disabled] [ref=e67]':
+                    - /placeholder: Learning and Research
+                  - generic: "Learning and Research: 30-60 min."
+                - generic [ref=e68]:
+                  - 'textbox "Meetings: 15-120 min." [disabled] [ref=e69]':
+                    - /placeholder: Meetings
+                  - generic: "Meetings: 15-120 min."
+                - generic [ref=e70]:
+                  - 'textbox "Personal Time Off: 480 min." [disabled] [ref=e71]':
+                    - /placeholder: Personal Time Off
+                  - generic: "Personal Time Off: 480 min."
+                - generic [ref=e72]:
+                  - 'textbox "Break / Lunch: 15-60 min." [disabled] [ref=e73]':
+                    - /placeholder: Break / Lunch
+                  - generic: "Break / Lunch: 15-60 min."
+                - generic [ref=e74]:
+                  - 'textbox "Training: 30-480 min." [disabled] [ref=e75]':
+                    - /placeholder: Training
+                  - generic: "Training: 30-480 min."
+          - generic [ref=e78]:
+            - textbox "List of tasks completed:" [disabled] [ref=e79]:
+              - /placeholder: Leave a comment here
+            - generic: "List of tasks completed:"
+          - separator [ref=e80]
+          - generic [ref=e83]:
+            - button "Close out the day" [disabled]
+      - generic [ref=e84]:
+        - heading " Week 17 2026   Copy Text  Report" [level=1] [ref=e85]:
+          - text: 
+          - generic [ref=e87] [cursor=pointer]: 
+          - text: Week 17 2026
+          - generic [ref=e89] [cursor=pointer]: 
+          - generic [ref=e90]:
+            - group [ref=e91]:
+              - button " Daily" [ref=e92] [cursor=pointer]:
+                - generic [ref=e93]: 
+                - text: Daily
+              - button " Summary" [ref=e94] [cursor=pointer]:
+                - generic [ref=e95]: 
+                - text: Summary
+            - button " Copy Text" [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]: 
+              - text: Copy Text
+            - button " Report" [ref=e98] [cursor=pointer]:
+              - generic [ref=e99]: 
+              - text: Report
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - generic [ref=e130]: Sunday
+            - list
+          - generic [ref=e131]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: Monday
+              - button "" [ref=e135] [cursor=pointer]:
+                - generic [ref=e136]: 
+            - list [ref=e137]:
+              - listitem [ref=e138]:
+                - text: Code Publishing
+                - generic [ref=e139]: 5m
+              - listitem [ref=e140]:
+                - text: Code Publishing
+                - generic [ref=e141]: 5m
+            - generic [ref=e142]: "Total: 0h 10m"
+          - generic [ref=e143]:
+            - generic [ref=e145]:
+              - generic [ref=e146]: Tuesday
+              - button "" [ref=e147] [cursor=pointer]:
+                - generic [ref=e148]: 
+            - list [ref=e149]:
+              - listitem [ref=e150]:
+                - text: Administration
+                - generic [ref=e151]: 5m
+            - generic [ref=e152]: "Total: 0h 5m"
+          - generic [ref=e153]:
+            - generic [ref=e155]:
+              - generic [ref=e156]: Wednesday
+              - button "" [ref=e157] [cursor=pointer]:
+                - generic [ref=e158]: 
+            - list [ref=e159]:
+              - listitem [ref=e160]:
+                - text: Database Mgt.
+                - generic [ref=e161]: 6m
+              - listitem [ref=e162]:
+                - text: Administration
+                - generic [ref=e163]: 21m
+              - listitem [ref=e164]:
+                - text: Code Publishing
+                - generic [ref=e165]: 1m
+              - listitem [ref=e166]:
+                - text: Code Development
+                - generic [ref=e167]: 12m
+            - generic [ref=e168]: "Total: 0h 40m"
+          - generic [ref=e169]:
+            - generic [ref=e171]:
+              - generic [ref=e172]: Thursday
+              - button "" [ref=e173] [cursor=pointer]:
+                - generic [ref=e174]: 
+            - list [ref=e175]:
+              - listitem [ref=e176]:
+                - text: Code Publishing
+                - generic [ref=e177]: 5m
+            - generic [ref=e178]: "Total: 0h 5m"
+          - generic [ref=e179]:
+            - generic [ref=e182]: Friday
+            - list
+          - generic [ref=e183]:
+            - generic [ref=e186]: Saturday
+            - list
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - button "" [ref=e110] [cursor=pointer]:
+          - generic [ref=e111]: 
+        - heading "April 2026" [level=4] [ref=e187]
+        - button "" [ref=e112] [cursor=pointer]:
+          - generic [ref=e113]: 
+      - generic [ref=e114]:
+        - generic [ref=e115]: Sun
+        - generic [ref=e116]: Mon
+        - generic [ref=e117]: Tue
+        - generic [ref=e118]: Wed
+        - generic [ref=e119]: Thu
+        - generic [ref=e120]: Fri
+        - generic [ref=e121]: Sat
+      - generic [ref=e188]:
+        - generic [ref=e192] [cursor=pointer]:
+          - generic [ref=e193]: "1"
+          - generic [ref=e194]: "2"
+          - generic [ref=e195]: 1h 0m
+          - generic [ref=e196]: One Piece
+          - generic [ref=e197]: ADMINISTRATION
+        - generic [ref=e199]: "2"
+        - generic [ref=e200] [cursor=pointer]:
+          - generic [ref=e201]: "3"
+          - generic [ref=e202]: "6"
+          - generic [ref=e203]: 20h 3m
+          - generic [ref=e204]: One Piece
+          - generic [ref=e205]: ADMINISTRATION
+        - generic [ref=e207]: "4"
+        - generic [ref=e209]: "5"
+        - generic [ref=e210] [cursor=pointer]:
+          - generic [ref=e211]: "6"
+          - generic [ref=e212]: "22"
+          - generic [ref=e213]: 22h 36m
+          - generic [ref=e214]: One Piece
+          - generic [ref=e215]: ADMINISTRATION
+        - generic [ref=e216] [cursor=pointer]:
+          - generic [ref=e217]: "7"
+          - generic [ref=e218]: "6"
+          - generic [ref=e219]: 5h 59m
+          - generic [ref=e220]: ADMINISTRATION
+          - generic [ref=e221]: Provider Outage Form
+        - generic [ref=e222] [cursor=pointer]:
+          - generic [ref=e223]: "8"
+          - generic [ref=e224]: "12"
+          - generic [ref=e225]: 14h 57m
+          - generic [ref=e226]: ADMINISTRATION
+        - generic [ref=e227] [cursor=pointer]:
+          - generic [ref=e228]: "9"
+          - generic [ref=e229]: "8"
+          - generic [ref=e230]: 27h 34m
+          - generic [ref=e231]: ADMINISTRATION
+        - generic [ref=e232] [cursor=pointer]:
+          - generic [ref=e233]: "10"
+          - generic [ref=e234]: "5"
+          - generic [ref=e235]: 10h 59m
+          - generic [ref=e236]: ADMINISTRATION
+        - generic [ref=e238]: "11"
+        - generic [ref=e239] [cursor=pointer]:
+          - generic [ref=e240]: "12"
+          - generic [ref=e241]: "4"
+          - generic [ref=e242]: 0h 20m
+          - generic [ref=e243]: ADMINISTRATION
+        - generic [ref=e244] [cursor=pointer]:
+          - generic [ref=e245]: "13"
+          - generic [ref=e246]: "13"
+          - generic [ref=e247]: 2h 38m
+          - generic [ref=e248]: ADMINISTRATION
+        - generic [ref=e249] [cursor=pointer]:
+          - generic [ref=e250]: "14"
+          - generic [ref=e251]: "9"
+          - generic [ref=e252]: 0h 27m
+          - generic [ref=e253]: ADMINISTRATION
+        - generic [ref=e254] [cursor=pointer]:
+          - generic [ref=e255]: "15"
+          - generic [ref=e256]: "18"
+          - generic [ref=e257]: 11h 39m
+          - generic [ref=e258]: ADMINISTRATION
+        - generic [ref=e259] [cursor=pointer]:
+          - generic [ref=e260]: "16"
+          - generic [ref=e261]: "45"
+          - generic [ref=e262]: 9h 30m
+          - generic [ref=e263]: ADMINISTRATION
+        - generic [ref=e264] [cursor=pointer]:
+          - generic [ref=e265]: "17"
+          - generic [ref=e266]: "16"
+          - generic [ref=e267]: 1h 20m
+          - generic [ref=e268]: ADMINISTRATION
+        - generic [ref=e270]: "18"
+        - generic [ref=e272]: "19"
+        - generic [ref=e273] [cursor=pointer]:
+          - generic [ref=e274]: "20"
+          - generic [ref=e275]: "2"
+          - generic [ref=e276]: 0h 10m
+          - generic [ref=e277]: ADMINISTRATION
+        - generic [ref=e278] [cursor=pointer]:
+          - generic [ref=e279]: "21"
+          - generic [ref=e280]: "1"
+          - generic [ref=e281]: 0h 5m
+          - generic [ref=e282]: ADMINISTRATION
+        - generic [ref=e283] [cursor=pointer]:
+          - generic [ref=e284]: "22"
+          - generic [ref=e285]: "4"
+          - generic [ref=e286]: 0h 40m
+          - generic [ref=e287]: ADMINISTRATION
+        - generic [ref=e288] [cursor=pointer]:
+          - generic [ref=e289]: "23"
+          - generic [ref=e290]: "1"
+          - generic [ref=e291]: 0h 5m
+          - generic [ref=e292]: ADMINISTRATION
+        - generic [ref=e294]: "24"
+        - generic [ref=e296]: "25"
+        - generic [ref=e298]: "26"
+        - generic [ref=e300]: "27"
+        - generic [ref=e302]: "28"
+        - generic [ref=e304]: "29"
+        - generic [ref=e306]: "30"
+  - text:        

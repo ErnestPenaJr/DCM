@@ -1,0 +1,6 @@
+[     643ms] [LOG] 📋 Full sessionStorage contents: Storage @ http://localhost:8500/DCM/index.html:308
+[     643ms] [LOG] 🔑 All sessionStorage keys and values: @ http://localhost:8500/DCM/index.html:309
+[     644ms] [LOG]   EMPLID: 132034 @ http://localhost:8500/DCM/index.html:312
+[     644ms] [LOG]   ISLOGGEDIN: 1 @ http://localhost:8500/DCM/index.html:312
+[     644ms] [LOG] 🆔 EMPLID from sessionStorage: 132034 @ http://localhost:8500/DCM/index.html:317
+[     644ms] [LOG] 🔐 ISLOGGEDIN from sessionStorage: 1 @ http://localhost:8500/DCM/index.html:318

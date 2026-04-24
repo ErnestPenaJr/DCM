@@ -1,0 +1,43 @@
+- main [ref=e2]:
+  - region "Welcome Back" [ref=e3]:
+    - generic [ref=e4]:
+      - img "MD Anderson Cancer Center Logo" [ref=e5]
+      - heading "Welcome Back" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Sign in to Daily Time Tracking
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e12]: 
+          - text: Username
+        - generic [ref=e13]:
+          - generic [ref=e15]: 
+          - textbox " Username" [active] [ref=e16]:
+            - /placeholder: Enter your AD username
+        - text: Use your Active Directory credentials
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: 
+          - text: Password
+        - generic [ref=e20]:
+          - generic [ref=e22]: 
+          - textbox " Password" [ref=e23]:
+            - /placeholder: Enter your password
+          - button "Toggle password visibility" [ref=e24] [cursor=pointer]:
+            - generic [ref=e25]: 
+        - generic [ref=e26]: Enter your Active Directory password
+      - text:  
+      - button " Sign In" [ref=e27] [cursor=pointer]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: 
+          - text: Sign In
+    - paragraph [ref=e31]:
+      - generic [ref=e32]: 
+      - text: Secure authentication powered by Active Directory
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - generic [ref=e35]: 
+      - text: Secure Connection
+    - generic [ref=e36]: "|"
+    - generic [ref=e37]:
+      - generic [ref=e38]: 
+      - text: HIPAA Compliant

@@ -1,0 +1,154 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Logo Daily Time Tracking" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+        - img "Logo"
+        - generic [ref=e5]: Daily Time Tracking
+      - text: 
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - link " Home" [ref=e9] [cursor=pointer]:
+            - /url: index.html
+            - generic [ref=e10]: 
+            - text: Home
+        - listitem [ref=e11]:
+          - link " Projects" [ref=e12] [cursor=pointer]:
+            - /url: projectManagement.html
+            - generic [ref=e13]: 
+            - text: Projects
+        - listitem [ref=e14]:
+          - link " User Access" [ref=e15] [cursor=pointer]:
+            - /url: userManagement.html
+            - generic [ref=e16]: 
+            - text: User Access
+        - listitem [ref=e17]:
+          - link " Profile" [ref=e18] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e19]: 
+            - text: Profile
+        - listitem [ref=e20]:
+          - button "Sign out" [ref=e21] [cursor=pointer]:
+            - generic [ref=e22]: 
+            - text: Sign Out
+  - link "Skip to main content" [ref=e23] [cursor=pointer]:
+    - /url: "#main-content"
+  - main [ref=e24]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - heading "my daily tasks" [level=1] [ref=e30]
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e36]:
+                - textbox "Current Date" [ref=e37]:
+                  - /placeholder: Date
+                - generic: Current Date
+              - generic [ref=e39]:
+                - textbox "Department" [ref=e40]
+                - generic: Department
+              - generic [ref=e42]:
+                - combobox "Floating label select a Project" [ref=e43]
+                - generic: Projects
+            - separator [ref=e44]
+            - generic [ref=e45]:
+              - generic [ref=e46]:
+                - generic [ref=e47]:
+                  - 'textbox "Administration: 15-30 min." [disabled] [ref=e48]':
+                    - /placeholder: Administration
+                  - generic: "Administration: 15-30 min."
+                - generic [ref=e49]:
+                  - 'textbox "Code Development: 180-360 min." [disabled] [ref=e50]':
+                    - /placeholder: Code Development
+                  - generic: "Code Development: 180-360 min."
+                - generic [ref=e51]:
+                  - 'textbox "Code Optimization: 30-60 min." [disabled] [ref=e52]':
+                    - /placeholder: Code Optimization
+                  - generic: "Code Optimization: 30-60 min."
+                - generic [ref=e53]:
+                  - 'textbox "Code Prototyping: 60-180 min." [disabled] [ref=e54]':
+                    - /placeholder: Code Prototyping
+                  - generic: "Code Prototyping: 60-180 min."
+                - generic [ref=e55]:
+                  - 'textbox "Code Publishing: 10-30 min." [disabled] [ref=e56]':
+                    - /placeholder: Code Publishing
+                  - generic: "Code Publishing: 10-30 min."
+                - generic [ref=e57]:
+                  - 'textbox "Code Testing / Debugging: 60-480 min." [disabled] [ref=e58]':
+                    - /placeholder: Code Testing / Debugging
+                  - generic: "Code Testing / Debugging: 60-480 min."
+                - generic [ref=e59]:
+                  - 'textbox "Collaboration: 10-60 min." [disabled] [ref=e60]':
+                    - /placeholder: Collaboration
+                  - generic: "Collaboration: 10-60 min."
+              - generic [ref=e61]:
+                - generic [ref=e62]:
+                  - 'textbox "Database Mgt.: 60-120 min." [disabled] [ref=e63]':
+                    - /placeholder: Database Mgt.
+                  - generic: "Database Mgt.: 60-120 min."
+                - generic [ref=e64]:
+                  - 'textbox "Service Requests: 30-60 min." [disabled] [ref=e65]':
+                    - /placeholder: Service Requests
+                  - generic: "Service Requests: 30-60 min."
+                - generic [ref=e66]:
+                  - 'textbox "Learning and Research: 30-60 min." [disabled] [ref=e67]':
+                    - /placeholder: Learning and Research
+                  - generic: "Learning and Research: 30-60 min."
+                - generic [ref=e68]:
+                  - 'textbox "Meetings: 15-120 min." [disabled] [ref=e69]':
+                    - /placeholder: Meetings
+                  - generic: "Meetings: 15-120 min."
+                - generic [ref=e70]:
+                  - 'textbox "Personal Time Off: 480 min." [disabled] [ref=e71]':
+                    - /placeholder: Personal Time Off
+                  - generic: "Personal Time Off: 480 min."
+                - generic [ref=e72]:
+                  - 'textbox "Break / Lunch: 15-60 min." [disabled] [ref=e73]':
+                    - /placeholder: Break / Lunch
+                  - generic: "Break / Lunch: 15-60 min."
+                - generic [ref=e74]:
+                  - 'textbox "Training: 30-480 min." [disabled] [ref=e75]':
+                    - /placeholder: Training
+                  - generic: "Training: 30-480 min."
+          - generic [ref=e78]:
+            - textbox "List of tasks completed:" [disabled] [ref=e79]:
+              - /placeholder: Leave a comment here
+            - generic: "List of tasks completed:"
+          - separator [ref=e80]
+          - generic [ref=e83]:
+            - button "Close out the day" [disabled]
+      - heading " Week 17 2026   Copy Text  Report" [level=1] [ref=e85]:
+        - text: 
+        - generic [ref=e87] [cursor=pointer]: 
+        - text: Week 17 2026
+        - generic [ref=e89] [cursor=pointer]: 
+        - generic [ref=e90]:
+          - group [ref=e91]:
+            - button " Daily" [ref=e92] [cursor=pointer]:
+              - generic [ref=e93]: 
+              - text: Daily
+            - button " Summary" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]: 
+              - text: Summary
+          - button " Copy Text" [ref=e96] [cursor=pointer]:
+            - generic [ref=e97]: 
+            - text: Copy Text
+          - button " Report" [ref=e98] [cursor=pointer]:
+            - generic [ref=e99]: 
+            - text: Report
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - button "" [ref=e110] [cursor=pointer]:
+          - generic [ref=e111]: 
+        - heading [level=4]
+        - button "" [ref=e112] [cursor=pointer]:
+          - generic [ref=e113]: 
+      - generic [ref=e114]:
+        - generic [ref=e115]: Sun
+        - generic [ref=e116]: Mon
+        - generic [ref=e117]: Tue
+        - generic [ref=e118]: Wed
+        - generic [ref=e119]: Thu
+        - generic [ref=e120]: Fri
+        - generic [ref=e121]: Sat
+  - text:        
